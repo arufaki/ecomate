@@ -153,7 +153,7 @@ const products = [
                     </svg>
                     </span>
                 </button>
-                <div className="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2 hidden" />
+                <div className="hs-carousel-pagination  justify-center absolute bottom-3 start-0 end-0 space-x-2 hidden" />
                 </div>
 
             {/* End Slider */}
