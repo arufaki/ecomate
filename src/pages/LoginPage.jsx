@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 const LoginPage = () => {
     // State untuk show password login
@@ -158,7 +159,10 @@ const LoginPage = () => {
                         </div>
                     </form>
                     <p className="text-base text-[#A1A1AA] my-[64px]">
-                        Belum punya akun? <a className="font-bold text-[#262626] cursor-pointer">Daftar Akun</a>
+                        Belum punya akun?{" "}
+                        <Link to={"/register"} className="font-bold text-[#262626] cursor-pointer">
+                            Daftar Akun
+                        </Link>
                     </p>
                 </div>
             </div>
