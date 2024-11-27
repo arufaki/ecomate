@@ -5,5 +5,8 @@ export default {
         fontFamily: {},
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        // require('@tailwindcss/forms'),
+        require('preline/plugin'),
+    ],
 };
