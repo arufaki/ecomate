@@ -114,7 +114,7 @@ const LoginPage = () => {
                                     <img src="/assets/svg/email.svg" alt="email-icon" />
                                 </div>
                                 {errors.email && (
-                                    <div className="absolute inset-y-14 start-0 flex items-center ps-[24rem] cursor-pointer">
+                                    <div className="absolute inset-y-14 right-3 transform -translate-y-1/2 flex items-center cursor-pointer">
                                         <img src="/assets/svg/alert-circle.svg" alt="alert-email-icon" />
                                     </div>
                                 )}
@@ -138,7 +138,7 @@ const LoginPage = () => {
                                     })}
                                 />
                                 {errors.password && <p className="text-[#EF4444] text-xs mt-2">{errors.password.message}</p>}
-                                <div className="absolute top-[70%] right-3 transform -translate-y-1/2 flex items-center cursor-pointer " onClick={togglePassword}>
+                                <div className="absolute inset-y-14 right-3 transform -translate-y-1/2 flex items-center cursor-pointer" onClick={togglePassword}>
                                     {errors.password ? (
                                         <img src="/assets/svg/alert-circle.svg" alt="alert-password-icon" />
                                     ) : showPassword ? (
