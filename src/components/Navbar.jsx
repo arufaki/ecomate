@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Navbar = () => {
 
     return (
-        <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[96px] bg-white text-sm py-3 z-50 fixed ">
+        <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[96px] backdrop-blur-xl bg-white bg-opacity-30 text-sm py-3 z-50 fixed ">
             <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
                 
                 <a
@@ -61,14 +61,14 @@ const Navbar = () => {
                 </button>
                 <button
                     type="button"
-                    className="  px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[81px] font-medium rounded-lg border border-gray-200 bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
+                    className="  px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[81px] font-medium rounded-lg  bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
                 >
                     Masuk
                 </button>
                 <div className="w-[1px] h-11 bg-[#999999]"></div>
                 <button
                     type="button"
-                    className=" px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[118px] font-medium rounded-lg border border-[#2E7D32] bg-white text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
+                    className=" px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[118px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
                 >
                     Daftar akun
                 </button>

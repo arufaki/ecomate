@@ -4,7 +4,7 @@ const Hero = () => {
     return (
         <div>
             <div
-                className="relative group overflow-hidden rounded-lg mt-28 "
+                className="relative group overflow-hidden rounded-lg mt-28 bg-[#F9F9EB]"
             >
                 {/* Gambar Produk */}
                 <img
