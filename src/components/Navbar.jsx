@@ -73,12 +73,12 @@ const Navbar = () => {
 
                 {/* Desktop Action Buttons */}
                 <div className="hidden sm:flex items-center gap-x-2 h-[46px] max-w-[231px]">
-                    <button
-                        type="button"
+                    <Link
+                        to="/login"
                         className="px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[81px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
                     >
                         Masuk
-                    </button>
+                    </Link>
                     <div className="w-[1px] h-11 bg-[#999999]"></div>
                     <button
                         type="button"
@@ -98,12 +98,12 @@ const Navbar = () => {
                             <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tantangan</a>
                             
                             <div className="border-t pt-4 flex flex-col space-y-4">
-                                <button
-                                    type="button"
+                                <Link
+                                    to="/login"
                                     className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
                                 >
                                     Masuk
-                                </button>
+                                </Link>
                                 <button
                                     type="button"
                                     className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
