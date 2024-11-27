@@ -15,7 +15,12 @@ export default {
             xl: "1280px",
         },
 
-        extend: {},
+        extend: {
+            lineHeight: {
+                'extra-loose': '2.5',
+                '12': '3rem',
+            }
+        },
     },
 
     plugins: [
