@@ -72,20 +72,42 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Action Buttons */}
+                
                 <div className="hidden sm:flex items-center gap-x-2 h-[46px] max-w-[231px]">
-                    <Link
-                        to="/login"
-                        className="px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[81px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
-                    >
-                        Masuk
-                    </Link>
-                    <div className="w-[1px] h-11 bg-[#999999]"></div>
-                    <button
-                        type="button"
-                        className="px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[118px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
-                    >
-                        Daftar akun
-                    </button>
+                    {localStorage.getItem("isLoggedin") === "true" ? (
+                        <div className='flex flex-row w-full ml-28'>
+                        <Link
+                            to="/dashboard"
+                            className="p-3"
+                        >
+                            <img src="/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
+                        </Link>
+                        <div className="w-[1px] h-11 bg-[#999999]"></div>
+                        <Link
+                            to="/dashboard"
+                            className="p-3"
+                        >
+                            <img src="/assets/svg/user.svg" alt="logo" className="w-6 h-6" />
+                        </Link>
+                        </div>
+                    ) : (
+                        <>
+                            <Link
+                                to="/login"
+                                className="px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[81px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
+                            >
+                                Masuk
+                            </Link>
+                            <div className="w-[1px] h-11 bg-[#999999]"></div>
+                            <Link
+                                to="/register"
+                                className="px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[118px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
+                            >
+                                Daftar akun
+                            </Link>
+                        </>
+                    )}
+                    
                 </div>
 
                 {/* Mobile Menu */}
