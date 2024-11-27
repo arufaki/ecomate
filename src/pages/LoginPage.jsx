@@ -56,7 +56,7 @@ const LoginPage = () => {
                 <div className="tablet:flex-[1_43%] mobile:flex-none w-full relative h-full mobile:pb-[18px] tablet:pb-0">
                     <div className="max-w-[657px] mx-auto tablet:px-10 tablet:py-[50px] mobile:px-6 mobile:py-7 tablet:h-screen mobile:h-full">
                         {/* Logo */}
-                        <div className="flex flex-row items-center tablet:gap-3 mobile:gap-1 z-50">
+                        <div className="flex flex-row items-center tablet:gap-3 mobile:gap-1 z-50 cursor-pointer">
                             <img src="/assets/webp/Logo.webp" width={48} height={48} className="mobile:w-6 mobilelg:w-9 tablet:w-12" alt="EcoMate-Logo" />
                             <h1 className="font-bold tablet:text-[26px] text-white mobilelg:text-[22px] mobile:text-base">EcoMate</h1>
                         </div>
@@ -157,7 +157,7 @@ const LoginPage = () => {
                             </button>
                         </div>
                     </form>
-                    <p className="text-base text-[#A1A1AA] mt-[64px]">
+                    <p className="text-base text-[#A1A1AA] my-[64px]">
                         Belum punya akun? <a className="font-bold text-[#262626] cursor-pointer">Daftar Akun</a>
                     </p>
                 </div>
