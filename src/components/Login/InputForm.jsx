@@ -1,5 +1,5 @@
 const InputForm = ({ id, label, type, ps, error, placeholder, register, iconStart, showPassword, togglePassword }) => {
-    const isPasswordField = type === "password" || type === "text";
+    const isPasswordField = type === "password";
     const finalIconEnd = error ? "/assets/svg/alert-circle.svg" : isPasswordField && showPassword ? "/assets/svg/eye.svg" : isPasswordField ? "/assets/svg/eye-off.svg" : null;
     return (
         <div className="w-full relative mb-[17px]">
