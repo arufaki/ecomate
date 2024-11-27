@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 const Navbar = () => {
 
     return (
-        <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[96px] bg-white text-sm py-3 ">
-            <nav className="max-w-[100rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
+        <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[96px] bg-white text-sm py-3 z-50 fixed ">
+            <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
                 
                 <a
                 className="sm:order-1 flex-none text-[26px] font-bold text-[#1B4B1E]  focus:outline-none focus:opacity-80"
