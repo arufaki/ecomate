@@ -6,7 +6,7 @@ import Instagram from "../assets/Instagram.png";
 
 const Footer = () => {
   return (
-    <div className=" fixed h-[670px] sm:h-[400px] w-full bg-[#2E7D32] flex flex-col items-center">
+    <div className=" h-[670px] sm:h-[400px] w-full bg-[#2E7D32] flex flex-col items-center">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full px-[24px] sm:px-[80px] py-[40px] sm:py-[110px] gap-8 sm:gap-0">
         {/* Kolom pertama */}
         <div className="flex flex-col items-start gap-4 w-full sm:w-auto">

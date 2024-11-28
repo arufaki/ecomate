@@ -13,9 +13,9 @@ const ContactUs = () => {
                     <div>
                         <img src={Women} alt="women" className="sm:h-[593px] sm:w-[621px] h-[296px] w-[382px] rounded-[50px] "/>
                     </div>
-                    <div className="pt-[0px] pt-[0px] sm:pt-[57px] sm:pb-[57px] ">
+                    <div className="pt-[0px] sm:pt-[57px] sm:pb-[57px] ">
                         <div className="sm:pb-[137px] pb-[24px] ">
-                            <p className="sm:text-[36px] text-[20px] text-[20px] sm:text-4xl font-bold sm:pb-[36px] pb-[24px] ">Alamat Kami</p>
+                            <p className="sm:text-[36px] text-[20px] sm:text-4xl font-bold sm:pb-[36px] pb-[24px] ">Alamat Kami</p>
                             <div className="flex flex-row gap-[12px] ">
                                 <img src={Map} alt="Map Icon" className="h-[46px] w-[46px]  " />
                                 <div>
@@ -49,7 +49,7 @@ const ContactUs = () => {
 
                 </div>
             </div>
-                <div className="flex sm:flex-row flex-col justify-center items-center sm:h-[333px]  sm:w-[1280px] h-[164px] w-[382px] px-[0px] m-[80px] py-[80px] bg-[#2E7D32] sm:rounded-[50px] rounded-[24px] items-center ">
+                <div className="flex sm:flex-row flex-col justify-center item-center sm:h-[333px]  sm:w-[1280px] h-[164px] w-[382px] px-[0px] m-[80px] py-[80px] bg-[#2E7D32] sm:rounded-[50px] rounded-[24px] items-center ">
                     <div className="text-white sm:pr-[54px] pr-[0px] flex flex-col gap-[16px]">
                         <h1 className=" text-center sm:text-left text-xl text-[20px] font-bold pb-[24px]  sm:text-5xl sm:text-[48px] sm:font-semibold sm:pb-[16px] ">
                             Cara Anda Berkontribusi untuk <br /> Lingkungan
