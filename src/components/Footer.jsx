@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           <p className="text-white text-left text-[18px] pr-[16px] ">
-            Jl. Ahmad Dahlan no.23, Kebumen, Jawa Tengah 54311
+            Jl. Ahmad Dahlan no.23, Kebumen, Jawa Tengah 54311 
           </p>
           <div className="flex gap-4">
             <a href="#" target="_blank" rel="noopener noreferrer">
