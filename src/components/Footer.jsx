@@ -1,8 +1,6 @@
 import React from "react";
-import Logo from "../assets/Logo-eco-mate.png";
-import Whatsapp from "../assets/Whatsapp.png";
-import Tiktok from "../assets/Tiktok.png";
-import Instagram from "../assets/Instagram.png";
+
+
 
 const Footer = () => {
   return (
@@ -11,7 +9,7 @@ const Footer = () => {
       <div className="flex flex-col sm:flex-row  md:py-[110px]  items-center justify-center ">
         <div className="flex flex-col items-start gap-[16px] h-[180px] w-[400px]  sm:pl-[0px] pl-[48px] ">
           <div className=" flex flex-row gap-[12px]">
-              <img src={Logo} alt="EcoMate Logo" className="w-[48px] h-[48px]" />
+              <img src="assets/webp/Logo.webp" alt="EcoMate Logo" className="w-[48px] h-[48px]" />
               <h5 className="text-white text-[26px] font-bold">EcoMate</h5>          
           </div>
 
@@ -21,17 +19,17 @@ const Footer = () => {
           <div className="flex gap-4">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <div className="bg-white p-2 rounded-full w-[40px] h-[40px] flex items-center justify-center">
-                <img src={Whatsapp} alt="Whatsapp" className="w-[24px] h-[24px]" />
+                <img src="assets/png/whatsapp.png" alt="Whatsapp" className="w-[24px] h-[24px]" />
               </div>
             </a>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <div className="bg-white p-2 rounded-full w-[40px] h-[40px] flex items-center justify-center">
-                <img src={Tiktok} alt="Tiktok" className="w-[24px] h-[24px]" />
+                <img src="assets/png/tiktok.png" alt="Tiktok" className="w-[24px] h-[24px]" />
               </div>
             </a>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <div className="bg-white p-2 rounded-full w-[40px] h-[40px] flex items-center justify-center">
-                <img src={Instagram} alt="Instagram" className="w-[24px] h-[24px]" />
+                <img src="assets/png/instagram.png" alt="Instagram" className="w-[24px] h-[24px]" />
               </div>
             </a>
           </div>

@@ -42,7 +42,7 @@ const Faq = () => {
         </p>
       </div>
       <div className="p-8 w-full md:w-[689px] md:h-[707px] bg-[#2E7D32] rounded-[20px] md:rounded-[50px] h-auto">
-        <div className="hs-accordion-group p-20  ">
+        <div className="hs-accordion-group md:p-20  ">
           {faqs.map((faq, index) => (
             <div 
               key={index}
@@ -50,7 +50,7 @@ const Faq = () => {
               id={`faq-accordion-${index}`}
             >
               <Accordion question={faq.question} answer={faq.answer} index={index} />
-              <hr className="w-[425px] items-center justify-center mx-auto"></hr>
+              <hr className="md:w-[425px] w-[300px] h-[1px] bg-[#2E7D32]  items-center justify-center mx-auto"></hr>
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({image, name, description, price, rating}) => {
     return (
-        <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl md:w-[371px] w-full"> {/* Tinggi kartu */}
+        <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full"> {/* Tinggi kartu */}
                             <div className="">
                                 <img
                                 src={image}

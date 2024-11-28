@@ -2,7 +2,7 @@ import React from "react";
 
 const Accordion = ( {question, answer, index}) => {
     return (
-        <div className="p-5">
+        <div className="md:p-5">
         <button
             className="hs-accordion-toggle hs-accordion-active:text-white py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start text-white hover:text-gray-300 rounded-lg disabled:opacity-50 disabled:pointer-events-none"
             aria-controls={`faq-panel-${index}`}
