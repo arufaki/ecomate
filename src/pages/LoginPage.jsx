@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import InputForm from "../components/Login/InputForm";
 import WelcomeSection from "../components/Login/WelcomeSection";
+import GoogleLogin from "../components/Login/GoogleLogin";
 
 const LoginPage = () => {
     // State untuk show password login
@@ -64,7 +65,7 @@ const LoginPage = () => {
                         <h1 className="font-bold text-[24px] mb-4">Masuk</h1>
                         <p className="text-[#737373] text-base">Silahkan masuk ke akun anda</p>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="tablet:w-[416px] mobile:max-w-[450px] mobile:w-[100%] mobile:px-[17px]">
+                    <form onSubmit={handleSubmit(onSubmit)} className="tablet:w-[416px] tablet:px-0 mobile:max-w-[450px] mobile:w-[100%] mobile:px-[17px]">
                         <div className="">
                             <InputForm
                                 id="email-label"
@@ -107,6 +108,7 @@ const LoginPage = () => {
                             </button>
                         </div>
                     </form>
+                    <GoogleLogin />
                     <p className="text-base text-[#A1A1AA] my-[64px]">
                         Belum punya akun?{" "}
                         <Link to={"/register"} className="font-bold text-[#262626] cursor-pointer">
