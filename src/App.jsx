@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
 const App = () => {
+
     return (
         <Router>
             <Routes>
@@ -12,6 +13,7 @@ const App = () => {
                 <Route path="/register" element={<RegisterPage />} />
             </Routes>
         </Router>
+
     );
 };
 
