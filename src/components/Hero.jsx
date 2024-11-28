@@ -15,6 +15,7 @@ const Hero = ({ text, button, image }) => {
                     
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-[#28282880] bg-opacity-50 rounded-[30px] md:rounded-[50px] flex flex-col items-center justify-center text-center px-4">
+
                         <h2 className="text-white text-3xl md:text-[48px] max-w-full md:max-w-[764px] font-bold leading-tight">
                             {text}
                         </h2>
