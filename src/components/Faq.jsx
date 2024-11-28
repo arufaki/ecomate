@@ -1,13 +1,37 @@
 import React, { useEffect } from "react";
-
+import Accordion from "./accordion";
 
 const Faq = () => {
   useEffect(() => {
     window.dispatchEvent(new Event("load"));
   }, []);
+  const faqs = [
+    {
+      question: "Apa itu Ecomate?",
+      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+    },
+    {
+      question: "Cara Membeli Produk melalui Ecomate?",
+      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+    },
+    {
+      question: "Apa saja fitur utama dari  Ecomate?",
+      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+    },
+    {
+      question: "Produk apa saja yang tersedia di Ecomate??",
+      answer: "Kami menyediakan berbagai produk ramah lingkungan, mulai dari kebutuhan rumah tangga, fashion, hingga alat makan yang dapat digunakan kembali.",
+    },
+    {
+      question: "Apakah Ecomate gratis digunakan??",
+      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+    },
+    
+  ]
 
   return (
-    <div className="bg-white justify-center items-start flex flex-col md:flex-row px-[20px] md:px-[80px] pb-[40px] md:pb-[80px]">
+    <div className="bg-[#F9F9EB] ">
+      <div className="justify-center items-start flex flex-col md:flex-row px-[20px] pt-10 pb-[40px] md:pb-[80px] max-w-screen-xl mx-auto">
       <div className="p-8 w-full md:w-1/2 flex flex-col text-center sm:text-left h-full pt-[80px] md:pt-[254px] pb-[100px] md:pb-[334px]">
         <h2 className="text-lg text-[#262626] text-[18px]">FAQ</h2>
         <h1 className="text-xl md:text-5xl text-[20px] md:text-[48px] font-semibold text-[#262626] mt-2">
@@ -17,254 +41,20 @@ const Faq = () => {
           Jawaban atas pertanyaan yang paling sering diajukan.
         </p>
       </div>
-
-      <div className="p-8 w-full md:w-[689px] bg-[#2E7D32] rounded-[20px] md:rounded-[50px] h-auto">
-        <div className="hs-accordion-group py-[40px] md:py-[80px] px-[20px] md:px-[107px]">
-          {/* Accordion #1 */}
-          <div className="hs-accordion border-b border-white" id="accordion-1">
-            <button
-              className="hs-accordion-toggle py-3 inline-flex items-center justify-between w-full font-semibold text-start text-white hover:text-gray-300 focus:outline-none focus:text-gray-300"
-              aria-expanded="false"
-              aria-controls="accordion-content-1"
+      <div className="p-8 w-full md:w-[689px] md:h-[707px] bg-[#2E7D32] rounded-[20px] md:rounded-[50px] h-auto">
+        <div className="hs-accordion-group p-20  ">
+          {faqs.map((faq, index) => (
+            <div 
+              key={index}
+              className="hs-accordion "
+              id={`faq-accordion-${index}`}
             >
-              <span>Accordion #1</span>
-              <svg
-                className="hs-accordion-active:hidden block size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <svg
-                className="hs-accordion-active:block hidden size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m18 15-6-6-6 6" />
-              </svg>
-            </button>
-            <div
-              id="accordion-content-1"
-              className="hs-accordion-content hidden overflow-hidden transition-[height] duration-300"
-              role="region"
-              aria-labelledby="accordion-1"
-            >
-              <p className="text-white mt-3">
-                Ini adalah konten untuk Accordion #1.
-              </p>
+              <Accordion question={faq.question} answer={faq.answer} index={index} />
+              <hr className="w-[425px] items-center justify-center mx-auto"></hr>
             </div>
-          </div>
-
-          {/* Accordion #2 */}
-          <div className="hs-accordion border-b border-white" id="accordion-2">
-            <button
-              className="hs-accordion-toggle py-3 inline-flex items-center justify-between w-full font-semibold text-start text-white hover:text-gray-300 focus:outline-none focus:text-gray-300"
-              aria-expanded="false"
-              aria-controls="accordion-content-2"
-            >
-              <span>Accordion #2</span>
-              <svg
-                className="hs-accordion-active:hidden block size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <svg
-                className="hs-accordion-active:block hidden size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m18 15-6-6-6 6" />
-              </svg>
-            </button>
-            <div
-              id="accordion-content-2"
-              className="hs-accordion-content hidden overflow-hidden transition-[height] duration-300"
-              role="region"
-              aria-labelledby="accordion-2"
-            >
-              <p className="text-white mt-3">
-                Ini adalah konten untuk Accordion #2.
-              </p>
-            </div>
-          </div>
-
-          {/* Accordion #3 */}
-          <div className="hs-accordion border-b border-white" id="accordion-3">
-            <button
-              className="hs-accordion-toggle py-3 inline-flex items-center justify-between w-full font-semibold text-start text-white hover:text-gray-300 focus:outline-none focus:text-gray-300"
-              aria-expanded="false"
-              aria-controls="accordion-content-3"
-            >
-              <span>Accordion #3</span>
-              <svg
-                className="hs-accordion-active:hidden block size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <svg
-                className="hs-accordion-active:block hidden size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m18 15-6-6-6 6" />
-              </svg>
-            </button>
-            <div
-              id="accordion-content-3"
-              className="hs-accordion-content hidden overflow-hidden transition-[height] duration-300"
-              role="region"
-              aria-labelledby="accordion-3"
-            >
-              <p className="text-white mt-3">
-                Ini adalah konten untuk Accordion #3.
-              </p>
-            </div>
-          </div>
-
-          {/* Accordion #4 */}
-          <div className="hs-accordion border-b border-white" id="accordion-4">
-            <button
-              className="hs-accordion-toggle py-3 inline-flex items-center justify-between w-full font-semibold text-start text-white hover:text-gray-300 focus:outline-none focus:text-gray-300"
-              aria-expanded="false"
-              aria-controls="accordion-content-4"
-            >
-              <span>Accordion #4</span>
-              <svg
-                className="hs-accordion-active:hidden block size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <svg
-                className="hs-accordion-active:block hidden size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m18 15-6-6-6 6" />
-              </svg>
-            </button>
-            <div
-              id="accordion-content-4"
-              className="hs-accordion-content hidden overflow-hidden transition-[height] duration-300"
-              role="region"
-              aria-labelledby="accordion-4"
-            >
-              <p className="text-white mt-3">
-                Ini adalah konten untuk Accordion #4.
-              </p>
-            </div>
-          </div>
-
-          {/* Accordion #5 */}
-          <div className="hs-accordion" id="accordion-5">
-            <button
-              className="hs-accordion-toggle py-3 inline-flex items-center justify-between w-full font-semibold text-start text-white hover:text-gray-300 focus:outline-none focus:text-gray-300"
-              aria-expanded="false"
-              aria-controls="accordion-content-5"
-            >
-              <span>Accordion #5</span>
-              <svg
-                className="hs-accordion-active:hidden block size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <svg
-                className="hs-accordion-active:block hidden size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m18 15-6-6-6 6" />
-              </svg>
-            </button>
-            <div
-              id="accordion-content-5"
-              className="hs-accordion-content hidden overflow-hidden transition-[height] duration-300"
-              role="region"
-              aria-labelledby="accordion-5"
-            >
-              <p className="text-white mt-3">
-                Ini adalah konten untuk Accordion #5.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
+      </div>
       </div>
     </div>
   );
