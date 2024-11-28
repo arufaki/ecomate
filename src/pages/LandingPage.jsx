@@ -4,7 +4,9 @@ const LandingPage = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <Navbar />
-            <Hero />
+            <Hero   text="Jadilah Bagian dari Perubahan, Mulai Gaya Hidup Ramah Lingkungan Bersama Ecomate!" 
+                    button="Yuk Bantu Selamatkan Bumi !"
+                    image="src/assets/bg-hero.jpg"/>
         </div>
         );
 };

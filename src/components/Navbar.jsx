@@ -1,114 +1,143 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router';
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[96px] bg-white text-sm py-3 z-50 fixed ">
-            <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
-                
+        <header className="fixed top-0 left-0 w-full h-[96px] backdrop-blur-xl bg-white bg-opacity-30 z-50">
+            <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap items-center justify-between h-full">
+                {/* Logo */}
                 <a
-                className="sm:order-1 flex-none text-[26px] font-bold text-[#1B4B1E]  focus:outline-none focus:opacity-80"
-                href="#"
+                    className="flex-none text-[26px] font-bold text-[#1B4B1E] focus:outline-none focus:opacity-80"
+                    href="#"
                 >
-                <span className="inline-flex items-center gap-x-2 text-xl font-bold ">
-                    <img src="src/assets/logo.png" alt="logo" className="w-12 h-12" />
-                    EcoMate
-                </span>
+                    <span className="inline-flex items-center gap-x-2 text-xl font-bold">
+                        <img src="src/assets/logo.png" alt="logo" className="w-12 h-12" />
+                        EcoMate
+                    </span>
                 </a>
-                <div className="sm:order-3 flex items-center gap-x-2 h-[46px] max-w-[231px]">
-                <button
-                    type="button"
-                    className="sm:hidden hs-collapse-toggle relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-                    id="hs-navbar-alignment-collapse"
-                    aria-expanded="false"
-                    aria-controls="hs-navbar-alignment"
-                    aria-label="Toggle navigation"
-                    data-hs-collapse="#hs-navbar-alignment"
-                >
-                    <svg
-                    className="hs-collapse-open:hidden shrink-0 size-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    >
-                    <line x1={3} x2={21} y1={6} y2={6} />
-                    <line x1={3} x2={21} y1={12} y2={12} />
-                    <line x1={3} x2={21} y1={18} y2={18} />
-                    </svg>
-                    <svg
-                    className="hs-collapse-open:block hidden shrink-0 size-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    >
-                    <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
-                    </svg>
-                    <span className="sr-only">Toggle</span>
-                </button>
-                <button
-                    type="button"
-                    className="  px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[81px] font-medium rounded-lg border border-gray-200 bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
-                >
-                    Masuk
-                </button>
-                <div className="w-[1px] h-11 bg-[#999999]"></div>
-                <button
-                    type="button"
-                    className=" px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[118px] font-medium rounded-lg border border-[#2E7D32] bg-white text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
-                >
-                    Daftar akun
-                </button>
-                </div>
-                <div
-                id="hs-navbar-alignment"
-                className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2"
-                aria-labelledby="hs-navbar-alignment-collapse"
-                >
-                <div className="flex flex-col gap-8 mt-5 sm:flex-row sm:items-center sm:mt-0 sm:ps-5 text-xl">
-                    <a
-                    className="font-bold text-[#1B4B1E] focus:outline-none"
-                    href="#"
-                    aria-current="page"
-                    >
-                    Beranda
-                    </a>
-                    <a
-                    className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none  "
-                    href="#"
-                    >
-                    Tentang
-                    </a>
-                    <a
-                    className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none  "
-                    href="#"
-                    >
-                    Belanja
-                    </a>
-                    <a
-                    className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none  "
-                    href="#"
-                    >
-                    Tantangan
-                    </a>
-                </div>
-                </div>
-            </nav>
-            </header>
 
+                {/* Mobile Menu Toggle */}
+                <button
+                    type="button"
+                    className="sm:hidden z-50"
+                    onClick={toggleMenu}
+                    aria-label="Toggle navigation"
+                >
+                    {isMenuOpen ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+                    ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <line x1={3} x2={21} y1={6} y2={6} />
+                            <line x1={3} x2={21} y1={12} y2={12} />
+                            <line x1={3} x2={21} y1={18} y2={18} />
+                        </svg>
+                    )}
+                </button>
+
+                {/* Desktop Navigation Links */}
+                <div className="hidden sm:flex items-center gap-8 text-xl">
+                    <a className="font-bold text-[#1B4B1E] focus:outline-none" href="#">Beranda</a>
+                    <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tentang</a>
+                    <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Belanja</a>
+                    <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tantangan</a>
+                </div>
+
+                {/* Desktop Action Buttons */}
+                
+                <div className="hidden sm:flex items-center gap-x-2 h-[46px] max-w-[231px]">
+                    {localStorage.getItem("isLoggedin") === "true" ? (
+                        <div className='flex flex-row w-full ml-28'>
+                        <Link
+                            to="/dashboard"
+                            className="p-3"
+                        >
+                            <img src="/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
+                        </Link>
+                        <div className="w-[1px] h-11 bg-[#999999]"></div>
+                        <Link
+                            to="/dashboard"
+                            className="p-3"
+                        >
+                            <img src="/assets/svg/user.svg" alt="logo" className="w-6 h-6" />
+                        </Link>
+                        </div>
+                    ) : (
+                        <>
+                            <Link
+                                to="/login"
+                                className="px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[81px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
+                            >
+                                Masuk
+                            </Link>
+                            <div className="w-[1px] h-11 bg-[#999999]"></div>
+                            <Link
+                                to="/register"
+                                className="px-4 inline-flex items-center gap-x-2 text-[15px] h-full w-[118px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
+                            >
+                                Daftar akun
+                            </Link>
+                        </>
+                    )}
+                    
+                </div>
+
+                {/* Mobile Menu */}
+                {isMenuOpen && (
+                    <div className="sm:hidden absolute top-full left-0 w-full bg-white shadow-lg">
+                        <div className="flex flex-col p-4 space-y-4">
+                            <a className="font-bold text-[#1B4B1E] focus:outline-none" href="#">Beranda</a>
+                            <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tentang</a>
+                            <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Belanja</a>
+                            <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tantangan</a>
+                            
+                            <div className="border-t pt-4 flex flex-col space-y-4">
+                                <Link
+                                    to="/login"
+                                    className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
+                                >
+                                    Masuk
+                                </Link>
+                                <button
+                                    type="button"
+                                    className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
+                                >
+                                    Daftar akun
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </nav>
+        </header>
     );
 };
 
