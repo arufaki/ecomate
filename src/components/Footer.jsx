@@ -6,9 +6,10 @@ import Instagram from "../assets/Instagram.png";
 
 const Footer = () => {
   return (
-    <div className="h-[400px] w-full bg-[#2E7D32] flex flex-col items-center justify-center">
-      <div className="flex items-start justify-between w-full px-[80px] py-[110px]">
-        <div className="flex flex-col items-start gap-4">
+    <div className=" fixed h-[670px] sm:h-[400px] w-full bg-[#2E7D32] flex flex-col items-center">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full px-[24px] sm:px-[80px] py-[40px] sm:py-[110px] gap-8 sm:gap-0">
+        {/* Kolom pertama */}
+        <div className="flex flex-col items-start gap-4 w-full sm:w-auto">
           <img src={Logo} alt="EcoMate Logo" className="w-[48px] h-[48px]" />
           <p className="text-white text-[26px] font-bold">EcoMate</p>
           <p className="text-white text-sm text-left text-[18px]">
@@ -33,7 +34,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex gap-8 w-full pl-[642px] pr-[61[">
+        <div className="flex flex-row gap-8 w-full sm:w-auto">
+          {/* Kategori */}
           <div className="flex flex-col items-start text-left">
             <h2 className="text-white text-lg font-semibold text-[24px]">Kategori</h2>
             <div className="flex flex-col mt-2">
@@ -44,7 +46,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-start text-left px-[61px]">
+          {/* Tantangan */}
+          <div className="flex flex-col items-start text-left">
             <h2 className="text-white text-lg font-semibold text-[24px]">Tantangan</h2>
             <div className="flex flex-col mt-2">
               <p className="text-white text-sm mt-2 text-[18px]">Energy Saver</p>
@@ -54,7 +57,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-start text-left pl-[61]">
+          {/* Ecomate */}
+          <div className="flex flex-col items-start text-left">
             <h2 className="text-white text-lg font-semibold text-[24px]">Ecomate</h2>
             <div className="flex flex-col mt-2">
               <p className="text-white text-sm mt-2 text-[18px]">Beranda</p>
