@@ -65,14 +65,15 @@ const products = [
                 }'
                 className="relative h-fit bg-[#F9F9EB]"
                 >
+
                 <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-[#F9F9EB] rounded-xl">
+
                     <div className="relative min-h-[500px]  -mx-1"> {/* Tambahkan padding kanan untuk potong card */}
                     <div className="hs-carousel-body absolute top-0 bottom-0 start-[0] md:start-[-170px] flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing h-[480px] px-0 md:px-48">
                         {products.map((product) => (
                         <div
                             key={product.id}
                             className="hs-carousel-slide md:px-5 px-10 right-10"
-                            
                         >
                             <Card
                                 image={product.image}
