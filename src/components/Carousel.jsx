@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Card from './Card';
 
 // Sample product data
 const products = [
@@ -65,49 +65,23 @@ const products = [
                 }'
                 className="relative h-fit bg-[#F9F9EB]"
                 >
-                <div className="hs-carousel md:w-4/5 w-full justify-center mx-auto overflow-hidden bg-[#F9F9EB] rounded-xl">
+
+                <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-[#F9F9EB] rounded-xl">
+
                     <div className="relative min-h-[500px]  -mx-1"> {/* Tambahkan padding kanan untuk potong card */}
                     <div className="hs-carousel-body absolute top-0 bottom-0 start-[0] md:start-[-170px] flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing h-[480px] px-0 md:px-48">
                         {products.map((product) => (
                         <div
                             key={product.id}
                             className="hs-carousel-slide md:px-5 px-10 right-10"
-                            style={{ width: "371px" }} // Lebar kartu
                         >
-                            <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl"> {/* Tinggi kartu */}
-                            <div className="">
-                                <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-[200px] object-cover rounded-t-xl"
-                                />
-                            </div>
-                            <div className="mt-4 h-[243px] p-5 pt-0">
-                                <div className="flex justify-between items-center">
-                                <h1 className="mt-1 text-sm font-bold text-[#1F2937] md:text-[18px] ">
-                                    Rp. {product.price}
-                                </h1>
-                                <span className="text-base text-[#1F2937]">
-                                    <span className="text-xl text-yellow-500 mr-2">★</span>{product.rating}/5
-                                </span>
-                                </div>
-                                <p className="text-sm text-gray-600 font-semibold py-3">
-                                {product.name}
-                                </p>
-                                <p className="mt-1 text-sm md:text-base min-h-[72px] text-gray-500 ">
-                                {product.description}
-                                </p>
-                                <div className='flex-row flex '>
-                                <button className="text-white bg-[#2E7D32] text-xs md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
-                                Beli Sekarang
-                                </button>
-                                <button className="text-[#2E7D32] text-sm md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold flex items-center justify-center hover:text-[#1B4B1E]">
-                                <img src='assets/svg/shopping-cart.svg' alt='beli' className="text-[#2E7D32] mr-2 hover:text-[#1B4B1E]" />
-                                Keranjang
-                                </button>
-                                </div>
-                            </div>
-                            </div>
+                            <Card
+                                image={product.image}
+                                name={product.name}
+                                description={product.description}
+                                price={product.price}
+                                rating={product.rating}
+                            />
                         </div>
                         ))}
                     </div>

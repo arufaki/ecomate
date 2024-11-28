@@ -3,10 +3,14 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import WelcomeSection from "../components/Login/WelcomeSection";
 import InputForm from "../components/Login/InputForm";
+import axios from "axios";
+import { Toast } from "../utils/function/toast";
 
 const RegisterPage = () => {
     // State untuk show password login
     const [showPassword, setShowPassword] = useState(false);
+    const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     // Mendefinisikan use Form
     const {
@@ -20,17 +24,43 @@ const RegisterPage = () => {
 
     //Ketika Form disubmit jalankan fungsi OnSubmit
     const onSubmit = async (data) => {
-        const response = await fakeApiLogin(data);
-        if (!response.status) {
-            setError("email", { type: "server", message: response.message });
-        } else {
-            const userRegister = {
-                ...data,
-                fullName: `${data.firstName} ${data.lastName}`,
-            };
-            console.log(userRegister);
-            alert("Berhasil Daftar");
-            navigate("/login");
+        // Define fullname
+        const userRegister = {
+            ...data,
+            fullName: `${data.firstName} ${data.lastName}`,
+        };
+
+        // Data for storing to API
+        const registerData = {
+            email: userRegister.email,
+            name: userRegister.fullName,
+            password: userRegister.password,
+        };
+
+        try {
+            setLoading(true);
+            const response = await axios.post("https://greenenvironment.my.id/api/v1/user/register", registerData);
+            if (response.status == 201) {
+                Toast.fire({
+                    icon: "success",
+                    title: "Registrasi Akun Berhasil",
+                });
+                setUserData(response);
+                navigate("/login");
+            } else {
+                console.warn(response);
+            }
+        } catch (error) {
+            if (error.response) {
+                setError("email", { type: "server", message: error.response.data.message });
+            } else {
+                Toast.fire({
+                    icon: "error",
+                    title: "Tidak dapat terhubung ke server. Periksa koneksi Anda.",
+                });
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -39,22 +69,6 @@ const RegisterPage = () => {
         setShowPassword(!showPassword);
     };
 
-    // Fake API Test Validation
-    const fakeApiLogin = async (data) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                if (data.email === "rie@gmail.com") {
-                    resolve({
-                        status: false,
-                        message: "Email already exists",
-                        data: null,
-                    });
-                } else {
-                    resolve({ status: true });
-                }
-            }, 500);
-        });
-    };
     return (
         <section className="bg-[#45BA4B]">
             <div className="flex tablet:flex-row mobile:flex-col w-full mx-auto min-h-screen">
@@ -142,7 +156,13 @@ const RegisterPage = () => {
                             type="submit"
                             className="py-3 px-4 inline-flex items-center gap-x-2 text-base font-bold rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#256428] focus:outline-none focus:bg-[#256428] disabled:opacity-50 disabled:pointer-events-none w-full justify-center "
                         >
-                            Daftar
+                            {loading ? (
+                                <span className="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full" role="status" aria-label="loading">
+                                    <span className="sr-only">Loading...</span>
+                                </span>
+                            ) : (
+                                "Daftar"
+                            )}
                         </button>
                     </form>
                     <p className="text-base text-[#A1A1AA] my-[64px]">
