@@ -3,9 +3,9 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ListChallengePage from "./pages/ListChallengePage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 const App = () => {
-
     return (
         <Router>
             <Routes>
@@ -16,7 +16,6 @@ const App = () => {
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             </Routes>
         </Router>
-
     );
 };
 
