@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+
 import Hero from "../components/Hero";
 import Carousel from "../components/LandingPage/Product";
 import AboutUsLanding from "../components/LandingPage/AboutUs-Landing";
@@ -6,11 +6,12 @@ import ChallangeLanding from "../components/LandingPage/Challange";
 import Faq from "../components/LandingPage/Faq";
 import Testimoni from "../components/LandingPage/Testimoni";
 import ContactUs from "../components/LandingPage/ContactUs";
-import Footer from "../components/Footer";
+import DefaultLayout from "../layout/DefaultLayout";
+
 const LandingPage = () => {
     return (
-        <div className="flex flex-col min-h-screen">
-            <Navbar active="home" />
+        <DefaultLayout>
+            
             <Hero   text="Jadilah Bagian dari Perubahan, Mulai Gaya Hidup Ramah Lingkungan Bersama Ecomate!" 
                     button="Yuk Bantu Selamatkan Bumi !"
                     image="assets/jpg/bg-hero.jpg"/>
@@ -20,8 +21,8 @@ const LandingPage = () => {
             <Faq />
             <Testimoni />
             <ContactUs />
-            <Footer />
-        </div>
+            
+        </DefaultLayout>
         );
 };
 

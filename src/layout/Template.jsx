@@ -1,7 +1,7 @@
 
 import DefaultLayout from "../layout/DefaultLayout";
 
-const ListChallengePage = () => {
+const GantiNamaSesuaiKebutuhan = () => {
     return (
         <DefaultLayout>
             {/* Component disini */}
@@ -9,4 +9,4 @@ const ListChallengePage = () => {
         );
 };
 
-export default ListChallengePage;
+export default GantiNamaSesuaiKebutuhan;
