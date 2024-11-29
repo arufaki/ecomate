@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import WelcomeSection from "../components/Login/WelcomeSection";
 import InputForm from "../components/Login/InputForm";
-import axios from "axios";
 import { Toast } from "../utils/function/toast";
+import api from "../services/api";
 
 const RegisterPage = () => {
     // State untuk show password login
@@ -39,7 +39,7 @@ const RegisterPage = () => {
 
         try {
             setLoading(true);
-            const response = await axios.post("https://greenenvironment.my.id/api/v1/user/register", registerData);
+            const response = await api.post("/user/register", registerData);
             if (response.status == 201) {
                 Toast.fire({
                     icon: "success",
@@ -154,7 +154,8 @@ const RegisterPage = () => {
 
                         <button
                             type="submit"
-                            className="py-3 px-4 inline-flex items-center gap-x-2 text-base font-bold rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#256428] focus:outline-none focus:bg-[#256428] disabled:opacity-50 disabled:pointer-events-none w-full justify-center "
+                            className="py-3 px-4 inline-flex items-center gap-x-2 text-base font-bold rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#256428] focus:outline-none focus:bg-[#256428] disabled:opacity-50 disabled:pointer-events-none w-full justify-center"
+                            disabled={loading}
                         >
                             {loading ? (
                                 <span className="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full" role="status" aria-label="loading">

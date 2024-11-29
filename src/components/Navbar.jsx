@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router';
 
-const Navbar = () => {
+const Navbar = ({active}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
                     href="#"
                 >
                     <span className="inline-flex items-center gap-x-2 text-xl font-bold">
-                        <img src="src/assets/logo.png" alt="logo" className="w-12 h-12" />
+                        <img src="assets/png/Logo.png" alt="logo" className="w-12 h-12" />
                         EcoMate
                     </span>
                 </a>
@@ -65,16 +65,16 @@ const Navbar = () => {
 
                 {/* Desktop Navigation Links */}
                 <div className="hidden sm:flex items-center gap-8 text-xl">
-                    <a className="font-bold text-[#1B4B1E] focus:outline-none" href="#">Beranda</a>
-                    <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tentang</a>
-                    <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Belanja</a>
-                    <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tantangan</a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">Beranda</a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">Tentang</a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="#">Belanja</a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">Tantangan</a>
                 </div>
 
                 {/* Desktop Action Buttons */}
                 
                 <div className="hidden sm:flex items-center gap-x-2 h-[46px] max-w-[231px]">
-                    {localStorage.getItem("isLoggedin") === "true" ? (
+                    {localStorage.getItem('token') ? (
                         <div className='flex flex-row w-full ml-28'>
                         <Link
                             to="/dashboard"
@@ -114,10 +114,10 @@ const Navbar = () => {
                 {isMenuOpen && (
                     <div className="sm:hidden absolute top-full left-0 w-full bg-white shadow-lg">
                         <div className="flex flex-col p-4 space-y-4">
-                            <a className="font-bold text-[#1B4B1E] focus:outline-none" href="#">Beranda</a>
-                            <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tentang</a>
-                            <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Belanja</a>
-                            <a className="font-medium text-[#1B4B1E] hover:text-[#246128] focus:outline-none" href="#">Tantangan</a>
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">Beranda</a>
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">Tentang</a>
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="#">Belanja</a>
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">Tantangan</a>
                             
                             <div className="border-t pt-4 flex flex-col space-y-4">
                                 <Link

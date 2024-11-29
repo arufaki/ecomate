@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card from '../Card';
 
 // Sample product data
 const products = [
@@ -8,7 +8,7 @@ const products = [
         name: "Sepatu Pria",
         description: "Terbuat dari limbah bulu ayam, Dirancang dengan teknologi modern, dan memiliki sifat antibakteri alam",
         price: "110.000",
-        image: "src/assets/Sepatu.png",
+        image: "assets/png/Sepatu.png",
         rating: 4
     },
     {
@@ -16,7 +16,7 @@ const products = [
         name: "Baju Ramah Lingkungang",
         description: "Baju stylish berbahan dasar limbah tekstil daur ulang, mengedepankan keberlanjutan tanpa mengorbankan kualitas.",
         price: "49.999",
-        image: "src/assets/Baju.png",
+        image: "assets/png/Baju.png",
         rating: 4
     },
     {
@@ -24,7 +24,7 @@ const products = [
         name: "Sandal",
         description: "Sandal stylish dari limbah plastik daur ulang, ringan, tahan lama, dan nyaman, Pilihan tepat untuk langkah berkelanjutan.",
         price: "10.000",
-        image: "src/assets/Sendal.png",
+        image: "assets/png/Sendal.png",
         rating: 4.5
     },
     {
@@ -32,7 +32,7 @@ const products = [
         name: "Tote bag",
         description: "Totebag unik berbahan limbah tekstil daur ulang, kuat, stylish, dan ramah lingkungan. Pilihan sempurna untuk gaya sehari-hari",
         price: "19.900",
-        image: "src/assets/Totebag.png",
+        image: "assets/png/Totebag.png",
         rating: 4
     },
     {
@@ -62,6 +62,7 @@ const products = [
                     "lg": 3
                     },
                     "isDraggable": true
+                    
                 }'
                 className="relative h-fit bg-[#F9F9EB]"
                 >
