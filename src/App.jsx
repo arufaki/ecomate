@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ListChallengePage from "./pages/ListChallengePage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import GuestRoute from "./routes/GuestRoute";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
     return (
@@ -11,8 +12,22 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/tantangan" element={<ListChallengePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
+                <Route
+                    path="/login"
+                    element={
+                        <GuestRoute>
+                            <LoginPage />
+                        </GuestRoute>
+                    }
+                />
+                <Route
+                    path="/register"
+                    element={
+                        <GuestRoute>
+                            <RegisterPage />
+                        </GuestRoute>
+                    }
+                />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             </Routes>
         </Router>
