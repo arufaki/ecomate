@@ -1,12 +1,14 @@
-
-import DefaultLayout from "../layout/DefaultLayout";
-
+import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 const ListChallengePage = () => {
-    return (
-        <DefaultLayout>
-            {/* Component disini */}
-        </DefaultLayout>
-        );
+    return <div className="bg-[#F9F9EB] ">
+        <Navbar active="challenge"/>
+        <div className="min-h-screen"> 
+        </div>
+        <Footer />
+        </div>;
+        
 };
 
 export default ListChallengePage;

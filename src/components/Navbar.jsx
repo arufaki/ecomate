@@ -9,7 +9,7 @@ const Navbar = ({active}) => {
     };
 
     return (
-        <header className="fixed top-0 left-0 w-full h-[96px] backdrop-blur-xl bg-white bg-opacity-30 z-50">
+        <header className="fixed top-0 left-0 w-full h-[96px] backdrop-blur-xl bg-[#F9F9EB] bg-opacity-30 z-50">
             <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap items-center justify-between h-full">
                 {/* Logo */}
                 <a
@@ -67,7 +67,7 @@ const Navbar = ({active}) => {
                 <div className="hidden sm:flex items-center gap-8 text-xl">
                     <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">Beranda</a>
                     <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">Tentang</a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="#">Belanja</a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="/belanja">Belanja</a>
                     <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">Tantangan</a>
                 </div>
 
