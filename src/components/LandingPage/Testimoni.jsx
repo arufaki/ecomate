@@ -22,15 +22,11 @@ import React from 'react';
                 data-hs-carousel='{
                     "loadingClasses": "opacity-0",
                     "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500",
-                    
                     "slidesQty": {
                     "xs": 1,
                     "lg": 3
                     },
-                    "isDraggable": true,
-                
-
-
+                    "isDraggable": true
                     
                 }'
                 className="relative h-fit bg-[#2E7D32]"
@@ -47,15 +43,15 @@ import React from 'react';
                         >
                             <img src="assets/jpg/user.jpg" className='w-[100px] h-[100px] mx-auto top-[50px] relative rounded-full  object-cover object-top' alt="" />
                             <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full ">
-                              <div className="mt-4 h-[397px] p-5 pt-0">
-                                <div className='mx-auto items-center justify-center text-center flex px-10 my-20 h-[150px]'>
-                                <h1>{item.message}</h1>
+                                <div className="mt-4 h-[397px] p-5 pt-0">
+                                    <div className='mx-auto items-center justify-center text-center flex px-10 my-20 h-[150px]'>
+                                    <h1>{item.message}</h1>
+                                    </div>
+                                    <div className='mx-auto items-center justify-center text-center flex flex-col'>
+                                    <h1 className='font-bold text-2xl'>{item.name}</h1>
+                                    <h1 className='text-sm text-[#999999]'>{item.date}</h1>
+                                    </div>
                                 </div>
-                                <div className='mx-auto items-center justify-center text-center flex flex-col'>
-                                <h1 className='font-bold text-2xl'>{item.name}</h1>
-                                <h1 className='text-sm text-[#999999]'>{item.date}</h1>
-                                </div>
-                              </div>
                             </div>
                         </div>
                         ))}
