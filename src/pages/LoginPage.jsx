@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import InputForm from "../components/Login/InputForm";
 import WelcomeSection from "../components/Login/WelcomeSection";
 import GoogleLogin from "../components/Login/GoogleLogin";
+import { Toast } from "../utils/function/toast";
+import api from "../services/api";
 
 const LoginPage = () => {
     // State untuk show password login
     const [showPassword, setShowPassword] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     // Mendefinisikan use Form
     const {
@@ -17,41 +21,47 @@ const LoginPage = () => {
         formState: { errors },
     } = useForm();
 
+    const navigate = useNavigate();
+
     //Ketika Form disubmit jalankan fungsi OnSubmit
     const onSubmit = async (data) => {
-        const response = await fakeApiLogin(data);
-        if (!response.success) {
-            setError(response.error.field, { type: "server", message: response.error.message });
-        } else {
-            console.log(data);
-            alert("Login berhasil ges");
+        try {
+            setLoading(true);
+            const response = await api.post("/user/login", data);
+            if (response.status == 200) {
+                const { token } = response.data.data;
+                localStorage.setItem("token", token);
+                setIsAuthenticated(true);
+                Toast.fire({
+                    icon: "success",
+                    title: "Login Berhasil.",
+                });
+            } else {
+                console.warn(response);
+                Toast.fire({
+                    icon: "error",
+                    title: "Login Gagal",
+                });
+            }
+            navigate("/");
+        } catch (error) {
+            if (error.response) {
+                setError(error.response.data.message === "Incorrect password" ? "password" : "email", { type: "server", message: error.response.data.message });
+            } else {
+                Toast.fire({
+                    icon: "error",
+                    title: "Tidak dapat terhubung ke server. Periksa koneksi Anda.",
+                });
+            }
+            console.error(error.response.data.message);
+        } finally {
+            setLoading(false);
         }
     };
 
     // Toggle Show or Hide Password
     const togglePassword = () => {
         setShowPassword(!showPassword);
-    };
-
-    // Fake API Test Validation
-    const fakeApiLogin = async (data) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                if (data.email !== "johndoe@gmail.com") {
-                    resolve({
-                        success: false,
-                        error: { field: "email", message: "Email tidak ditemukan" },
-                    });
-                } else if (data.password !== "123456") {
-                    resolve({
-                        success: false,
-                        error: { field: "password", message: "Kata sandi salah" },
-                    });
-                } else {
-                    resolve({ success: true });
-                }
-            }, 500);
-        });
     };
 
     return (
@@ -99,12 +109,21 @@ const LoginPage = () => {
                                 showPassword={showPassword}
                                 togglePassword={togglePassword}
                             />
-                            <p className="font-medium text-base text-center cursor-pointer mb-6">Lupa Password?</p>
+                            <p className="font-medium text-base text-center cursor-pointer mb-6">
+                                <Link to={"/forgot-password"}>Lupa Password?</Link>
+                            </p>
                             <button
                                 type="submit"
-                                className="py-3 px-4 inline-flex items-center gap-x-2 text-base font-bold rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#256428] focus:outline-none focus:bg-[#256428] disabled:opacity-50 disabled:pointer-events-none w-full justify-center "
+                                className="py-3 px-4 inline-flex items-center gap-x-2 text-base font-bold rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#256428] focus:outline-none focus:bg-[#256428] disabled:opacity-50 disabled:pointer-events-none w-full justify-center"
+                                disabled={loading}
                             >
-                                Masuk
+                                {loading ? (
+                                    <span className="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full" role="status" aria-label="loading">
+                                        <span className="sr-only">Loading...</span>
+                                    </span>
+                                ) : (
+                                    "Masuk"
+                                )}
                             </button>
                         </div>
                     </form>
