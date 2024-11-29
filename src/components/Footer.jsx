@@ -19,17 +19,17 @@ const Footer = () => {
           <div className="flex gap-4">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <div className="bg-white p-2 rounded-full w-[40px] h-[40px] flex items-center justify-center">
-                <img src="assets/png/whatsapp.png" alt="Whatsapp" className="w-[24px] h-[24px]" />
+                <img src="assets/png/Whatsapp.png" alt="Whatsapp" className="w-[24px] h-[24px]" />
               </div>
             </a>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <div className="bg-white p-2 rounded-full w-[40px] h-[40px] flex items-center justify-center">
-                <img src="assets/png/tiktok.png" alt="Tiktok" className="w-[24px] h-[24px]" />
+                <img src="assets/png/Tiktok.png" alt="Tiktok" className="w-[24px] h-[24px]" />
               </div>
             </a>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <div className="bg-white p-2 rounded-full w-[40px] h-[40px] flex items-center justify-center">
-                <img src="assets/png/instagram.png" alt="Instagram" className="w-[24px] h-[24px]" />
+                <img src="assets/png/Instagram.png" alt="Instagram" className="w-[24px] h-[24px]" />
               </div>
             </a>
           </div>

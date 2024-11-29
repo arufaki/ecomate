@@ -3,14 +3,14 @@ import React from 'react';
 
 
     const ProductCarousel = () => {
-      const originalItems = [
-        { id: 1, name: "Rizki Andini", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
-        { id: 2, name: "Farhan Alfiansyah", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
-        { id: 3, name: "Rizki Andini", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
-        { id: 4, name: "Farhan Alfiansyah", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
-        { id: 5, name: "Rizki Andini", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
-        { id: 6, name: "Farhan Alfiansyah", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
-      ];
+        const originalItems = [
+            { id: 1, name: "Rizki Andini", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
+            { id: 2, name: "Farhan Alfiansyah", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
+            { id: 3, name: "Rizki Andini", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
+            { id: 4, name: "Farhan Alfiansyah", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
+            { id: 5, name: "Rizki Andini", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
+            { id: 6, name: "Farhan Alfiansyah", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
+        ];
     return (
         <div className=' bg-[#2E7D32] h-fit pb-10'>
             <div className="py-14">
