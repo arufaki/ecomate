@@ -32,14 +32,7 @@ const App = () => {
                     }
                 />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                <Route
-                    path="/cart"
-                    elemen={
-                        <GuestRoute>
-                            <CartPage />
-                        </GuestRoute>
-                    }
-                />
+                <Route path="/cart" element={<CartPage />} />
             </Routes>
         </Router>
     );
