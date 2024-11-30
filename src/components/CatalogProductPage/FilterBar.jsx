@@ -3,7 +3,7 @@ import InputForm from "../Login/InputForm";
 const FilterBar = () => {
     return (
         <div>
-            <div className=" bg-[#FAFAFA] border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 w-[1222px] mx-6 md:mx-auto mt-20">
+            <div className=" bg-[#FAFAFA] border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 md:w-[1222px] w-[390px] ml-3  md:mx-auto mt-20">
             <form action="" className="flex md:flex-row flex-col">
             <div className=" w-[353px] ">
                 
