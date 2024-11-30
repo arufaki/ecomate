@@ -39,7 +39,7 @@ const RegisterPage = () => {
 
         try {
             setLoading(true);
-            const response = await api.post("/user/register", registerData);
+            const response = await api.post("/users/register", registerData);
             if (response.status == 201) {
                 Toast.fire({
                     icon: "success",

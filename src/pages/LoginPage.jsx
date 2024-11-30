@@ -27,7 +27,7 @@ const LoginPage = () => {
     const onSubmit = async (data) => {
         try {
             setLoading(true);
-            const response = await api.post("/user/login", data);
+            const response = await api.post("/users/login", data);
             if (response.status == 200) {
                 const { token } = response.data.data;
                 localStorage.setItem("token", token);
