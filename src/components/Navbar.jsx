@@ -79,7 +79,7 @@ const Navbar = ({ active }) => {
                 <div className="hidden sm:flex items-center gap-x-2 h-[46px] max-w-[231px]">
                     {token ? (
                         <div className="flex flex-row w-full ml-28">
-                            <Link to="/dashboard" className="p-3">
+                            <Link to="/cart" className="p-3">
                                 <img src="/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
                             </Link>
                             <div className="w-[1px] h-11 bg-[#999999]"></div>
