@@ -3,7 +3,7 @@ import InputForm from "../Login/InputForm";
 const FilterBar = () => {
     return (
         <div>
-            <div className=" bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 w-[1222px]  mx-auto mt-20">
+            <div className=" bg-[#FAFAFA] border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 w-[1222px]  mx-auto mt-20">
             <form action="" className="flex flex-row">
             <div className=" w-[353px] ">
                 
@@ -28,7 +28,7 @@ const FilterBar = () => {
                     id="hs-select-label"
                     className="py-3 px-4 pe-1 block w-full rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm border-gray-200  focus:border-blue-500 focus:ring-blue-500 focus:outline-blue-500"
                 >
-                    <option selected="">Pilih Kategori</option>
+                    <option >Pilih Kategori</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -45,7 +45,7 @@ const FilterBar = () => {
                     id="hs-select-label"
                     className="py-3 px-4 pe-1 block w-full rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm border-gray-200  focus:border-blue-500 focus:ring-blue-500 focus:outline-blue-500"
                 >
-                    <option selected="">Urutkan Berdasarkan</option>
+                    <option >Urutkan Berdasarkan</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>

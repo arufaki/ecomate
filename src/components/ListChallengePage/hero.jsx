@@ -1,8 +1,10 @@
+import { div } from "motion/react-client";
 import React from "react";
 
 const Hero = () => {
     return (
-        <div className="relative flex justify-center items-center gap-[10px] h-[698px] mt-[128px] mx-[56px] mb-[80px] bg-[#F9F9EB] rounded-[24px] overflow-hidden">
+        <div className="bg-secondary pt-24 md:pt-40">
+        <div className="relative flex justify-center items-center gap-[10px] h-[698px] w-[1328px] mx-auto mb-[80px]  rounded-[24px] overflow-hidden">
             <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
@@ -25,6 +27,7 @@ const Hero = () => {
                     yang lebih bersih dan sehat!
                 </p>
             </div>
+        </div>
         </div>
     );
 };
