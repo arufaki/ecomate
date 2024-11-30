@@ -6,7 +6,7 @@ import CatalogProductPage from "./pages/CatalogProductPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import GuestRoute from "./routes/GuestRoute";
 import LoginPage from "./pages/LoginPage";
-import CartPage from "./pages/CartPage";
+// import CartPage from "./pages/CartPage";
 
 const App = () => {
     return (
@@ -32,7 +32,7 @@ const App = () => {
                     }
                 />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                <Route path="/cart" element={<CartPage />} />
+                {/* <Route path="/cart" element={<CartPage />} /> */}
             </Routes>
         </Router>
     );
