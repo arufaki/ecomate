@@ -9,7 +9,6 @@ import api from "../services/api";
 const RegisterPage = () => {
     // State untuk show password login
     const [showPassword, setShowPassword] = useState(false);
-    const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(false);
 
     // Mendefinisikan use Form

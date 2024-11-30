@@ -95,28 +95,31 @@ const Catalog = () => {
         const totalProduct = products.length
         const totalProductCurrentPage = currentProducts.length
     return (
-        <div className="w-[1222px] mx-auto">
-                <p className="text-xl py-10  ">Menampilkan {totalProductCurrentPage} dari {totalProduct} hasil</p>
-                <div className="flex flex-wrap -mx-5">
-                    {currentProducts.map((product) => (
-                    <div key={product.id} className="w-full md:w-1/3 px-5 mb-5">
-                        <Card
+        <div className="w-full mx-auto">
+            <p className="text-xl py-10">Menampilkan {totalProductCurrentPage} dari {totalProduct} hasil</p>
+            <div className="flex flex-wrap -mx-2 sm:mx-0">
+                {currentProducts.map((product) => (
+                <div 
+                    key={product.id} 
+                    className="w-1/2 sm:w-1/3 px-2 sm:px-5 mb-5"
+                >
+                    <Card
                         image={product.image}
                         name={product.name}
                         description={product.description}
                         price={product.price}
                         rating={product.rating}
-                        />
-                    </div>
-                    ))}
+                    />
                 </div>
-                <Pagination 
-                    currentPage={currentPage}
-                    totalItems={products.length}
-                    itemsPerPage={itemsPerPage}
-                    onPageChange={setCurrentPage}
-                />
+                ))}
             </div>
+            <Pagination 
+                currentPage={currentPage}
+                totalItems={products.length}
+                itemsPerPage={itemsPerPage}
+                onPageChange={setCurrentPage}
+            />
+        </div>
     );
 };
 

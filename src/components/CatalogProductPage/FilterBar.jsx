@@ -3,8 +3,8 @@ import InputForm from "../Login/InputForm";
 const FilterBar = () => {
     return (
         <div>
-            <div className=" bg-[#FAFAFA] border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 w-[1222px]  mx-auto mt-20">
-            <form action="" className="flex flex-row">
+            <div className=" bg-[#FAFAFA] border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 w-[1222px] mx-6 md:mx-auto mt-20">
+            <form action="" className="flex md:flex-row flex-col">
             <div className=" w-[353px] ">
                 
                 <InputForm
@@ -17,7 +17,7 @@ const FilterBar = () => {
                 />
                 
             </div>
-            <div className="w-[353px] mx-5">
+            <div className="w-[353px] mx-0 md:mx-5 my-5 md:my-0">
                 <label
                     htmlFor="hs-select-label"
                     className="block text-base font-bold mb-2 "
@@ -51,7 +51,7 @@ const FilterBar = () => {
                     <option>3</option>
                 </select>                                                                                       
             </div>
-            <button className="w-[45px] h-[45px] bg-[#2E7D32] rounded-lg flex items-center justify-center mt-8 mx-5">
+            <button className="md:-[45px] md:h-[45px] w-[353px] h-[52px] bg-[#2E7D32] rounded-lg flex items-center justify-center mt-8 mx-0 md:mx-5">
                 <img src="/assets/svg/search-button.svg" alt="filter"  />
             </button>
             </form>
