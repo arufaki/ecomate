@@ -1,6 +1,12 @@
 import React from 'react';
-// Sample product data
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {  Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
     const ProductCarousel = () => {
         const originalItems = [
@@ -13,53 +19,58 @@ import React from 'react';
         ];
     return (
         <div className=' bg-primary h-fit pb-10'>
-            <div className="py-14">
+            <div className="pt-14">
                 <p className="text-[18px] text-sm text-white text-center justify-center font-semibold">Testimoni</p>
-                <h1 className="md:text-5xl text-xl text-white max-w-3xl text-center justify-center font-bold mx-auto">Pengalaman Nyata dengan Produk Ramah Lingkungan Kami</h1>
+                <h1 className="text-white text-3xl md:text-[48px] max-w-full md:max-w-[764px] mx-auto text-center font-bold leading-tight">Pengalaman Nyata dengan Produk Ramah Lingkungan Kami</h1>
             </div>
             {/* Slider */}
-            <div
-                data-hs-carousel='{
-                    "loadingClasses": "opacity-0",
-                    "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500",
-                    "slidesQty": {
-                    "xs": 1,
-                    "lg": 3
-                    },
-                    "isDraggable": true
-                    
-                }'
-                className="relative h-fit bg-primary"
-                >
-
-                <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-primary rounded-xl">
-
-                    <div className="relative min-h-[500px]  -mx-1"> {/* Tambahkan padding kanan untuk potong card */}
-                    <div className="hs-carousel-body absolute top-[-50px] bottom-0 start-[0] md:start-[-170px] flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing h-[480px] px-0 md:px-48">
-                        {originalItems.map((item) => (
-                        <div
-                            key={item.id}
-                            className="hs-carousel-slide md:px-5 px-10 "
-                        >
-                            <img src="assets/jpg/user.jpg" className='w-[100px] h-[100px] mx-auto top-[50px] relative rounded-full  object-cover object-top' alt="" />
-                            <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full ">
-                                <div className="mt-4 h-[397px] p-5 pt-0">
-                                    <div className='mx-auto items-center justify-center text-center flex px-10 my-20 h-[150px]'>
-                                    <h1>{item.message}</h1>
-                                    </div>
-                                    <div className='mx-auto items-center justify-center text-center flex flex-col'>
-                                    <h1 className='font-bold text-2xl'>{item.name}</h1>
-                                    <h1 className='text-sm text-[#999999]'>{item.date}</h1>
-                                    </div>
+            <div className="relative h-fit bg-primary w-full">
+                <div className="md:w-[75%] w-full mx-auto bg-primary rounded-xl">
+                    <Swiper
+                        modules={[Autoplay]}
+                        spaceBetween={30}
+                        slidesPerView={1}
+                        loop={true}
+                        speed={5000} // Kecepatan pergerakan slide
+                        breakpoints={{
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30
+                            }
+                        }}
+                        autoplay={{
+                            delay: 0, // Tidak ada jeda antar slide
+                            disableOnInteraction: false,
+                            reverseDirection: false // Arah pergerakan
+                        }}
+                        allowTouchMove={false} // Nonaktifkan interaksi sentuh
+    
+                    className="h-[700px]"
+                    >
+                    {originalItems.map((item) => (
+                        <SwiperSlide key={item.id} className="px-5">
+                        <div className="">
+                            <img 
+                            src="assets/jpg/user.jpg" 
+                            className='w-[100px] h-[100px] mx-auto mb-4 rounded-full object-cover object-top relative top-14' 
+                            alt={item.name} 
+                            />
+                            <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full">
+                            <div className="p-5 w-[397px] h-[487px] flex flex-col justify-between">
+                                <div className='text-center px-10 my-32 h-[150px] flex items-center justify-center'>
+                                <h1>{item.message}</h1>
+                                </div>
+                                <div className='text-center'>
+                                <h1 className='font-bold text-2xl'>{item.name}</h1>
+                                <h1 className='text-sm text-[#999999]'>{item.date}</h1>
                                 </div>
                             </div>
+                            </div>
                         </div>
-                        ))}
-                    </div>
-                    </div>
+                        </SwiperSlide>
+                    ))}
+                    </Swiper>
                 </div>
-
-                <div className="hs-carousel-pagination  justify-center absolute bottom-3 start-0 end-0 space-x-2 hidden" />
                 </div>
 
             {/* End Slider */}
