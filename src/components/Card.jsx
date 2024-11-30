@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router";
 const Card = ({image, name, description, price, rating}) => {
     return (
         <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full"> {/* Tinggi kartu */}
@@ -19,20 +19,21 @@ const Card = ({image, name, description, price, rating}) => {
                                     <span className="text-xl text-yellow-500 mr-2">★</span>{rating}/5
                                 </span>
                                 </div>
-                                <p className="text-sm text-gray-600 font-semibold py-3 min-h-[64px]">
+                                <p className="text-sm text-gray-600 font-semibold py-3 md:min-h-[40px] min-h-[64px]">
                                 {name}
                                 </p>
                                 <p className="mt-1 hidden md:flex text-sm md:text-base min-h-[72px] text-gray-500 ">
                                 {description}
                                 </p>
                                 <div className='flex-row flex '>
-                                <button className="text-white bg-primary text-xs md:text-[15px] mt-5 w-[150px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
-                                Beli Sekarang
-                                </button>
-                                <button className="text-primary text-sm md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold flex items-center justify-center hover:text-[#1B4B1E]">
+                                
+                                <Link to="/detail" className="text-white  bg-primary text-xs md:text-[15px] mt-5 w-[150px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
+                                <p className="mt-3.5 ml-4">Beli Sekarang</p>
+                                </Link>
+                                <Link to="/" className="text-primary text-sm md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold flex items-center justify-center hover:text-[#1B4B1E]">
                                 <img src='assets/svg/shopping-cart.svg' alt='beli' className="text-primary mr-2 hover:text-[#1B4B1E]" />
                                 <p className="hidden md:flex">Keranjang</p>
-                                </button>
+                                </Link>
                                 </div>
                             </div>
                             </div>

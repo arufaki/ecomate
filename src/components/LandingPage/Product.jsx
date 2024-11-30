@@ -1,6 +1,12 @@
 import React from 'react';
 import Card from '../Card';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {  Mousewheel } from 'swiper/modules';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 // Sample product data
 const products = [
     {
@@ -53,88 +59,40 @@ const products = [
                 <h1 className="md:text-5xl text-xl text-neutral-800 text-center justify-center font-bold">Pilihan Anda Membuat Perbedaan</h1>
             </div>
             {/* Slider */}
-            <div
-                data-hs-carousel='{
-                    "loadingClasses": "opacity-0",
-                    "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500",
-                    "slidesQty": {
-                    "xs": 1,
-                    "lg": 3
-                    },
-                    "isDraggable": true
-                    
-                }'
-                className="relative h-fit bg-secondary"
-                >
+            <div className="relative w-[80%] md:w-[80%] mx-auto ">
+            <Swiper
+                modules={[ Mousewheel]}
+                spaceBetween={20}
+                slidesPerView={1}
+                mousewheel={true}
+                breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3.5,
+                    spaceBetween: 30,
+                },
+                }}
+                grabCursor={true}
+                className="pb-12 md:h-[500px] h-[350px]"
+            >
+                {products.map((product) => (
+                <SwiperSlide key={product.id} className="px-4">
+                    <Card
+                    image={product.image}
+                    name={product.name}
+                    description={product.description}
+                    price={product.price}
+                    rating={product.rating}
+                    />
+                </SwiperSlide>
+                ))}
+            </Swiper>
+        
 
-                <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-secondary rounded-xl">
-
-                    <div className="relative min-h-[500px]  -mx-1"> {/* Tambahkan padding kanan untuk potong card */}
-                    <div className="hs-carousel-body absolute top-0 bottom-0 start-[0] md:start-[-170px] flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing h-[480px] px-0 md:px-48">
-                        {products.map((product) => (
-                        <div
-                            key={product.id}
-                            className="hs-carousel-slide md:px-5 px-10 right-10"
-                        >
-                            <Card
-                                image={product.image}
-                                name={product.name}
-                                description={product.description}
-                                price={product.price}
-                                rating={product.rating}
-                            />
-                        </div>
-                        ))}
-                    </div>
-                    </div>
-                </div>
-
-                <button
-                    type="button"
-                    className="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
-                >
-                    <span className="text-2xl" aria-hidden="true">
-                    <svg
-                        className="shrink-0 size-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width={24}
-                        height={24}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <path d="m15 18-6-6 6-6" />
-                    </svg>
-                    </span>
-                    <span className="sr-only">Previous</span>
-                </button>
-                <button
-                    type="button"
-                    className="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
-                >
-                    <span className="sr-only">Next</span>
-                    <span className="text-2xl" aria-hidden="true">
-                    <svg
-                        className="shrink-0 size-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width={24}
-                        height={24}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <path d="m9 18 6-6-6-6" />
-                    </svg>
-                    </span>
-                </button>
-                <div className="hs-carousel-pagination  justify-center absolute bottom-3 start-0 end-0 space-x-2 hidden" />
-                </div>
+    </div>
 
             {/* End Slider */}
             </div>
