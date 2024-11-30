@@ -6,6 +6,7 @@ import WelcomeSection from "../components/Login/WelcomeSection";
 import GoogleLogin from "../components/Login/GoogleLogin";
 import { Toast } from "../utils/function/toast";
 import api from "../services/api";
+import useAuthStore from "../stores/useAuthStore";
 
 const LoginPage = () => {
     // State untuk show password login
@@ -23,6 +24,8 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
+    const setToken = useAuthStore((state) => state.setToken);
+
     //Ketika Form disubmit jalankan fungsi OnSubmit
     const onSubmit = async (data) => {
         try {
@@ -30,7 +33,7 @@ const LoginPage = () => {
             const response = await api.post("/users/login", data);
             if (response.status == 200) {
                 const { token } = response.data.data;
-                localStorage.setItem("token", token);
+                setToken(token);
                 setIsAuthenticated(true);
                 Toast.fire({
                     icon: "success",
