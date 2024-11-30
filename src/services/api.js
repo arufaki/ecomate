@@ -1,4 +1,5 @@
 import axios from "axios";
+import useAuthStore from "../stores/useAuthStore";
 
 const api = axios.create({
     baseURL: "https://greenenvironment.my.id/api/v1",
@@ -6,7 +7,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
+    const token = useAuthStore.getState().token;
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
 });
