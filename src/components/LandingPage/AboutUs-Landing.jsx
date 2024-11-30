@@ -2,8 +2,8 @@ import React from "react";
 
 const AboutUsLanding = () => {
     return (
-        <div className=" bg-[#F9F9EB]">
-            <div className="bg-[#2E7D32] w-11/12 md:w-[1280px] md:h-[507px] h-[522px] md:rounded-[50px] rounded-[30px] flex flex-col md:flex-row items-center justify-center mx-auto my-10">
+        <div className=" bg-secondary">
+            <div className="bg-primary w-11/12 md:w-[1280px] md:h-[507px] h-[522px] md:rounded-[50px] rounded-[30px] flex flex-col md:flex-row items-center justify-center mx-auto my-10">
                 <div className="md:w-[578px] w-full px-14 py-5 md:p-5">
                     <p className="md:text-[18px] text-sm  text-white text-start justify-center font-semibold">About Us</p>
                     <h1 className="md:text-5xl text-xl text-white text-start justify-center font-semibold">Membantu Anda Membuat Pilihan Berkelanjutan</h1>

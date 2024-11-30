@@ -30,7 +30,7 @@ const Faq = () => {
   ]
 
   return (
-    <div className="bg-[#F9F9EB] ">
+    <div className="bg-secondary ">
       <div className="justify-center items-start flex flex-col md:flex-row px-[20px] pt-10 pb-[40px] md:pb-[80px] max-w-screen-xl mx-auto">
       <div className="p-8 w-full md:w-1/2 flex flex-col text-center sm:text-left h-full pt-[80px] md:pt-[254px] pb-[100px] md:pb-[334px]">
         <h2 className="text-lg text-[#262626] text-[18px]">FAQ</h2>
@@ -41,7 +41,7 @@ const Faq = () => {
           Jawaban atas pertanyaan yang paling sering diajukan.
         </p>
       </div>
-      <div className="p-8 w-full md:w-[689px] md:h-[707px] bg-[#2E7D32] rounded-[20px] md:rounded-[50px] h-auto">
+      <div className="p-8 w-full md:w-[689px] md:h-[707px] bg-primary rounded-[20px] md:rounded-[50px] h-auto">
         <div className="hs-accordion-group md:p-20  ">
           {faqs.map((faq, index) => (
             <div 
@@ -50,7 +50,7 @@ const Faq = () => {
               id={`faq-accordion-${index}`}
             >
               <Accordion question={faq.question} answer={faq.answer} index={index} />
-              <hr className="md:w-[425px] w-[300px] h-[1px] bg-[#2E7D32]  items-center justify-center mx-auto"></hr>
+              <hr className="md:w-[425px] w-[300px] h-[1px] bg-primary  items-center justify-center mx-auto"></hr>
             </div>
           ))}
         </div>

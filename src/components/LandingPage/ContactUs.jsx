@@ -46,7 +46,7 @@ const ContactUs = () => {
 
                 </div>
             </div>
-                <div className="flex sm:flex-row flex-col justify-center item-center sm:h-[333px]  sm:w-[1280px] h-[164px] w-[382px] px-[0px] m-[80px] py-[80px] bg-[#2E7D32] sm:rounded-[50px] rounded-[24px] items-center ">
+                <div className="flex sm:flex-row flex-col justify-center item-center sm:h-[333px]  sm:w-[1280px] h-[164px] w-[382px] px-[0px] m-[80px] py-[80px] bg-primary sm:rounded-[50px] rounded-[24px] items-center ">
                     <div className="text-white sm:pr-[54px] pr-[0px] flex flex-col gap-[16px]">
                         <h1 className=" text-center sm:text-left text-xl text-[20px] font-bold pb-[24px]  sm:text-5xl sm:text-[48px] sm:font-semibold sm:pb-[16px] ">
                             Cara Anda Berkontribusi untuk <br /> Lingkungan
@@ -57,7 +57,7 @@ const ContactUs = () => {
                     </div>
 
                     <div>
-                        <button className="w-[238px] h-[38px] sm:w-[254px] sm:h-[62px] bg-white text-[15px] font-medium text-[#2E7D32] rounded-[10px]">Yuk Bantu Selamatkan Bumi !</button>
+                        <button className="w-[238px] h-[38px] sm:w-[254px] sm:h-[62px] bg-white text-[15px] font-medium text-primary rounded-[10px]">Yuk Bantu Selamatkan Bumi !</button>
                     </div>
                 </div>
         </div>

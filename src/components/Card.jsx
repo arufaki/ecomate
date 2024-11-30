@@ -26,11 +26,11 @@ const Card = ({image, name, description, price, rating}) => {
                                 {description}
                                 </p>
                                 <div className='flex-row flex '>
-                                <button className="text-white bg-[#2E7D32] text-xs md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
+                                <button className="text-white bg-primary text-xs md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
                                 Beli Sekarang
                                 </button>
-                                <button className="text-[#2E7D32] text-sm md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold flex items-center justify-center hover:text-[#1B4B1E]">
-                                <img src='assets/svg/shopping-cart.svg' alt='beli' className="text-[#2E7D32] mr-2 hover:text-[#1B4B1E]" />
+                                <button className="text-primary text-sm md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold flex items-center justify-center hover:text-[#1B4B1E]">
+                                <img src='assets/svg/shopping-cart.svg' alt='beli' className="text-primary mr-2 hover:text-[#1B4B1E]" />
                                 Keranjang
                                 </button>
                                 </div>

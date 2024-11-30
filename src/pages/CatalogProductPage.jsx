@@ -107,7 +107,7 @@ const CatalogProductPage = () => {
         const goToNextPage = () => {
             if (currentPage < totalPages) setCurrentPage(currentPage + 1);
         };
-    return <div className="bg-[#F9F9EB] ">
+    return <div className="bg-secondary ">
         <Navbar active="Shopping"/>
         <div className="min-h-screen">
             <div className="flex flex-col justify-center items-center pt-40 ">
@@ -141,7 +141,7 @@ const CatalogProductPage = () => {
                         className={`px-3 py-2 rounded-full ${
                             currentPage === 1
                                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                                : "bg-[#2E7D32] text-white"
+                                : "bg-primary text-white"
                         }`}
                     >
                         &larr; 
@@ -155,8 +155,8 @@ const CatalogProductPage = () => {
                                 onClick={() => setCurrentPage(index + 1)}
                                 className={`px-4 py-2 rounded-full ${
                                     currentPage === index + 1
-                                        ? "bg-[#2E7D32] text-white"
-                                        : "text-gray-700 hover:bg-[#2E7D32] hover:text-white transition-all duration-300"
+                                        ? "bg-primary text-white"
+                                        : "text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
                                 }`}
                             >
                                 {index + 1}
@@ -171,7 +171,7 @@ const CatalogProductPage = () => {
                         className={`px-3 py-2 rounded-full ${
                             currentPage === totalPages
                                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                                : "bg-[#2E7D32] text-white"
+                                : "bg-primary text-white"
                         }`}
                     >
                         &rarr;

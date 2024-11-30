@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
 
-    <div className=" bg-[#2E7D32]  ">
+    <div className=" bg-primary  ">
       <div className="flex flex-col sm:flex-row  md:py-[110px]  items-center justify-center ">
         <div className="flex flex-col items-start gap-[16px] h-[180px] w-[400px]  sm:pl-[0px] pl-[48px] ">
           <div className=" flex flex-row gap-[12px]">
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-cop items-start  sm:flex-row gap-[40px] sm:gap-[62px] w-full sm:w-auto sm:pl-[364px]  ">
+        <div className="flex flex-col items-start  sm:flex-row gap-[40px] sm:gap-[62px] w-full sm:w-auto sm:pl-[364px]  ">
           <div className="flex flex-col  items-start text-left gap-[12px]">
             <h2 className="text-white text-lg font-semibold text-[24px]">Kategori</h2>
             <div className="flex flex-col gap-[12px] ">

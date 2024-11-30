@@ -12,7 +12,7 @@ import React from 'react';
             { id: 6, name: "Farhan Alfiansyah", date: "06 September 2024", message: '"Saya sangat terkesan dengan produk dari Ecomate! Tidak hanya berkualitas, tapi juga membantu saya menjalani gaya hidup yang lebih berkelanjutan. Sangat direkomendasikan!"' },
         ];
     return (
-        <div className=' bg-[#2E7D32] h-fit pb-10'>
+        <div className=' bg-primary h-fit pb-10'>
             <div className="py-14">
                 <p className="text-[18px] text-sm text-white text-center justify-center font-semibold">Testimoni</p>
                 <h1 className="md:text-5xl text-xl text-white max-w-3xl text-center justify-center font-bold mx-auto">Pengalaman Nyata dengan Produk Ramah Lingkungan Kami</h1>
@@ -29,10 +29,10 @@ import React from 'react';
                     "isDraggable": true
                     
                 }'
-                className="relative h-fit bg-[#2E7D32]"
+                className="relative h-fit bg-primary"
                 >
 
-                <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-[#2E7D32] rounded-xl">
+                <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-primary rounded-xl">
 
                     <div className="relative min-h-[500px]  -mx-1"> {/* Tambahkan padding kanan untuk potong card */}
                     <div className="hs-carousel-body absolute top-[-50px] bottom-0 start-[0] md:start-[-170px] flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing h-[480px] px-0 md:px-48">

@@ -25,7 +25,7 @@ const ChallengeLanding = () => {
     ];
 
     return (
-        <div className="bg-[#F9F9EB]">
+        <div className="bg-secondary">
             <p className="md:text-lg text-sm text-neutral-800 text-center justify-center font-semibold">Tantangan</p>
             <h1 className="md:text-5xl text-xl text-neutral-800 text-center justify-center font-bold max-w-[838px] mx-auto">Ambil langkah selanjutnya menuju gaya hidup berkelanjutan</h1>
         <div className="container mx-auto px-4 py-8 max-w-screen-xl">
@@ -44,7 +44,7 @@ const ChallengeLanding = () => {
                     <p className="text-gray-600 text-lg mb-4">{challenges[0].description}</p>
                     <a 
                         href={challenges[0].link} 
-                        className="text-[#2E7D32] hover:underline font-bold mt-auto inline-block"
+                        className="text-primary hover:underline font-bold mt-auto inline-block"
                     >
                         Lihat Selengkapnya
                     </a>
@@ -72,7 +72,7 @@ const ChallengeLanding = () => {
                     <p className="text-gray-600 mb-4">{challenge.description}</p>
                     <a 
                         href={challenge.link} 
-                        className="text-[#2E7D32] hover:underline font-bold inline-block"
+                        className="text-primary hover:underline font-bold inline-block"
                     >
                         Lihat Selengkapnya
                     </a>

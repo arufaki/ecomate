@@ -19,7 +19,12 @@ export default {
             lineHeight: {
                 'extra-loose': '2.5',
                 '12': '3rem',
-            }
+            },
+            colors: {
+                primary: "#2E7D32",
+                secondary: "#F9F9EB",
+                third: "#E0E0E0",
+            },
         },
     },
 

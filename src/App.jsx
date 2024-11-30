@@ -3,7 +3,7 @@ import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
 import ListChallengePage from "./pages/ListChallengePage";
 import CatalogProductPage from "./pages/CatalogProductPage";
-// import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import GuestRoute from "./routes/GuestRoute";
 import LoginPage from "./pages/LoginPage";
 
@@ -30,7 +30,7 @@ const App = () => {
                         </GuestRoute>
                     }
                 />
-                {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */}
+                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             </Routes>
         </Router>
     );

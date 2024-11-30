@@ -47,7 +47,7 @@ const products = [
 
     const ProductCarousel = () => {
     return (
-        <div className=' bg-[#F9F9EB]'>
+        <div className=' bg-secondary'>
             <div className="py-14">
                 <p className="text-[18px] text-sm text-neutral-800 text-center justify-center font-semibold">Pilihan Anda Membuat Perbedaan</p>
                 <h1 className="md:text-5xl text-xl text-neutral-800 text-center justify-center font-bold">Pilihan Anda Membuat Perbedaan</h1>
@@ -64,10 +64,10 @@ const products = [
                     "isDraggable": true
                     
                 }'
-                className="relative h-fit bg-[#F9F9EB]"
+                className="relative h-fit bg-secondary"
                 >
 
-                <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-[#F9F9EB] rounded-xl">
+                <div className="hs-carousel md:w-[75%] w-full justify-center mx-auto overflow-hidden bg-secondary rounded-xl">
 
                     <div className="relative min-h-[500px]  -mx-1"> {/* Tambahkan padding kanan untuk potong card */}
                     <div className="hs-carousel-body absolute top-0 bottom-0 start-[0] md:start-[-170px] flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing h-[480px] px-0 md:px-48">
