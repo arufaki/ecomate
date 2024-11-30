@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "../Card";
 import Pagination from "../Pagination";
+import api from "../../services/api";
+import { use } from "motion/react-client";
 const Catalog = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        try {
+            setIsLoading(true);
+            api.get("/products").then((res) => {
+                console.log(res.data);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
     const products = [
+
         {
             id: 1,
             name: "Sepatu Pria",
@@ -13,7 +28,7 @@ const Catalog = () => {
         },
         {
             id: 2,
-            name: "Baju Ramah Lingkungang",
+            name: "Baju Ramah Lingkungan",
             description: "Baju stylish berbahan dasar limbah tekstil daur ulang, mengedepankan keberlanjutan tanpa mengorbankan kualitas.",
             price: "49.999",
             image: "assets/png/Baju.png",
@@ -86,18 +101,16 @@ const Catalog = () => {
         ];
         const [currentPage, setCurrentPage] = useState(1);
         const itemsPerPage = 9;
-
         // Hitung total halaman
-       
         const indexOfLastProduct = currentPage * itemsPerPage;
         const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
         const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
         const totalProduct = products.length
         const totalProductCurrentPage = currentProducts.length
     return (
-        <div className="w-full mx-auto">
+        <div className="md:w-[1280px] w-full  mx-auto">
             <p className="text-xl py-10">Menampilkan {totalProductCurrentPage} dari {totalProduct} hasil</p>
-            <div className="flex flex-wrap -mx-2 sm:mx-0">
+            <div className="flex flex-wrap ">
                 {currentProducts.map((product) => (
                 <div 
                     key={product.id} 
