@@ -1,7 +1,8 @@
 import { Navigate } from "react-router";
+import useAuthStore from "../stores/useAuthStore";
 
 const GuestRoute = ({ children }) => {
-    const token = localStorage.getItem("token");
+    const { token } = useAuthStore();
 
     if (token) {
         return <Navigate to="/" replace />;
