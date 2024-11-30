@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router';
+import React, { useState } from "react";
+import { Link } from "react-router";
+import useAuthStore from "../stores/useAuthStore";
 
-const Navbar = ({active}) => {
+const Navbar = ({ active }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const { token } = useAuthStore();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -12,10 +15,7 @@ const Navbar = ({active}) => {
         <header className="fixed top-0 left-0 w-full h-[96px] backdrop-blur-xl bg-secondary bg-opacity-30 z-50">
             <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap items-center justify-between h-full">
                 {/* Logo */}
-                <a
-                    className="flex-none text-[26px] font-bold text-[#1B4B1E] focus:outline-none focus:opacity-80 mt-3"
-                    href="#"
-                >
+                <a className="flex-none text-[26px] font-bold text-[#1B4B1E] focus:outline-none focus:opacity-80 mt-3" href="#">
                     <span className="inline-flex items-center gap-x-2 text-xl font-bold">
                         <img src="assets/png/Logo.png" alt="logo" className="w-12 h-12" />
                         EcoMate
@@ -23,12 +23,7 @@ const Navbar = ({active}) => {
                 </a>
 
                 {/* Mobile Menu Toggle */}
-                <button
-                    type="button"
-                    className="sm:hidden z-50"
-                    onClick={toggleMenu}
-                    aria-label="Toggle navigation"
-                >
+                <button type="button" className="sm:hidden z-50" onClick={toggleMenu} aria-label="Toggle navigation">
                     {isMenuOpen ? (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -65,30 +60,32 @@ const Navbar = ({active}) => {
 
                 {/* Desktop Navigation Links */}
                 <div className="hidden sm:flex items-center gap-8 text-xl">
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">Beranda</a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">Tentang</a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="/belanja">Belanja</a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">Tantangan</a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">
+                        Beranda
+                    </a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">
+                        Tentang
+                    </a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="/belanja">
+                        Belanja
+                    </a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">
+                        Tantangan
+                    </a>
                 </div>
 
                 {/* Desktop Action Buttons */}
-                
+
                 <div className="hidden sm:flex items-center gap-x-2 h-[46px] max-w-[231px]">
-                    {localStorage.getItem('token') ? (
-                        <div className='flex flex-row w-full ml-28'>
-                        <Link
-                            to="/dashboard"
-                            className="p-3"
-                        >
-                            <img src="/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
-                        </Link>
-                        <div className="w-[1px] h-11 bg-[#999999]"></div>
-                        <Link
-                            to="/dashboard"
-                            className="p-3"
-                        >
-                            <img src="/assets/svg/user.svg" alt="logo" className="w-6 h-6" />
-                        </Link>
+                    {token ? (
+                        <div className="flex flex-row w-full ml-28">
+                            <Link to="/dashboard" className="p-3">
+                                <img src="/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
+                            </Link>
+                            <div className="w-[1px] h-11 bg-[#999999]"></div>
+                            <Link to="/dashboard" className="p-3">
+                                <img src="/assets/svg/user.svg" alt="logo" className="w-6 h-6" />
+                            </Link>
                         </div>
                     ) : (
                         <>
@@ -107,18 +104,25 @@ const Navbar = ({active}) => {
                             </Link>
                         </>
                     )}
-                    
                 </div>
 
                 {/* Mobile Menu */}
                 {isMenuOpen && (
                     <div className="sm:hidden absolute top-full left-0 w-full bg-white shadow-lg">
                         <div className="flex flex-col p-4 space-y-4">
-                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">Beranda</a>
-                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">Tentang</a>
-                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="/belanja">Belanja</a>
-                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">Tantangan</a>
-                            
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">
+                                Beranda
+                            </a>
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">
+                                Tentang
+                            </a>
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="/belanja">
+                                Belanja
+                            </a>
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">
+                                Tantangan
+                            </a>
+
                             <div className="border-t pt-4 flex flex-col space-y-4">
                                 <Link
                                     to="/login"
