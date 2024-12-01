@@ -7,8 +7,8 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import GuestRoute from "./routes/GuestRoute";
 import LoginPage from "./pages/LoginPage";
 import DetailProductPage from "./pages/DetailProductPage";
-// import CartPage from "./pages/CartPage";
-
+import CartPage from "./pages/CartPage";
+import DetailChallengePage from "./pages/DetailChallengePage";
 const App = () => {
     return (
         <Router>
@@ -16,7 +16,8 @@ const App = () => {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/tantangan" element={<ListChallengePage />} />
                 <Route path="/belanja" element={<CatalogProductPage />} />
-                <Route path="/detail" element={<DetailProductPage />} />
+                <Route path="/detail-produk" element={<DetailProductPage />} />
+                <Route path="/detail-tantangan" element={<DetailChallengePage />} />
                 <Route
                     path="/login"
                     element={
@@ -34,7 +35,7 @@ const App = () => {
                     }
                 />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                {/* <Route path="/cart" element={<CartPage />} /> */}
+                <Route path="/cart" element={<CartPage />} />
             </Routes>
         </Router>
     );
