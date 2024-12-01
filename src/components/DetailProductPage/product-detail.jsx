@@ -79,17 +79,17 @@ const ProductDetail = () => {
     const [amount, setAmount] = React.useState(1);
     return (
         <div>
-            <div className="flex flex-row mx-auto w-full justify-center items-center gap-2">
-                <div className="w-[726px] h-[470px] bg-white rounded-lg border border-gray-200">
-                    <img src={products.image} alt={products.name} className="w-[662px] h-[406px] mt-8 object-cover rounded-lg mx-auto" />
+            <div className="flex md:flex-row flex-col  mx-auto w-full justify-center items-center gap-2">
+                <div className="md:w-[726px] md:h-[470px] w-[382px] h-[296px] bg-white rounded-lg border border-gray-200">
+                    <img src={products.image} alt={products.name} className="md:w-[662px] md:h-[406px] w-[318px] h-[232px] mt-8 object-cover rounded-lg mx-auto" />
                 </div>
-                <div className="w-[520px] h-[470px] bg-white rounded-lg border border-gray-200">
-                    <h1 className="text-3xl font-bold mt-8 ml-8">{products.name}</h1>
-                    <h1 className="text-4xl font-bold mt-8 ml-8">Rp. {products.price.toLocaleString("id-ID")}</h1>
+                <div className="md:w-[520px] md:h-[470px] w-[382px] h-[372px] bg-white rounded-lg border border-gray-200">
+                    <h1 className="md:text-3xl text-xl font-bold mt-8 ml-8">{products.name}</h1>
+                    <h1 className="md:text-4xl text-xl font-bold mt-2 md:mt-8 ml-8">Rp. {products.price.toLocaleString("id-ID")}</h1>
                         <div className="flex flex-row py-5 ml-8 text-primary">
-                            <p className="text-sm font-bold px-6 py-2 bg-[#CCFBF1]">Terjual 16</p>
-                            <p className="text-sm font-bold px-6 py-2 bg-[#CCFBF1] mx-2">Rating 4.5 (16 Ulasan)</p>
-                            <p className="text-sm font-bold px-6 py-2 bg-[#CCFBF1]">Tas</p>
+                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1]">Terjual 16</p>
+                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1] mx-2">Rating 4.5 (16 Ulasan)</p>
+                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1]">Tas</p>
                         </div>
                         <div className="flex flex-row ml-8">
                         <button
@@ -108,7 +108,7 @@ const ProductDetail = () => {
                             }}
                             type="number"
                             value={amount}
-                            className="text-2xl text-center font-bold py-1 px-4 mx-2 border-none w-20 h-[60px] border-primary border rounded-lg"
+                            className="text-2xl text-center font-bold py-1 px-4 mx-2 border-none w-20  md:h-[60px] border-primary border rounded-lg"
                         />
                         <button
                             onClick={() => setAmount(Number(amount) + 1)} // Pastikan selalu berupa angka
@@ -116,30 +116,32 @@ const ProductDetail = () => {
                         >
                             +
                         </button>
-                        <h1 className="text-xl font-semibold py-1 px-1 ml-10">
+                        <h1 className="md:text-xl text-base font-semibold  px-1 ml-10">
                             Subtotal<br /> Rp. {(products.price * amount).toLocaleString("id-ID")}
                         </h1>
                         </div>
-                        <div className="flex flex-col w-[456px] ml-8">
-                            <button className="bg-primary text-white text-base font-bold py-3 text-center  mt-8 rounded-lg w-full border hover:border-primary hover:text-primary hover:bg-white transition-all duration-300">Beli sekarang</button>
-                            <button className="border-primary border text-primary text-base font-bold py-3 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300">   
+                        <div className="flex flex-col w-full px-4 md:px-10">
+                            <button className="bg-primary text-white text-base font-bold py-2 text-center  mt-4 rounded-lg w-full border hover:border-primary hover:text-primary hover:bg-white transition-all duration-300">
+                                Beli sekarang
+                            </button>
+                            <button className="border-primary border text-primary text-base font-bold py-2 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300">   
                                 Tambah ke Keranjang
                             </button>
                         </div>
                 </div>
             </div>
-            <div className="flex flex-row mx-auto w-full justify-center items-center gap-2">
+            <div className="flex md:flex-row flex-col mx-auto w-full justify-center items-center gap-2">
                 <div>
                     <h1 className="text-3xl font-bold  py-10">Dampak yang diberikan</h1>
-                    <div className="w-[726px] h-[322px] bg-white rounded-lg border border-gray-200">
-                        <div className="flex flex-row bg-green-50 w-[662px] h-[105px] rounded-lg  mt-8 ml-8 p-3 border border-[#99F6E4]">
+                    <div className="md:w-[726px] md:h-[322px] w-[382px] bg-white rounded-lg border border-gray-200 p-8" >
+                        <div className="flex md:flex-row flex-col bg-green-50 md:w-[662px] md:h-[105px] rounded-lg  p-3 border border-[#99F6E4]">
                             <img src="assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
                             <div className="w-full p-3">
                                 <h1 className="text-lg font-bold">{products.impact.impactName}</h1>
                                 <p className="text-base font-semibold">{products.impact.impactDetail}</p>
                             </div>
                         </div>
-                        <div className="flex flex-row bg-green-50 w-[662px] h-[105px] rounded-lg  mt-8 ml-8 p-3 border border-[#99F6E4]">
+                        <div className="flex md:flex-row flex-col bg-green-50 md:w-[662px] md:h-[105px] rounded-lg md:mt-10 mt-3  p-3 border border-[#99F6E4]">
                             <img src="assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
                             <div className="w-full p-3">
                                 <h1 className="text-lg font-bold">{products.impact.impactName}</h1>
@@ -150,16 +152,16 @@ const ProductDetail = () => {
                 </div>
                 <div>
                     <h1 className="text-3xl font-bold  py-10">Deskripsi </h1>
-                    <div className="w-[520px] h-[322px] bg-white rounded-lg border border-gray-200 p-10 ">
-                        <div className="bg-green-50 w-[437px] h-[242px] rounded-lg border border-[#99F6E4]">
-                            <p className="text-base font-normal  text-justify p-10">{products.description}</p>
+                    <div className="md:w-[520px] md:h-[322px] w-[382px] h-[308px] bg-white rounded-lg border border-gray-200 p-8 md:p-10 ">
+                        <div className="bg-green-50 md:w-[437px] md:h-[242px] h-[228px] rounded-lg border border-[#99F6E4]">
+                            <p className="md:text-base text-sm font-normal  text-justify p-7 md:p-10">{products.description}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="flex flex-col w-full mx-auto gap-6">
                 <h1 className="text-3xl font-bold text-center py-6">Review</h1>
-                <div className="relative w-[70%] mx-auto">
+                <div className="relative md:w-[70%] w-full mx-auto">
                     <Swiper
                     modules={[Mousewheel]}
                     spaceBetween={20}
@@ -167,7 +169,7 @@ const ProductDetail = () => {
                     mousewheel
                     breakpoints={{
                         640: {
-                        slidesPerView: 2,
+                        slidesPerView: 1,
                         spaceBetween: 20,
                         },
                         1024: {
