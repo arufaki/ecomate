@@ -75,8 +75,8 @@ const RegisterPage = () => {
                 {/* Form Login */}
                 <div className="flex-[1_50%] w-full flex flex-col items-center justify-center bg-white mobile:rounded-t-[60px] tablet:rounded-t-none mobile:pt-[28px] tablet:pt-0">
                     <div className="text-center mb-6">
-                        <h1 className="font-bold text-[24px] mb-4">Daftar Akun</h1>
-                        <p className="text-[#737373] text-base">Buat Akun</p>
+                        <h1 className="font-bold text-[24px] mb-4 text-[#262626]">Daftar Akun</h1>
+                        <p className="text-[#A1A1AA] text-base">Buat Akun</p>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="tablet:w-[416px] mobile:max-w-[450px] mobile:w-[100%] mobile:px-[17px]">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-2 w-full tablet:mb-0  mobile:mb-[17px]">
@@ -133,13 +133,13 @@ const RegisterPage = () => {
                             showPassword={showPassword}
                             togglePassword={togglePassword}
                         />
-                        <div className="mt-3 flex items-start mb-[17px]">
+                        <div className="mt-3 flex items-center mb-[17px]">
                             <div className="flex">
                                 <input
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
-                                    className="shrink-0 mt-1.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 bg-neutral-800 checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
+                                    className="checkbox border-blue-500 [--chkbg:theme(colors.blue.600)] [--chkfg:white] checked:border-blue-500 w-5 h-5 rounded-none"
                                     {...register("agreeTerms", { required: "Anda harus menyetujui syarat & ketentuan" })}
                                 />
                             </div>
