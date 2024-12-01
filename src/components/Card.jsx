@@ -27,9 +27,9 @@ const Card = ({image, name, description, price, rating}) => {
                                 </p>
                                 <div className='flex-row flex '>
                                 
-                                <Link to="/detail" className="text-white  bg-primary text-xs md:text-[15px] mt-5 w-[150px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
+                                <a href="/detail" className="text-white  bg-primary text-xs md:text-[15px] mt-5 w-[150px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
                                 <p className="mt-3.5 ml-4">Beli Sekarang</p>
-                                </Link>
+                                </a>
                                 <Link to="/" className="text-primary text-sm md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold flex items-center justify-center hover:text-[#1B4B1E]">
                                 <img src='assets/svg/shopping-cart.svg' alt='beli' className="text-primary mr-2 hover:text-[#1B4B1E]" />
                                 <p className="hidden md:flex">Keranjang</p>
