@@ -13,12 +13,13 @@ export default {
             md: "768px",
             lg: "1024px",
             xl: "1280px",
+            xxl: "1370px",
         },
 
         extend: {
             lineHeight: {
-                'extra-loose': '2.5',
-                '12': '3rem',
+                "extra-loose": "2.5",
+                12: "3rem",
             },
             colors: {
                 primary: "#2E7D32",
@@ -27,10 +28,9 @@ export default {
             },
         },
     },
-
     plugins: [
         // require('@tailwindcss/forms'),
-        require('preline/plugin'),
+        require("preline/plugin"),
+        require("daisyui"),
     ],
-
 };
