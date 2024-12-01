@@ -9,6 +9,8 @@ import LoginPage from "./pages/LoginPage";
 import DetailProductPage from "./pages/DetailProductPage";
 import CartPage from "./pages/CartPage";
 import DetailChallengePage from "./pages/DetailChallengePage";
+import ChatBotPage from "./pages/ChatbotPage";
+
 const App = () => {
     return (
         <Router>
@@ -36,6 +38,7 @@ const App = () => {
                 />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/chat" element={<ChatBotPage />} />
             </Routes>
         </Router>
     );
