@@ -10,12 +10,12 @@ const ProductDetail = () => {
             image: "assets/png/Totebag.png",
             price: 19900,
             impact: 
-                [
+                
                     {
                         impactName: "Mengurangi penggunaan kantong plastik hingga 80%",
                         impactDetail: "Mengurangi penggunaan kantong plastik hingga 80%"
                     }
-                ],
+                ,
             reviews:
                 [
                     {
@@ -73,11 +73,40 @@ const ProductDetail = () => {
                             Subtotal<br /> Rp. {(products.price * amount).toLocaleString("id-ID")}
                         </h1>
                         </div>
-                    <div className="flex flex-col w-[456px] ml-8">
-                        <button className="bg-primary text-white text-base font-bold py-3 text-center  mt-8 rounded-lg w-full border hover:border-primary hover:text-primary hover:bg-white transition-all duration-300">Beli sekarang</button>
-                        <button className="border-primary border text-primary text-base font-bold py-3 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300">   
-                            Tambah ke Keranjang
-                        </button>
+                        <div className="flex flex-col w-[456px] ml-8">
+                            <button className="bg-primary text-white text-base font-bold py-3 text-center  mt-8 rounded-lg w-full border hover:border-primary hover:text-primary hover:bg-white transition-all duration-300">Beli sekarang</button>
+                            <button className="border-primary border text-primary text-base font-bold py-3 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300">   
+                                Tambah ke Keranjang
+                            </button>
+                        </div>
+                </div>
+            </div>
+            <div className="flex flex-row mx-auto w-full justify-center items-center gap-2">
+                <div>
+                    <h1 className="text-3xl font-bold mt-8 ">Dampak yang diberikan</h1>
+                    <div className="w-[726px] h-[322px] bg-white rounded-lg border border-gray-200">
+                        <div className="flex flex-row bg-green-50 w-[662px] h-[105px] rounded-lg  mt-8 ml-8 p-3 border border-[#99F6E4]">
+                            <img src="assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
+                            <div className="w-full p-3">
+                                <h1 className="text-lg font-bold">{products.impact.impactName}</h1>
+                                <p className="text-base font-semibold">{products.impact.impactDetail}</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-row bg-green-50 w-[662px] h-[105px] rounded-lg  mt-8 ml-8 p-3 border border-[#99F6E4]">
+                            <img src="assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
+                            <div className="w-full p-3">
+                                <h1 className="text-lg font-bold">{products.impact.impactName}</h1>
+                                <p className="text-base font-semibold">{products.impact.impactDetail}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h1 className="text-3xl font-bold mt-8 ">Deskripsi </h1>
+                    <div className="w-[520px] h-[322px] bg-white rounded-lg border border-gray-200 p-10 ">
+                        <div className="bg-green-50 w-[437px] h-[242px] rounded-lg border border-[#99F6E4]">
+                            <p className="text-base font-normal  text-justify p-10">{products.description}</p>
+                        </div>
                     </div>
                 </div>
             </div>
