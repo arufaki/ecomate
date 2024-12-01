@@ -1,7 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {  Mousewheel } from 'swiper/modules';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -63,18 +62,24 @@ const ProductDetail = () => {
                     {   
                         name: "Jamal",
                         rating: 4,
-                        review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
+                        review: "lumayan lah bisa buat bawa barang sehari hari",
                         date: "06 September 2024"
                     },
                     {
                         name: "Budi",   
-                        rating: 5,
-                        review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
+                        rating: 2,
+                        review: "barangnya jelek jir",
                         date: "06 September 2024"
                     },
+                    
 
                 ]
         }
+    
+    const averageRating =  Math.round(
+        (products.reviews.reduce((total, review) => total + review.rating, 0) / 
+         products.reviews.length) * 10
+      ) / 10;
         
     const [amount, setAmount] = React.useState(1);
     return (
@@ -88,7 +93,7 @@ const ProductDetail = () => {
                     <h1 className="md:text-4xl text-xl font-bold mt-2 md:mt-8 ml-8">Rp. {products.price.toLocaleString("id-ID")}</h1>
                         <div className="flex flex-row py-5 ml-8 text-primary">
                             <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1]">Terjual 16</p>
-                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1] mx-2">Rating 4.5 (16 Ulasan)</p>
+                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1] mx-2">Rating {averageRating} ({products.reviews.length} Ulasan)</p>
                             <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1]">Tas</p>
                         </div>
                         <div className="flex flex-row ml-8">
