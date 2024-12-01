@@ -2,11 +2,11 @@ import React from "react";
 
 const GoogleLogin = () => {
     return (
-        <div>
+        <div className="tablet:w-[416px] tablet:px-0 mobile:max-w-[450px] mobile:w-[100%] mobile:px-[17px]">
             <p className="text-[#A1A1AA] text-sm font-medium py-6 text-center">Atau masuk dengan</p>
             <button
                 type="button"
-                className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-base font-medium rounded-lg border border-black bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none tablet:w-[416px] mobile:max-w-[450px] mobile:w-[100%] mobile:px-[17px]"
+                className="w-full py-3 px-4 flex justify-center items-center gap-x-2 text-base font-medium rounded-lg border border-black bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
             >
                 <svg className="w-4 h-auto" width={46} height={47} viewBox="0 0 46 47" fill="none">
                     <path

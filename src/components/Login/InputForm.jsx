@@ -3,13 +3,13 @@ const InputForm = ({ id, label, type, ps, error, placeholder, register, iconStar
     const finalIconEnd = error ? "/assets/svg/alert-circle.svg" : isPasswordField && showPassword ? "/assets/svg/eye.svg" : isPasswordField ? "/assets/svg/eye-off.svg" : null;
     return (
         <div className="w-full relative mb-[17px]">
-            <label htmlFor={id} className="block text-base font-bold mb-2">
+            <label htmlFor={id} className="block text-base font-bold mb-2 text-[#27272A]">
                 {label}
             </label>
             <input
                 type={type}
                 id={id}
-                className={`py-3 px-4 ${ps} block w-full rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm
+                className={`py-3 px-4 ${ps} block w-full text-[#1F2937] font-medium bg-white rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm
     ${error ? "border-[#EF4444] focus:ring-[#EF4444]" : "border-gray-200 focus:border-blue-500 focus:ring-blue-500 focus:outline-blue-500"}`}
                 placeholder={placeholder}
                 {...register}
