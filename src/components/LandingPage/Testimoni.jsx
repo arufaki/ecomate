@@ -49,7 +49,7 @@ import 'swiper/css/pagination';
                     >
                     {originalItems.map((item) => (
                         <SwiperSlide key={item.id} className="px-5">
-                        <div className="">
+                        <div className="text-neutral">
                             <img 
                             src="assets/jpg/user.jpg" 
                             className='w-[100px] h-[100px] mx-auto mb-4 rounded-full object-cover object-top relative top-14' 

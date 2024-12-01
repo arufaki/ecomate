@@ -57,7 +57,7 @@ import 'swiper/css/pagination';
                             />
                             <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full text-neutral-800">
                             <div className="p-5 w-[397px] h-[487px] flex flex-col justify-between">
-                                <div className='text-center pl-8  my-32 h-[150px] flex items-center justify-center'>
+                                <div className='text-center pl-2 pr-10  my-32 h-[150px] flex items-center justify-center'>
                                 <h1>{item.message}</h1>
                                 </div>
                                 <div className='text-center'>

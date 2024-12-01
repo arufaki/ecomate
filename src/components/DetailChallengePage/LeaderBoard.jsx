@@ -76,15 +76,15 @@ const Leaderboard = () => {
     return (
         <div>
             <h1 className="text-5xl font-bold w-full max-w-[1328px] text-center mx-auto text-neutral-800 py-10">Leaderboard</h1>
-            <div className="bg-primary text-white max-w-[1328px] mx-auto rounded-[50px] my-20 p-20">
+            <div className="bg-primary text-white md:max-w-[1328px] mx-auto rounded-[50px] my-20 p-5 md:p-20">
             <table className=" divide-y divide-gray-200 mx-auto w-full">
                 <thead >
                     <tr className=""> 
-                        <th className="pt-10 text-center text-2xl font-bold text-white uppercase tracking-wider ">Rank</th>
-                        <th className="pt-10 text-center text-2xl font-bold text-white uppercase tracking-wider">Participants</th>
-                        <th className="pr-52 pt-10 text-center text-2xl font-bold text-white uppercase tracking-wider">State</th>
-                        <th className="px-6 pt-10 text-center text-2xl font-bold text-white uppercase tracking-wider">Total Point</th>
-                        <th className="px-6 pt-10 text-center text-2xl font-bold text-white uppercase tracking-wider">Status</th>
+                        <th className="md:pt-10 text-center text-base md:text-2xl font-bold text-white uppercase tracking-wider ">Rank</th>
+                        <th className="md:pt-10 text-center text-base md:text-2xl font-bold text-white uppercase tracking-wider">Participants</th>
+                        <th className="pr-52 md:pt-10 hidden md:flex text-center text-base md:text-2xl font-bold text-white uppercase tracking-wider">State</th>
+                        <th className="px-6 md:pt-10 text-center text-base md:text-2xl font-bold text-white uppercase tracking-wider">Total Point</th>
+                        <th className="px-6 md:pt-10 text-center hidden md:flex text-base md:text-2xl font-bold text-white uppercase tracking-wider">Status</th>
                     </tr>
                     
                 </thead>
@@ -93,9 +93,9 @@ const Leaderboard = () => {
                         <tr key={index}>
                             <td className="px-6 py-4 whitespace-nowrap text-white text-lg text-center">{participant.rank}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-white text-lg text-center">{participant.participants}</td>
-                            <td className="pr-56 px-6 py-4 whitespace-nowrap text-white text-lg text-center">{participant.state}</td>
+                            <td className="pr-56 px-6 py-4 hidden md:flex whitespace-nowrap text-white text-lg text-center">{participant.state}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-white text-lg text-center">{participant.totalPoint}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-white text-lg text-center">{participant.status}</td>
+                            <td className="px-6 py-4 whitespace-nowrap hidden md:flex text-white text-lg text-center">{participant.status}</td>
                         </tr>
                     ))}
                 </tbody>
