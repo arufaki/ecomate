@@ -33,4 +33,7 @@ export default {
         require("preline/plugin"),
         require("daisyui"),
     ],
+    daisyui: {
+        themes: ["light"], // Ubah menjadi 'light'
+    },
 };
