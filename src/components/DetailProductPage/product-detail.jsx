@@ -1,5 +1,11 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {  Mousewheel } from 'swiper/modules';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 const ProductDetail = () => {
 
     const products = 
@@ -18,14 +24,55 @@ const ProductDetail = () => {
                 ,
             reviews:
                 [
-                    {
+                    {   
+                        name: "Jamal",
                         rating: 4,
-                        review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari."
+                        review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
+                        date: "06 September 2024"
                     },
                     {
+                        name: "Budi",   
                         rating: 5,
-                        review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat"
-                    }
+                        review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
+                        date: "06 September 2024"
+                    },
+                    {   
+                        name: "Jamal",
+                        rating: 4,
+                        review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
+                        date: "06 September 2024"
+                    },
+                    {
+                        name: "Budi",   
+                        rating: 5,
+                        review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
+                        date: "06 September 2024"
+                    },
+                    {   
+                        name: "Jamal",
+                        rating: 4,
+                        review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
+                        date: "06 September 2024"
+                    },
+                    {
+                        name: "Budi",   
+                        rating: 5,
+                        review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
+                        date: "06 September 2024"
+                    },
+                    {   
+                        name: "Jamal",
+                        rating: 4,
+                        review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
+                        date: "06 September 2024"
+                    },
+                    {
+                        name: "Budi",   
+                        rating: 5,
+                        review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
+                        date: "06 September 2024"
+                    },
+
                 ]
         }
         
@@ -83,7 +130,7 @@ const ProductDetail = () => {
             </div>
             <div className="flex flex-row mx-auto w-full justify-center items-center gap-2">
                 <div>
-                    <h1 className="text-3xl font-bold mt-8 ">Dampak yang diberikan</h1>
+                    <h1 className="text-3xl font-bold  py-10">Dampak yang diberikan</h1>
                     <div className="w-[726px] h-[322px] bg-white rounded-lg border border-gray-200">
                         <div className="flex flex-row bg-green-50 w-[662px] h-[105px] rounded-lg  mt-8 ml-8 p-3 border border-[#99F6E4]">
                             <img src="assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
@@ -102,7 +149,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-3xl font-bold mt-8 ">Deskripsi </h1>
+                    <h1 className="text-3xl font-bold  py-10">Deskripsi </h1>
                     <div className="w-[520px] h-[322px] bg-white rounded-lg border border-gray-200 p-10 ">
                         <div className="bg-green-50 w-[437px] h-[242px] rounded-lg border border-[#99F6E4]">
                             <p className="text-base font-normal  text-justify p-10">{products.description}</p>
@@ -110,6 +157,48 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </div>
+            <div className="flex flex-col w-full mx-auto gap-6">
+                <h1 className="text-3xl font-bold text-center py-6">Review</h1>
+                <div className="relative w-[70%] mx-auto">
+                    <Swiper
+                    modules={[Mousewheel]}
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    mousewheel
+                    breakpoints={{
+                        640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                        },
+                        1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                        },
+                    }}
+                    grabCursor
+                    className="pb-12 md:h-[300px] h-[350px]"
+                    >
+                    {products.reviews.map((review, index) => (
+                        <SwiperSlide key={index} className="px-4">
+                        <div className="flex flex-col  w-[371px] h-[225px] bg-white shadow-md rounded-lg p-4 border border-[#99F6E4]">
+                            <div>
+                            {/* Render stars using a loop or array creation */}
+                            {Array.from({ length: Math.floor(review.rating) }, () => (
+                            <span key={Math.random()} className="text-yellow-500">★</span>
+                            ))}
+                            {review.rating % 1 === 0.5 && (
+                            <span key={Math.random()} className="text-yellow-500">☆</span>
+                            )}
+                            </div>
+                            <h2 className="text-lg font-bold py-2">{review.name}</h2>
+                            <p className="text-base font-medium h-44">"{review.review}"</p>
+                            <p className="text-sm font-semibold ">{review.date}</p>
+                        </div>
+                        </SwiperSlide>
+                    ))}
+                    </Swiper>
+                </div>
+                </div>
         </div>
     );
 };
