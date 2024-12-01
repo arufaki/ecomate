@@ -119,7 +119,7 @@ const ListChallenge = () => {
                   </svg>
                 </div>
                 <input
-                  className="py-3 ps-10 pe-4 block w-[1158px] h-[52px] border border-[#E5E7EB] rounded-[8px] text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                  className="py-3 ps-10 pe-4 block w-[1158px] h-[52px] border border-[#E5E7EB] bg-white rounded-[8px] text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   type="text"
                   role="combobox"
                   aria-expanded="false"
@@ -161,9 +161,9 @@ const ListChallenge = () => {
                 </div>
               </div>
 
-              <button className="w-[544px] h-[48px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#1B4B1E] focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+              <a href="/detail-tantangan" className="w-[544px] h-[48px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#1B4B1E] focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                 {challenge.buttonText}
-              </button>
+              </a>
             </div>
           ))}
         </div>

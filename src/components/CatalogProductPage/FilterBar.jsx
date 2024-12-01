@@ -26,7 +26,7 @@ const FilterBar = () => {
                 </label>
                 <select
                     id="hs-select-label"
-                    className="py-3 px-4 pe-1 block w-full rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm border-gray-200  focus:border-blue-500 focus:ring-blue-500 focus:outline-blue-500"
+                    className="py-3 px-4 pe-1 block w-full rounded-lg text-sm border outline-none bg-[#FAFAFA] placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm border-gray-200  focus:border-blue-500 focus:ring-blue-500 focus:outline-blue-500"
                 >
                     <option >Pilih Kategori</option>
                     <option>1</option>
@@ -43,7 +43,7 @@ const FilterBar = () => {
                 </label>
                 <select
                     id="hs-select-label"
-                    className="py-3 px-4 pe-1 block w-full rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm border-gray-200  focus:border-blue-500 focus:ring-blue-500 focus:outline-blue-500"
+                    className="py-3 px-4 pe-1 block w-full rounded-lg text-sm border outline-none bg-[#FAFAFA] placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm border-gray-200  focus:border-blue-500 focus:ring-blue-500 focus:outline-blue-500"
                 >
                     <option >Urutkan Berdasarkan</option>
                     <option>1</option>

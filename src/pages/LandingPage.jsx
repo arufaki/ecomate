@@ -9,7 +9,7 @@ import ContactUs from "../components/LandingPage/ContactUs";
 import Footer from "../components/Footer";
 const LandingPage = () => {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen w-full bg-secondary">
             <Navbar active="home" />
             <Hero   text="Jadilah Bagian dari Perubahan, Mulai Gaya Hidup Ramah Lingkungan Bersama Ecomate!" 
                     button="Yuk Bantu Selamatkan Bumi !"
