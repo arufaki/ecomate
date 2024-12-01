@@ -9,7 +9,6 @@ import LoginPage from "./pages/LoginPage";
 import DetailProductPage from "./pages/DetailProductPage";
 import CartPage from "./pages/CartPage";
 import DetailChallengePage from "./pages/DetailChallengePage";
-import ChatbotPage from "./pages/ChatbotPage";
 
 const App = () => {
     return (
@@ -38,7 +37,6 @@ const App = () => {
                 />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                 <Route path="/cart" element={<CartPage />} />
-                <Route path="/chat" element={<ChatbotPage />} />
             </Routes>
         </Router>
     );
