@@ -160,7 +160,7 @@ const ProductDetail = () => {
                 </div>
             </div>
             <div className="flex flex-col w-full mx-auto gap-6">
-                <h1 className="text-3xl font-bold text-center py-6">Review</h1>
+                <h1 className="text-3xl font-bold md:w-[68%] w-full ml-4 md:mx-auto py-6">Review</h1>
                 <div className="relative md:w-[70%] w-full mx-auto">
                     <Swiper
                     modules={[Mousewheel]}
@@ -173,7 +173,7 @@ const ProductDetail = () => {
                         spaceBetween: 20,
                         },
                         1024: {
-                        slidesPerView: 3,
+                        slidesPerView: 3.5,
                         spaceBetween: 30,
                         },
                     }}
