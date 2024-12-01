@@ -28,6 +28,9 @@ export default {
             },
         },
     },
+    daisyui: {
+        themes: ["light"],
+    },
     plugins: [
         // require('@tailwindcss/forms'),
         require("preline/plugin"),
