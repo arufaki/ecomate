@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* import preline */
 
-/* @import 'preline'; */
+@import 'preline';
 
 html {
     @apply font-nunito;
