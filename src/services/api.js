@@ -2,7 +2,7 @@ import axios from "axios";
 import useAuthStore from "../stores/useAuthStore";
 
 const api = axios.create({
-    baseURL: "https://greenenvironment.my.id/api/v1",
+    baseURL: import.meta.env.VITE_API_URL,
     headers: { "Content-Type": "application/json" },
 });
 
