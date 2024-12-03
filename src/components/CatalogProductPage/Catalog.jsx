@@ -137,7 +137,7 @@ const Catalog = () => {
                     className="md:w-[45px] md:h-[45px] w-[330px] h-[52px] bg-primary rounded-lg flex items-center justify-center mt-8 mx-0 md:mx-5"
                     onClick={handleCategorySubmit}
                 >
-                    <img src="/assets/svg/search-button.svg" alt="filter"  />
+                    <img src="../src/assets/svg/search-button.svg" alt="filter"  />
                 </button>
                 </form>
             </div>
@@ -153,7 +153,7 @@ const Catalog = () => {
                 className="w-1/2 sm:w-1/3 px-2 sm:px-5 mb-5"
             >
                 <Card
-                    image={product.image}
+                    image={product.images[0]?.image_url}
                     name={product.name}
                     description={truncateContent(product.description, 100)}
                     price={(product.price).toLocaleString("id-ID")}

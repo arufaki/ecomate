@@ -115,7 +115,7 @@ const RegisterPage = () => {
                             })}
                             error={errors.email?.message}
                             placeholder="contoh@email.com"
-                            iconStart="/assets/svg/email.svg"
+                            iconStart="../src/assets/svg/email.svg"
                         />
                         <InputForm
                             id="password-label"

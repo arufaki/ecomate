@@ -7,7 +7,7 @@ const OtpInput = ({ onNext }) => {
         <>
             <div className="text-center mb-6 mx-auto max-w-[280px]">
                 <div className="w-full mb-6">
-                    <img src="/assets/svg/mail.svg" className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
+                    <img src="../src/assets/svg/mail.svg" className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
                 </div>
                 <h1 className="font-bold text-[24px] mb-6">Masukan Kode Verifikasi</h1>
                 <p className="text-[#737373] text-base">{`Kode verifikasi telah dikirim melalui email ke resiana123@gmail.com`}</p>

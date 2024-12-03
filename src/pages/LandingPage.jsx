@@ -13,7 +13,7 @@ const LandingPage = () => {
             <Navbar active="home" />
             <Hero   text="Jadilah Bagian dari Perubahan, Mulai Gaya Hidup Ramah Lingkungan Bersama Ecomate!" 
                     button="Yuk Bantu Selamatkan Bumi !"
-                    image="assets/jpg/bg-hero.jpg"/>
+                    image="../src/assets/jpg/bg-hero.jpg"/>
             <Carousel />
             <AboutUsLanding />
             <ChallangeLanding />

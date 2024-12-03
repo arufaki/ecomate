@@ -8,70 +8,70 @@ const ListChallenge = () => {
   const sampleChallenges = [
     {
       id: 1,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Hemat Energi",
       description: "Matikan lampu dan perangkat elektronik saat tidak digunakan.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 2,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Daur Ulang",
       description: "Pisahkan sampah organik dan non-organik untuk didaur ulang.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 3,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Kurangi Plastik",
       description: "Gunakan tas kain saat berbelanja untuk mengurangi penggunaan plastik.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 4,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Tanam Pohon",
       description: "Tanam setidaknya satu pohon untuk membantu penghijauan.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 5,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Hemat Air",
       description: "Kurangi konsumsi air dengan menutup keran saat menyikat gigi.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 6,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Kurangi Emisi",
       description: "Gunakan transportasi umum atau sepeda untuk mengurangi emisi karbon.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 7,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Kompos",
       description: "Ubah sampah organik menjadi kompos untuk pemupukan alami.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 8,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Bersih Lingkungan",
       description: "Lakukan kegiatan bersih-bersih di lingkungan sekitar setiap minggu.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 9,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Hemat Kertas",
       description: "Kurangi penggunaan kertas dengan beralih ke dokumen digital.",
       buttonText: "Ikuti Challenge",
     },
     {
       id: 10,
-      image: "assets/png/Totebag.png",
+      image: "../src/assets/png/Totebag.png",
       title: "Challenge Makan Lokal",
       description: "Beli produk lokal untuk mendukung ekonomi lokal dan mengurangi jejak karbon.",
       buttonText: "Ikuti Challenge",
@@ -132,7 +132,7 @@ const ListChallenge = () => {
           </div>
         </div>
         <button className="bg-[#2E7D32] hover:bg-[#1B4B1E] h-[52px] w-[52px] rounded-[8px] flex items-center justify-center">
-          <img src="assets/png/search.png" alt="search" className="h-[20px] w-[20px]" />
+          <img src="../src/assets/png/search.png" alt="search" className="h-[20px] w-[20px]" />
         </button>
       </div>
 

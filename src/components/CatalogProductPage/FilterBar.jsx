@@ -13,7 +13,7 @@ const FilterBar = () => {
                     ps="ps-11"
                     type="text"
                     placeholder="Cari Produk"
-                    iconStart="/assets/svg/search.svg"
+                    iconStart="../src/assets/svg/search.svg"
                 />
                 
             </div>
@@ -52,7 +52,7 @@ const FilterBar = () => {
                 </select>                                                                                       
             </div>
             <button className="md:w-[45px] md:h-[45px] w-[353px] h-[52px] bg-[#2E7D32] rounded-lg flex items-center justify-center mt-8 mx-0 md:mx-5">
-                <img src="/assets/svg/search-button.svg" alt="filter"  />
+                <img src="../src/assets/svg/search-button.svg" alt="filter"  />
             </button>
             </form>
         </div>

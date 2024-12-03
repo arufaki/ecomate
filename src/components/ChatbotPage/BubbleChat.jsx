@@ -4,13 +4,13 @@ const BubbleChat = () => {
             <div className="chat chat-end pb-8">
                 <div className="chat-image avatar">
                     <div className="w-10 rounded-full">
-                        <img alt="Tailwind CSS chat bubble component" src="assets/svg/avatar.svg" />
+                        <img alt="Tailwind CSS chat bubble component" src="../src/assets/svg/avatar.svg" />
                     </div>
                 </div>
                 <div className="chat-bubble bg-[#2E7D32] text-white font-bold text-base font-nunito">Berikan rekomendasi produk ramah lingkungan!</div>
                 <div className="chat-footer pt-3 flex flex-row w-full justify-end items-center gap-1">
                     <div>
-                        <img src="assets/svg/checklist.svg" alt="checklist" />
+                        <img src="../src/assets/svg/checklist.svg" alt="checklist" />
                     </div>
                     <p>Sent</p>
                 </div>
@@ -18,7 +18,7 @@ const BubbleChat = () => {
             <div className="chat chat-start">
                 <div className="chat-image avatar">
                     <div className="w-10 rounded-full">
-                        <img alt="Tailwind CSS chat bubble component" src="assets/svg/eco-avatar.svg" />
+                        <img alt="Tailwind CSS chat bubble component" src="../src/assets/svg/eco-avatar.svg" />
                     </div>
                 </div>
                 <div className="chat-bubble bg-white text-[#1F2937] max-w-[462px]">
@@ -32,7 +32,7 @@ const BubbleChat = () => {
                 </div>
                 <div className="chat-footer pt-3 flex flex-row w-full items-center gap-1">
                     <div>
-                        <img src="assets/svg/checklist.svg" alt="checklist" />
+                        <img src="../src/assets/svg/checklist.svg" alt="checklist" />
                     </div>
                     <p>Sent</p>
                 </div>

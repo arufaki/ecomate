@@ -31,7 +31,7 @@ const Card = ({image, name, description, price, rating, link}) => {
                                 <p className="mt-3.5 ml-4">Beli Sekarang</p>
                                 </a>
                                 <Link to="/" className="text-primary text-sm md:text-[15px] mt-5 w-[110px] md:w-[131px] h-[46px] rounded-xl font-bold flex items-center justify-center hover:text-[#1B4B1E]">
-                                <img src='assets/svg/shopping-cart.svg' alt='beli' className="text-primary mr-2 hover:text-[#1B4B1E]" />
+                                <img src='../src/assets/svg/shopping-cart.svg' alt='beli' className="text-primary mr-2 hover:text-[#1B4B1E]" />
                                 <p className="hidden md:flex">Keranjang</p>
                                 </Link>
                                 </div>

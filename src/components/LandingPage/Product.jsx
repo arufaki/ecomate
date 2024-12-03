@@ -14,7 +14,7 @@ const products = [
         name: "Sepatu Pria",
         description: "Terbuat dari limbah bulu ayam, Dirancang dengan teknologi modern, dan memiliki sifat antibakteri alam",
         price: "110.000",
-        image: "assets/png/Sepatu.png",
+        image: "../src/assets/png/Sepatu.png",
         rating: 4
     },
     {
@@ -22,7 +22,7 @@ const products = [
         name: "Baju Ramah Lingkungang",
         description: "Baju stylish berbahan dasar limbah tekstil daur ulang, mengedepankan keberlanjutan tanpa mengorbankan kualitas.",
         price: "49.999",
-        image: "assets/png/Baju.png",
+        image: "../src/assets/png/Baju.png",
         rating: 4
     },
     {
@@ -30,7 +30,7 @@ const products = [
         name: "Sandal",
         description: "Sandal stylish dari limbah plastik daur ulang, ringan, tahan lama, dan nyaman, Pilihan tepat untuk langkah berkelanjutan.",
         price: "10.000",
-        image: "assets/png/Sendal.png",
+        image: "../src/assets/png/Sendal.png",
         rating: 4.5
     },
     {
@@ -38,7 +38,7 @@ const products = [
         name: "Tote bag",
         description: "Totebag unik berbahan limbah tekstil daur ulang, kuat, stylish, dan ramah lingkungan. Pilihan sempurna untuk gaya sehari-hari",
         price: "19.900",
-        image: "assets/png/Totebag.png",
+        image: "../src/assets/png/Totebag.png",
         rating: 4
     },
     {
@@ -92,7 +92,7 @@ const products = [
             </Swiper>
         
 
-    </div>
+            </div>
 
             {/* End Slider */}
             </div>

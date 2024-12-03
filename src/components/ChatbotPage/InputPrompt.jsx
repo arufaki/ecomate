@@ -9,11 +9,11 @@ const InputPrompt = ({ onSubmit, register }) => {
                     {...register("message")}
                 />
                 <div className="absolute inset-y-4 start-0 flex items-center ps-4 cursor-pointer">
-                    <img src="/assets/svg/link.svg" alt="icon-start" />
+                    <img src="../src/assets/svg/link.svg" alt="icon-start" />
                 </div>
                 <button>
                     <div className="absolute inset-y-6 right-3 transform -translate-y-1/2 flex items-center cursor-pointer">
-                        <img src="/assets/svg/send.svg" alt="icon-end" />
+                        <img src="../src/assets/svg/send.svg" alt="icon-end" />
                     </div>
                 </button>
             </form>
