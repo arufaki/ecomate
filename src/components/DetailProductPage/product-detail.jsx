@@ -92,11 +92,20 @@ const ProductDetail = () => {
                     <h1 className="md:text-3xl text-xl font-bold mt-8 ml-8">{products.name}</h1>
                     <h1 className="md:text-4xl text-xl font-bold mt-2 md:mt-8 ml-8">Rp. {products.price.toLocaleString("id-ID")}</h1>
                         <div className="flex flex-row py-5 ml-8 text-primary">
-                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1]">Terjual 16</p>
-                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1] mx-2">Rating {averageRating} ({products.reviews.length} Ulasan)</p>
-                            <p className="md:text-sm text-xs font-bold px-6 py-2 bg-[#CCFBF1]">Tas</p>
+                            <div className="px-6 py-2 bg-[#CCFBF1] flex rounded-lg">
+                                <img src="assets/svg/shopping-basket.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
+                                <p className="md:text-sm text-xs font-bold ">Terjual 16</p>
+                            </div>
+                            <div className="px-6 py-2 mx-2 bg-[#CCFBF1] flex rounded-lg">
+                                <img src="assets/svg/star.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
+                                <p className="md:text-sm text-xs font-bold">Rating {averageRating} ({products.reviews.length} Ulasan)</p>
+                            </div>
+                            <div className="px-6 py-2 mx-2 bg-[#CCFBF1] flex rounded-lg">
+                                <img src="assets/svg/squares.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
+                                <p className="md:text-sm text-xs font-bold">Tas</p>
+                            </div>
                         </div>
-                        <div className="flex flex-row ml-8">
+                        <div className="flex flex-row ml-8 mt-5">
                         <button
                             onClick={() => setAmount(amount - 1)}
                             disabled={amount <= 1}
@@ -114,6 +123,7 @@ const ProductDetail = () => {
                             type="number"
                             value={amount}
                             className="text-2xl text-center font-bold py-1 px-4 mx-2 border-none w-20  md:h-[60px] border-primary border rounded-lg bg-white"
+
                         />
                         <button
                             onClick={() => setAmount(Number(amount) + 1)} // Pastikan selalu berupa angka
@@ -121,16 +131,18 @@ const ProductDetail = () => {
                         >
                             +
                         </button>
-                        <h1 className="md:text-xl text-base font-semibold  px-1 ml-10">
-                            Subtotal<br /> Rp. {(products.price * amount).toLocaleString("id-ID")}
+                        <h1 className="md:text-xl text-base font-semibold ml-4 ">
+                            
+                            Subtotal Rp. {(products.price * amount).toLocaleString("id-ID")}
                         </h1>
                         </div>
                         <div className="flex flex-col w-full px-4 md:px-10">
-                            <button className="bg-primary text-white text-base font-bold py-2 text-center  mt-4 rounded-lg w-full border hover:border-primary hover:text-primary hover:bg-white transition-all duration-300">
+                            <button className="bg-primary text-white text-base font-bold py-2 text-center  mt-4 rounded-lg w-full border border-primary hover:text-primary hover:bg-white transition-all duration-300">
                                 Beli sekarang
                             </button>
-                            <button className="border-primary border text-primary text-base font-bold py-2 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300">   
-                                Tambah ke Keranjang
+                            <button className="border-primary border text-primary text-base font-bold py-2 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300 flex items-center justify-center">   
+                                <img src="assets/svg/shopping-cart.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>
+                                <p>Tambah ke Keranjang</p>
                             </button>
                         </div>
                 </div>
