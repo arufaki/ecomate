@@ -25,7 +25,7 @@ import 'swiper/css/pagination';
             </div>
             {/* Slider */}
             <div className="relative h-fit bg-primary w-full">
-                <div className="md:w-[75%] w-full mx-auto bg-primary rounded-xl">
+                <div className="md:w-[60%] w-full mx-auto bg-primary rounded-xl">
                     <Swiper
                         modules={[Autoplay]}
                         spaceBetween={30}
@@ -55,9 +55,9 @@ import 'swiper/css/pagination';
                             className='w-[100px] h-[100px] mx-auto mb-4 rounded-full object-cover object-top relative top-14' 
                             alt={item.name} 
                             />
-                            <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full">
-                            <div className="p-5 w-[397px] h-[487px] flex flex-col justify-between">
-                                <div className='text-center md:pl-10 pr-10 my-32 h-[150px] flex md:items-center justify-center'>
+                            <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl  w-[397px] h-[487px]">
+                            <div className="p-5  flex flex-col justify-between">
+                                <div className='text-center   my-32 h-[150px] flex md:items-center justify-center'>
                                 <h1>{item.message}</h1>
                                 </div>
                                 <div className='text-center'>

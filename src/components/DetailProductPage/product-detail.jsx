@@ -188,8 +188,8 @@ const ProductDetail = () => {
                 </div>
             </div>
             <div className="flex flex-col w-full mx-auto gap-6 text-neutral-800">
-                <h1 className="text-3xl font-bold md:w-[68%] w-full ml-4 md:mx-auto py-6">Review</h1>
-                <div className="relative md:w-[70%] w-full mx-auto">
+                <h1 className="text-3xl font-bold md:w-[53%] w-full ml-4 md:mx-auto py-6 ">Review</h1>
+                <div className="relative md:w-[60%] w-full mx-auto ">
                     <Swiper
                     modules={[Mousewheel, Autoplay]}
                     spaceBetween={20}
@@ -207,6 +207,7 @@ const ProductDetail = () => {
                         },
                     }}
                     grabCursor
+                    loop={true}
                     className="pb-12 md:h-[300px] h-[350px]"
                     >
                     {products.reviews.map((review, index) => (
