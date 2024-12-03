@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {  Mousewheel, Autoplay } from 'swiper/modules';
 // Import Swiper styles
@@ -75,7 +76,17 @@ const ProductDetail = () => {
 
                 ]
         }
-    
+    const handleAddToCart = () => {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            toast: true,
+            title: `${products.name} berhasil ditambahkan ke keranjang`,
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+          });
+    }
     const averageRating =  Math.round(
         (products.reviews.reduce((total, review) => total + review.rating, 0) / 
          products.reviews.length) * 10
@@ -140,7 +151,7 @@ const ProductDetail = () => {
                             <button className="bg-primary text-white text-base font-bold py-2 text-center  mt-4 rounded-lg w-full border border-primary hover:text-primary hover:bg-white transition-all duration-300">
                                 Beli sekarang
                             </button>
-                            <button className="border-primary border text-primary text-base font-bold py-2 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300 flex items-center justify-center">   
+                            <button onClick={() => handleAddToCart()} className="border-primary border text-primary text-base font-bold py-2 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300 flex items-center justify-center">   
                                 <img src="assets/svg/shopping-cart.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>
                                 <p>Tambah ke Keranjang</p>
                             </button>
