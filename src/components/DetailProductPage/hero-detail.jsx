@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
     return (
-        <div className="flex items-center justify-center gap-2 mx-auto pt-40 pb-20">
+        <div className="flex items-center justify-center gap-2 mx-auto pt-40 pb-20 text-neutral-800">
                 <a href="/">Beranda</a> 
                 <svg
                 className="w-4 h-4 mx-4"

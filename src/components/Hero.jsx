@@ -3,7 +3,7 @@ import React from "react";
 
 const Hero = ({ text, button, image }) => {
     return (
-        <div className="bg-secondary pt-24 md:pt-40">
+        <div className="bg-secondary pt-24 md:pt-40 ">
             <div className="relative group overflow-hidden rounded-lg max-w-full px-4 md:px-0">
                 {/* Background Image */}
                 <div className="relative w-full max-w-[1328px] mx-auto">

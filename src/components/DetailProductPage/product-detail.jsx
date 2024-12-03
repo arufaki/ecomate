@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {  Mousewheel } from 'swiper/modules';
+import {  Mousewheel, Autoplay } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -95,7 +95,7 @@ const ProductDetail = () => {
     const [amount, setAmount] = React.useState(1);
     return (
         <div>
-            <div className="flex md:flex-row flex-col  mx-auto w-full justify-center items-center gap-2">
+            <div className="flex md:flex-row flex-col  mx-auto w-full justify-center items-center gap-2 text-neutral-800">
                 <div className="md:w-[726px] md:h-[470px] w-[382px] h-[296px] bg-white rounded-lg border border-gray-200">
                     <img src={products.image} alt={products.name} className="md:w-[662px] md:h-[406px] w-[318px] h-[232px] mt-8 object-cover rounded-lg mx-auto" />
                 </div>
@@ -121,7 +121,7 @@ const ProductDetail = () => {
                             onClick={() => setAmount(amount - 1)}
                             disabled={amount <= 1}
                             className={`text-2xl font-bold py-1 px-4  border rounded-lg transition-all duration-300 ${
-                            amount <= 1 ? "bg-gray-300  text-white cursor-not-allowed" : "border-primary hover:bg-primary hover:text-white"
+                            amount <= 1 ? "bg-gray-300  text-white cursor-not-allowed" : "border-primary hover:bg-primary hover:text-white transition-all"
                             }`}
                         >
                             -
@@ -133,7 +133,8 @@ const ProductDetail = () => {
                             }}
                             type="number"
                             value={amount}
-                            className="text-2xl text-center font-bold py-1 px-4 mx-2 border-none w-20  md:h-[50px] border-primary border rounded-lg"
+                            className="text-2xl text-center font-bold py-1 px-4 mx-2 border-none w-20  md:h-[60px] border-primary border rounded-lg bg-white"
+
                         />
                         <button
                             onClick={() => setAmount(Number(amount) + 1)} // Pastikan selalu berupa angka
@@ -157,7 +158,7 @@ const ProductDetail = () => {
                         </div>
                 </div>
             </div>
-            <div className="flex md:flex-row flex-col mx-auto w-full justify-center items-center gap-2">
+            <div className="flex md:flex-row flex-col mx-auto w-full justify-center items-center gap-2 text-neutral-800">
                 <div>
                     <h1 className="text-3xl font-bold  py-10">Dampak yang diberikan</h1>
                     <div className="md:w-[726px] md:h-[322px] w-[382px] bg-white rounded-lg border border-gray-200 p-8" >
@@ -186,12 +187,13 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col w-full mx-auto gap-6">
+            <div className="flex flex-col w-full mx-auto gap-6 text-neutral-800">
                 <h1 className="text-3xl font-bold md:w-[68%] w-full ml-4 md:mx-auto py-6">Review</h1>
                 <div className="relative md:w-[70%] w-full mx-auto">
                     <Swiper
-                    modules={[Mousewheel]}
+                    modules={[Mousewheel, Autoplay]}
                     spaceBetween={20}
+                    autoplay={{ delay: 3000 }}
                     slidesPerView={1}
                     mousewheel
                     breakpoints={{

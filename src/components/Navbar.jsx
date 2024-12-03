@@ -59,7 +59,7 @@ const Navbar = ({ active }) => {
                 </button>
 
                 {/* Desktop Navigation Links */}
-                <div className="hidden sm:flex items-center gap-8 text-xl">
+                <div className="hidden sm:flex items-center gap-8 text-base">
                     <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">
                         Beranda
                     </a>
@@ -71,6 +71,9 @@ const Navbar = ({ active }) => {
                     </a>
                     <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">
                         Tantangan
+                    </a>
+                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "forum" ? "font-bold" : "font-normal"}`} href="/forum">
+                        Forum
                     </a>
                 </div>
 
@@ -122,7 +125,9 @@ const Navbar = ({ active }) => {
                             <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">
                                 Tantangan
                             </a>
-
+                            <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "forum" ? "font-bold" : "font-normal"}`} href="/forum">
+                                Forum
+                            </a>
                             <div className="border-t pt-4 flex flex-col space-y-4">
                                 <Link
                                     to="/login"
