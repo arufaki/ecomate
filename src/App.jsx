@@ -10,7 +10,7 @@ import DetailProductPage from "./pages/DetailProductPage";
 import CartPage from "./pages/CartPage";
 import DetailChallengePage from "./pages/DetailChallengePage";
 import Chatbot from "./pages/Chatbot";
-import GoogleCallback from "./components/Login/GoogleCallback";
+// import GoogleCallback from "./components/Login/GoogleCallback";
 import AddProductAdmin from "./components/Admin/AddImpact";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
@@ -43,7 +43,7 @@ const App = () => {
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/chat" element={<Chatbot />} />
-                <Route path="/google-callback" element={<GoogleCallback />} />
+                {/* <Route path="/google-callback" element={<GoogleCallback />} /> */}
 
                 {/* Admin Route */}
                 {/* email admin: admin2@ecomate.store pass : admin2 */}
