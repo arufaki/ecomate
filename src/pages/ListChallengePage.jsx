@@ -1,16 +1,17 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Hero from "../components/ListChallengePage/hero"
+import HeroChallenge from "../components/ListChallengePage/HeroChallenge";
 import ListChallenge from "../components/ListChallengePage/ListChallenge";
+import MyChallenge from "../components/ListChallengePage/MyChallenge";
 const ListChallengePage = () => {
     return <div className="bg-[#F9F9EB] ">
-        <div> 
+        <div > 
         <Navbar active="challenge"/>
-        <div className="min-h-screen"> 
-          <Hero />
-          <ListChallenge/>
         </div>
+        <HeroChallenge />
+        <MyChallenge/>
+        <ListChallenge/>
         <Footer />
         </div>;
         
