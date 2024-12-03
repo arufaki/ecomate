@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FIlterBar from "../components/CatalogProductPage/FilterBar";
-import Catalog from "../components/CatalogProductPage/catalog";
+import Catalog from "../components/CatalogProductPage/Catalog";
 import Hero from "../components/CatalogProductPage/Hero-catalog";
 const CatalogProductPage = () => {
     

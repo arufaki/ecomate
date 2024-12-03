@@ -75,7 +75,7 @@ const LoginPage = () => {
                 {/* Form Login */}
                 <div className="flex-[1_50%] w-full flex flex-col items-center justify-center bg-white mobile:rounded-t-[60px] tablet:rounded-t-none mobile:pt-[28px] tablet:pt-0">
                     <div className="text-center mb-6">
-                        <h1 className="font-bold text-[24px] mb-4">Masuk</h1>
+                        <h1 className="font-bold text-[24px] mb-4 text-[#262626]">Masuk</h1>
                         <p className="text-[#737373] text-base">Silahkan masuk ke akun anda</p>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="tablet:w-[416px] tablet:px-0 mobile:max-w-[450px] mobile:w-[100%] mobile:px-[17px]">
@@ -112,7 +112,7 @@ const LoginPage = () => {
                                 showPassword={showPassword}
                                 togglePassword={togglePassword}
                             />
-                            <p className="font-medium text-base text-center cursor-pointer mb-6">
+                            <p className="font-medium text-base text-center cursor-pointer text-[#262626] mb-6">
                                 <Link to={"/forgot-password"}>Lupa Password?</Link>
                             </p>
                             <button
@@ -131,7 +131,7 @@ const LoginPage = () => {
                         </div>
                     </form>
                     <GoogleLogin />
-                    <p className="text-base text-[#A1A1AA] my-[64px]">
+                    <p className="text-base text-[#737373] my-[64px]">
                         Belum punya akun?{" "}
                         <Link to={"/register"} className="font-bold text-[#262626] cursor-pointer">
                             Daftar Akun

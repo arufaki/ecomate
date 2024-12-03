@@ -3,7 +3,7 @@ import React from "react";
 
 const ContactUs = () => {
     return (
-        <div className="flex flex-col justify-center items-center bg-secondary">
+        <div className="flex flex-col justify-center items-center bg-secondary text-neutral-800">
             <div>
                 <h1 className="font-bold sm:text-[48px] text-[20px] text-center pt-[24px] sm:pt-[80px] ">Hubungi Kami</h1>
                 <div className="flex flex-col bg-red sm:flex-row items-center justify:center sm:justify-space-between px-[24px] sm:px-[80px] pt-[24px] sm:pt-[72px] sm:gap-[121px] gap-[40px] ">
