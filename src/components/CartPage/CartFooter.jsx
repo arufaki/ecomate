@@ -1,3 +1,4 @@
+import api from "../../services/api";
 import { formatToIDR } from "../../utils/function/formatToIdr";
 
 const CartFooter = ({ products, totalPrice, selectAll, checkedProducts, handleSelectAll }) => {
@@ -11,10 +12,10 @@ const CartFooter = ({ products, totalPrice, selectAll, checkedProducts, handleSe
                         className="checkbox w-[16px] h-[16px] min-[1024px]:w-[24px] min-[1024px]:h-[24px] rounded-[3px] border-2 border-[#2E7D32] [--chkbg:#2E7D32] [--chkfg:white] checked:border-[#2E7D32]"
                         onChange={(e) => handleSelectAll(e.target.checked)}
                     />
-                    <p className="text-sm font-semibold text-[#262626] sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px]">Plih semua ({products.length})</p>
+                    <p className="text-sm font-semibold text-[#262626] sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px]">Plih semua ({products?.length || 0})</p>
                 </div>
                 <div className="flex flex-row items-center gap-6 max-[570px]:w-full max-[570px]:justify-between">
-                    <p className="text-sm font-semibold text-[#262626] sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px]">Total ({checkedProducts.length} Produk) :</p>
+                    <p className="text-sm font-semibold text-[#262626] sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px]">Total ({checkedProducts?.length} Produk) :</p>
                     <div className="flex flex-row gap-6 items-center">
                         <p className="text-sm font-semibold text-[#262626] sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px] min-[1300px]:text-[30px]">{formatToIDR(totalPrice)}</p>
                         <button className="btn btn-success bg-[#3a7d2d] border-[#3a7d2d] !text-white max-[570px]:text-[12px] max-[570px]:p-[10px]">Checkout</button>

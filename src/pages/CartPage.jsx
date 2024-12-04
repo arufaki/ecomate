@@ -5,40 +5,25 @@ import CartHeader from "../components/CartPage/CartHeader";
 import CardProducts from "../components/CartPage/CardProducts";
 import CartFooter from "../components/CartPage/CartFooter";
 import useCart from "../hooks/useCart";
+import { useEffect, useState } from "react";
+import api from "../services/api";
+import useAuthStore from "../stores/useAuthStore";
 
 const CartPage = () => {
-    const initialProducts = [
-        {
-            id: 1,
-            name: "Sendok Kertas",
-            set: "Satu set",
-            price: "10000",
-        },
-        {
-            id: 2,
-            name: "Garpu Plastik",
-            set: "Satu set",
-            price: "8000",
-        },
-        {
-            id: 3,
-            name: "Piring Kertas",
-            set: "Satu set",
-            price: "15000",
-        },
-        {
-            id: 4,
-            name: "Gelas Kertas",
-            set: "Satu set",
-            price: "12000",
-        },
-        {
-            id: 5,
-            name: "Sedotan Bambu",
-            set: "Satu set",
-            price: "20000",
-        },
-    ];
+    const [initialProducts, setInitialProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchCart = async () => {
+            try {
+                const response = await api.get("/cart");
+                setInitialProducts(response.data.data.items);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchCart();
+    }, []);
 
     const cart = useCart(initialProducts);
 

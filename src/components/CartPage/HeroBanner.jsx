@@ -1,12 +1,15 @@
 import { Link } from "react-router";
 
+import catalogBg from "../../assets/jpg/bg-catalog.jpg";
+import arrow from "../../assets/svg/arrow-right.svg";
+
 const HeroBanner = () => {
     return (
         <div className="bg-secondary pt-24 md:pt-40">
             <div className="relative group overflow-hidden rounded-lg max-w-full px-4 min-[775px]:px-5 md:px-4 ">
                 {/* Background Image */}
                 <div className="relative w-full max-w-[1328px] mx-auto">
-                    <img src="/assets/jpg/bg-catalog.jpg" alt="bg-hero" className="w-full h-[179px] sm:h-[500px] md:h-[289px] rounded-[30px] md:rounded-[50px] object-cover object-center" />
+                    <img src={catalogBg} alt="bg-hero" className="w-full h-[179px] sm:h-[500px] md:h-[289px] rounded-[30px] md:rounded-[50px] object-cover object-center" />
 
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-[#1F5221B2] bg-opacity-70 rounded-[30px] md:rounded-[50px] flex flex-col items-center justify-center text-center px-4">
@@ -16,7 +19,7 @@ const HeroBanner = () => {
                                 <Link to="/" className="cursor-pointer">
                                     Beranda
                                 </Link>
-                                <img src="/assets/svg/arrow-right.svg" alt="Arrow Right" className="inline-block w-4 h-4 mx-2 " /> Keranjang
+                                <img src={arrow} alt="Arrow Right" className="inline-block w-4 h-4 mx-2 " /> Keranjang
                             </p>
                         </div>
                     </div>
