@@ -7,6 +7,7 @@ import GoogleLogin from "../components/Login/GoogleLogin";
 import { Toast } from "../utils/function/toast";
 import api from "../services/api";
 import useAuthStore from "../stores/useAuthStore";
+import email from "../assets/svg/email.svg"
 
 const LoginPage = () => {
     // State untuk show password login
@@ -94,7 +95,7 @@ const LoginPage = () => {
                                 })}
                                 error={errors.email?.message}
                                 placeholder="contoh@email.com"
-                                iconStart="../src/assets/svg/email.svg"
+                                iconStart={email}
                             />
                             <InputForm
                                 id="password-label"
