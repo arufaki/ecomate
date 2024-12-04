@@ -33,7 +33,7 @@ const ResetPassword = ({ onNext }) => {
         <>
             <div className="text-center mb-6 tablet:max-w-[350px] mobilelg:max-w-[350px] mobile:max-w-[310px] mx-auto">
                 <div className="w-full mb-6">
-                    <img src="/assets/svg/key.svg" className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
+                    <img src="../src/assets/svg/key.svg" className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
                 </div>
                 <h1 className="font-bold text-[24px]">Buat Password Baru</h1>
                 <p className="tablet:text-base mobile:text-sm mobilelg:text-base text-[#A1A1AA] mt-4 mb-6">Password baru anda harus berbeda dengan password yang digunakan sebelumnya</p>

@@ -6,19 +6,19 @@ const ChallengeLanding = () => {
         title: "Green Commute Challenge",
         description:
             "Tinggalkan kendaraan bermotor selama seminggu! Pilih berjalan kaki, bersepeda, atau naik transportasi umum untuk mengurangi jejak karbonmu.",
-        image: "assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
+        image: "../src/assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
         link: "#",
         },
         {
         title: "Energy Saver Challenge",
         description: "Hemat energi listrik selama seminggu!",
-        image: "assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
+        image: "../src/assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
         link: "#",
         },
         {
         title: "Plastic Free Week Challenge",
         description: "Kurangi penggunaan plastik selama seminggu!",
-        image: "assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
+        image: "../src/assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
         link: "#",
         },
         

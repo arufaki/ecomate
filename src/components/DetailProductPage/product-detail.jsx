@@ -65,6 +65,7 @@ const ProductDetail = () => {
     ]
     const [products, setProducts] = useState([]);
     const [impact, setImpact] = useState([]);
+    const [image, setImage] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
     useEffect(() => {
@@ -72,6 +73,7 @@ const ProductDetail = () => {
             setIsLoading(true);
             api.get(`/products/${id}`).then((res) => {
                 setProducts(res.data.data);
+                setImage(res.data.data.images[0]?.image_url);
                 setImpact(res.data.data.category_impact);
             });
             setIsLoading(false);
@@ -101,22 +103,22 @@ const ProductDetail = () => {
         <div>
             <div className="flex md:flex-row flex-col  mx-auto w-full justify-center items-center gap-2 text-neutral-800">
                 <div className="md:w-[726px] md:h-[470px] w-[382px] h-[296px] bg-white rounded-lg border border-gray-200">
-                    <img src={products.images} alt={products.name} className="md:w-[662px] md:h-[406px] w-[318px] h-[232px] mt-8 object-cover rounded-lg mx-auto" />
+                    <img src={image} alt={products.name} className="md:w-[662px] md:h-[406px] w-[318px] h-[232px] mt-8 object-cover rounded-lg mx-auto" />
                 </div>
                 <div className="md:w-[520px] md:h-[470px] w-[382px] h-[372px] bg-white rounded-lg border border-gray-200">
                     <h1 className="md:text-3xl text-xl font-bold mt-8 ml-8">{products.name}</h1>
                     <h1 className="md:text-4xl text-xl font-bold mt-2 md:mt-8 ml-8">Rp. {formatPrice.format(products.price)}</h1>
                         <div className="flex flex-row py-5 ml-8 text-primary">
                             <div className="px-6 py-2 bg-[#CCFBF1] flex rounded-lg">
-                                <img src="assets/svg/shopping-basket.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
+                                <img src="../src/assets/svg/shopping-basket.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
                                 <p className="md:text-sm text-xs font-bold ">Terjual 16</p>
                             </div>
                             <div className="px-6 py-2 mx-2 bg-[#CCFBF1] flex rounded-lg">
-                                <img src="assets/svg/star.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
+                                <img src="../src/assets/svg/star.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
                                 <p className="md:text-sm text-xs font-bold">Rating (4 Ulasan)</p>
                             </div>
                             <div className="px-6 py-2 mx-2 bg-[#CCFBF1] flex rounded-lg">
-                                <img src="assets/svg/squares.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
+                                <img src="../src/assets/svg/squares.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>  
                                 <p className="md:text-sm text-xs font-bold">Tas</p>
                             </div>
                         </div>
@@ -156,7 +158,7 @@ const ProductDetail = () => {
                                 Beli sekarang
                             </button>
                             <button onClick={() => handleAddToCart()} className="border-primary border text-primary text-base font-bold py-2 text-center mt-3 rounded-lg hover:border-white hover:text-white hover:bg-primary transition-all duration-300 flex items-center justify-center">   
-                                <img src="assets/svg/shopping-cart.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>
+                                <img src="../src/assets/svg/shopping-cart.svg" alt="shopping-bag" className="w-4 h-4 mr-2"/>
                                 <p>Tambah ke Keranjang</p>
                             </button>
                         </div>
@@ -168,7 +170,7 @@ const ProductDetail = () => {
                     <div className="md:w-[726px] md:h-[322px] w-[382px] bg-white rounded-lg border border-gray-200 p-8" >
                         {impact.map((impact, index) => (
                             <div key={index} className="flex md:flex-row flex-col bg-green-50 md:w-[662px] md:h-[105px] rounded-lg  p-3 border border-[#99F6E4]">
-                            <img src="assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
+                            <img src="../src/assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
                             <div className="w-full p-3">
                                 <h1 className="text-lg font-bold">{impact.impact_category.name}</h1>
                                 <p className="text-base font-semibold">{impact.impact_category.name}</p>
@@ -177,7 +179,7 @@ const ProductDetail = () => {
                         ))}
                         {impact.map((impact, index) => (
                             <div key={index} className="flex md:flex-row flex-col bg-green-50 md:w-[662px] md:h-[105px] rounded-lg mt-10 p-3 border border-[#99F6E4]">
-                            <img src="assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
+                            <img src="../src/assets/png/Earth.png" alt="impact" className="w-[76px] h-[76px] object-cover rounded-lg mx-auto ml-2" />
                             <div className="w-full p-3">
                                 <h1 className="text-lg font-bold">{impact.impact_category.name}</h1>
                                 <p className="text-base font-semibold">{impact.impact_category.name}</p>

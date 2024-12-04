@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
-import InputForm from "../components/Login/InputForm";
-import WelcomeSection from "../components/Login/WelcomeSection";
-import GoogleLogin from "../components/Login/GoogleLogin";
-import { Toast } from "../utils/function/toast";
-import api from "../services/api";
-import useAuthStore from "../stores/useAuthStore";
-import email from "../assets/svg/email.svg"
+import useAuthStore from "../../stores/useAuthStore";
+import { useForm } from "react-hook-form";
+import WelcomeSection from "../../components/Login/WelcomeSection";
+import InputForm from "../../components/Login/InputForm";
+import GoogleLogin from "../../components/Login/GoogleLogin";
+import { Toast } from "../../utils/function/toast";
+import api from "../../services/api";
 
-const LoginPage = () => {
+const AdminLoginPage = () => {
     // State untuk show password login
     const [showPassword, setShowPassword] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,7 +30,7 @@ const LoginPage = () => {
     const onSubmit = async (data) => {
         try {
             setLoading(true);
-            const response = await api.post("/users/login", data);
+            const response = await api.post("/admin/login", data);
             if (response.status == 200) {
                 const { token } = response.data.data;
                 setToken(token);
@@ -47,17 +46,17 @@ const LoginPage = () => {
                     title: "Login Gagal",
                 });
             }
-            navigate("/");
+            navigate("/add-product");
         } catch (error) {
             if (error.response) {
                 setError(error.response.data.message === "Incorrect password" ? "password" : "email", { type: "server", message: error.response.data.message });
             } else {
                 Toast.fire({
                     icon: "error",
-                    title: "Tidak dapat terhubung ke server. Periksa koneksi Anda.",
+                    title: { error },
                 });
             }
-            console.error(error.response.data.message);
+            console.error(error);
         } finally {
             setLoading(false);
         }
@@ -95,7 +94,7 @@ const LoginPage = () => {
                                 })}
                                 error={errors.email?.message}
                                 placeholder="contoh@email.com"
-                                iconStart={email}
+                                iconStart="/assets/svg/email.svg"
                             />
                             <InputForm
                                 id="password-label"
@@ -144,4 +143,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default AdminLoginPage;

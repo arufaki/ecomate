@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="flex flex-col items-start space-y-4">
           <div className="flex items-center space-x-3">
             <img 
-              src="assets/webp/Logo.webp" 
+              src="../src/assets/webp/Logo.webp" 
               alt="EcoMate Logo" 
               className="w-12 h-12" 
             />
@@ -32,7 +32,7 @@ const Footer = () => {
                 className="bg-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
               >
                 <img 
-                  src={`assets/png/${social}.png`} 
+                  src={`../src/assets/png/${social}.png`} 
                   alt={social} 
                   className="w-6 h-6" 
                 />

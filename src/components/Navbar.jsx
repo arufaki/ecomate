@@ -17,7 +17,7 @@ const Navbar = ({ active }) => {
                 {/* Logo */}
                 <a className="flex-none text-[26px] font-bold text-[#1B4B1E] focus:outline-none focus:opacity-80 mt-3" href="#">
                     <span className="inline-flex items-center gap-x-2 text-xl font-bold">
-                        <img src="assets/png/Logo.png" alt="logo" className="w-12 h-12" />
+                        <img src="../src/assets/png/Logo.png" alt="logo" className="w-12 h-12" />
                         EcoMate
                     </span>
                 </a>
@@ -83,11 +83,11 @@ const Navbar = ({ active }) => {
                     {token ? (
                         <div className="flex flex-row w-full ml-28">
                             <Link to="/cart" className="p-3">
-                                <img src="/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
+                                <img src="/../src/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
                             </Link>
                             <div className="w-[1px] h-11 bg-[#999999]"></div>
                             <Link to="/dashboard" className="p-3">
-                                <img src="/assets/svg/user.svg" alt="logo" className="w-6 h-6" />
+                                <img src="/../src/assets/svg/user.svg" alt="logo" className="w-6 h-6" />
                             </Link>
                         </div>
                     ) : (

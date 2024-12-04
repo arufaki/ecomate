@@ -11,7 +11,7 @@ const SuccessSection = () => {
         <>
             <div className="text-center mb-6 tablet:max-w-[350px] mobilelg:max-w-[350px] mobile:max-w-[310px] mx-auto">
                 <div className="w-full mb-6">
-                    <img src="/assets/svg/check-circle.svg" className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
+                    <img src="../src/assets/svg/check-circle.svg" className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
                 </div>
                 <h1 className="font-bold text-[24px]">Password Reset</h1>
                 <p className="tablet:text-base mobile:text-sm mobilelg:text-base text-[#A1A1AA] mt-4 mb-6">Password anda berhasil direset Klik dibawah untuk login kembali</p>
