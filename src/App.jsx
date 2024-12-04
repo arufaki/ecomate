@@ -10,10 +10,9 @@ import DetailProductPage from "./pages/DetailProductPage";
 import CartPage from "./pages/CartPage";
 import DetailChallengePage from "./pages/DetailChallengePage";
 import Chatbot from "./pages/Chatbot";
-// import GoogleCallback from "./components/Login/GoogleCallback";
-import AddProductAdmin from "./components/Admin/AddImpact";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const App = () => {
     return (
@@ -24,31 +23,28 @@ const App = () => {
                 <Route path="/belanja" element={<CatalogProductPage />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan" element={<DetailChallengePage />} />
-                <Route
-                    path="/login"
-                    element={
-                        <GuestRoute>
-                            <LoginPage />
-                        </GuestRoute>
-                    }
-                />
-                <Route
-                    path="/register"
-                    element={
-                        <GuestRoute>
-                            <RegisterPage />
-                        </GuestRoute>
-                    }
-                />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                <Route path="/cart" element={<CartPage />} />
-                <Route path="/chat" element={<Chatbot />} />
-                {/* <Route path="/google-callback" element={<GoogleCallback />} /> */}
 
-                {/* Admin Route */}
-                {/* email admin: admin2@ecomate.store pass : admin2 */}
-                <Route path="/add-product" element={<AddProductPage />} />
-                <Route path="/login-admin" element={<AdminLoginPage />} />
+                {/* Guest routes (untuk login dan register, hanya bisa diakses oleh user yang belum login) */}
+                <Route element={<GuestRoute />}>
+                    {/* End User Route */}
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+
+                    {/* Admin Route protected */}
+                    <Route path="/login-admin" element={<AdminLoginPage />} />
+                </Route>
+
+                {/* Route yang diproteksi dan harus login dlu  */}
+                <Route element={<ProtectedRoute />}>
+                    {/* End User Route */}
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/chat" element={<Chatbot />} />
+
+                    {/* Admin Route */}
+                    {/* email admin: admin2@ecomate.store pass : admin2 */}
+                    <Route path="/add-product" element={<AddProductPage />} />
+                </Route>
             </Routes>
         </Router>
     );
