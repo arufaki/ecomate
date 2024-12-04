@@ -8,34 +8,37 @@ const MyChallenge = () => {
           image: "assets/png/Totebag.png",
           title: "Challenge Hemat Energi",
           description: "Matikan lampu dan perangkat elektronik saat tidak digunakan .",
-           
+          level: "Sulit",
+
         },
         {
           id: 2,
           image: "assets/png/Totebag.png",
           title: "Challenge Daur Ulang",
           description: "Pisahkan sampah organik dan non-organik untuk didaur ulang.",
-           
+          level: "Mudah",
         },
         {
           id: 3,
           image: "assets/png/Totebag.png",
           title: "Challenge Kurangi Plastik",
           description: "Gunakan tas kain saat berbelanja untuk mengurangi penggunaan plastik.",
-           
+          level: "Sulit",
+
         },
         {
           id: 4,
           image: "assets/png/Totebag.png",
           title: "Challenge Tanam Pohon",
           description: "Tanam setidaknya satu pohon untuk membantu penghijauan.",
-           
+          level: "Sedang",
         },
         {
           id: 5,
           image: "assets/png/Totebag.png",
           title: "Challenge Hemat Air",
           description: "Kurangi konsumsi air dengan menutup keran saat menyikat gigi.",
+          level: "Sulit",
            
         },
         {
@@ -43,6 +46,7 @@ const MyChallenge = () => {
           image: "assets/png/Totebag.png",
           title: "Challenge Kurangi Emisi",
           description: "Gunakan transportasi umum atau sepeda untuk mengurangi emisi karbon.",
+          level: "Sulit",
            
         },
         {
@@ -50,6 +54,7 @@ const MyChallenge = () => {
           image: "assets/png/Totebag.png",
           title: "Challenge Kompos",
           description: "Ubah sampah organik menjadi kompos untuk pemupukan alami.",
+          level: "Sulit",
            
         },
         {
@@ -57,6 +62,7 @@ const MyChallenge = () => {
           image: "assets/png/Totebag.png",
           title: "Challenge Bersih Lingkungan",
           description: "Lakukan kegiatan bersih-bersih di lingkungan sekitar setiap minggu.",
+          level: "Sulit",
            
         },
       ];
@@ -165,7 +171,7 @@ const MyChallenge = () => {
           </div>
         </div>
         <button
-          className="bg-[#2E7D32] hover:bg-[#1B4B1E] h-[52px] min-w-[52px] rounded-[8px] flex items-center justify-center"
+          className="bg-[#2E7D32] hover:bg-[#1B4B1E] h-[52px] w-full sm:w-[52px] rounded-[8px] flex items-center justify-center"
           onClick={handleSearchClick}
         >
           <img src="assets/png/search.png" alt="search" className="h-[20px] w-[20px]" />
@@ -174,7 +180,7 @@ const MyChallenge = () => {
       </div>
 
       <div className="py-[40px]">
-        <p className="text-[36px] font-bold text-4xl "> Tantangan saya ( {filteredChallenges.length} )</p>
+        <p className="text-[36px] font-bold text-4xl mb-[13px] "> Tantangan saya ( {filteredChallenges.length} )</p>
         <div
           data-hs-carousel='{
             "loadingClasses": "opacity-0",
@@ -193,7 +199,7 @@ const MyChallenge = () => {
               {filteredChallenges.map((challenge) => (
                 <div
                   key={challenge.id}
-                  className="flex flex-col justify-between w-[624px] min-h-[584px] p-10 mr-[32px] items-start rounded-2xl border border-[#E5E7EB] bg-[#FAFAFA]"
+                  className="flex flex-col justify-between w-[624px] min-h-[584px] p-10 mr-[32px]  rounded-2xl border border-[#E5E7EB] bg-[#FAFAFA]"
                 >
                   <div>
                     <div className="w-[544px] h-[251px] bg-lightgray bg-cover bg-center overflow-hidden rounded-lg">
@@ -205,18 +211,18 @@ const MyChallenge = () => {
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-bold text-gray-800 pt-[16px]">
+                      <h3 className="text-neutral-800 text-xl font-bold font-['Nunito'] tracking-tight pt-[16px]">
                         {challenge.title}
                       </h3>
-                      <p className="mt-1 text-gray-500">{challenge.description}</p>
+                      <p className=" text-justify text-neutral-800 text-base font-normal leading-normal tracking-tight">{challenge.description}</p>
                     </div>
                   </div>
 
                   {/* Progress */}
                   <div className="w-full mt-auto py-[32px]">
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-sm text-gray-500">Progress</p>
-                      <p className="text-sm text-gray-500">{`${25}%`}</p>
+                    <div className="flex justify-between items-center mb-2 text-xl font-semibold text-black">
+                      <p >Day 1</p>
+                      <p >{`${25}%`}</p>
                     </div>
 
                     <div
@@ -234,9 +240,30 @@ const MyChallenge = () => {
                   </div>
                   {/* End Progress */}
 
-                  <button className="w-[544px] h-[48px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-[16px] font-normal rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#1B4B1E] focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                    selengkapnya
-                  </button>
+                  <div>                   
+                    </div>  
+                    {/* Tambahkan elemen untuk level, hari, dan koin */}
+                    <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4 mt-4">
+                      {/* Wrapper untuk Card di kiri */}
+                      <div className="flex items-center gap-4">
+                        {/* Card untuk Level */}
+                        <div className="flex items-center justify-center px-4 py-2 bg-[#F0FDF4] border-[1px] border-[#166534] text-[#115E59] rounded-full text-[15px] font-semibold ">
+                          {challenge.level}
+                        </div>
+                        {/* Card untuk Hari */}
+                        <div className="flex items-center justify-center px-4 py-2 bg-[#F0FDF4] border-[1px] border-[#166534] text-[#115E59] rounded-full text-[15px] font-semibold">
+                          7 hari
+                        </div>
+                        {/* Card untuk Koin */}
+                        <div className="flex items-center justify-center px-4 py-2 bg-[#F0FDF4] border-[1px] border-[#166534] text-[#115E59] rounded-full text-[15px] font-semibold">
+                          100 koin
+                        </div>
+                      </div>
+                      {/* Tombol di kanan */}
+                      <button className="w-full sm:w-auto h-[48px] py-2 px-3 inline-flex justify-center sm:justify-end items-center gap-x-2 text-[16px] font-normal rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#1B4B1E] focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        Selengkapnya
+                      </button>
+                    </div>
                 </div>
               ))}
             </div>
