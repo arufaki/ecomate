@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import api from "../../services/api";
-import Filterbar from "./FilterBar";
 import { truncateContent } from "../../hooks/useTruncates";
 import { set } from "react-hook-form";
 const Catalog = () => {
@@ -16,9 +15,8 @@ const Catalog = () => {
     useEffect(() => {
         try {
             setIsLoading(true);
-            api.get("/guest/products").then((res) => {
-                console.log(res.data.data.new_products);
-                const resp = res.data.data.new_products
+            api.get("/products").then((res) => {
+                const resp = res.data.data
                 setProducts(resp);
                 setOriginalProducts(resp);
                 setIsLoading(false);
