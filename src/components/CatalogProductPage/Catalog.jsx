@@ -65,10 +65,10 @@ const Catalog = () => {
             const response = await api.get(endpoint);
             
             // Update state with response data  
-            console.log(response.data.metadata.TotalPage)
+            console.log(response)
             setProducts(response.data.data || []);
             setTotalPages(response.data.metadata.TotalPage || 0);
-            setTotalProducts(response.data.total_products || 0);
+            setTotalProducts(response.data.metadata.TotalProducts || 0);
             setIsLoading(false);
         } catch (error) {
             console.error('Error fetching products:', error);
