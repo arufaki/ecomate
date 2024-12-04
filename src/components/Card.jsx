@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-const Card = ({image, name, description, price, rating, link}) => {
+const Card = ({image, name, description, price, link}) => {
     return (
         <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl w-full"> {/* Tinggi kartu */}
                             <div className="">
@@ -16,7 +16,7 @@ const Card = ({image, name, description, price, rating, link}) => {
                                     Rp. {price}
                                 </h1>
                                 <span className="text-base text-[#1F2937]">
-                                    <span className="text-xl text-yellow-500 mr-2">★</span>{rating}/5
+                                    <span className="text-xl text-yellow-500 mr-2">★</span>4/5
                                 </span>
                                 </div>
                                 <p className="text-sm text-gray-600 font-semibold py-3 md:min-h-[40px] min-h-[64px]">
