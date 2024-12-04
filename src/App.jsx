@@ -14,6 +14,7 @@ import Chatbot from "./pages/Chatbot";
 import AddProductAdmin from "./components/Admin/AddImpact";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
+import ForumPage from "./pages/ForumPage";
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/tantangan" element={<ListChallengePage />} />
                 <Route path="/belanja" element={<CatalogProductPage />} />
+                <Route path="/forum" element={<ForumPage />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan" element={<DetailChallengePage />} />
                 <Route
