@@ -12,7 +12,7 @@ const DetailChallengePage = () => {
         <div className="min-h-screen">
         <Hero       text="Plastic-Free Week Challange" 
                     button="Gabung sekarang"
-                    page="challenge"/>
+                    page="challenge"
                     image="../src/assets/png/bg-challenge.png"/>
                     <Participants />
                     <ListMission />
