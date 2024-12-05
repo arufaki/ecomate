@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Image from '../../assets/jpg/user.jpg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Autoplay } from 'swiper/modules';
 
@@ -25,7 +25,7 @@ import 'swiper/css/pagination';
             </div>
             {/* Slider */}
             <div className="relative h-fit bg-primary w-full">
-                <div className="md:w-[60%] w-full mx-auto bg-primary rounded-xl">
+                <div className="md:w-[70%] w-full mx-auto bg-primary rounded-xl">
                     <Swiper
                         modules={[Autoplay]}
                         spaceBetween={30}
@@ -48,14 +48,16 @@ import 'swiper/css/pagination';
                     className="h-[700px]"
                     >
                     {originalItems.map((item) => (
-                        <SwiperSlide key={item.id} className="px-5">
-                        <div className="text-neutral">
+                        <SwiperSlide key={item.id} className="">
+                        <div className="text-neutral ">
+                            <div className='w-full  ' >
                             <img 
-                            src="../src/assets/jpg/user.jpg" 
-                            className='w-[100px] h-[100px] mx-auto mb-4 rounded-full object-cover object-top relative top-14' 
-                            alt={item.name} 
-                            />
-                            <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl  w-[397px] h-[487px]">
+                                src={Image}
+                                className='w-[100px] h-[100px]   rounded-full object-cover object-top relative top-14 item-center mx-auto justify-center'  
+                                alt={item.name} 
+                                />
+                            </div>
+                            <div className="flex flex-col justify-center bg-white shadow-lg rounded-xl items-center mx-auto w-[397px] h-[487px]">
                             <div className="p-5  flex flex-col justify-between">
                                 <div className='text-center   my-32 h-[150px] flex md:items-center justify-center'>
                                 <h1>{item.message}</h1>
