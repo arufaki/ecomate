@@ -16,6 +16,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import PaymentPage from "./pages/PaymentPage";
 import DayChallengePage from "./pages/DayChallengePage";
 import Dashboard from "./pages/AdminPages/Dashboard";
+import UsersPage from "./pages/AdminPages/UsersPage";
 const App = () => {
     return (
         <Router>
@@ -49,6 +50,7 @@ const App = () => {
                     {/* email admin: admin2@ecomate.store pass : admin2 */}
                     <Route path="/add-product" element={<AddProductPage />} />
                     <Route path="/admin/dashboard" element={<Dashboard />} />
+                    <Route path="/admin/pengguna" element={<UsersPage />} />
                 </Route>
             </Routes>
         </Router>
