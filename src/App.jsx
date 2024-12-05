@@ -13,7 +13,7 @@ import Chatbot from "./pages/Chatbot";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
 import ProtectedRoute from "./routes/ProtectedRoute";
-
+import DayChallengePage from "./pages/DayChallengePage";
 const App = () => {
     return (
         <Router>
@@ -23,6 +23,7 @@ const App = () => {
                 <Route path="/belanja" element={<CatalogProductPage />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan" element={<DetailChallengePage />} />
+                <Route path="/detail-tantangan/id/day" element={<DayChallengePage />} />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
                 {/* Guest routes (untuk login dan register, hanya bisa diakses oleh user yang belum login) */}
