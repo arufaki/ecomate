@@ -5,6 +5,7 @@ import WelcomeSection from "../components/Login/WelcomeSection";
 import InputForm from "../components/Login/InputForm";
 import { Toast } from "../utils/function/toast";
 import api from "../services/api";
+import email from "../assets/svg/email.svg";
 
 const RegisterPage = () => {
     // State untuk show password login
@@ -115,7 +116,7 @@ const RegisterPage = () => {
                             })}
                             error={errors.email?.message}
                             placeholder="contoh@email.com"
-                            iconStart="../src/assets/svg/email.svg"
+                            iconStart={email}
                         />
                         <InputForm
                             id="password-label"
@@ -139,7 +140,7 @@ const RegisterPage = () => {
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
-                                    className="checkbox border-blue-500 [--chkbg:theme(colors.blue.600)] [--chkfg:white] checked:border-blue-500 w-5 h-5 rounded-none"
+                                    className="checkbox border-green-700 [--chkbg:theme(colors.green.700)] [--chkfg:white] checked:border-green-700 w-5 h-5 rounded-none"
                                     {...register("agreeTerms", { required: "Anda harus menyetujui syarat & ketentuan" })}
                                 />
                             </div>
