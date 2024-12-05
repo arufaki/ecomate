@@ -1,57 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../Card';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Mousewheel } from 'swiper/modules';
-
+import api from "../../services/api";
+import { truncateContent } from "../../hooks/useTruncates";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 // Sample product data
-const products = [
-    {
-        id: 1,
-        name: "Sepatu Pria",
-        description: "Terbuat dari limbah bulu ayam, Dirancang dengan teknologi modern, dan memiliki sifat antibakteri alam",
-        price: "110.000",
-        image: "../src/assets/png/Sepatu.png",
-        rating: 4
-    },
-    {
-        id: 2,
-        name: "Baju Ramah Lingkungang",
-        description: "Baju stylish berbahan dasar limbah tekstil daur ulang, mengedepankan keberlanjutan tanpa mengorbankan kualitas.",
-        price: "49.999",
-        image: "../src/assets/png/Baju.png",
-        rating: 4
-    },
-    {
-        id: 3,
-        name: "Sandal",
-        description: "Sandal stylish dari limbah plastik daur ulang, ringan, tahan lama, dan nyaman, Pilihan tepat untuk langkah berkelanjutan.",
-        price: "10.000",
-        image: "../src/assets/png/Sendal.png",
-        rating: 4.5
-    },
-    {
-        id: 4,
-        name: "Tote bag",
-        description: "Totebag unik berbahan limbah tekstil daur ulang, kuat, stylish, dan ramah lingkungan. Pilihan sempurna untuk gaya sehari-hari",
-        price: "19.900",
-        image: "../src/assets/png/Totebag.png",
-        rating: 4
-    },
-    {
-        id: 5,
-        name: "Tas Laptop",
-        description: "Tas multifungsi dengan ruang laptop yang luas",
-        price: 250000,
-        image: "/api/placeholder/300/200",
-        rating: 4
-    }
-    ];
+
 
     const ProductCarousel = () => {
+        const [products, setProducts] = useState([]);
+
+        useEffect(() => {
+            const fetchProducts = async () => {
+                try {
+                    const response = await api.get('/products');
+                    setProducts(response.data.data);
+                } catch (error) {
+                    console.error('Error fetching products:', error);
+                }
+            };
+
+            fetchProducts();
+        }, []);
     return (
         <div className=' bg-secondary'>
             <div className="py-14">
@@ -64,6 +38,7 @@ const products = [
                 modules={[ Mousewheel]}
                 spaceBetween={20}
                 slidesPerView={1}
+                loop={true}
                 mousewheel={true}
                 breakpoints={{
                 640: {
@@ -78,15 +53,17 @@ const products = [
                 grabCursor={true}
                 className="pb-12 md:h-[500px] h-[350px]"
             >
-                {products.map((product) => (
-                <SwiperSlide key={product.id} className="px-4">
-                    <Card
-                    image={product.image}
-                    name={product.name}
-                    description={product.description}
-                    price={product.price}
-                    rating={product.rating}
-                    />
+                {products.slice(6, 12).map((product) => (
+                <SwiperSlide key={product.product_id} className="px-4">
+
+                            <Card
+                                image={product.images[0]?.image_url || '/default-product.png'}
+                                name={product.name}
+                                description={truncateContent(product.description, 100)}
+                                price={(product.price).toLocaleString("id-ID")}
+                                link={`/detail-produk/${product.product_id}`}
+                            />
+
                 </SwiperSlide>
                 ))}
             </Swiper>
