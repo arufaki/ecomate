@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Participants from "../components/DetailChallengePage/Participants";
 import ListMission from "../components/DetailChallengePage/ListMission";
-
+import Image from "../assets/png/bg-challenge.png";
 const DetailChallengePage = () => {
     
     return <div className="bg-secondary ">
@@ -13,7 +13,9 @@ const DetailChallengePage = () => {
         <Hero       text="Plastic-Free Week Challange" 
                     button="Gabung sekarang"
                     page="challenge"
-                    image="../src/assets/png/bg-challenge.png"/>
+                    image={Image}
+                    link="/tantangan"/>
+                    
                     <Participants />
                     <ListMission />
         </div>

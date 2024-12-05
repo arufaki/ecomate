@@ -1,7 +1,7 @@
 
 import React from "react";
-
-const Hero = ({ text, button, image, page }) => {
+import { Link } from "react-router";
+const Hero = ({ text, button, image, page, link }) => {
     return (
         <div className="bg-secondary pt-24 md:pt-40 ">
             <div className="relative group overflow-hidden rounded-lg max-w-full px-4 md:px-0">
@@ -26,9 +26,9 @@ const Hero = ({ text, button, image, page }) => {
                             <p className="font-semibold bg-green-50 px-4 py-1 rounded-3xl border border-green-800">200 Exp</p>
                         </div>): ""}
                         
-                        <button className="text-white bg-[#2E7D32] text-sm sm:text-base md:text-[15px] mt-6 md:mt-10 w-[246px] sm:w-[249px] md:w-[254px] h-[50px] md:h-[62px] rounded-xl font-bold hover:bg-[#1B4B1E] transition-colors duration-300">
+                        <Link to={link} className="text-white bg-[#2E7D32] text-sm sm:text-base md:text-[15px] mt-6 md:mt-10 w-[246px] sm:w-[249px] md:w-[254px] py-5  rounded-xl font-bold hover:bg-[#1B4B1E] transition-colors duration-300">
                             {button}
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
