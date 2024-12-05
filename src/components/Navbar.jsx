@@ -4,7 +4,7 @@ import useAuthStore from "../stores/useAuthStore";
 import Logo from "../assets/png/Logo.png";
 import CartIcon from "../assets/svg/shopping-cart-nav.svg";
 import userIcon from "../assets/svg/user.svg";
-
+import { Menu as Bar, X, User, LogOutIcon  } from "lucide-react";
 const Navbar = ({ active }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -15,8 +15,8 @@ const Navbar = ({ active }) => {
     };
 
     return (
-        <header className="fixed top-0 left-0 w-full h-[96px] backdrop-blur-xl bg-secondary bg-opacity-30 z-50">
-            <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap items-center justify-between h-full">
+        <header className="fixed top-0 left-0 w-full h-[96px]  bg-secondary bg-opacity-30 z-50">
+            <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap backdrop-blur-xl items-center justify-between h-full">
                 {/* Logo */}
                 <a className="flex-none text-[26px] font-bold text-[#1B4B1E] focus:outline-none focus:opacity-80 mt-3" href="#">
                     <span className="inline-flex items-center gap-x-2 text-xl font-bold">
@@ -26,41 +26,20 @@ const Navbar = ({ active }) => {
                 </a>
 
                 {/* Mobile Menu Toggle */}
-                <button type="button" className="sm:hidden z-50" onClick={toggleMenu} aria-label="Toggle navigation">
+                <div className="flex flex-row">
+                {token && (
+                    <Link to="/cart" className=" sm:hidden p-3 ">
+                        <img src={CartIcon} alt="logo" className="w-6 h-6" />
+                    </Link>
+                )}
+                <button type="button" className="sm:hidden z-50 bg-white p-3 rounded-xl" onClick={toggleMenu} aria-label="Toggle navigation">
                     {isMenuOpen ? (
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={24}
-                            height={24}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M18 6 6 18" />
-                            <path d="m6 6 12 12" />
-                        </svg>
+                        <X className="text-[#1B4B1E] hover:text-[#246128] focus:outline-none" />
                     ) : (
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={24}
-                            height={24}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <line x1={3} x2={21} y1={6} y2={6} />
-                            <line x1={3} x2={21} y1={12} y2={12} />
-                            <line x1={3} x2={21} y1={18} y2={18} />
-                        </svg>
+                        <Bar className="text-[#1B4B1E] hover:text-[#246128] focus:outline-none" />
                     )}
                 </button>
-
+                </div>
                 {/* Desktop Navigation Links */}
                 <div className="hidden sm:flex items-center gap-8 text-base">
                     <Link to={"/"} className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`}>
@@ -111,11 +90,11 @@ const Navbar = ({ active }) => {
                         </>
                     )}
                 </div>
-
+                </nav>
                 {/* Mobile Menu */}
                 {isMenuOpen && (
-                    <div className="sm:hidden absolute top-full left-0 w-full bg-white shadow-lg">
-                        <div className="flex flex-col p-4 space-y-4">
+                    <div className="sm:hidden absolute top-[99%] left-0 w-full bg-secondary shadow-lg backdrop-blur-xl bg-opacity-30">
+                        <div className="flex flex-col p-4 space-y-4 text-center">
                             <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">
                                 Beranda
                             </a>
@@ -132,7 +111,25 @@ const Navbar = ({ active }) => {
                                 Forum
                             </a>
                             <div className="border-t pt-4 flex flex-col space-y-4">
+                                {token ? (
+                                    <>
+                                        <Link
+                                    to="/profil"
+                                    className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
+                                ><User />
+                                    Profil
+                                </Link>
                                 <Link
+                                    to={"/login"}
+                                    className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
+                                >
+                                    <LogOutIcon/>
+                                    Log Out
+                                </Link>
+                                </>
+                                ):(
+                                    <>
+                                    <Link
                                     to="/login"
                                     className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg bg-[#2E7D32] text-white shadow-sm hover:bg-[#1B4B1E] focus:outline-none"
                                 >
@@ -144,11 +141,14 @@ const Navbar = ({ active }) => {
                                 >
                                     Daftar akun
                                 </Link>
+                                    </>
+                                )}
+                                
                             </div>
                         </div>
                     </div>
                 )}
-            </nav>
+            
         </header>
     );
 };
