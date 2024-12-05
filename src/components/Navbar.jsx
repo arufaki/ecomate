@@ -1,17 +1,47 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAuthStore from "../stores/useAuthStore";
 import Logo from "../assets/png/Logo.png";
 import CartIcon from "../assets/svg/shopping-cart-nav.svg";
 import userIcon from "../assets/svg/user.svg";
-import { Menu as Bar, X, User, LogOutIcon  } from "lucide-react";
+import { Menu as Bar, X, User, LogOutIcon,   } from "lucide-react";
+import { logoutAlert, Toast } from "../utils/function/toast";
 const Navbar = ({ active }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const [isOpen, setIsOpen] = useState(false);
     const { token } = useAuthStore();
 
+    const { clearToken } = useAuthStore();
+    const navigate = useNavigate();
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+        };
+    
+        const handleLogout = () => {
+            const logoutAction = () => {
+                // Clear the authentication token
+                clearToken();
+                
+                // Close dropdown
+                setIsOpen(false);
+                
+                // Redirect to login page
+                navigate('/login');
+                
+                // Show success message
+                Toast.fire({
+                    icon: "success",
+                    title: "Logout Berhasil.",
+                });
+                // Close dropdown
+                };
+            
+                // Show logout confirmation alert
+                logoutAlert(logoutAction);
     };
 
     return (
@@ -63,14 +93,47 @@ const Navbar = ({ active }) => {
 
                 <div className="hidden sm:flex items-center gap-x-2 h-[46px] max-w-[231px]">
                     {token ? (
-                        <div className="flex flex-row w-full ml-28">
-                            <Link to="/cart" className="p-3">
-                                <img src={CartIcon} alt="logo" className="w-6 h-6" />
+                        <div className="flex flex-row w-full ml-28 items-center">
+                        <Link to="/cart" className="p-3">
+                            <img src={CartIcon} alt="Cart" className="w-6 h-6" />
                             </Link>
                             <div className="w-[1px] h-11 bg-[#999999]"></div>
-                            <Link to="/dashboard" className="p-3">
-                                <img src={userIcon} alt="logo" className="w-6 h-6" />
-                            </Link>
+                            
+                            <div className="relative">
+                            <button 
+                                onClick={toggleDropdown}
+                                type="button" 
+                                className="p-3"
+                            >
+                                <img src={userIcon} alt="User" className="w-6 h-6 hover:text-white" />
+                            </button>
+                    
+                            {isOpen && (
+                                <div 
+                                className="absolute right-0 z-10 mt-2 w-32 rounded-lg bg-white shadow-[0_5px_15px_0_rgba(0,0,0,0.1)] border border-gray-200"
+                                role="menu"
+                                >
+                                <div className="py-1">
+                                    <Link
+                                    to="/profile"
+                                    className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex-row gap-3"
+                                    role="menuitem"
+                                    >
+                                    <User size={16}/>
+                                    Profile
+                                    </Link>
+                                    <button
+                                    onClick={handleLogout}
+                                    className="w-full text-left flex px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-900 flex-row gap-3"
+                                    role="menuitem"
+                                    >
+                                    <LogOutIcon size={16}/>
+                                    Log Out
+                                    </button>
+                                </div>
+                                </div>
+                            )}
+                            </div>
                         </div>
                     ) : (
                         <>
@@ -119,13 +182,13 @@ const Navbar = ({ active }) => {
                                 ><User />
                                     Profil
                                 </Link>
-                                <Link
-                                    to={"/login"}
+                                <button
+                                    onClick={handleLogout}
                                     className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
                                 >
                                     <LogOutIcon/>
                                     Log Out
-                                </Link>
+                                </button>
                                 </>
                                 ):(
                                     <>
