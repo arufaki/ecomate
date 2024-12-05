@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 import useAuthStore from "../stores/useAuthStore";
+import Logo from "../assets/png/Logo.png";
+import CartIcon from "../assets/svg/shopping-cart-nav.svg";
+import userIcon from "../assets/svg/user.svg";
 
 const Navbar = ({ active }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +20,7 @@ const Navbar = ({ active }) => {
                 {/* Logo */}
                 <a className="flex-none text-[26px] font-bold text-[#1B4B1E] focus:outline-none focus:opacity-80 mt-3" href="#">
                     <span className="inline-flex items-center gap-x-2 text-xl font-bold">
-                        <img src="../src/assets/png/Logo.png" alt="logo" className="w-12 h-12" />
+                        <img src={Logo} alt="logo" className="w-12 h-12" />
                         EcoMate
                     </span>
                 </a>
@@ -60,21 +63,21 @@ const Navbar = ({ active }) => {
 
                 {/* Desktop Navigation Links */}
                 <div className="hidden sm:flex items-center gap-8 text-base">
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`} href="/">
+                    <Link to={"/"} className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "home" ? "font-bold" : "font-normal"}`}>
                         Beranda
-                    </a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`} href="#">
+                    </Link>
+                    <Link to={"/tentang"} className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "about" ? "font-bold" : "font-normal"}`}>
                         Tentang
-                    </a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`} href="/belanja">
+                    </Link>
+                    <Link to={"/belanja"} className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "Shopping" ? "font-bold" : "font-normal"}`}>
                         Belanja
-                    </a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`} href="/tantangan">
+                    </Link>
+                    <Link to={"/tantangan"} className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "challenge" ? "font-bold" : "font-normal"}`}>
                         Tantangan
-                    </a>
-                    <a className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "forum" ? "font-bold" : "font-normal"}`} href="/forum">
+                    </Link>
+                    <Link to={"/forum"} className={` text-[#1B4B1E] hover:text-[#246128] focus:outline-none ${active === "forum" ? "font-bold" : "font-normal"}`}>
                         Forum
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Desktop Action Buttons */}
@@ -83,11 +86,11 @@ const Navbar = ({ active }) => {
                     {token ? (
                         <div className="flex flex-row w-full ml-28">
                             <Link to="/cart" className="p-3">
-                                <img src="/../src/assets/svg/shopping-cart-nav.svg" alt="logo" className="w-6 h-6" />
+                                <img src={CartIcon} alt="logo" className="w-6 h-6" />
                             </Link>
                             <div className="w-[1px] h-11 bg-[#999999]"></div>
                             <Link to="/dashboard" className="p-3">
-                                <img src="/../src/assets/svg/user.svg" alt="logo" className="w-6 h-6" />
+                                <img src={userIcon} alt="logo" className="w-6 h-6" />
                             </Link>
                         </div>
                     ) : (
@@ -135,12 +138,12 @@ const Navbar = ({ active }) => {
                                 >
                                     Masuk
                                 </Link>
-                                <button
-                                    type="button"
+                                <Link
+                                    to={"/register"}
                                     className="w-full px-4 py-2 inline-flex items-center justify-center gap-x-2 text-[15px] font-medium rounded-lg border border-[#2E7D32] backdrop-blur-xl text-[#2E7D32] shadow-sm hover:bg-gray-50 focus:outline-none"
                                 >
                                     Daftar akun
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
