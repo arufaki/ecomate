@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@preline/file-upload": "^2.6.0",
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.7.7",
+    "dropzone": "^6.0.0-beta.2",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.462.0",
     "motion": "^11.12.0",
     "preline": "^2.5.1",
