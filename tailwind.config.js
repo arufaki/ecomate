@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+
+import preline from "preline/plugin";
+import daisyui from "daisyui";
+
 export default {
     content: ["./node_modules/preline/preline.js", "./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
@@ -33,8 +37,8 @@ export default {
     },
     plugins: [
         // require('@tailwindcss/forms'),
-        require("preline/plugin"),
-        require("daisyui"),
+        preline,
+        daisyui,
     ],
     daisyui: {
         themes: ["light"], // Ubah menjadi 'light'
