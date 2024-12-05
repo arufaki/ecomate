@@ -15,8 +15,8 @@ const Navbar = ({ active }) => {
     };
 
     return (
-        <header className="fixed top-0 left-0 w-full h-[96px]  bg-secondary bg-opacity-30 z-50">
-            <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap backdrop-blur-xl items-center justify-between h-full">
+        <header className="fixed top-0 left-0 w-full h-[96px] md:backdrop-blur-xl  bg-secondary bg-opacity-30 z-50">
+            <nav className="max-w-[83rem] w-full mx-auto px-4 flex flex-wrap md:backdrop-blur-none backdrop-blur-xl  items-center justify-between h-full">
                 {/* Logo */}
                 <a className="flex-none text-[26px] font-bold text-[#1B4B1E] focus:outline-none focus:opacity-80 mt-3" href="#">
                     <span className="inline-flex items-center gap-x-2 text-xl font-bold">

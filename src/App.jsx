@@ -13,7 +13,9 @@ import Chatbot from "./pages/Chatbot";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import PaymentPage from "./pages/PaymentPage";
 import DayChallengePage from "./pages/DayChallengePage";
+
 const App = () => {
     return (
         <Router>
@@ -41,6 +43,7 @@ const App = () => {
                     {/* End User Route */}
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/chat" element={<Chatbot />} />
+                    <Route path="/payment/:id" element={<PaymentPage />} />
 
                     {/* Admin Route */}
                     {/* email admin: admin2@ecomate.store pass : admin2 */}

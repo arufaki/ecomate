@@ -1,7 +1,6 @@
-import api from "../../services/api";
 import { formatToIDR } from "../../utils/function/formatToIdr";
 
-const CartFooter = ({ products, totalPrice, selectAll, checkedProducts, handleSelectAll }) => {
+const CartFooter = ({ products, totalPrice, selectAll, checkedProducts, handleSelectAll, handleCheckout }) => {
     return (
         <div className="mt-[43px] mb-[68px] md:mb-[100px] md:mt-[140px] bg-[#FAFAFA] mx-10 min-[768px]:mx-4 xl:mx-5 xxl:mx-0 rounded border border-[#E5E7EB] shadow-[0px_0.5px_1px_0px_rgba(0,0,0,0.05)]">
             <div className="flex flex-row items-center px-3 py-[10px] min-[1024px]:px-6 min-[1200px]:py-5 w-full justify-between max-[570px]:flex-col max-[570px]:justify-normal max-[570px]:items-baseline">
@@ -18,7 +17,13 @@ const CartFooter = ({ products, totalPrice, selectAll, checkedProducts, handleSe
                     <p className="text-sm font-semibold text-[#262626] sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px]">Total ({checkedProducts?.length} Produk) :</p>
                     <div className="flex flex-row gap-6 items-center">
                         <p className="text-sm font-semibold text-[#262626] sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px] min-[1300px]:text-[30px]">{formatToIDR(totalPrice)}</p>
-                        <button className="btn btn-success bg-[#3a7d2d] border-[#3a7d2d] !text-white max-[570px]:text-[12px] max-[570px]:p-[10px]">Checkout</button>
+                        <button
+                            className="btn btn-success bg-[#3a7d2d] border-[#3a7d2d] !text-white max-[570px]:text-[12px] max-[570px]:p-[10px]"
+                            onClick={handleCheckout}
+                            disabled={checkedProducts?.length === 0}
+                        >
+                            Checkout
+                        </button>
                     </div>
                 </div>
             </div>
