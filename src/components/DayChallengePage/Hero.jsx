@@ -36,7 +36,7 @@ const Hero = () => {
                                 <h3 className="text-xl font-semibold text-gray-800 ">
                                 Hari Ke 1
                                 </h3>
-                                <span className="text-xl font-medium text-gray-800 ">20%</span>
+                                <span className="text-xl font-medium text-gray-800 ">14.2%</span>
                             </div>
                             <div
                                 className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-8"
@@ -46,7 +46,7 @@ const Hero = () => {
                                 aria-valuemax={100}
                             >
                                 <div
-                                className="flex flex-col w-[20%] justify-center rounded-full overflow-hidden bg-[#57C15D] text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                className="flex flex-col w-[14%] justify-center rounded-full overflow-hidden bg-[#57C15D] text-xs text-white text-center whitespace-nowrap transition duration-500 "
                                 />
                             </div>
                         </div>

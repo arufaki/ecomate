@@ -1,9 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "../../assets/png/bg-mission.png";
 import Coin from "../../assets/png/coin.png";
 import PhotoUploadModal from './PhotoUploadModal'; // Import the new modal component
-
+import { Link } from "react-router";
 const ListMission = () => {
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [previewImage, setPreviewImage] = useState(null);
+    const [isUploaded, setIsUploaded] = useState(false);
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            
+            // Create image preview
+            const reader = new FileReader();
+            reader.onloadend = () => {
+            setPreviewImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+        };
+    
+        const handleUpload = () => {
+            if (selectedFile) {
+              // TODO: Implement actual upload logic (e.g., API call)
+                setIsUploaded(true);
+                
+                // Programmatically close the modal
+                const closeButton = document.querySelector('[data-hs-overlay="#photo-upload-modal"]');
+                if (closeButton) {
+                    closeButton.click();
+                }
+                
+                // Optional: Reset state after upload
+                setSelectedFile(null);
+                setPreviewImage(null);
+                }
+            };
+    
     return (
         <div className="relative h-fit bg-[#37953C] mb-20 md:w-[1280px] py-10 w-[375px] items-center justify-center mx-auto rounded-[48px] overflow-hidden">
             {/* Background Image Overlay */}
@@ -36,7 +70,16 @@ const ListMission = () => {
                     </div>
                     
                     {/* Replace the button with the PhotoUploadModal */}
-                    <PhotoUploadModal />
+                    {isUploaded ? (
+                        <div className="w-full gap-10 flex flex-row mt-10 text-center">
+                            <Link to="/tantangan"className="w-1/2 bg-[#CCFBF1] rounded-[16px] py-5 text-primary text-lg font-bold">Lihat Tantangan</Link>
+                            <Link to="/tantangan" className="w-1/2 bg-green-300 hover:cursor-not-allowed rounded-[16px] py-5 text-lg font-bold text-white">Misi Selanjutnya 04/12/2024</Link>
+                        </div>
+                    ):
+                    (
+                        <PhotoUploadModal onClick={handleUpload} onChange={handleFileChange} previewImage={previewImage} selectedFile={selectedFile} />
+                    )}
+                    
                 </div>
             </div>
         </div>
