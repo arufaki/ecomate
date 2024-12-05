@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "preline";
 import Pagination from "../Pagination";
+import { Link } from "react-router";
 const ListChallenge = () => {
   const [currentPage, setCurrentPage] = useState(1); 
   const itemsPerPage = 6; //maks card
@@ -105,9 +106,9 @@ const ListChallenge = () => {
                           100 koin
                         </div>
                       </div>
-                      <button className="w-full sm:w-auto h-[50px] py-[13px] px-7 inline-flex justify-center sm:justify-end items-center gap-x-2 text-[16px] font-normal rounded-xl border border-transparent bg-[#2E7D32] text-white hover:bg-[#1B4B1E] focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                      <Link to="/detail-tantangan"className="w-full sm:w-auto h-[50px] py-[13px] px-7 inline-flex justify-center sm:justify-end items-center gap-x-2 text-[16px] font-normal rounded-xl border border-transparent bg-[#2E7D32] text-white hover:bg-[#1B4B1E] focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                         Selengkapnya
-                      </button>
+                      </Link>
                     </div>
             </div>
           ))}
