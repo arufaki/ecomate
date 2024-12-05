@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { Toast } from "../utils/function/toast";
+import { useNavigate } from "react-router";
+import useCartStore from "../stores/useCartStore";
 
-const useCart = (initialProducts) => {
+const useCart = () => {
+    const { products, setProducts, clearProducts } = useCartStore();
+
     // State untuk total harga keranjang
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -16,17 +20,36 @@ const useCart = (initialProducts) => {
     const [selectAll, setSelectAll] = useState(false);
 
     // State untuk menyimpan daftar produk yang ada di keranjang
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-        setProducts(initialProducts);
-        const initialQuantities = products.reduce((acc, product) => {
-            acc[product.product.product_id] = product.quantity || 1;
-            return acc;
-        }, {});
+        const fetchCart = async () => {
+            try {
+                const response = await api.get("/cart");
+                const cartData = response.data.data.items;
+                setProducts(cartData);
 
-        setQuantities(initialQuantities);
-    }, [initialProducts]);
+                const initialQuantities = cartData.reduce((acc, product) => {
+                    acc[product.product.product_id] = product.quantity || 1;
+                    return acc;
+                }, {});
+                setQuantities(initialQuantities);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        // setProducts(initialProducts);
+        // const initialQuantities = products.reduce((acc, product) => {
+        //     acc[product.product.product_id] = product.quantity || 1;
+        //     return acc;
+        // }, {});
+
+        // setQuantities(initialQuantities);
+        fetchCart();
+    }, [setProducts]);
 
     // Fungsi untuk mengubah status checkbox (tercentang atau tidak)
     const handleCheckboxChange = (isChecked, product) => {
@@ -140,6 +163,27 @@ const useCart = (initialProducts) => {
         }
     };
 
+    // Tombol ketika user klik checkout
+    const handleCheckout = async () => {
+        const data = {
+            cart_ids: checkedProducts.map((check) => check.id),
+            using_coin: true,
+        };
+
+        localStorage.setItem("cart_ids", JSON.stringify(data.cart_ids));
+        // navigate(`/payment/ini-cart-id`);
+
+        try {
+            const response = await api.post("/transactions", data);
+            console.log(response.data.data);
+            if (response.status === 200) {
+                navigate(`/payment/${response.data.data.id}`, { state: { checkout: response.data.data } });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return {
         totalPrice, // Total harga keranjang
         checkedProducts, // Daftar produk yang tercentang
@@ -150,6 +194,7 @@ const useCart = (initialProducts) => {
         handleQuantitiesChange, // Fungsi untuk mengubah kuantitas
         handleSelectAll, // Fungsi untuk memilih semua produk
         handleDeleteProduct, // Fungsi untuk menghapus produk
+        handleCheckout,
     };
 };
 
