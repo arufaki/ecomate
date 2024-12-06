@@ -8,6 +8,8 @@ import GoogleLogin from "../../components/Login/GoogleLogin";
 import { Toast } from "../../utils/function/toast";
 import api from "../../services/api";
 
+import email from "../../assets/svg/email.svg";
+
 const AdminLoginPage = () => {
     // State untuk show password login
     const [showPassword, setShowPassword] = useState(false);
@@ -70,13 +72,13 @@ const AdminLoginPage = () => {
     return (
         <section className="bg-[#45BA4B]">
             <div className="flex tablet:flex-row mobile:flex-col w-full mx-auto min-h-screen">
-                <WelcomeSection />
+                <WelcomeSection title="Selamat datang Admin EcoMate!" />
 
                 {/* Form Login */}
                 <div className="flex-[1_50%] w-full flex flex-col items-center justify-center bg-white mobile:rounded-t-[60px] tablet:rounded-t-none mobile:pt-[28px] tablet:pt-0">
                     <div className="text-center mb-6">
                         <h1 className="font-bold text-[24px] mb-4 text-[#262626]">Masuk</h1>
-                        <p className="text-[#737373] text-base">Silahkan masuk ke akun anda</p>
+                        <p className="text-[#737373] text-base">Silahkan isi untuk lanjut ke dashboard</p>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="tablet:w-[416px] tablet:px-0 mobile:max-w-[450px] mobile:w-[100%] mobile:px-[17px]">
                         <div className="">
@@ -94,7 +96,7 @@ const AdminLoginPage = () => {
                                 })}
                                 error={errors.email?.message}
                                 placeholder="contoh@email.com"
-                                iconStart="/assets/svg/email.svg"
+                                iconStart={email}
                             />
                             <InputForm
                                 id="password-label"
@@ -112,9 +114,14 @@ const AdminLoginPage = () => {
                                 showPassword={showPassword}
                                 togglePassword={togglePassword}
                             />
-                            <p className="font-medium text-base text-center cursor-pointer text-[#262626] mb-6">
-                                <Link to={"/forgot-password"}>Lupa Password?</Link>
-                            </p>
+
+                            <div className="form-control mb-6">
+                                <label className="cursor-pointer label !justify-normal gap-4">
+                                    <input type="checkbox" className="checkbox checkbox-success" />
+                                    <span className="label-text font-medium text-base text-[#262626] ">Remember me</span>
+                                </label>
+                            </div>
+
                             <button
                                 type="submit"
                                 className="py-3 px-4 inline-flex items-center gap-x-2 text-base font-bold rounded-lg border border-transparent bg-[#2E7D32] text-white hover:bg-[#256428] focus:outline-none focus:bg-[#256428] disabled:opacity-50 disabled:pointer-events-none w-full justify-center"
@@ -130,13 +137,6 @@ const AdminLoginPage = () => {
                             </button>
                         </div>
                     </form>
-                    <GoogleLogin />
-                    <p className="text-base text-[#737373] my-[64px]">
-                        Belum punya akun?{" "}
-                        <Link to={"/register"} className="font-bold text-[#262626] cursor-pointer">
-                            Daftar Akun
-                        </Link>
-                    </p>
                 </div>
             </div>
         </section>
