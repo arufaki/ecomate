@@ -19,59 +19,57 @@ const Catalog = () => {
     const fetchProducts = useCallback(async () => {
         try {
             setIsLoading(true);
-            
+
             // Construct query parameters
             const params = new URLSearchParams();
-            
+
             // Add page parameter
-            params.append('pages', currentPage);
-            
+            params.append("pages", currentPage);
+
             // Add search parameter if exists
             if (searchQuery.trim()) {
-                params.append('search', searchQuery.trim());
+                params.append("search", searchQuery.trim());
             }
-            
+
             // Add sort parameter if exists
             if (sortOrder) {
-                let sortParam = '';
+                let sortParam = "";
                 switch (sortOrder) {
-                    case 'a-to-z':
-                        sortParam = 'name_asc';
+                    case "a-to-z":
+                        sortParam = "name_asc";
                         break;
-                    case 'z-to-a':
-                        sortParam = 'name_desc';
+                    case "z-to-a":
+                        sortParam = "name_desc";
                         break;
-                    case 'newest':
-                        sortParam = 'time_desc';
+                    case "newest":
+                        sortParam = "time_desc";
                         break;
-                    case 'oldest':
-                        sortParam = 'time_asc';
+                    case "oldest":
+                        sortParam = "time_asc";
                         break;
                     default:
                         break;
                 }
-                
+
                 if (sortParam) {
-                    params.append('sort', sortParam);
+                    params.append("sort", sortParam);
                 }
             }
 
             // Determine the appropriate endpoint based on category selection
-            let endpoint = selectedCategory 
-                ? `/products/categories/${selectedCategory}?${params.toString()}` 
-                : `/products?${params.toString()}`;
+            let endpoint = selectedCategory ? `/products/categories/${selectedCategory}?${params.toString()}` : `/products?${params.toString()}`;
 
             // Fetch products with constructed parameters
             const response = await api.get(endpoint);
-            
-            // Update state with response data  
-            console.log(response)
+
+            // Update state with response data
+            console.log(response);
             setProducts(response.data.data || []);
             setTotalPages(response.data.metadata.TotalPage || 0);
             setTotalProducts(response.data.metadata.TotalProducts || 0);
             setIsLoading(false);
         } catch (error) {
-            console.error('Error fetching products:', error);
+            console.error("Error fetching products:", error);
             setIsLoading(false);
             setProducts([]);
             setTotalPages(0);
@@ -156,18 +154,11 @@ const Catalog = () => {
                     </div>
 
                     <div className="flex items-center space-x-2">
-                        <button
-                            type="submit"
-                            className="md:w-[45px] md:h-[45px] w-[165px] h-[52px] bg-primary rounded-lg flex items-center justify-center"
-                        >
+                        <button type="submit" className="md:w-[45px] md:h-[45px] w-[165px] h-[52px] bg-primary rounded-lg flex items-center justify-center">
                             <img src="../src/assets/svg/search-button.svg" alt="filter" />
                         </button>
                         {(searchQuery || selectedCategory || sortOrder) && (
-                            <button
-                                type="button"
-                                onClick={handleResetFilters}
-                                className="md:w-[45px] md:h-[45px] w-[165px] h-[52px] bg-red-500 rounded-lg flex items-center justify-center"
-                            >
+                            <button type="button" onClick={handleResetFilters} className="md:w-[45px] md:h-[45px] w-[165px] h-[52px] bg-red-500 rounded-lg flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                 </svg>
@@ -188,33 +179,23 @@ const Catalog = () => {
             ) : products.length > 0 ? (
                 <div className="flex flex-wrap">
                     {products.map((product) => (
-                        <div 
-                            key={product.product_id} 
-                            className="w-1/2 sm:w-1/3 px-2 sm:px-5 mb-5"
-                        >
+                        <div key={product.product_id} className="w-1/2 sm:w-1/3 px-2 sm:px-5 mb-5">
                             <Card
-                                image={product.images[0]?.image_url || '/default-product.png'}
+                                image={product.images[0]?.image_url || "/default-product.png"}
                                 name={product.name}
                                 description={truncateContent(product.description, 100)}
-                                price={(product.price).toLocaleString("id-ID")}
+                                price={product.price.toLocaleString("id-ID")}
                                 link={`/detail-produk/${product.product_id}`}
+                                product={product}
                             />
                         </div>
                     ))}
                 </div>
             ) : (
-                <div className="text-center text-gray-500 mt-10 min-h-[300px]">
-                    Tidak ada produk yang ditemukan.
-                </div>
+                <div className="text-center text-gray-500 mt-10 min-h-[300px]">Tidak ada produk yang ditemukan.</div>
             )}
 
-            {!isLoading  && (
-                <Pagination 
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                />
-            )}
+            {!isLoading && <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />}
         </div>
     );
 };
