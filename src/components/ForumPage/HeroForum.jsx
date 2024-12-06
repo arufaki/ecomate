@@ -1,7 +1,5 @@
-
 import React from "react";
 import heroForum from '../../assets/png/heroForum.png';
-
 
 const HeroForum = () => {
     return (
@@ -14,14 +12,14 @@ const HeroForum = () => {
                         alt="bg-hero"
                         className="w-full h-[698px] sm:h-[500px] md:h-[698px] rounded-[0px] md:rounded-[50px] object-cover"
                     />
-                    
+
                     {/* Overlay */}
                     <div className="absolute inset-0 text-white bg-[#28282880] bg-opacity-50 rounded-[0px] md:rounded-[50px] flex flex-col items-center justify-center text-center px-4">
                         <h2 className="w-[329px] sm:w-[502px] text-[30px] sm:text-[48px] font-bold leading-normal tracking-[0.24px] mb-[16px]">
                             Selamat Datang di Forum Diskusi Kami!
                         </h2>
                         <p className="w-[283px] sm:w-[631px] text-[14px] sm:text-[24px] font-normal leading-normal tracking-[0.12px] pb-[22px]">
-                            Jelajahi topik-topik menarik, bagikan ide, dan berdiskusi dengan komunitas yang penuh inspirasi. Mari bersama menciptakan wawasan baru dan solusi inovatif di sini!
+                            Jelajahi topik-topik menarik, bagikan ide, dan berdiskusi dengan komunitas yang penuh inspirasi. Mari bersama menciptakan wawasan baru dan solusi inovatif di sini!
                         </p>
                         <p className="text-base flex items-center gap-2">
                             <a href="/">Beranda</a>
@@ -37,8 +35,8 @@ const HeroForum = () => {
                 </div>
             </div>
 
-            <div className=" flex flex-col w-[382px] sm:w-[1280px] mx-auto p-6 mt-[48px] justify-center items-center gap-[10px] rounded-[12px] border border-gray-300 bg-zinc-50">
-                {/* Input Search */}
+            {/* Form */}
+            <div className="absolute-top sm:flex sm:flex-col w-[382px] sm:w-[1280px] mx-auto p-6 mt-[-48px] sm:mt-[48px] justify-center items-center gap-[10px] rounded-[12px] border border-gray-300 bg-zinc-50">
                 <div className="flex flex-col items-start w-full">
                     <p className="text-[#262626] text-[16px] font-bold leading-[24px] tracking-[0.08px] mb-[10px]">
                         Cari
@@ -80,13 +78,12 @@ const HeroForum = () => {
                     </div>
                 </div>
 
-                {/* Button Buat Postingan */}
+                {/* Button Buat Postingan untuk layar kecil */}
                 <button className="text-white bg-[#2E7D32] text-sm sm:text-base md:text-[15px] w-[334px] h-[50px] md:h-[62px] mt-6 rounded-xl font-bold hover:bg-[#1B4B1E] transition-colors duration-300 block sm:hidden">
-                Buat Postingan
+                    Buat Postingan
                 </button>
             </div>
         </div>
-
     );
 };
 
