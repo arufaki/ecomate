@@ -5,25 +5,9 @@ import CartHeader from "../components/CartPage/CartHeader";
 import CardProducts from "../components/CartPage/CardProducts";
 import CartFooter from "../components/CartPage/CartFooter";
 import useCart from "../hooks/useCart";
-import { useEffect, useState } from "react";
-import api from "../services/api";
 import catalogBg from "../assets/jpg/bg-catalog.jpg";
 
 const CartPage = () => {
-    // const [initialProducts, setInitialProducts] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchCart = async () => {
-    //         try {
-    //             const response = await api.get("/cart");
-    //             setInitialProducts(response.data.data.items);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     };
-
-    //     fetchCart();
-    // }, []);
 
     const cart = useCart();
 
