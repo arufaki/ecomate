@@ -27,11 +27,11 @@ const ModalView = ({ selectedProduct }) => {
                 </div>
                 <div className="flex flex-row items-center justify-between">
                     <h1 className="font-bold text-[#404040] text-base flex-[1_55%]">Kategori Efek</h1>
-                    <InputForm id="name-label" type="text" defaultValue={selectedProduct?.category_impact[0]?.impact_category.name} disabled={true} placeholder="Nama Produk" />
+                    <InputForm id="name-label" type="text" defaultValue={selectedProduct?.category_impact[0]?.impact_category.name} disabled={true} placeholder="Kategori Impact" />
                 </div>
                 <div className="flex flex-row items-center justify-end mb-4">
-                    <div className="max-w-[290px] w-full">
-                        <InputForm id="name-label" type="text" defaultValue={selectedProduct?.category_impact[1]?.impact_category.name} disabled={true} placeholder="Nama Produk" />
+                    <div className="max-w-[300px] w-full">
+                        <InputForm id="name-label" type="text" defaultValue={selectedProduct?.category_impact[1]?.impact_category.name} disabled={true} placeholder="Kategori Impact" />
                     </div>
                 </div>
 
