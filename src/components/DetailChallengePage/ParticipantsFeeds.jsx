@@ -1,5 +1,5 @@
 import React from 'react';
-
+import User from '../../assets/jpg/user.jpg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Autoplay } from 'swiper/modules';
 
@@ -51,7 +51,7 @@ import 'swiper/css/pagination';
                         <SwiperSlide key={item.id} className="px-5">
                         <div className="">
                             <img 
-                            src="assets/jpg/user.jpg" 
+                            src={User}
                             className='w-[100px] h-[100px] mx-auto mb-4 rounded-full object-cover object-top relative top-14' 
                             alt={item.name} 
                             />
