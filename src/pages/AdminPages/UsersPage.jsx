@@ -55,20 +55,7 @@ const Users = () => {
         document.getElementById("my_modal_24").showModal();
     };
 
-    const handleEdit = async (id, data) => {
-        try {
-            const response = await api.put(`/admin/users/${id}`, data);
-            Toast.fire({
-                icon: "success",
-                title: "Sukses memperbarui data",
-            })
-        } catch (error) {
-            Toast.fire({
-                icon: "error",
-                title: "Gagal memperbarui data",
-            })
-        }
-    };
+    
 
     const handleDelete = async (data) => {
         try {
