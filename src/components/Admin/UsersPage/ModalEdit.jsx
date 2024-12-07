@@ -5,35 +5,48 @@ import api from "../../../services/api";
 import { Toast } from "../../../utils/function/toast";
 const ModalView = ({ selectedUser }) => {
     const [data, setData] = useState({
-        name: selectedUser?.name || "",
-        address: selectedUser?.address || "",
-        phone: selectedUser?.phone || "",
-        gender: selectedUser?.gender || "",
+        name: selectedUser?.name ?? "",
+        address: selectedUser?.address ?? "",
+        phone: selectedUser?.phone ?? "",
+        gender: selectedUser?.gender ?? "",
     });
-
-    // Fungsi untuk menangani perubahan input
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData((prevData) => ({
             ...prevData,
-            [name]: value,
+            [name]: value || "", // Pastikan tidak ada undefined
         }));
     };
-    const handleEdit = async (id, data) => {
+    
+    const handleEdit = async () => {
         try {
-            const response = await api.put(`/admin/users/${id}`, data);
-            console.log(response);
+            // Pastikan data tidak kosong dengan fallback ke data sebelumnya
+            const payload = {
+                address: data.address || selectedUser.address,
+                gender: data.gender || selectedUser.gender,
+                name: data.name || selectedUser.name,
+                phone: data.phone || selectedUser.phone,
+            };
+    
+            console.log("Payload yang dikirim:", payload);
+            const response = await api.put(`/admin/users/${selectedUser.id}`, payload);
             Toast.fire({
                 icon: "success",
                 title: "Sukses memperbarui data",
-            })
+            });
+            handleClose();
+            window.location.reload();
         } catch (error) {
+            console.error("Error response:", error.response);
             Toast.fire({
                 icon: "error",
                 title: "Gagal memperbarui data",
-            })
+            });
+            handleClose();
         }
     };
+    
     const handleClose = () => {
         document.getElementById("my_modal_24").close();
     };
@@ -64,13 +77,15 @@ const ModalView = ({ selectedUser }) => {
                 </div>
                 <div className="flex flex-row items-center justify-between">
                     <h1 className="font-bold text-[#404040] text-base flex-[1_55%]">Nama</h1>
-                    <InputForm
-                        id="name-label"
+                    <input 
                         type="text"
                         name="name"
                         value={data.name}
                         onChange={handleChange}
                         placeholder="Nama"
+                        className="py-3   w-full ps-5 text-[#1F2937] font-medium 
+                        bg-white rounded-lg text-sm border outline-none placeholder:text-[#6B7280] 
+                        placeholder:font-semibold placeholder:text-sm"
                     />
                 </div>
                 <div className="flex flex-row items-center justify-between">
@@ -95,13 +110,15 @@ const ModalView = ({ selectedUser }) => {
                 </div>
                 <div className="flex flex-row items-center justify-between">
                     <h1 className="font-bold text-[#404040] text-base flex-[1_55%]">No telepon</h1>
-                    <InputForm
-                        id="phone-label"
+                    <input
                         type="text"
                         name="phone"
                         value={data.phone}
                         onChange={handleChange}
-                        placeholder="Phone"
+                        placeholder="No telepon"
+                        className="py-3  w-full ps-5 text-[#1F2937] font-medium 
+                        bg-white rounded-lg text-sm border outline-none placeholder:text-[#6B7280] 
+                        placeholder:font-semibold placeholder:text-sm mb-5"
                     />
                 </div>
                 <div className="flex flex-row">
@@ -136,10 +153,7 @@ const ModalView = ({ selectedUser }) => {
                     </button>
                     <button
                         className="btn btn-outline btn-success !text-white border !bg-primary hover:!text-white"
-                        onClick={() => {
-                            handleEdit(selectedUser?.id, data); // Kirim ID produk untuk dihapus
-                            handleClose();
-                        }}
+                        onClick={handleEdit}
                     >
                         Edit Pengguna
                     </button>
