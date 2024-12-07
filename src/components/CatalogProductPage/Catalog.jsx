@@ -3,7 +3,7 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import api from "../../services/api";
 import { truncateContent } from "../../hooks/useTruncates";
-
+import { Search } from "lucide-react";
 const Catalog = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [products, setProducts] = useState([]);
@@ -155,7 +155,7 @@ const Catalog = () => {
 
                     <div className="flex items-center space-x-2">
                         <button type="submit" className="md:w-[45px] md:h-[45px] w-[165px] h-[52px] bg-primary rounded-lg flex items-center justify-center">
-                            <img src="../src/assets/svg/search-button.svg" alt="filter" />
+                            <Search className="w-5 h-5 text-white" />
                         </button>
                         {(searchQuery || selectedCategory || sortOrder) && (
                             <button type="button" onClick={handleResetFilters} className="md:w-[45px] md:h-[45px] w-[165px] h-[52px] bg-red-500 rounded-lg flex items-center justify-center">

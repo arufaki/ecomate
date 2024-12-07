@@ -204,7 +204,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col w-full mx-auto gap-6 text-neutral-800 items-center justify-center">
+            <div className="flex flex-col w-full mx-auto gap-6 text-neutral-800 items-center justify-center md:mt-0 mt-28">
                 <div>
                     <h1 className="text-3xl font-bold py-10">Review</h1>
                     <div className="relative  w-[375px] md:w-[1300px]  ">

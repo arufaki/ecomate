@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "preline";
-
+import Totebag from "../../assets/png/Totebag.png";
+import { Search } from "lucide-react";
 const MyChallenge = () => {
     const myChallenges = [
         {
           id: 1,
-          image: "assets/png/Totebag.png",
+          image: Totebag,
           title: "Challenge Hemat Energi",
           description: "Matikan lampu dan perangkat elektronik saat tidak digunakan .",
           level: "Sulit",
@@ -13,14 +14,14 @@ const MyChallenge = () => {
         },
         {
           id: 2,
-          image: "assets/png/Totebag.png",
+          image: Totebag,
           title: "Challenge Daur Ulang",
           description: "Pisahkan sampah organik dan non-organik untuk didaur ulang.",
           level: "Mudah",
         },
         {
           id: 3,
-          image: "assets/png/Totebag.png",
+          image: Totebag,
           title: "Challenge Kurangi Plastik",
           description: "Gunakan tas kain saat berbelanja untuk mengurangi penggunaan plastik.",
           level: "Sulit",
@@ -28,14 +29,14 @@ const MyChallenge = () => {
         },
         {
           id: 4,
-          image: "assets/png/Totebag.png",
+          image: Totebag,
           title: "Challenge Tanam Pohon",
           description: "Tanam setidaknya satu pohon untuk membantu penghijauan.",
           level: "Sedang",
         },
         {
           id: 5,
-          image: "assets/png/Totebag.png",
+          image: Totebag,
           title: "Challenge Hemat Air",
           description: "Kurangi konsumsi air dengan menutup keran saat menyikat gigi.",
           level: "Sulit",
@@ -43,7 +44,7 @@ const MyChallenge = () => {
         },
         {
           id: 6,
-          image: "assets/png/Totebag.png",
+          image: Totebag,
           title: "Challenge Kurangi Emisi",
           description: "Gunakan transportasi umum atau sepeda untuk mengurangi emisi karbon.",
           level: "Sulit",
@@ -51,17 +52,9 @@ const MyChallenge = () => {
         },
         {
           id: 7,
-          image: "assets/png/Totebag.png",
+          image: Totebag,
           title: "Challenge Kompos",
           description: "Ubah sampah organik menjadi kompos untuk pemupukan alami.",
-          level: "Sulit",
-           
-        },
-        {
-          id: 8,
-          image: "assets/png/Totebag.png",
-          title: "Challenge Bersih Lingkungan",
-          description: "Lakukan kegiatan bersih-bersih di lingkungan sekitar setiap minggu.",
           level: "Sulit",
            
         },
@@ -166,7 +159,8 @@ const MyChallenge = () => {
           className="bg-[#2E7D32] hover:bg-[#1B4B1E] h-[52px] w-full sm:w-[52px] rounded-[8px] flex items-center justify-center"
           onClick={handleSearchClick}
         >
-          <img src="assets/png/search.png" alt="search" className="h-[20px] w-[20px]" />
+
+          <Search className="w-5 h-5 text-white" />
         </button>
         
       </div>

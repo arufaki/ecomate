@@ -44,7 +44,7 @@ const Card = ({ image, name, description, price, link, product }) => {
                         onClick={() => handleClick(product)}
                     /> */}
                     <a href={link} className="text-white  bg-primary text-xs md:text-[15px] mt-5 w-[150px] md:w-[131px] h-[46px] rounded-xl font-bold hover:bg-[#1B4B1E]">
-                        <p className="mt-3.5 ml-4">Beli Sekarang</p>
+                        <p className="md:mt-3.5 md:ml-4 p-2 md:p-0">Beli Sekarang</p>
                     </a>
                     <button
                         onClick={() => handleClick(product)}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "preline";
 import Pagination from "../Pagination";
 import { Link } from "react-router";
+import Totebag from "../../assets/png/Totebag.png";
 const ListChallenge = () => {
   const [currentPage, setCurrentPage] = useState(1); 
   const itemsPerPage = 6; //maks card
@@ -9,14 +10,14 @@ const ListChallenge = () => {
   const sampleChallenges = [
     {
       id: 2,
-      image: "../src/assets/png/Totebag.png",
+      image: Totebag,
       title: "Challenge Daur Ulang",
       description: "Pisahkan sampah organik dan non-organik untuk didaur ulang.",
       level: "Mudah",
     },
     {
       id: 3,
-      image: "../src/assets/png/Totebag.png",
+      image: Totebag,
       title: "Challenge Kurangi Plastik",
       description: "Gunakan tas kain saat berbelanja untuk mengurangi penggunaan plastik.",
       level: "Sulit",
@@ -24,14 +25,14 @@ const ListChallenge = () => {
     },
     {
       id: 4,
-      image: "../src/assets/png/Totebag.png",
+      image: Totebag,
       title: "Challenge Tanam Pohon",
       description: "Tanam setidaknya satu pohon untuk membantu penghijauan.",
       level: "Sedang",
     },
     {
       id: 5,
-      image: "../src/assets/png/Totebag.png",
+      image: Totebag,
       title: "Challenge Hemat Air",
       description: "Kurangi konsumsi air dengan menutup keran saat menyikat gigi.",
       level: "Sulit",
@@ -39,7 +40,7 @@ const ListChallenge = () => {
     },
     {
       id: 6,
-      image: "../src/assets/png/Totebag.png",
+      image: Totebag,
       title: "Challenge Kurangi Emisi",
       description: "Gunakan transportasi umum atau sepeda untuk mengurangi emisi karbon.",
       level: "Sulit",
@@ -47,7 +48,7 @@ const ListChallenge = () => {
     },
     {
       id: 7,
-      image: "../src/assets/png/Totebag.png",
+      image: Totebag,
       title: "Challenge Kompos",
       description: "Ubah sampah organik menjadi kompos untuk pemupukan alami.",
       level: "Sulit",
@@ -55,7 +56,7 @@ const ListChallenge = () => {
     },
     {
       id: 8,
-      image: "../src/assets/png/Totebag.png",
+      image: Totebag,
       title: "Challenge Bersih Lingkungan",
       description: "Lakukan kegiatan bersih-bersih di lingkungan sekitar setiap minggu.",
       level: "Sulit",

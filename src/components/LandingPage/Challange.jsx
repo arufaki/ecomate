@@ -1,24 +1,24 @@
 import React from "react";
-
+import Background from "../../assets/jpg/bg-hero.jpg";
 const ChallengeLanding = () => {
     const challenges = [
         {
         title: "Green Commute Challenge",
         description:
             "Tinggalkan kendaraan bermotor selama seminggu! Pilih berjalan kaki, bersepeda, atau naik transportasi umum untuk mengurangi jejak karbonmu.",
-        image: "../src/assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
+        image: Background, // Ganti dengan URL gambar yang sesuai
         link: "#",
         },
         {
         title: "Energy Saver Challenge",
         description: "Hemat energi listrik selama seminggu!",
-        image: "../src/assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
+        image: Background, // Ganti dengan URL gambar yang sesuai
         link: "#",
         },
         {
         title: "Plastic Free Week Challenge",
         description: "Kurangi penggunaan plastik selama seminggu!",
-        image: "../src/assets/jpg/bg-hero.jpg", // Ganti dengan URL gambar yang sesuai
+        image: Background, // Ganti dengan URL gambar yang sesuai
         link: "#",
         },
         
