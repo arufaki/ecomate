@@ -17,6 +17,7 @@ import PaymentPage from "./pages/PaymentPage";
 import DayChallengePage from "./pages/DayChallengePage";
 import Dashboard from "./pages/AdminPages/Dashboard";
 import UsersPage from "./pages/AdminPages/UsersPage";
+import Products from "./pages/AdminPages/Products";
 const App = () => {
     return (
         <Router>
@@ -30,11 +31,13 @@ const App = () => {
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
                 {/* Guest routes (untuk login dan register, hanya bisa diakses oleh user yang belum login) */}
-                <Route element={<GuestRoute />}>
+                <Route element={<GuestRoute redirectPath="/" />}>
                     {/* End User Route */}
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
+                </Route>
 
+                <Route element={<GuestRoute redirectPath="/admin/dashboard" />}>
                     {/* Admin Route protected */}
                     <Route path="/login-admin" element={<AdminLoginPage />} />
                 </Route>
@@ -48,9 +51,11 @@ const App = () => {
 
                     {/* Admin Route */}
                     {/* email admin: admin2@ecomate.store pass : admin2 */}
+
                     <Route path="/add-product" element={<AddProductPage />} />
                     <Route path="/admin/dashboard" element={<Dashboard />} />
                     <Route path="/admin/pengguna" element={<UsersPage />} />
+                    <Route path="/admin/produk" element={<Products />} />
                 </Route>
             </Routes>
         </Router>

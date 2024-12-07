@@ -167,17 +167,13 @@ const useCart = () => {
     const handleCheckout = async () => {
         const data = {
             cart_ids: checkedProducts.map((check) => check.id),
-            using_coin: true,
+            using_coin: false,
         };
-
-        localStorage.setItem("cart_ids", JSON.stringify(data.cart_ids));
-        // navigate(`/payment/ini-cart-id`);
 
         try {
             const response = await api.post("/transactions", data);
-            console.log(response.data.data);
             if (response.status === 200) {
-                navigate(`/payment/${response.data.data.id}`, { state: { checkout: response.data.data } });
+                navigate(`/payment/${response.data.data.id}`, { state: { cart_ids: data.cart_ids, transaction: response.data.data } });
             }
         } catch (error) {
             console.log(error);

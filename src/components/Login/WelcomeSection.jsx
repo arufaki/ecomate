@@ -4,7 +4,7 @@ import Polygon3 from "../../assets/svg/triangle/polygon3.svg";
 import Polygon4 from "../../assets/svg/triangle/polygon4.png";
 import Bubble from "../../assets/svg/triangle/bubble.png";
 
-const WelcomeSection = () => {
+const WelcomeSection = ({title}) => {
     return (
         <div className="tablet:flex-[1_43%] mobile:flex-none w-full relative h-full mobile:pb-[18px] tablet:pb-0">
             <div className="max-w-[657px] mx-auto tablet:px-10 tablet:py-[50px] mobile:px-6 mobile:py-7 tablet:h-screen mobile:h-full">
@@ -16,7 +16,7 @@ const WelcomeSection = () => {
                 {/* Content */}
                 <div className="tablet:w-[365px] mx-auto flex flex-col items-center justify-center tablet:h-[80%] mobile:pt-12 mobilelg:max-w-[450px] mobile:max-w-[250px]">
                     <h1 className="font-semibold tablet:text-[48px] mobilelg:text-[34px] mobile:text-[24px] text-center text-white mobile:leading-[32px] tablet:leading-[48px] tablet:mb-[36px] mobilelg:mb-[26px] mobile:mb-[18px] z-10">
-                        Selamat Datang di EcoMate!
+                        {title}
                     </h1>
                     <p className="text-center text-white tablet:text-lg mobilelg:text-base mobile:text-sm font-normal leading-[28px] z-10">
                         Mulai langkah hijau Anda untuk kehidupan yang lebih berkelanjutan dan bermakna!
