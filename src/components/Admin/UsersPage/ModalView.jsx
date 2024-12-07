@@ -39,7 +39,8 @@ const ModalView = ({ selectedUser }) => {
                 </div>
                 <div className="flex flex-row ">
                     <h1 className="font-bold text-[#404040] text-base ">Jenis Kelamin</h1>
-                    <input type="radio" name="gender" id="male" className="radio radio-success mx-16" defaultChecked={selectedUser?.gender === ""} disabled={true} />
+                    <input type="radio" name="gender" id="male" className="radio radio-success ml-16 mr-2" checked disabled={true} />
+                    {selectedUser?.name}
                 </div>
                 <div className="flex flex-row items-center justify-end gap-4 mb-4">
                     <button
