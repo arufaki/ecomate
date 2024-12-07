@@ -1,6 +1,8 @@
 import React from "react";
-
-
+import Logo from "../assets/png/Logo.png";
+import Whatsapp from "../assets/png/whatsapp.png";
+import Tiktok from "../assets/png/tiktok.png";
+import Instagram from "../assets/png/instagram.png";
 
 const Footer = () => {
   return (
@@ -11,7 +13,7 @@ const Footer = () => {
         <div className="flex flex-col items-start space-y-4">
           <div className="flex items-center space-x-3">
             <img 
-              src="../src/assets/webp/Logo.webp" 
+              src={Logo}
               alt="EcoMate Logo" 
               className="w-12 h-12" 
             />
@@ -23,21 +25,42 @@ const Footer = () => {
           </p>
 
           <div className="flex space-x-4">
-            {['Whatsapp', 'Tiktok', 'Instagram'].map((social) => (
               <a 
-                key={social} 
                 href="#" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
               >
                 <img 
-                  src={`../src/assets/png/${social}.png`} 
-                  alt={social} 
+                  src={Whatsapp}
+                  alt="Whatsapp"
                   className="w-6 h-6" 
                 />
               </a>
-            ))}
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <img 
+                  src={Tiktok}
+                  alt="Tiktok"
+                  className="w-6 h-6" 
+                />
+              </a>
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <img 
+                  src={Instagram}
+                  alt="Instagram" 
+                  className="w-6 h-6" 
+                />
+              </a>
           </div>
         </div>
 
