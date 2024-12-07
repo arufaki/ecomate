@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from "react-router";
 import useAuthStore from "../stores/useAuthStore";
 
-const GuestRoute = () => {
+const GuestRoute = ({ redirectPath }) => {
     const { token } = useAuthStore();
 
     if (token) {
-        return <Navigate to="/" replace />;
+        return <Navigate to={redirectPath} replace />;
     }
 
     return <Outlet />;
