@@ -25,9 +25,6 @@ const Products = () => {
     const [metadata, setMetadata] = useState({});
     const [selectedPage, setSelectedPage] = useState(1);
 
-    const [existEdit, setExistEdit] = useState(null);
-
-    const { selectedProduct, handleShowModal } = useProductForm(existEdit);
     const [deleteProduct, setDeleteProduct] = useState(null);
 
     const fetchProduct = async () => {
@@ -39,6 +36,8 @@ const Products = () => {
             console.log(error);
         }
     };
+
+    const { selectedProduct, handleShowModal } = useProductForm(fetchProduct);
 
     const pages = Array.from({ length: metadata.TotalPage }, (_, index) => index + 1);
 
@@ -78,12 +77,6 @@ const Products = () => {
         fetchProduct();
     }, [selectedPage]);
 
-    const handleEditProduct = (data) => {
-        setExistEdit(data);
-        console.log(existEdit);
-        document.getElementById("my_modal_5").showModal();
-    };
-
     return (
         <div>
             <Sidebar isOpen={sidebarOpen} toggleSidebar={() => sidebarOpen(!sidebarOpen)} active="Dashboard" />
@@ -103,7 +96,7 @@ const Products = () => {
                                     <img src={arrow} alt="Arrow Right" className="inline-block w-1 h-3 mx-2 " /> <strong className="cursor-pointer">Produk</strong>
                                 </p>
                             </div>
-                            <ModalProduct existEdit={existEdit} />
+                            <ModalProduct />
                         </div>
                         {/* Card */}
                         <div className="p-3 rounded-lg bg-white border border-[#E5E7EB]">
@@ -212,7 +205,7 @@ const Products = () => {
                                                                                 }}
                                                                             />
                                                                         </button>
-                                                                        <button onClick={() => handleEditProduct(product)}>
+                                                                        <button>
                                                                             <img src={pencil} alt="pencil-icon" />
                                                                         </button>
                                                                         <button
