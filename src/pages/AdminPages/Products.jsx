@@ -87,7 +87,7 @@ const Products = () => {
 
     return (
         <div>
-            <Sidebar isOpen={sidebarOpen} toggleSidebar={() => sidebarOpen(!sidebarOpen)} active="Dashboard" />
+            <Sidebar isOpen={sidebarOpen} toggleSidebar={() => sidebarOpen(!sidebarOpen)} active="Produk" />
             <div className={`transition-all duration-300 ${sidebarOpen ? "ml-[260px]" : "ml-28"}`}>
                 <Header />
 
