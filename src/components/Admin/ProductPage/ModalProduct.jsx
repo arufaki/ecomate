@@ -17,8 +17,8 @@ const ModalProduct = () => {
                     <div className="flex flex-row items-center justify-between">
                         <h1 className="font-bold text-[#404040] text-base">Foto Produk</h1>
                         <div className="flex flex-row items-center gap-8 ">
-                            <div className={`border border-[#E5E7EB] rounded-2xl ${!imagePreview && "p-8"}`}>
-                                <img src={imagePreview ? imagePreview : imageBg} className={imagePreview && "w-[120px] h-[120px] object-cover rounded-2xl"} />
+                            <div className={`border border-[#E5E7EB] rounded-2xl ${imagePreview ? "w-[120px] h-[120px] object-cover rounded-2xl" : "p-8"}`}>
+                                <img src={imagePreview ? imagePreview : imageBg} className="object-cover rounded-2xl w-full h-full" alt="Preview" />
                             </div>
                             <div>
                                 <label htmlFor="file-upload" className="btn btn-success !text-white bg-[#2E7D32] border border-[#2E7D32] flex items-center gap-2">
@@ -55,12 +55,12 @@ const ModalProduct = () => {
                             <option disabled value="">
                                 Pilih Kategori
                             </option>
-                            <option defaultValue="Baju">Baju</option>
-                            <option defaultValue="Sepatu">Sepatu</option>
-                            <option defaultValue="Sandal">Sandal</option>
-                            <option defaultValue="Perabot">Perabot</option>
-                            <option defaultValue="Tas">Tas</option>
-                            <option defaultValue="Aksesoris">Aksesoris</option>
+                            <option value="Baju">Baju</option>
+                            <option value="Sepatu">Sepatu</option>
+                            <option value="Sandal">Sandal</option>
+                            <option value="Perabot">Perabot</option>
+                            <option value="Tas">Tas</option>
+                            <option value="Aksesoris">Aksesoris</option>
                         </select>
 
                         {errors.category && <p className="text-[#EF4444] text-xs mt-2">{errors.category.message}</p>}
@@ -71,6 +71,7 @@ const ModalProduct = () => {
                         <select
                             className="select w-full max-w-xs border border-slate-300"
                             id="category-impact"
+                            // value={impacts.find((impact) => impact.name === existEdit?.category_impact[0]?.impact_category.name)?.id || ""}
                             defaultValue=""
                             {...register("category_impact", {
                                 required: "Silakan pilih impact yang valid.",
@@ -151,10 +152,10 @@ const ModalProduct = () => {
                         />
                     </div>
                     <div className="flex flex-row items-center justify-end gap-4 mb-4">
-                        <button className="btn btn-outline btn-success !text-[#2E7D32] border border-[#2E7D32] hover:!bg-[#2E7D32] hover:!text-white" disabled={loading} onClick={closeModal}>
+                        <span className="btn btn-outline btn-success !text-[#2E7D32] border border-[#2E7D32] hover:!bg-[#2E7D32] hover:!text-white" disabled={loading} onClick={closeModal}>
                             Batalkan
-                        </button>
-                        <button className="btn btn-success !text-white bg-[#2E7D32] border border-[#2E7D32]" disabled={loading}>
+                        </span>
+                        <button type="submit" className="btn btn-success !text-white bg-[#2E7D32] border border-[#2E7D32]" disabled={loading}>
                             {loading ? <span className="loading loading-spinner text-success"></span> : "Tambah Produk"}
                         </button>
                     </div>

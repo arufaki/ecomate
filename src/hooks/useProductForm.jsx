@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import api from "../services/api";
 import { Toast } from "../utils/function/toast";
 
-const useProductForm = () => {
+const useProductForm = (fetchProduct) => {
     const {
         register,
         handleSubmit,
@@ -16,7 +16,6 @@ const useProductForm = () => {
     const [imagePreview, setImagePreview] = useState(null);
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
-
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     useEffect(() => {
@@ -33,10 +32,13 @@ const useProductForm = () => {
 
     const handleModal = () => {
         document.getElementById("my_modal_5").showModal();
+        setSelectedProduct(null);
+        reset();
     };
 
     const closeModal = () => {
         document.getElementById("my_modal_5").close();
+        setSelectedProduct(null);
     };
 
     const handleImageChange = (e) => {
@@ -116,6 +118,9 @@ const useProductForm = () => {
                 reset();
                 closeModal();
                 setImagePreview(null);
+                if (fetchProduct) {
+                    fetchProduct();
+                }
             } else {
                 console.warn(response);
                 Toast.fire({
