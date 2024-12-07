@@ -1,15 +1,13 @@
 // Sidebar.jsx
 import React, { useState } from 'react';
 import useSideBarStore from '../../stores/useSideBarStore';
-import useAuthStore from '../../stores/useAuthStore';
+import { Link } from 'react-router';
 import Logo from "../../assets/png/Logo.png"
 import { HomeIcon, UsersIcon, LogOutIcon, ShoppingBasket, ChevronLeftCircleIcon, ChevronRightCircleIcon} from "lucide-react"
-import { Link, useNavigate } from 'react-router';
-import { logoutAlert, Toast } from "../../utils/function/toast";
+
 const Sidebar = ({active}) => {
     const { isOpen, toggleSidebar } = useSideBarStore();
-    const { clearToken } = useAuthStore();
-    const navigate = useNavigate();
+
     const menuItems = [
         { title: 'Dashboard', icon: HomeIcon, path: '/admin/dashboard' },
         { title: 'Pengguna', icon: UsersIcon, path: '/admin/pengguna' },
@@ -18,25 +16,7 @@ const Sidebar = ({active}) => {
         { title: 'Pesanan', icon: ChevronRightCircleIcon, path: '/admin/pesanan' },
         { title: 'Kategori Efek', icon: ChevronRightCircleIcon, path: '/admin/kategori' },
     ];
-    const handleLogout = () => {
-    const logoutAction = () => {
-            // Clear the authentication token
-            clearToken();
-
-            // Redirect to login page
-            navigate('/');
-            
-            // Show success message
-            Toast.fire({
-                icon: "success",
-                title: "Logout Berhasil.",
-            });
-            // Close dropdown
-            };
-        
-            // Show logout confirmation alert
-            logoutAlert(logoutAction);
-    };
+    
     return (
         <div className={`fixed left-0 top-0 h-screen bg-white text-primary transition-all duration-300 ease-in-out ${isOpen ? 'w-[260px]' : 'w-28'}`}>
         <div className="flex h-full flex-col">
@@ -66,14 +46,6 @@ const Sidebar = ({active}) => {
                 </Link>
             ))}
             </nav>
-
-            {/* Footer */}
-            <div className="shadow p-4">
-            <button className="flex w-full items-center rounded-lg p-3 text-gray-300 transition-colors hover:bg-red-500 hover:text-white" onClick={handleLogout}>
-                <LogOutIcon className="h-6 w-6" />
-                <span className={`ml-4 ${!isOpen && 'hidden'}`}>Logout</span>
-            </button>
-            </div>
         </div>
         </div>
     );

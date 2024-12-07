@@ -16,6 +16,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import PaymentPage from "./pages/PaymentPage";
 import DayChallengePage from "./pages/DayChallengePage";
 import Dashboard from "./pages/AdminPages/Dashboard";
+import UsersPage from "./pages/AdminPages/UsersPage";
 import Products from "./pages/AdminPages/Products";
 const App = () => {
     return (
@@ -53,6 +54,7 @@ const App = () => {
 
                     <Route path="/add-product" element={<AddProductPage />} />
                     <Route path="/admin/dashboard" element={<Dashboard />} />
+                    <Route path="/admin/pengguna" element={<UsersPage />} />
                     <Route path="/admin/produk" element={<Products />} />
                 </Route>
             </Routes>
