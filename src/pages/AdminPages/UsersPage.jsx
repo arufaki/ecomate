@@ -11,16 +11,17 @@ import arrow from "../../assets/svg/admin-icon/arrow-right.svg";
 import { Toast } from "../../utils/function/toast";
 import { Plus, Search } from "lucide-react";
 import { Link } from "react-router";
+import ModalDelete from "../../components/Admin/UsersPage/ModalDelete";
+import ModalView from "../../components/Admin/UsersPage/ModalView";
 const Users = () => {
     const { isOpen: sidebarOpen } = useSideBarStore();
     const [selectedPage, setSelectedPage] = useState(1);
     const [users, setUsers] = useState([]);
     const [metadata, setMetadata] = useState({});
-
+    const [selectedUsers, setSelectedUsers] = useState(null);
     const fetchUsers = async () => {
         try {
             const response = await api.get(`/admin/users?pages=${selectedPage}`);
-            console.log(response.data.data);
             setUsers(response.data.data);
             setMetadata(response.data.metadata);
         } catch (error) {
@@ -44,18 +45,22 @@ const Users = () => {
             setSelectedPage(selectedPage + 1);
         }
     };
-
+    const handleShowModal = (user) => {
+        setSelectedUsers(user);
+        document.getElementById("my_modal_22").showModal();
+    };
     const handleEdit = (data) => {
         console.log(data);
     };
 
     const handleDelete = async (data) => {
         try {
-            await api.delete(`/products/${data}`);
+            await api.delete(`/admin/users/${data}`);
             Toast.fire({
                 icon: "success",
-                title: "Sukses hapus data product",
+                title: "Sukses hapus data pengguna",
             });
+            window.location.reload();
         } catch (error) {
             Toast.fire({
                 icon: "error",
@@ -179,13 +184,19 @@ const Users = () => {
                                                                             <img
                                                                                 src={eye}
                                                                                 alt="eye-icon"
-                                                                                
+                                                                                onClick={() => {
+                                                                                    handleShowModal(user);
+                                                                                }}
                                                                             />
                                                                         </button>
                                                                         <button >
                                                                             <img src={pencil} alt="pencil-icon" />
                                                                         </button>
                                                                         <button
+                                                                            onClick={() => {
+                                                                            document.getElementById("my_modal_23").showModal();
+                                                                            setSelectedUsers(user.id);
+                                                                        }}
                                                                         >
                                                                             <img src={trash} alt="trash-icon" />
                                                                         </button>
@@ -202,9 +213,9 @@ const Users = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <ModalDelete handleDelete={() => handleDelete(selectedProduct)} />
+                            <ModalDelete handleDelete={() => handleDelete(selectedUsers)} />
 
-                            <ModalView selectedProduct={selectedProduct} /> */}
+                            <ModalView selectedUser={selectedUsers} /> 
                             <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center">
                                 <div className="max-w-sm space-y-3">
                                     <select
