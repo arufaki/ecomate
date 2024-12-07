@@ -13,7 +13,60 @@ import { Plus, Search } from "lucide-react";
 import { Link } from "react-router";
 const Users = () => {
     const { isOpen: sidebarOpen } = useSideBarStore();
-    
+    const [selectedPage, setSelectedPage] = useState(1);
+    const [users, setUsers] = useState([]);
+    const [metadata, setMetadata] = useState({});
+
+    const fetchUsers = async () => {
+        try {
+            const response = await api.get(`/admin/users?pages=${selectedPage}`);
+            console.log(response.data.data);
+            setUsers(response.data.data);
+            setMetadata(response.data.metadata);
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    };
+    const pages = Array.from({ length: metadata.total_page }, (_, index) => index + 1);
+
+    const handlePageChange = (e) => {
+        setSelectedPage(Number(e.target.value));
+    };
+
+    const handlePrevPage = () => {
+        if (selectedPage > 1) {
+            setSelectedPage(selectedPage - 1);
+        }
+    };
+
+    const handleNextPage = () => {
+        if (selectedPage < metadata.TotalPage) {
+            setSelectedPage(selectedPage + 1);
+        }
+    };
+
+    const handleEdit = (data) => {
+        console.log(data);
+    };
+
+    const handleDelete = async (data) => {
+        try {
+            await api.delete(`/products/${data}`);
+            Toast.fire({
+                icon: "success",
+                title: "Sukses hapus data product",
+            });
+        } catch (error) {
+            Toast.fire({
+                icon: "error",
+                title: "Hapus Data Gagal!",
+            });
+        }
+    };
+        useEffect(() => {   
+            fetchUsers();
+        }, []);
+
     return (
         <div>
         <Sidebar    isOpen={sidebarOpen} 
