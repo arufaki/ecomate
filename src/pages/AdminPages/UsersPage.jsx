@@ -13,6 +13,7 @@ import { Plus, Search } from "lucide-react";
 import { Link } from "react-router";
 import ModalDelete from "../../components/Admin/UsersPage/ModalDelete";
 import ModalView from "../../components/Admin/UsersPage/ModalView";
+import ModalEdit from "../../components/Admin/UsersPage/ModalEdit";
 const Users = () => {
     const { isOpen: sidebarOpen } = useSideBarStore();
     const [selectedPage, setSelectedPage] = useState(1);
@@ -49,8 +50,24 @@ const Users = () => {
         setSelectedUsers(user);
         document.getElementById("my_modal_22").showModal();
     };
-    const handleEdit = (data) => {
-        console.log(data);
+    const handleShowModalEdit = (data) => {
+        setSelectedUsers(data);
+        document.getElementById("my_modal_24").showModal();
+    };
+
+    const handleEdit = async (id, data) => {
+        try {
+            const response = await api.put(`/admin/users/${id}`, data);
+            Toast.fire({
+                icon: "success",
+                title: "Sukses memperbarui data",
+            })
+        } catch (error) {
+            Toast.fire({
+                icon: "error",
+                title: "Gagal memperbarui data",
+            })
+        }
     };
 
     const handleDelete = async (data) => {
@@ -189,8 +206,11 @@ const Users = () => {
                                                                                 }}
                                                                             />
                                                                         </button>
-                                                                        <button >
-                                                                            <img src={pencil} alt="pencil-icon" />
+                                                                        <button 
+                                                                        >
+                                                                            <img src={pencil} alt="pencil-icon" 
+                                                                            onClick={() => handleShowModalEdit(user)}/>
+
                                                                         </button>
                                                                         <button
                                                                             onClick={() => {
@@ -214,7 +234,7 @@ const Users = () => {
                                 </div>
                             </div>
                             <ModalDelete handleDelete={() => handleDelete(selectedUsers)} />
-
+                            <ModalEdit selectedUser={selectedUsers} />
                             <ModalView selectedUser={selectedUsers} /> 
                             <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center">
                                 <div className="max-w-sm space-y-3">
