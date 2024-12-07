@@ -25,7 +25,10 @@ const Products = () => {
     const [metadata, setMetadata] = useState({});
     const [selectedPage, setSelectedPage] = useState(1);
 
-    const { selectedProduct, handleShowModal } = useProductForm();
+    const [existEdit, setExistEdit] = useState(null);
+
+    const { selectedProduct, handleShowModal } = useProductForm(existEdit);
+    const [deleteProduct, setDeleteProduct] = useState(null);
 
     const fetchProduct = async () => {
         try {
@@ -55,17 +58,14 @@ const Products = () => {
         }
     };
 
-    const handleEdit = (data) => {
-        console.log(data);
-    };
-
-    const handleDelete = async (data) => {
+    const handleDelete = async () => {
         try {
-            await api.delete(`/products/${data}`);
+            await api.delete(`/products/${deleteProduct}`);
             Toast.fire({
                 icon: "success",
                 title: "Sukses hapus data product",
             });
+            fetchProduct();
         } catch (error) {
             Toast.fire({
                 icon: "error",
@@ -76,7 +76,13 @@ const Products = () => {
 
     useEffect(() => {
         fetchProduct();
-    }, [selectedPage, handleDelete]);
+    }, [selectedPage]);
+
+    const handleEditProduct = (data) => {
+        setExistEdit(data);
+        console.log(existEdit);
+        document.getElementById("my_modal_5").showModal();
+    };
 
     return (
         <div>
@@ -97,7 +103,7 @@ const Products = () => {
                                     <img src={arrow} alt="Arrow Right" className="inline-block w-1 h-3 mx-2 " /> <strong className="cursor-pointer">Produk</strong>
                                 </p>
                             </div>
-                            <ModalProduct />
+                            <ModalProduct existEdit={existEdit} />
                         </div>
                         {/* Card */}
                         <div className="p-3 rounded-lg bg-white border border-[#E5E7EB]">
@@ -206,13 +212,13 @@ const Products = () => {
                                                                                 }}
                                                                             />
                                                                         </button>
-                                                                        <button onClick={() => handleEdit(product)}>
+                                                                        <button onClick={() => handleEditProduct(product)}>
                                                                             <img src={pencil} alt="pencil-icon" />
                                                                         </button>
                                                                         <button
                                                                             onClick={() => {
                                                                                 document.getElementById("my_modal_3").showModal();
-                                                                                setSelectedProduct(product.product_id);
+                                                                                setDeleteProduct(product.product_id);
                                                                             }}
                                                                         >
                                                                             <img src={trash} alt="trash-icon" />
