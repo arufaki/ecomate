@@ -84,7 +84,7 @@ const Users = () => {
             <div className="max-w-[100rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                         <div className="flex items-center justify-between">
                             <div>
-                                <h1 className="font-bold text-2xl text-[#4B5563] mb-4">Pengguna</h1>
+                                <h1 className="font-bold text-2xl text-[#4B5563] mb-4">Pengguna tongkat sakti</h1>
                                 <p className="text-base mb-8 text-[#4B5563]">
                                     <Link to="/admin/dashboard" className="cursor-pointer">
                                         Dashboard
