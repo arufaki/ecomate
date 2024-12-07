@@ -3,10 +3,10 @@ import heroForum from '../../assets/png/heroForum.png';
 
 const HeroForum = () => {
     return (
-        <div className="bg-secondary pt-[80px] sm:pt-[96px] md:pt-40 mb-20">
+        <div className="bg-secondary pt-[80px] sm:pt-[96px] md:pt-40 mb-0 sm:mb-[24px] ">
             <div className="relative group overflow-hidden rounded-0 sm:rounded-lg max-w-full">
                 {/* Background Image */}
-                <div className="relative w-full max-w-[1328px] mx-auto">
+                <div className="relative w-full max-w-[1328px] mx-auto z-0">
                     <img
                         src={heroForum}
                         alt="bg-hero"
@@ -36,7 +36,7 @@ const HeroForum = () => {
             </div>
 
             {/* Form */}
-            <div className="absolute-top sm:flex sm:flex-col w-[382px] sm:w-[1280px] mx-auto p-6 mt-[-48px] sm:mt-[48px] justify-center items-center gap-[10px] rounded-[12px] border border-gray-300 bg-zinc-50">
+            <div className="relative sm:flex sm:flex-col w-[382px] sm:w-[1280px] mx-auto p-6 mt-[-70px] sm:mt-[48px] sm:relative z-10 justify-center items-center gap-[10px] rounded-[12px] border border-gray-300 bg-white">
                 <div className="flex flex-col items-start w-full">
                     <p className="text-[#262626] text-[16px] font-bold leading-[24px] tracking-[0.08px] mb-[10px]">
                         Cari
@@ -65,9 +65,8 @@ const HeroForum = () => {
                                 type="text"
                                 role="combobox"
                                 aria-expanded="false"
-                                placeholder="Cari tantangan"
+                                placeholder="Cari topik"
                                 defaultValue=""
-                                data-hs-combo-box-input=""
                             />
                         </div>
 
