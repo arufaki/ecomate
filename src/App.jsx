@@ -12,6 +12,8 @@ import DetailChallengePage from "./pages/DetailChallengePage";
 import Chatbot from "./pages/Chatbot";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
+import ForumPage from "./pages/ForumPage";
+import PostMobile from './components/ForumPage/PostMobile';
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PaymentPage from "./pages/PaymentPage";
 import DayChallengePage from "./pages/DayChallengePage";
@@ -25,6 +27,8 @@ const App = () => {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/tantangan" element={<ListChallengePage />} />
                 <Route path="/belanja" element={<CatalogProductPage />} />
+                <Route path="/forum" element={<ForumPage />} />
+                <Route path="/post-mobile" element={<PostMobile />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan" element={<DetailChallengePage />} />
                 <Route path="/detail-tantangan/id/day" element={<DayChallengePage />} />
