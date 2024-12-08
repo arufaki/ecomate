@@ -51,7 +51,7 @@ const ForumPost = ({ onCommentClick }) => {
         {postDataArray.map((post, index) => (
           visiblePostIndex === null || visiblePostIndex === index ? (
             <div key={index} className="bg-white rounded-[16px] mb-[24px] pt-[51px] pb-[49px] px-[46px]">
-              {/* Header Post */}
+
               <div className="flex items-start gap-4">
                 <img className="w-[50px] h-[50px] rounded-full" src={post.user.profileImage} alt={`Profile ${post.user.name}`} />
                 <div className="flex flex-col sm:flex-row">

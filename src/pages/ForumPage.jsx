@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import HeroForum from "../components/ForumPage/heroForum";
+import HeroForum from "../components/ForumPage/HeroForum";
 import ForumPost from "../components/ForumPage/ForumPost";
 
 const ForumPage = () => {
@@ -15,7 +15,7 @@ const ForumPage = () => {
     <div className="bg-secondary">
       <Navbar active="forum" />
       <div className="min-h-screen">
-        {showHero && <HeroForum />} {/* Menampilkan HeroForum berdasarkan state showHero */}
+        {showHero && <HeroForum />} 
         <ForumPost onCommentClick={handleCommentClick} />        
       </div>
       <Footer />

@@ -15,6 +15,8 @@ import AddProductAdmin from "./components/Admin/AddImpact";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
 import ForumPage from "./pages/ForumPage";
+import PostMobile from './components/ForumPage/PostMobile';
+
 
 const App = () => {
     return (
@@ -24,6 +26,7 @@ const App = () => {
                 <Route path="/tantangan" element={<ListChallengePage />} />
                 <Route path="/belanja" element={<CatalogProductPage />} />
                 <Route path="/forum" element={<ForumPage />} />
+                <Route path="/post-mobile" element={<PostMobile />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan" element={<DetailChallengePage />} />
                 <Route
