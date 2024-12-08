@@ -7,7 +7,7 @@ import GoogleLogin from "../components/Login/GoogleLogin";
 import { Toast } from "../utils/function/toast";
 import api from "../services/api";
 import useAuthStore from "../stores/useAuthStore";
-import email from "../assets/svg/email.svg"
+import email from "../assets/svg/email.svg";
 
 const LoginPage = () => {
     // State untuk show password login
@@ -71,7 +71,7 @@ const LoginPage = () => {
     return (
         <section className="bg-[#45BA4B]">
             <div className="flex tablet:flex-row mobile:flex-col w-full mx-auto min-h-screen">
-                <WelcomeSection />
+                <WelcomeSection title="Selamat Datang di EcoMate!" />
 
                 {/* Form Login */}
                 <div className="flex-[1_50%] w-full flex flex-col items-center justify-center bg-white mobile:rounded-t-[60px] tablet:rounded-t-none mobile:pt-[28px] tablet:pt-0">

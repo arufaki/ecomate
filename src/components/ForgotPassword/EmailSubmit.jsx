@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import InputForm from "../Login/InputForm";
 import { Link } from "react-router";
-
+import Key from "../../assets/svg/key.svg";
+import Email from "../../assets/svg/email.svg";
 const EmailSubmit = ({ formData, onNext }) => {
     // Mendefinisikan use Form
     const {
@@ -44,7 +45,7 @@ const EmailSubmit = ({ formData, onNext }) => {
         <>
             <div className="text-center mb-6">
                 <div className="w-full mb-6">
-                    <img src="../src/assets/svg/key.svg" className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
+                    <img src={Key} className="mx-auto bg-[#ddf3df] p-3 rounded-full" alt="key-icon" />
                 </div>
                 <h1 className="font-bold text-[24px]">Lupa Password</h1>
             </div>
@@ -63,7 +64,7 @@ const EmailSubmit = ({ formData, onNext }) => {
                     })}
                     error={errors.email?.message}
                     placeholder="contoh@email.com"
-                    iconStart="../src/assets/svg/email.svg"
+                    iconStart={Email}   
                 />
                 <button
                     type="submit"

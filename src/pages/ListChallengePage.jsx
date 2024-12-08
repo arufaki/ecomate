@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Hero from "../components/ListChallengePage/hero"
+import HeroChallenge from "../components/ListChallengePage/HeroChallenge";
 import ListChallenge from "../components/ListChallengePage/ListChallenge";
-const ListChallengePage = () => {
+import MyChallenge from "../components/ListChallengePage/MyChallenge";
+import LeaderBoard from "../components/ListChallengePage/LeaderBoard";
+import Header from "../components/ListChallengePage/Header";
+import { div } from "motion/react-client";
 
-    return <div className="bg-secondary ">
+const ListChallengePage = () => {
+    const [currentPage, setCurrentPage] = useState('challenge');
+
+    const handleNavigation = (page) => {
+        setCurrentPage(page);
+        // Tambahan logika navigasi jika diperlukan
+    };
+    return  (<div className="bg-[#F9F9EB] ">
 
         <Navbar active="challenge"/>
-        <div className="min-h-screen"> 
-          <Hero />
-          <ListChallenge/>
-        </div>
+
+        <HeroChallenge />
+        <Header onClick={handleNavigation} active={currentPage}/>
+        {currentPage === 'challenge' ?
+        (   
+            <div>
+                <MyChallenge/>
+                <ListChallenge/>
+            </div>
+        ):
+        (
+            <div>
+                <LeaderBoard/>
+            </div>
+        )}
         <Footer />
-        </div>;
+        </div>);
         
 };
 

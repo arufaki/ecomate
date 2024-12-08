@@ -5,6 +5,7 @@ import WelcomeSection from "../components/Login/WelcomeSection";
 import InputForm from "../components/Login/InputForm";
 import { Toast } from "../utils/function/toast";
 import api from "../services/api";
+import email from "../assets/svg/email.svg";
 
 const RegisterPage = () => {
     // State untuk show password login
@@ -71,7 +72,7 @@ const RegisterPage = () => {
     return (
         <section className="bg-[#45BA4B]">
             <div className="flex tablet:flex-row mobile:flex-col w-full mx-auto min-h-screen">
-                <WelcomeSection />
+                <WelcomeSection title="Selamat Datang di EcoMate!" />
                 {/* Form Login */}
                 <div className="flex-[1_50%] w-full flex flex-col items-center justify-center bg-white mobile:rounded-t-[60px] tablet:rounded-t-none mobile:pt-[28px] tablet:pt-0">
                     <div className="text-center mb-6">
@@ -115,7 +116,7 @@ const RegisterPage = () => {
                             })}
                             error={errors.email?.message}
                             placeholder="contoh@email.com"
-                            iconStart="../src/assets/svg/email.svg"
+                            iconStart={email}
                         />
                         <InputForm
                             id="password-label"
@@ -139,7 +140,7 @@ const RegisterPage = () => {
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
-                                    className="checkbox border-blue-500 [--chkbg:theme(colors.blue.600)] [--chkfg:white] checked:border-blue-500 w-5 h-5 rounded-none"
+                                    className="checkbox border-green-700 [--chkbg:theme(colors.green.700)] [--chkfg:white] checked:border-green-700 w-5 h-5 rounded-none"
                                     {...register("agreeTerms", { required: "Anda harus menyetujui syarat & ketentuan" })}
                                 />
                             </div>

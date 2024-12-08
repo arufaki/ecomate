@@ -1,6 +1,7 @@
 
 import React from "react";
-
+import Background from "../../assets/jpg/bg-catalog.jpg";
+import { ChevronRight } from "lucide-react";
 const Hero = () => {
     return (
         <div className="bg-secondary pt-24 md:pt-40">
@@ -8,7 +9,7 @@ const Hero = () => {
                 {/* Background Image */}
                 <div className="relative w-full max-w-[1328px] mx-auto">
                     <img
-                        src="../src/assets/jpg/bg-catalog.jpg"
+                        src={Background}
                         alt="bg-hero"
                         className="w-full h-[179px] sm:h-[500px] md:h-[289px] rounded-[30px] md:rounded-[50px] object-cover"
                     />
@@ -18,7 +19,7 @@ const Hero = () => {
                         <div className="flex flex-col justify-center items-center text-[#FAFAFA] ">
                             <h1 className="text-xl md:text-5xl font-bold">Belanja</h1>
                             <p className="text-base md:text-xl my-5">Belanja dengan Bijak, Selamatkan Bumi Bersama Kami!</p>
-                            <p className="text-base"><a href="/">Beranda</a><img src="../src/assets/svg/arrow-right.svg" alt="Arrow Right" className="inline-block w-4 h-4 mx-2 " /> Belanja</p>
+                            <p className="text-base"><a href="/">Beranda</a> <ChevronRight className="inline-block w-4 h-4 mx-2" /> Belanja</p>
                         </div>
                     </div>
                 </div>

@@ -1,102 +1,84 @@
-import React from 'react';
-import Card from '../Card';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {  Mousewheel } from 'swiper/modules';
-
+import React, { useState, useEffect } from "react";
+import Card from "../Card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
+import api from "../../services/api";
+import { truncateContent } from "../../hooks/useTruncates";
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { div } from "motion/react-client";
 // Sample product data
-const products = [
-    {
-        id: 1,
-        name: "Sepatu Pria",
-        description: "Terbuat dari limbah bulu ayam, Dirancang dengan teknologi modern, dan memiliki sifat antibakteri alam",
-        price: "110.000",
-        image: "../src/assets/png/Sepatu.png",
-        rating: 4
-    },
-    {
-        id: 2,
-        name: "Baju Ramah Lingkungang",
-        description: "Baju stylish berbahan dasar limbah tekstil daur ulang, mengedepankan keberlanjutan tanpa mengorbankan kualitas.",
-        price: "49.999",
-        image: "../src/assets/png/Baju.png",
-        rating: 4
-    },
-    {
-        id: 3,
-        name: "Sandal",
-        description: "Sandal stylish dari limbah plastik daur ulang, ringan, tahan lama, dan nyaman, Pilihan tepat untuk langkah berkelanjutan.",
-        price: "10.000",
-        image: "../src/assets/png/Sendal.png",
-        rating: 4.5
-    },
-    {
-        id: 4,
-        name: "Tote bag",
-        description: "Totebag unik berbahan limbah tekstil daur ulang, kuat, stylish, dan ramah lingkungan. Pilihan sempurna untuk gaya sehari-hari",
-        price: "19.900",
-        image: "../src/assets/png/Totebag.png",
-        rating: 4
-    },
-    {
-        id: 5,
-        name: "Tas Laptop",
-        description: "Tas multifungsi dengan ruang laptop yang luas",
-        price: 250000,
-        image: "/api/placeholder/300/200",
-        rating: 4
-    }
-    ];
 
-    const ProductCarousel = () => {
+const ProductCarousel = () => {
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                setIsLoading(true);
+                const response = await api.get("/products");
+                setProducts(response.data.data);
+                setIsLoading(false);
+            } catch (error) {
+                console.error("Error fetching products:", error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
     return (
-        <div className=' bg-secondary'>
+        <div className=" bg-secondary">
             <div className="py-14">
                 <p className="text-[18px] text-sm text-neutral-800 text-center justify-center font-semibold">Pilihan Anda Membuat Perbedaan</p>
                 <h1 className="md:text-5xl text-xl text-neutral-800 text-center justify-center font-bold">Pilihan Anda Membuat Perbedaan</h1>
             </div>
             {/* Slider */}
-            <div className="relative w-[80%] md:w-[80%] mx-auto ">
-            <Swiper
-                modules={[ Mousewheel]}
-                spaceBetween={20}
-                slidesPerView={1}
-                mousewheel={true}
-                breakpoints={{
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 3.5,
-                    spaceBetween: 30,
-                },
-                }}
-                grabCursor={true}
-                className="pb-12 md:h-[500px] h-[350px]"
-            >
-                {products.map((product) => (
-                <SwiperSlide key={product.id} className="px-4">
-                    <Card
-                    image={product.image}
-                    name={product.name}
-                    description={product.description}
-                    price={product.price}
-                    rating={product.rating}
-                    />
-                </SwiperSlide>
-                ))}
-            </Swiper>
-        
 
-            </div>
+            {isLoading ? (
+                <div className="flex justify-center items-center min-h-[500px]">
+                    <div className="animate-spin rounded-full h-20 w-20 border-b-[3px] border-t-[3px] border-primary"></div>
+                </div>
+            ) : (
+                <div className="relative w-[80%] md:w-[80%] mx-auto ">
+                    <Swiper
+                        modules={[Mousewheel]}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        loop={true}
+                        mousewheel={true}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                            1024: {
+                                slidesPerView: 3.5,
+                                spaceBetween: 30,
+                            },
+                        }}
+                        grabCursor={true}
+                        className="pb-12 md:h-[500px] h-[350px]"
+                    >
+                        {products.slice(6, 12).map((product) => (
+                            <SwiperSlide key={product.product_id} className="px-4">
+                                <Card
+                                    image={product.images[0]?.image_url || "/default-product.png"}
+                                    name={product.name}
+                                    description={truncateContent(product.description, 100)}
+                                    price={product.price.toLocaleString("id-ID")}
+                                    link={`/detail-produk/${product.product_id}`}
+                                    product={product}
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+            )}
 
             {/* End Slider */}
-            </div>
-
+        </div>
     );
 };
 
