@@ -3,11 +3,12 @@ import imageBg from "../../../assets/svg/admin-icon/image.svg";
 import InputForm from "../../Login/InputForm";
 import { useForm } from "react-hook-form";
 import useProductForm from "../../../hooks/useProductForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../../../services/api";
+import { Toast } from "../../../utils/function/toast";
 
 const ModalEdit = ({ selectedProduct }) => {
-    const { impacts } = useProductForm();
+    const { impacts } = useProductForm();   
 
     const {
         register,
@@ -16,6 +17,35 @@ const ModalEdit = ({ selectedProduct }) => {
         formState: { errors },
         reset,
     } = useForm();
+
+    const [categoryImpact1, setCategoryImpact1] = useState("");
+    const [categoryImpact2, setCategoryImpact2] = useState("");
+    const [categoryProduct, setCategoryProduct] = useState("");
+
+    useEffect(() => {
+        if (selectedProduct?.category_impact && impacts.length > 0) {
+            // Cari nilai awal untuk dropdown berdasarkan nama kategori impact
+            const impact1 = impacts.find((impact) => impact.name === selectedProduct.category_impact?.[0]?.impact_category?.name)?.id;
+
+            const impact2 = impacts.find((impact) => impact.name === selectedProduct.category_impact?.[1]?.impact_category?.name)?.id;
+
+            // Set nilai awal dropdown
+            setCategoryImpact1(impact1 || "");
+            setCategoryImpact2(impact2 || "");
+
+            // Sinkronkan dengan react-hook-form
+            setValue("category_impact", impact1 || "");
+            setValue("category_impact_2", impact2 || "");
+        }
+
+        if (selectedProduct) {
+            // Set nilai awal untuk kategori produk
+            setCategoryProduct(selectedProduct.category_product || "");
+
+            // Sinkronkan dengan react-hook-form
+            setValue("category_product", selectedProduct.category_product || "");
+        }
+    }, [selectedProduct, selectedProduct, impacts, setValue]);
 
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
@@ -30,25 +60,14 @@ const ModalEdit = ({ selectedProduct }) => {
     };
 
     const onSubmit = async (data) => {
-        // Buat array category_impact
-
-        console.log(data);
-
         const selectedImpacts = [];
-        if (data.category_impact) {
-            selectedImpacts.push(data.category_impact);
-        }
-        if (data.category_impact_2) {
-            selectedImpacts.push(data.category_impact_2);
-        }
+        if (categoryImpact1) selectedImpacts.push(categoryImpact1);
+        if (categoryImpact2) selectedImpacts.push(categoryImpact2);
 
-        // Persiapkan data yang akan dikirim ke API
         const processedData = {
             ...data,
-            category_impact: selectedImpacts, // Pastikan category_impact dalam bentuk array
+            category_impact: selectedImpacts,
         };
-
-        // Hapus field yang tidak diperlukan
         delete processedData.category_impact_2;
 
         ["price", "coin", "stock"].forEach((key) => {
@@ -58,42 +77,22 @@ const ModalEdit = ({ selectedProduct }) => {
         try {
             let imageUrl = processedData.images;
 
-            if (image) {
-                const formData = new FormData();
-                formData.append("image", image);
-
-                // Upload gambar dan dapatkan URL dari server
-                const response = await api.post("/media/upload", formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                });
-
-                imageUrl = response.data.data.image_url; // URL gambar dari response server
-                setValue("image_url", imageUrl); // Simpan URL gambar ke form
-            } else {
-                imageUrl = selectedProduct?.images[0].image_url;
-                setValue("image_url", imageUrl);
-            }
+            imageUrl = selectedProduct?.images[0].image_url;
+            setValue("image_url", imageUrl);
 
             if (!Array.isArray(processedData.images)) {
                 processedData.images = [];
             }
+            processedData.images.push(imageUrl);
 
-            const existingIndex = processedData.images.findIndex((url) => url === imageUrl);
-
-            if (existingIndex !== -1) {
-                // Ganti elemen yang sudah ada
-                processedData.images[existingIndex] = imageUrl;
-            } else {
-                // Jika tidak ada, tambahkan
-                processedData.images.push(imageUrl);
-            }
-
-            console.log(processedData);
+            delete processedData.image_url;
 
             const response = await api.put(`/products/${selectedProduct.product_id}`, processedData);
-            console.log(response);
+            Toast.fire({
+                icon: "success",
+                title: "sukses update Produk",
+            });
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
@@ -102,23 +101,23 @@ const ModalEdit = ({ selectedProduct }) => {
     return (
         <dialog id="my_modal_2" className="modal">
             <form className="modal-box" onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex flex-row items-center justify-between">
+                <div className="flex flex-row items-center gap-[70px]">
                     <h1 className="font-bold text-[#404040] text-base">Foto Produk</h1>
                     <div className="flex flex-row items-center gap-8 ">
                         <div className={`border border-[#E5E7EB] rounded-2xl ${!selectedProduct?.images[0].image_url && "p-8"}`}>
                             <img
-                                src={imagePreview || selectedProduct?.images[0]?.image_url || imageBg}
+                                src={selectedProduct?.images[0]?.image_url ? selectedProduct?.images[0]?.image_url : imageBg}
                                 className={`${(imagePreview || selectedProduct?.images[0]?.image_url) && "w-[120px] h-[120px] object-cover rounded-2xl"}`}
                                 alt="Preview"
                             />
                         </div>
-                        <div>
+                        {/* <div>
                             <label htmlFor="file-upload" className="btn btn-success !text-white bg-[#2E7D32] border border-[#2E7D32] flex items-center gap-2">
                                 <Upload />
                                 Edit Foto
                             </label>
                             <input type="file" id="file-upload" className="hidden" accept="image/*" onChange={handleImageChange} />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -140,10 +139,12 @@ const ModalEdit = ({ selectedProduct }) => {
                     <select
                         className="select w-full max-w-xs border border-[#E5E7EB]"
                         id="category-label"
-                        value={selectedProduct?.category_product}
-                        {...register("category_product", {
-                            required: "Silakan pilih kategori produk.",
-                        })}
+                        value={categoryProduct}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setCategoryProduct(value); // Update state
+                            setValue("category_product", value); // Update react-hook-form
+                        }}
                     >
                         <option disabled value="">
                             Pilih Kategori
@@ -162,10 +163,12 @@ const ModalEdit = ({ selectedProduct }) => {
                     <select
                         className="select w-full max-w-xs border border-slate-300"
                         id="category-impact"
-                        value={impacts.find((impact) => impact.name === selectedProduct?.category_impact[0]?.impact_category.name)?.id || ""}
-                        {...register("category_impact", {
-                            required: "Silakan pilih impact yang valid.",
-                        })}
+                        value={categoryImpact1}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setCategoryImpact1(value); // Update state
+                            setValue("category_impact", value); // Update react-hook-form
+                        }}
                     >
                         <option disabled value="">
                             Dampak Terhadap Lingkungan
@@ -181,9 +184,12 @@ const ModalEdit = ({ selectedProduct }) => {
                 <div className="flex flex-row items-center justify-end mb-4">
                     <select
                         className="select w-full max-w-[302px] border border-slate-300"
-                        value={impacts.find((impact) => impact.name === selectedProduct?.category_impact[1]?.impact_category.name)?.id || ""}
-                        id="category-impact"
-                        {...register("category_impact_2")}
+                        value={categoryImpact2} // Sinkronisasi dengan state
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setCategoryImpact2(value); // Update state
+                            setValue("category_impact_2", value); // Update react-hook-form
+                        }}
                     >
                         <option disabled value="">
                             Dampak Terhadap Lingkungan
