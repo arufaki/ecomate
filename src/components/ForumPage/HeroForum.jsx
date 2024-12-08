@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import heroForum from '../../assets/png/heroForum.png';
 import Women from '../../assets/png/women.png';
 import Plus from '../../assets/png/plus-Icon.png';
@@ -132,8 +132,8 @@ const HeroForum = () => {
                                 className="w-[40px] h-[40px] rounded-full"
                             />
                             <div className="flex flex-col">
-                                <p className="font-semibold text-lg text-black font-bold text-base">Nama User</p>
-                                <p className="text-sm text-black text-base">Posting ke semua orang</p>
+                                <p className="font-semibold text-black  text-base">Nama User</p>
+                                <p className="text-sm text-black ">Posting ke semua orang</p>
                             </div>
                         </div>
 
@@ -168,7 +168,7 @@ const HeroForum = () => {
 
 
                         <div className="px-4 pb-4">
-                            <button className="w-full px-4 py-2 bg-[#E5E7EB] hover:bg-green-600 bg-[#E5E7EB] text-[16px] font-bold hover:text-white rounded-lg hover:bg-green-700 transition-colors">
+                            <button className="w-full px-4 py-2 bg-[#E5E7EB] hover:bg-green-primary  text-[16px] font-bold hover:text-white rounded-lg  transition-colors">
                                 Kirim
                             </button>
                         </div>

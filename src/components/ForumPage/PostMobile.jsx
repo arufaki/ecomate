@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import Women from '../../assets/png/women.png';
 import Plus from '../../assets/png/plus-Icon.png';
 import Location from '../../assets/png/location-on.png';
