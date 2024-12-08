@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router';
 import Women from '../../assets/png/women.png';
-import Plus from '../../assets/png/plus-Icon.png';
+import Plus from '../../assets/png/plus-icon.png';
 import Location from '../../assets/png/location-on.png';
 import Emote from '../../assets/png/emote.png';
 import Photo from '../../assets/png/photo.png';
@@ -49,7 +49,7 @@ const PostMobile = () => {
 
                 <button
                     onClick={handleSubmitPost}
-                    className="py-1 px-4 h-[44px] hover:bg-green-600 bg-[#E5E7EB] text-white rounded-lg font-semibold hover:bg-green-700 transition-colors absolute right-4"
+                    className="py-1 px-4 h-[44px] hover:bg-primary bg-[#E5E7EB] text-white rounded-lg font-semibold transition-colors absolute right-4"
                 >
                     Kirim
                 </button>
