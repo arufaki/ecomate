@@ -20,6 +20,7 @@ import DayChallengePage from "./pages/DayChallengePage";
 import Dashboard from "./pages/AdminPages/Dashboard";
 import UsersPage from "./pages/AdminPages/UsersPage";
 import Products from "./pages/AdminPages/Products";
+import DetailForumPage from "./pages/DetailForumPage";
 const App = () => {
     return (
         <Router>
@@ -28,6 +29,7 @@ const App = () => {
                 <Route path="/tantangan" element={<ListChallengePage />} />
                 <Route path="/belanja" element={<CatalogProductPage />} />
                 <Route path="/forum" element={<ForumPage />} />
+                <Route path="/detail-forum/:id" element={<DetailForumPage />} />
                 <Route path="/post-mobile" element={<PostMobile />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan" element={<DetailChallengePage />} />
