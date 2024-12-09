@@ -5,18 +5,14 @@ import HeroForum from "../components/ForumPage/HeroForum";
 import ForumPost from "../components/ForumPage/ForumPost";
 
 const ForumPage = () => {
-  const [showHero, setShowHero] = useState(true);
 
-  const handleCommentClick = (isCommentOpen) => {
-    setShowHero(!isCommentOpen);
-  };
 
   return (
     <div className="bg-secondary">
       <Navbar active="forum" />
       <div className="min-h-screen">
-        {showHero && <HeroForum />} 
-        <ForumPost onCommentClick={handleCommentClick} />        
+        <HeroForum />
+        <ForumPost />        
       </div>
       <Footer />
     </div>
