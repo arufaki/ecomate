@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "preline";
+
 import Totebag from "../../assets/png/Totebag.png";
 import { Search } from "lucide-react";
+
 const MyChallenge = () => {
     const myChallenges = [
         {
@@ -58,6 +60,14 @@ const MyChallenge = () => {
           level: "Sulit",
            
         },
+        {
+          id: 8,
+           image: Totebag,
+          title: "Challenge Bersih Lingkungan",
+          description: "Lakukan kegiatan bersih-bersih di lingkungan sekitar setiap minggu.",
+          level: "Sulit",
+           
+        },
       ];
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -80,6 +90,14 @@ const MyChallenge = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto px-[25px] ">
+
+      <div className="flex flex-col sm:flex-row py-[32px] px-[24px] mb-[24px] justify-between sm:items-center gap-[22px] rounded-[12px] border border-gray-300 bg-zinc-50">
+        <p className="text-[24px] sm:text-[36px] font-bold text-center sm:text-left">Temukan tantangan seru</p>
+        <div className="flex flex sm:flex-row justify-end items-center gap-[16px] sm:gap-[24px]">
+          <button className="w-full sm:w-[182px] h-[66px] rounded-[8px] bg-[#2E7D32] text-white hover:bg-[#1B4B1E]">Tantangan</button>
+          <button className="w-full sm:w-[182px] h-[66px] bg-transparent border-[2px] border-[#2E7D32] rounded-[8px] hover:bg-[#2E7D32] text-[#2E7D32] hover:text-white">Leaderboard</button>
+        </div>
+      </div>
       <div className="flex flex-col sm:flex-row  w-full p-6 justify-center items-end gap-[22px] rounded-[12px] border border-gray-300 bg-zinc-50">
         <div className="flex h-[86px] w-full flex-col items-start gap-[10px] flex-[1_0_0]">
           <p className="text-[#262626] text-[16px] font-bold leading-[24px] tracking-[0.08px]">
@@ -127,7 +145,6 @@ const MyChallenge = () => {
               </div>
             </div>
         </div>
-
         <div className="flex h-[86px] w-full flex-col items-start gap-[10px] flex-[1_0_0]">
           <p className="text-[#262626] text-[16px] font-bold leading-[24px] tracking-[0.08px]">
             Tingkat Kesulitan
@@ -162,7 +179,7 @@ const MyChallenge = () => {
 
           <Search className="w-5 h-5 text-white" />
         </button>
-        
+
       </div>
 
       <div className="py-[40px]">
