@@ -18,6 +18,7 @@ import DayChallengePage from "./pages/DayChallengePage";
 import Dashboard from "./pages/AdminPages/Dashboard";
 import UsersPage from "./pages/AdminPages/UsersPage";
 import Products from "./pages/AdminPages/Products";
+import ChallengePage from "./pages/AdminPages/ChallengePage";
 const App = () => {
     return (
         <Router>
@@ -56,6 +57,7 @@ const App = () => {
                     <Route path="/admin/dashboard" element={<Dashboard />} />
                     <Route path="/admin/pengguna" element={<UsersPage />} />
                     <Route path="/admin/produk" element={<Products />} />
+                    <Route path="/admin/tantangan" element={<ChallengePage />} />
                 </Route>
             </Routes>
         </Router>
