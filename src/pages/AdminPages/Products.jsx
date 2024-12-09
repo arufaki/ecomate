@@ -25,7 +25,6 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [metadata, setMetadata] = useState({});
     const [selectedPage, setSelectedPage] = useState(1);
-
     const [deleteProduct, setDeleteProduct] = useState(null);
 
     const [editProduct, setEditProduct] = useState(null);
