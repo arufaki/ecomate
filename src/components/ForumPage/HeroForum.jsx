@@ -7,7 +7,7 @@ import Location from '../../assets/png/location-on.png';
 import Emote from '../../assets/png/emote.png';
 import Photo from '../../assets/png/photo.png';
 import UserPlus from '../../assets/png/user-plus.png';
-
+import { ChevronRight } from "lucide-react";
 
 const HeroForum = () => {
     const [isModalOpen, setIsModalOpen] = useState(false); 
@@ -45,7 +45,7 @@ const HeroForum = () => {
                         </p>
                         <p className="text-base flex items-center gap-2">
                             <a href="/">Beranda</a>
-                            <img src="/assets/svg/arrow-right.svg" alt="Arrow Right" className="inline-block w-3 h-3" />
+                            <ChevronRight />
                             Forum
                         </p>
 

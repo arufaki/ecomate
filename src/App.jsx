@@ -20,6 +20,8 @@ import DayChallengePage from "./pages/DayChallengePage";
 import Dashboard from "./pages/AdminPages/Dashboard";
 import UsersPage from "./pages/AdminPages/UsersPage";
 import Products from "./pages/AdminPages/Products";
+import DetailForumPage from "./pages/DetailForumPage";
+import ProfilPage from "./pages/ProfilPage";
 const App = () => {
     return (
         <Router>
@@ -28,12 +30,13 @@ const App = () => {
                 <Route path="/tantangan" element={<ListChallengePage />} />
                 <Route path="/belanja" element={<CatalogProductPage />} />
                 <Route path="/forum" element={<ForumPage />} />
+                <Route path="/detail-forum/:id" element={<DetailForumPage />} />
                 <Route path="/post-mobile" element={<PostMobile />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan" element={<DetailChallengePage />} />
                 <Route path="/detail-tantangan/id/day" element={<DayChallengePage />} />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-
+                <Route path="/profile" element={<ProfilPage />} />
                 {/* Guest routes (untuk login dan register, hanya bisa diakses oleh user yang belum login) */}
                 <Route element={<GuestRoute redirectPath="/" />}>
                     {/* End User Route */}
