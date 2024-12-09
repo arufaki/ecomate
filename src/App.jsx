@@ -13,7 +13,7 @@ import Chatbot from "./pages/Chatbot";
 import AdminLoginPage from "./pages/AdminPages/AdminLoginPage";
 import AddProductPage from "./pages/AdminPages/AddProductPage";
 import ForumPage from "./pages/ForumPage";
-import PostMobile from './components/ForumPage/PostMobile';
+import PostMobile from "./components/ForumPage/PostMobile";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PaymentPage from "./pages/PaymentPage";
 import DayChallengePage from "./pages/DayChallengePage";
@@ -22,6 +22,7 @@ import UsersPage from "./pages/AdminPages/UsersPage";
 import Products from "./pages/AdminPages/Products";
 import DetailForumPage from "./pages/DetailForumPage";
 import ProfilPage from "./pages/ProfilPage";
+import AdminRoute from "./routes/AdminRoute";
 const App = () => {
     return (
         <Router>
@@ -55,10 +56,11 @@ const App = () => {
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/chat" element={<Chatbot />} />
                     <Route path="/payment/:id" element={<PaymentPage />} />
+                </Route>
 
+                <Route element={<AdminRoute />}>
                     {/* Admin Route */}
                     {/* email admin: admin2@ecomate.store pass : admin2 */}
-
                     <Route path="/add-product" element={<AddProductPage />} />
                     <Route path="/admin/dashboard" element={<Dashboard />} />
                     <Route path="/admin/pengguna" element={<UsersPage />} />
