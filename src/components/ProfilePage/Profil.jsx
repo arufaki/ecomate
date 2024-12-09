@@ -11,15 +11,19 @@ const Profil = () => {
 
     const getData = async () => {
         try {
-            const response = await api.get("/users/profile");
-            console.log(response);
+            const response = await api.get("/users");
+            console.log(response.data.data);
+            setData(response.data.data);
         } catch (error) {
             console.log(error); 
         }
     }
+    useEffect(() => {
+        getData();
+    }, []);
     const [activeTab, setActiveTab] = useState('Profil');
     const tabContent = {
-        'Profil': <ProfilContent />,
+        'Profil': <ProfilContent Data={data} />,
         'Alamat': <AlamatContent />,
         'Password': <PasswordContent />,
         'Privasi': <PrivasiContent />
@@ -34,8 +38,8 @@ const Profil = () => {
                 <div className="flex flex-row px-10 pt-40 gap-10">
                     <div className="bg-white h-fit w-[309px] rounded-xl p-12">
                         <img src={User} alt="" className="w-[210px] h-[210px] rounded-full object-cover object-top" />
-                        <h1 className="mx-auto w-full justify-center items-center text-center text-2xl font-semibold mt-5">James justin</h1>
-                        <h1 className="mx-auto w-full justify-center items-center text-center text-lg font-light">james@gmail.com</h1>
+                        <h1 className="mx-auto w-full justify-center items-center text-center text-2xl font-semibold mt-5">{data.name}</h1>
+                        <h1 className="mx-auto w-full justify-center items-center text-center text-lg font-light">{data.email}</h1>
                     </div>
                     <div className="bg-white h-fit w-[624px] rounded-xl">
                         <nav >
