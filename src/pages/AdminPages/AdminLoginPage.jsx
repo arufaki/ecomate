@@ -41,6 +41,7 @@ const AdminLoginPage = () => {
                     icon: "success",
                     title: "Login Berhasil.",
                 });
+                navigate("/admin/dashboard");
             } else {
                 console.warn(response);
                 Toast.fire({
@@ -48,7 +49,7 @@ const AdminLoginPage = () => {
                     title: "Login Gagal",
                 });
             }
-            navigate("/add-product");
+            navigate("/admin/dashboard");
         } catch (error) {
             if (error.response) {
                 setError(error.response.data.message === "Incorrect password" ? "password" : "email", { type: "server", message: error.response.data.message });
