@@ -7,8 +7,6 @@ import MyChallenge from "../components/ListChallengePage/MyChallenge";
 import LeaderBoard from "../components/ListChallengePage/LeaderBoard";
 import Header from "../components/ListChallengePage/Header";
 import StickyCtaButton from "../components/StickyCtaButton";
-import { div } from "motion/react-client";
-
 const ListChallengePage = () => {
     const [currentPage, setCurrentPage] = useState('challenge');
 
@@ -25,7 +23,6 @@ const ListChallengePage = () => {
         {currentPage === 'challenge' ?
         (   
             <div>
-                <MyChallenge/>
                 <ListChallenge/>
             </div>
         ):
