@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import HeroForum from "../components/ForumPage/HeroForum";
 import ForumPost from "../components/ForumPage/ForumPost";
 import useAuthStore from "../stores/useAuthStore";
+import StickyCtaButton from "../components/StickyCtaButton";
 import { useNavigate } from "react-router";
 import { Toast } from "../utils/function/toast";
 const ForumPage = () => {
@@ -28,6 +29,7 @@ const ForumPage = () => {
         <ForumPost />        
       </div>
       <Footer />
+      <StickyCtaButton />
     </div>
   );
 };

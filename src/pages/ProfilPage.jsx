@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Sidebar from "../components/ProfilePage/Sidebar";
 import Profil from "../components/ProfilePage/Profil";
+import StickyCtaButton from "../components/StickyCtaButton";
 const ProfilPage = () => {
     return (
         <div className="bg-secondary">
@@ -11,6 +11,7 @@ const ProfilPage = () => {
                 <Profil />
             </div>
             <Footer />
+            <StickyCtaButton />
         </div>
         );
 };

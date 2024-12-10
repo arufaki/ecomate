@@ -116,63 +116,7 @@ const ListChallenge = () => {
         </div>
       </div>
 
-      <div className="flex w-[1280px] p-[24px] h-[86px] items-center justify-between gap-[10px] rounded-[12px] border border-[#E5E7EB] bg-[#FAFAFA]">
-        <button
-          type="button"
-          className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center text-white bg-green-700 hover:bg-[#1B4B1E] rounded-full focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-          aria-label="Previous"
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-          
-        >
-          <svg
-            className="w-4 h-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path d="M15 18L9 12l6-6" />
-          </svg>
-        </button>
-
-        <div className="flex items-center gap-x-2">
-          {[...Array(Math.ceil(sampleChallenges.length / itemsPerPage))].map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              className={`min-h-[38px] min-w-[38px] flex justify-center items-center rounded-full focus:outline-none ${
-                currentPage === index + 1
-                  ? 'bg-green-700 text-white !important'
-                  : 'bg-none text-black hover:text-white hover:bg-green-700'
-              }`}                            
-              onClick={() => paginate(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
-
-        <button
-          type="button"
-          className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center text-white bg-green-700 hover:bg-[#1B4B1E] rounded-full focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-          aria-label="Next"
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === Math.ceil(sampleChallenges.length / itemsPerPage)}
-        >
-          <svg
-            className="w-4 h-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-      </div>
+      {!isLoading && <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />}
     </div>
   );
 };
