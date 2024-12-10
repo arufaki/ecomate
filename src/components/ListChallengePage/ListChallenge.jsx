@@ -31,7 +31,7 @@ const ListChallenge = () => {
       setChallenges(unclaimedChallenges);
   
       // Hitung total pages untuk pagination (berdasarkan challenges yang belum diambil)
-      const total = Math.ceil(unclaimedChallenges.length / challengesPerPage);
+      const total = Math.ceil(unclaimedChallenges?.length / challengesPerPage);
       setTotalPages(total);
   
       setIsLoading(false);
@@ -74,10 +74,10 @@ const ListChallenge = () => {
       <div className="max-w-screen-xl mx-auto px-[25px] mb-[117px]">
         <div className="py-[40px]">
           <p className="text-[36px] font-bold text-xl sm:text-4xl mb-[13px]">
-            Semua tantangan ({challenges.length})
+            Semua tantangan ({challenges?.length})
           </p>
           <div className="grid grid-min-rows-3 grid-cols-1 sm:grid-cols-2 pt-[24px] md:gap-2">
-            {currentChallenges.map((challenge) => (
+            {currentChallenges?.map((challenge) => (
               <div
                 key={challenge.ID}
                 className="flex flex-col justify-between min-h-[584px] p-4 w-full md:p-10 mr-[32px] mb-5 rounded-2xl border border-[#E5E7EB] bg-[#FAFAFA]"
