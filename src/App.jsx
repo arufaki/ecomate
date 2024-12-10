@@ -24,6 +24,7 @@ import ChallengePage from "./pages/AdminPages/ChallengePage";
 import DetailForumPage from "./pages/DetailForumPage";
 import ProfilPage from "./pages/ProfilPage";
 import AdminRoute from "./routes/AdminRoute";
+import TransactionsPage from "./pages/AdminPages/TransactionsPage";
 
 const App = () => {
     return (
@@ -68,6 +69,7 @@ const App = () => {
                     <Route path="/admin/pengguna" element={<UsersPage />} />
                     <Route path="/admin/produk" element={<Products />} />
                     <Route path="/admin/tantangan" element={<ChallengePage />} />
+                    <Route path="/admin/pesanan" element={<TransactionsPage />} />
                 </Route>
             </Routes>
         </Router>
