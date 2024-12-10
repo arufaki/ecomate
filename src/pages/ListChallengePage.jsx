@@ -6,6 +6,7 @@ import ListChallenge from "../components/ListChallengePage/ListChallenge";
 import MyChallenge from "../components/ListChallengePage/MyChallenge";
 import LeaderBoard from "../components/ListChallengePage/LeaderBoard";
 import Header from "../components/ListChallengePage/Header";
+import StickyCtaButton from "../components/StickyCtaButton";
 import { div } from "motion/react-client";
 
 const ListChallengePage = () => {
@@ -34,6 +35,7 @@ const ListChallengePage = () => {
             </div>
         )}
         <Footer />
+        <StickyCtaButton />
         </div>);
         
 };

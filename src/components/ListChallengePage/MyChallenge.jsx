@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "preline";
+
 import Totebag from "../../assets/png/Totebag.png";
 import { Search } from "lucide-react";
+
 const MyChallenge = () => {
     const myChallenges = [
         {
@@ -55,6 +57,14 @@ const MyChallenge = () => {
           image: Totebag,
           title: "Challenge Kompos",
           description: "Ubah sampah organik menjadi kompos untuk pemupukan alami.",
+          level: "Sulit",
+           
+        },
+        {
+          id: 8,
+           image: Totebag,
+          title: "Challenge Bersih Lingkungan",
+          description: "Lakukan kegiatan bersih-bersih di lingkungan sekitar setiap minggu.",
           level: "Sulit",
            
         },
@@ -127,7 +137,6 @@ const MyChallenge = () => {
               </div>
             </div>
         </div>
-
         <div className="flex h-[86px] w-full flex-col items-start gap-[10px] flex-[1_0_0]">
           <p className="text-[#262626] text-[16px] font-bold leading-[24px] tracking-[0.08px]">
             Tingkat Kesulitan
@@ -162,7 +171,7 @@ const MyChallenge = () => {
 
           <Search className="w-5 h-5 text-white" />
         </button>
-        
+
       </div>
 
       <div className="py-[40px]">

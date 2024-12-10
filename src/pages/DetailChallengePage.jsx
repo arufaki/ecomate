@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/DetailChallengePage/Hero";
 import Participants from "../components/DetailChallengePage/Participants";
 import ListMission from "../components/DetailChallengePage/ListMission";
+import StickyCtaButton from "../components/StickyCtaButton";
 import Swal from "sweetalert2";
 const DetailChallengePage = () => {
     const handleClick = () => {
@@ -33,6 +34,7 @@ const DetailChallengePage = () => {
         </div>
         
         <Footer />
+        <StickyCtaButton />
         </div>;
         
 };

@@ -18,14 +18,16 @@ import { Toast } from "../../utils/function/toast";
 import ModalDelete from "../../components/Admin/ProductPage/ModalDelete";
 import useProductForm from "../../hooks/useProductForm";
 import ModalView from "../../components/Admin/ProductPage/ModalView";
+import ModalEdit from "../../components/Admin/ProductPage/ModalEdit";
 
 const Products = () => {
     const { isOpen: sidebarOpen } = useSideBarStore();
     const [products, setProducts] = useState([]);
     const [metadata, setMetadata] = useState({});
     const [selectedPage, setSelectedPage] = useState(1);
-
     const [deleteProduct, setDeleteProduct] = useState(null);
+
+    const [editProduct, setEditProduct] = useState(null);
 
     const fetchProduct = async () => {
         try {
@@ -77,9 +79,14 @@ const Products = () => {
         fetchProduct();
     }, [selectedPage]);
 
+    const handleEdit = (product) => {
+        setEditProduct(product);
+        document.getElementById("my_modal_2").showModal();
+    };
+
     return (
         <div>
-            <Sidebar isOpen={sidebarOpen} toggleSidebar={() => sidebarOpen(!sidebarOpen)} active="Dashboard" />
+            <Sidebar isOpen={sidebarOpen} toggleSidebar={() => sidebarOpen(!sidebarOpen)} active="Produk" />
             <div className={`transition-all duration-300 ${sidebarOpen ? "ml-[260px]" : "ml-28"}`}>
                 <Header />
 
@@ -196,16 +203,14 @@ const Products = () => {
                                                             <td className="size-px whitespace-nowrap">
                                                                 <div className="px-6 py-2">
                                                                     <div className="flex items-center gap-x-2">
-                                                                        <button>
-                                                                            <img
-                                                                                src={eye}
-                                                                                alt="eye-icon"
-                                                                                onClick={() => {
-                                                                                    handleShowModal(product);
-                                                                                }}
-                                                                            />
+                                                                        <button
+                                                                            onClick={() => {
+                                                                                handleShowModal(product);
+                                                                            }}
+                                                                        >
+                                                                            <img src={eye} alt="eye-icon" />
                                                                         </button>
-                                                                        <button>
+                                                                        <button onClick={() => handleEdit(product)}>
                                                                             <img src={pencil} alt="pencil-icon" />
                                                                         </button>
                                                                         <button
@@ -229,9 +234,10 @@ const Products = () => {
                                     </div>
                                 </div>
                             </div>
-                            <ModalDelete handleDelete={() => handleDelete(selectedProduct)} />
-
+                            <ModalDelete handleDelete={() => handleDelete(selectedProduct)} title="Hapus Produk" subtitle="Apa kamu yakin ingin menghapus produk ini?" />
                             <ModalView selectedProduct={selectedProduct} />
+                            <ModalEdit selectedProduct={editProduct} />
+
                             <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center">
                                 <div className="max-w-sm space-y-3">
                                     <select

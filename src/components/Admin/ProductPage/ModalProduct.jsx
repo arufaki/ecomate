@@ -71,7 +71,6 @@ const ModalProduct = () => {
                         <select
                             className="select w-full max-w-xs border border-slate-300"
                             id="category-impact"
-                            // value={impacts.find((impact) => impact.name === existEdit?.category_impact[0]?.impact_category.name)?.id || ""}
                             defaultValue=""
                             {...register("category_impact", {
                                 required: "Silakan pilih impact yang valid.",
