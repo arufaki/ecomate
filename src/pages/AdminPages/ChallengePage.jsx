@@ -14,12 +14,14 @@ import ModalViewChallenges from "../../components/Admin/Challenges/ModalViewChal
 import ModalDelete from "../../components/Admin/ProductPage/ModalDelete";
 import { Toast } from "../../utils/function/toast";
 import ModalTask from "../../components/Admin/Challenges/ModalTask";
+import ModalEditChallenges from "../../components/Admin/Challenges/ModalEditChallenges";
 
 const ChallengePage = () => {
     const [challenges, setChallenges] = useState(null);
     const [metadata, setMetadata] = useState(null);
     const [selectedChallenge, setSelectedChallenge] = useState(null);
     const [deleteChallenge, setDeleteChallenge] = useState(null);
+    const [selectedPage, setSelectedPage] = useState(1);
 
     const fetchChallenges = async () => {
         try {
@@ -55,6 +57,29 @@ const ChallengePage = () => {
                 title: "Hapus Data Gagal!",
             });
         }
+    };
+
+    const pages = Array.from({ length: metadata?.TotalPage }, (_, index) => index + 1);
+
+    const handlePageChange = (e) => {
+        setSelectedPage(Number(e.target.value));
+    };
+
+    const handlePrevPage = () => {
+        if (selectedPage > 1) {
+            setSelectedPage(selectedPage - 1);
+        }
+    };
+
+    const handleNextPage = () => {
+        if (selectedPage < metadata.TotalPage) {
+            setSelectedPage(selectedPage + 1);
+        }
+    };
+
+    const handleEdit = (challenge) => {
+        setSelectedChallenge(challenge);
+        document.getElementById("my_modal_14").showModal();
     };
 
     return (
@@ -212,13 +237,11 @@ const ChallengePage = () => {
                         </div>
                     </div>
                     <ModalViewChallenges challenge={selectedChallenge} />
+                    <ModalEditChallenges selectedChallenge={selectedChallenge} />
 
-                    <ModalDelete handleDelete={() => handleDelete(selectedChallenge)} />
-                    {/* <ModalDelete handleDelete={() => handleDelete(selectedProduct)} />
-                    <ModalView selectedProduct={selectedProduct} />
-                    <ModalEdit selectedProduct={editProduct} /> */}
+                    <ModalDelete handleDelete={() => handleDelete(selectedChallenge)} title="Hapus tantangan" subtitle="Apa kamu yakin ingin menghapus tantangan ini?" />
 
-                    {/* <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center">
+                    <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center">
                         <div className="max-w-sm space-y-3">
                             <select
                                 value={selectedPage}
@@ -260,7 +283,7 @@ const ChallengePage = () => {
                                     type="button"
                                     className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
                                     onClick={handleNextPage}
-                                    disabled={selectedPage === metadata.TotalPage}
+                                    disabled={selectedPage === metadata?.TotalPage}
                                 >
                                     Next
                                     <svg
@@ -280,7 +303,7 @@ const ChallengePage = () => {
                                 </button>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
                 {/* End Card */}
             </div>
