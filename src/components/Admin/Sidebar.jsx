@@ -31,12 +31,12 @@ const Sidebar = ({ active }) => {
 
                 {/* Navigation */}
                 <nav className="flex-1 space-y-2 p-6 border-r">
-                    <h1 className={`text-[#6B7280]  ${!isOpen && "text-xs"}`}>Menu Utama</h1>
+                    <h1 className={`text-[#6B7280]  ${!isOpen && "text-[10px]"}`}>Menu Utama</h1>
                     {menuItems.map((item) => (
                         <Link
                             key={item.path}
                             to={item.path}
-                            className={`flex items-center rounded-lg p-4  h-[44px]  ${
+                            className={`flex items-center rounded-lg p-4 h-[44px] ${!isOpen && "h-[63px] mb-4"}  ${
                                 active === item.title ? "bg-primary text-white" : "text-[#404040]"
                             } transition-colors hover:bg-primary hover:text-white`}
                         >
