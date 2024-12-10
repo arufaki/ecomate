@@ -40,12 +40,11 @@ const RegisterPage = () => {
         try {
             setLoading(true);
             const response = await api.post("/users/register", registerData);
-            if (response.status == 201) {
+            if (response.status === 201) {
                 Toast.fire({
                     icon: "success",
                     title: "Registrasi Akun Berhasil",
                 });
-                setUserData(response);
                 navigate("/login");
             } else {
                 console.warn(response);
