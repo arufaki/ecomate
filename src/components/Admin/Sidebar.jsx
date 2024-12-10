@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import useSideBarStore from "../../stores/useSideBarStore";
 import { Link } from "react-router";
 import Logo from "../../assets/png/Logo.png";
-import { HomeIcon, UsersIcon, LogOutIcon, ShoppingBasket, ChevronLeftCircleIcon, ChevronRightCircleIcon, Briefcase, ShoppingCart, File } from "lucide-react";
-
+import { HomeIcon, UsersIcon,  ShoppingBasket, Triangle, Briefcase, ShoppingCart, File } from "lucide-react";
+import ArrowSideBar from "../../assets/svg/Arrow-sidebar.svg";
 const Sidebar = ({ active }) => {
     const { isOpen, toggleSidebar } = useSideBarStore();
 
@@ -22,10 +22,10 @@ const Sidebar = ({ active }) => {
             <div className="flex h-full flex-col">
                 {/* Header */}
                 <div className="flex py-5 items-center border-b border-r">
-                    <img src={Logo} alt="Logo" className={`h-8 px-4 cursor-pointer ${!isOpen && "mx-auto !h-12 w-20"}`} onClick={!isOpen ? toggleSidebar : undefined} />
+                    <img src={Logo} alt="Logo" className={`h-8 px-4 cursor-pointer ${!isOpen && "mx-auto !h-10 w-18"}`} onClick={!isOpen ? toggleSidebar : undefined} />
                     <h1 className={`text-xl  mr-16 font-bold ${!isOpen && "hidden"}`}>EcoMate</h1>
-                    <button onClick={toggleSidebar} className={`rounded-lg p-2 bg-green-300 ${!isOpen && "hidden"}`}>
-                        <ChevronLeftCircleIcon className={`h-6 w-6 transition-transform duration-300 ${!isOpen && "rotate-180"}`} />
+                    <button onClick={toggleSidebar} className={`rounded-xl h-10 w-10  bg-[#DAF1DB] ${!isOpen && "hidden"}`}>
+                        <img src={ArrowSideBar} className="mx-auto " alt="Arrow" />
                     </button>
                 </div>
 
@@ -36,6 +36,7 @@ const Sidebar = ({ active }) => {
                         <Link
                             key={item.path}
                             to={item.path}
+                            onClick={isOpen == false ? toggleSidebar : undefined}
                             className={`flex items-center rounded-lg p-4 h-[44px] ${!isOpen && "h-[63px] mb-4"}  ${
                                 active === item.title ? "bg-primary text-white" : "text-[#404040]"
                             } transition-colors hover:bg-primary hover:text-white`}
