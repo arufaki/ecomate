@@ -20,7 +20,7 @@ const ProfilContent = ({Data}) => {
     const handleUpdate = async (event) => {
         event.preventDefault();
         try {
-            const response = await api.put(`/users/update`, formData);
+            const response = await api.put(`/users`, formData);
             console.log(response.data);
         } catch (error) {
             console.error(error);
