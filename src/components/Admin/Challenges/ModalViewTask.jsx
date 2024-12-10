@@ -1,11 +1,4 @@
-import { useEffect } from "react";
-
 const ModalViewTask = ({ tasks, challenge }) => {
-    // useEffect(() => {
-    //     if (tasks) {
-    //         console.log(tasks);
-    //     }
-    // }, [tasks]);
     return (
         <dialog id="my_modal_13" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
