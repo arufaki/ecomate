@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import useSideBarStore from "../../stores/useSideBarStore";
 import { Link } from "react-router";
 import Logo from "../../assets/png/Logo.png";
-import { HomeIcon, UsersIcon, ShoppingBasket, Triangle, Briefcase, ShoppingCart, File } from "lucide-react";
 import ArrowSideBar from "../../assets/svg/arrow-sidebar.svg";
+import { HomeIcon, UsersIcon, ShoppingBasket, Triangle, Briefcase, ShoppingCart, File } from "lucide-react";
 const Sidebar = ({ active }) => {
     const { isOpen, toggleSidebar } = useSideBarStore();
 
