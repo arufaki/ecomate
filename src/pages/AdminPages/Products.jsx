@@ -234,7 +234,7 @@ const Products = () => {
                                     </div>
                                 </div>
                             </div>
-                            <ModalDelete handleDelete={() => handleDelete(selectedProduct)} />
+                            <ModalDelete handleDelete={() => handleDelete(selectedProduct)} title="Hapus Produk" subtitle="Apa kamu yakin ingin menghapus produk ini?" />
                             <ModalView selectedProduct={selectedProduct} />
                             <ModalEdit selectedProduct={editProduct} />
 
