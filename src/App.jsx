@@ -37,7 +37,7 @@ const App = () => {
                 <Route path="/detail-forum/:id" element={<DetailForumPage />} />
                 <Route path="/post-mobile" element={<PostMobile />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
-                <Route path="/detail-tantangan" element={<DetailChallengePage />} />
+                <Route path="/detail-tantangan/:id" element={<DetailChallengePage />} />
                 <Route path="/detail-tantangan/id/day" element={<DayChallengePage />} />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                 <Route path="/profile" element={<ProfilPage />} />
