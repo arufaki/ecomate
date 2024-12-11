@@ -182,7 +182,7 @@ const Users = () => {
                                                                 </div>
                                                             </td>
                                                             <td className="size-px whitespace-nowrap">
-                                                                <div className="px-6 py-2">
+                                                                <div className="py-2">
                                                                     <div className="flex items-center gap-x-2">
                                                                         <button>
                                                                             <img
