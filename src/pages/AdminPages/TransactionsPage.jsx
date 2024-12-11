@@ -12,7 +12,6 @@ import { formatToIDR } from "../../utils/function/formatToIdr";
 
 const TransactionsPage = () => {
     const [transactions, setTransactions] = useState([]);
-
     const [selectedTransaction, setSelectedTransaction] = useState([]);
 
     const users = useUserStore((state) => state.user);
@@ -20,6 +19,7 @@ const TransactionsPage = () => {
     const fetchTransactions = async () => {
         try {
             const response = await api.get("/admin/transactions");
+            console.log(response.data);
             setTransactions(response.data.data);
         } catch (error) {
             console.error(error);
@@ -83,11 +83,11 @@ const TransactionsPage = () => {
                                                     <th scope="col" className={`${index === 0 ? "pe-6" : "px-6"} py-3 text-start`} key={index}>
                                                         <div className="flex items-center justify-between">
                                                             <span className="text-xs font-bold uppercase tracking-wide text-[#2E7D32]">{title}</span>
-                                                            {index > 0 && index < 6 && (
+                                                            {/* {index > 0 && index < 6 && (
                                                                 <button>
                                                                     <img src={arrowUpDown} alt="arrow-filter-icon" />
                                                                 </button>
-                                                            )}
+                                                            )} */}
                                                         </div>
                                                     </th>
                                                 ))}
