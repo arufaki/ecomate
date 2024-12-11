@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router';
-import Women from '../../assets/png/women.png';
 import Plus from '../../assets/png/plus-icon.png';
-import Location from '../../assets/png/location-on.png';
 import Emote from '../../assets/png/emote.png';
 import Photo from '../../assets/png/photo.png';
-import UserPlus from '../../assets/png/user-plus.png';
 import api from "../../services/api";
+import { Toast } from "../../utils/function/toast";
 const PostMobile = () => {
     const navigate = useNavigate();
-    const [postContent, setPostContent] = useState('');
     const [data, setData] = useState({});
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -43,13 +40,12 @@ const PostMobile = () => {
                 headers: {
                 "Content-Type": "multipart/form-data",
                 },
-        });
-            setIsModalOpen(false);
+            });
+            handleCloseMobilePage();
             Toast.fire({
                 icon: "success",
                 title: "Forum berhasil dibuat",
             })
-            onPosted(true);
             } catch (error) {
             Toast.fire({
                 icon: "error",
@@ -83,9 +79,6 @@ const PostMobile = () => {
                 setImagePreview(URL.createObjectURL(file));
                 }
             };
-    const handleSubmitPost = () => {
-        console.log('Post dikirim:', postContent);
-    };
 
     return (
         <div className="fixed h-[2000px] inset-0 bg-white z-50 flex flex-col">
@@ -112,8 +105,10 @@ const PostMobile = () => {
                 <h3 className="text-lg font-bold text-center flex-1">Buat Postingan</h3>
 
                 <button
-                    onClick={handleSubmitPost}
-                    className="py-1 px-4 h-[44px] hover:bg-primary bg-[#E5E7EB] text-white rounded-lg font-semibold transition-colors absolute right-4"
+                    onClick={handleSubmit}
+                    className={`py-1 px-4 h-[44px] bg-primary  text-white rounded-lg font-semibold transition-colors absolute right-4
+                    ${title && description ? "" : ""}`}
+                    
                 >
                     Kirim
                 </button>
@@ -142,7 +137,7 @@ const PostMobile = () => {
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-primary"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
-                                required
+                                
                                 />
                             </div>
 
@@ -153,10 +148,10 @@ const PostMobile = () => {
                                 <textarea
                                 id="description"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-primary"
-                                rows="4"
+                                rows="10"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                required
+                                
                                 ></textarea>
                             </div>
                             {imagePreview && (
@@ -190,16 +185,6 @@ const PostMobile = () => {
                                     <img src={Plus} alt="plus" className="w-6 h-6" />
                                 </button>
                                 </div>
-                            </div>
-                            <div className="px-4 pb-4">
-                                <button
-                                type="submit"
-                                className={`w-full px-4 py-2   text-[16px] font-bold  rounded-lg transition-colors
-                                    ${title && description ? "bg-primary hover:cursor-pointer text-white" : "bg-[#E5E7EB] hover:cursor-not-allowed "}
-                                    `}
-                                >
-                                Kirim
-                                </button>
                             </div>
                             </form>
             </div>
