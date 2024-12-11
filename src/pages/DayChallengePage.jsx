@@ -9,7 +9,7 @@ const DayChallengePage = () => {
 
     const getActiveChallengeDetails = async () => {
         try {
-            const response = await api.get("/challenges/details?ChallengeLogID=be28bd0c-4de3-445f-91cf-af49a39c5830");
+            const response = await api.get("/challenges/details?challengeLogID=be28bd0c-4de3-445f-91cf-af49a39c5830");
             console.log(response.data);
         } catch (error) {
             console.error("Error fetching challenge details:", error);
