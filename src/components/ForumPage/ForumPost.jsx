@@ -1,26 +1,9 @@
 import React, { useState, useEffect } from "react";
-import women from "../../assets/png/women.png";
-import totebag from "../../assets/png/Totebag.png";
 import commentIcon from "../../assets/png/coment.png";
-import send from "../../assets/png/send.png";
-import api from "../../services/api";
 import BestTopic from "./bestTopic";
 import { Link } from "react-router";
-const ForumPost = () => {
-    const [forums, setForums] = useState([]);
-
-    const getForum = async () => {
-        const response = await api.get("/forums");
-        console.log(response.data.data);
-        setForums(response.data.data);
-    };
-    useEffect(() => {
-        try {
-            getForum();
-        } catch (error) {
-            console.log(error);
-        }
-    }, []);
+const ForumPost = ({forums}) => {
+    
     // data sample
 
     return (
