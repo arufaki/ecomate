@@ -25,6 +25,7 @@ import DetailForumPage from "./pages/DetailForumPage";
 import ProfilPage from "./pages/ProfilPage";
 import AdminRoute from "./routes/AdminRoute";
 import TransactionsPage from "./pages/AdminPages/TransactionsPage";
+import ImpactsPage from "./pages/AdminPages/ImpactsPage";
 
 const App = () => {
     return (
@@ -70,6 +71,7 @@ const App = () => {
                     <Route path="/admin/produk" element={<Products />} />
                     <Route path="/admin/tantangan" element={<ChallengePage />} />
                     <Route path="/admin/pesanan" element={<TransactionsPage />} />
+                    <Route path="/admin/kategori" element={<ImpactsPage />} />
                 </Route>
             </Routes>
         </Router>
