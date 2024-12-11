@@ -142,7 +142,7 @@ const ModalViewChallenges = ({ challenge }) => {
                 </div>
             </dialog>
             <ModalTask challenge={challenge} />
-            <ModalViewTask tasks={tasks} />
+            <ModalViewTask tasks={tasks} setTasks={setTasks} />
         </>
     );
 };
