@@ -1,25 +1,28 @@
 import imageBg from "../../../assets/jpg/user.jpg";
 import { formatToIDR } from "../../../utils/function/formatToIdr";
-const ModalTransaction = ({ transaction }) => {
+import { truncateText } from "../../../utils/function/truncateText";
+const ModalTransaction = ({ transaction, users }) => {
+    const user = users?.data.find((u) => u.email === transaction.email);
+
     return (
         <dialog id="my_modal_15" className="modal">
             <div className="modal-box  w-11/12 max-w-2xl">
                 <div className="p-8 flex flex-row justify-center">
-                    <div className={`border border-[#E5E7EB] rounded-2xl ${imageBg ? "w-[120px] h-[120px] object-cover rounded-2xl" : "p-8"}`}>
-                        <img src={imageBg} className="object-cover object-top rounded-2xl w-full h-full" alt="Preview" />
+                    <div className={`border border-[#E5E7EB] rounded-2xl ${imageBg || user?.avatar_url ? "w-[120px] h-[120px] object-cover rounded-2xl" : "p-8"}`}>
+                        <img src={user?.avatar_url ? user?.avatar_url : imageBg} className="object-cover object-top rounded-2xl w-full h-full" alt="Preview" />
                     </div>
 
                     <div className="grid grid-cols-2 bg-white p-2 border border-[#E5E7EB] rounded-lg max-w-sm mx-auto w-full">
                         {/* Block 1 */}
                         <div className="flex flex-col gap-2 py-5 border-b border-[#E5E7EB] border-r">
-                            <h1 className="text-base font-bold text-[#404040] px-2">{transaction?.username}</h1>
-                            <p className="text-sm font-semibold text-[#737373] px-2">adiseptian706@gmail.com</p>
+                            <h1 className="text-base font-bold text-[#404040] px-2">{transaction?.name}</h1>
+                            <p className="text-sm font-semibold text-[#737373] px-2">{transaction?.email}</p>
                         </div>
 
                         {/* Block 2 */}
                         <div className="flex flex-col gap-2 py-5 border-b border-[#E5E7EB]">
                             <h1 className="text-base font-bold text-[#404040] px-4">Pembayaran</h1>
-                            <p className="text-sm font-semibold text-[#737373] px-4">BRI VA</p>
+                            <p className="text-sm font-semibold text-[#737373] px-4">{transaction?.payment_method === "bank_transfer" ? "Bank Transfer" : transaction?.payment_method}</p>
                         </div>
 
                         {/* Block 3 */}
@@ -61,7 +64,9 @@ const ModalTransaction = ({ transaction }) => {
                             <div className={`border border-[#E5E7EB] rounded-2xl ${product.product_image ? "w-[60px] h-[60px] object-cover rounded-2xl" : "p-8"}`}>
                                 <img src={product.product_image} className="object-cover object-top rounded-lg w-full h-full" alt="Preview" />
                             </div>
-                            <h1 className="font-semibold text-base text-[#1F2937]">{product.product_name}</h1>
+                            <h1 className="font-semibold text-base text-[#1F2937] cursor-pointer" title={product.product_name}>
+                                {product.product_name}
+                            </h1>
                         </div>
                         <h1 className="font-semibold text-base text-[#1F2937]">{product.product_quantity}</h1>
                         <h1 className="font-semibold text-base text-[#1F2937]">{formatToIDR(30000)}</h1>

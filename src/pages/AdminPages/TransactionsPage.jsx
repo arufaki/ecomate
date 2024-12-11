@@ -15,7 +15,7 @@ const TransactionsPage = () => {
 
     const [selectedTransaction, setSelectedTransaction] = useState([]);
 
-    const user = useUserStore((state) => state.user);
+    const users = useUserStore((state) => state.user);
 
     const fetchTransactions = async () => {
         try {
@@ -140,7 +140,9 @@ const TransactionsPage = () => {
                                                     </td>
                                                     <td className="size-px whitespace-nowrap">
                                                         <div className="px-6 py-2">
-                                                            <p className="text-sm font-medium text-[#1F2937]">Transfer Bank</p>
+                                                            <p className="text-sm font-medium text-[#1F2937]">
+                                                                {transaction?.payment_method === "bank_transfer" ? "Bank Transfer" : transaction?.payment_method}
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td className="size-px whitespace-nowrap">
@@ -175,7 +177,7 @@ const TransactionsPage = () => {
                             </div>
                         </div>
                     </div>
-                    <ModalTransaction transaction={selectedTransaction} />
+                    <ModalTransaction transaction={selectedTransaction} users={users} />
 
                     {/* <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center">
                         <div className="max-w-sm space-y-3">
