@@ -15,10 +15,8 @@ const ModalTask = ({ challenge }) => {
             const response = await api.get(`/admin/challenges/${challenge?.id}/tasks`);
 
             const tasks = response.data.data;
-            console.log(tasks);
 
             const lastDay = tasks?.length > 0 ? Math.max(...tasks?.map((task) => task.day_number)) : 0;
-            console.log(lastDay);
             setCurrentDay(lastDay + 1); // Hari selanjutnya
             setFormData((prev) => ({
                 ...prev,
