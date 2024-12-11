@@ -11,7 +11,7 @@ const Profil = () => {
 
     const getData = async () => {
         try {
-            const response = await api.get("/users");
+            const response = await api.get("/users/profile");
             console.log(response.data.data);
             setData(response.data.data);
         } catch (error) {
@@ -24,7 +24,7 @@ const Profil = () => {
     const [activeTab, setActiveTab] = useState('Profil');
     const tabContent = {
         'Profil': <ProfilContent Data={data} />,
-        'Alamat': <AlamatContent />,
+        'Alamat': <AlamatContent Data={data}/>,
         'Password': <PasswordContent />,
         'Privasi': <PrivasiContent />
         };
