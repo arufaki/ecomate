@@ -26,6 +26,7 @@ import AdminRoute from "./routes/AdminRoute";
 import TransactionsPage from "./pages/AdminPages/TransactionsPage";
 import ImpactsPage from "./pages/AdminPages/ImpactsPage";
 import ProfilPage from "./pages/ProfileUsers/ProfilPage";
+
 import ContributePage from "./pages/ProfileUsers/ContributePage";
 
 const App = () => {

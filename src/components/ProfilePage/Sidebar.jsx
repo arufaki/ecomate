@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { User2, Trophy, Award, Dock, HandCoins, ChevronDown } from "lucide-react";
 import { Link } from "react-router";
+
 const Sidebar = ({ active }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -48,12 +49,14 @@ const Sidebar = ({ active }) => {
                     <div key={item.id}>
                         <Link
                             to={item.link}
+
                             className={`" py-3 w-full gap-3 mt-5 rounded-[12px]  text-start flex px-4 text-xl fontbold" ${
                                 active === item.name ? "bg-primary text-white" : "text-primary hover:bg-primary hover:text-white"
                             }`}
                         >
                             {item.icon} {item.name}
                         </Link>
+
                     </div>
                 ))}
             </div>

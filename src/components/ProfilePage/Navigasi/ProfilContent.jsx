@@ -61,7 +61,9 @@ const ProfilContent = ({ Data }) => {
     };
 
     return (
+
 <div className="p-6">
+
             <div className="space-y-4">
                 <form onSubmit={handleUpdate}>
                     <div className="flex flex-row mt-2 max-mobilelg:mb-6">
@@ -116,6 +118,7 @@ const ProfilContent = ({ Data }) => {
                                     checked={formData.gender === "male"}
                                     onChange={handleInputChange}
                                     className="shrink-0 mt-0.5 border-gray-200 rounded-full text-green-600 focus:ring-green-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-green-500 dark:checked:border-green-500 dark:focus:ring-offset-gray-800"
+
                                 />
                                 <label htmlFor="male" className="text-md text-gray-500 ml-2 dark:text-gray-400">
                                     Laki-laki
@@ -130,6 +133,7 @@ const ProfilContent = ({ Data }) => {
                                     checked={formData.gender === "female"}
                                     onChange={handleInputChange}
                                     className="shrink-0 mt-0.5 border-gray-200 rounded-full text-green-600 focus:ring-green-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-green-500 dark:checked:border-green-500 dark:focus:ring-offset-gray-800"
+
                                 />
                                 <label htmlFor="female" className="text-md text-gray-500 ml-2 dark:text-gray-400">
                                     Perempuan
