@@ -14,7 +14,7 @@ import { Link } from "react-router";
 import ModalDelete from "../../components/Admin/UsersPage/ModalDelete";
 import ModalView from "../../components/Admin/UsersPage/ModalView";
 import ModalEdit from "../../components/Admin/UsersPage/ModalEdit";
-import userBg from "../../assets/jpg/user.jpg";
+import userBg from "../../assets/webp/blank.webp";
 
 const Users = () => {
     const { isOpen: sidebarOpen } = useSideBarStore();
@@ -76,7 +76,7 @@ const Users = () => {
     };
     useEffect(() => {
         fetchUsers();
-    }, []);
+    }, [selectedPage]);
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value); // Menyimpan nilai query pencarian
@@ -173,7 +173,7 @@ const Users = () => {
 
                                                                 <td className="size-px whitespace-nowrap">
                                                                     <div className="px-6 py-2 flex items-center gap-x-2">
-                                                                        <img className="inline-block size-[38px] rounded-full w-6 h-6" src={user.avatar_url ? user.avatar_url : userBg} alt="Avatar" />
+                                                                        <img className="inline-block size-[38px] rounded-full w-6 h-6 object-cover" src={user.avatar_url ? user.avatar_url : userBg} alt="Avatar" />
                                                                         <span className="text-sm font-medium text-[#1F2937] decoration-2">{user.name}</span>
                                                                     </div>
                                                                 </td>

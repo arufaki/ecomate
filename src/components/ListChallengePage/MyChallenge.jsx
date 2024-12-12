@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import { Link } from "react-router";
 const MyChallenge = ({ myChallenges }) => {
-    
+    console.log(myChallenges);
     return (
         <div className="max-w-screen-xl mx-auto px-[25px]">
             <div className="py-[40px]">
@@ -78,12 +78,13 @@ const MyChallenge = ({ myChallenges }) => {
                                             {challenge.coin || 0} koin
                                         </div>
                                     </div>
-                                    <button
+                                    <Link
+
                                         className="w-full sm:w-auto h-[50px] py-[13px] px-7 inline-flex justify-center sm:justify-end items-center gap-x-2 text-[16px] font-normal rounded-xl border border-transparent bg-[#2E7D32] text-white hover:bg-[#1B4B1E] focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                                        onClick={() => console.log(`Navigating to ${challenge.id}`)}
+                                        to={`/detail-tantangan/${challenge.id}/day`}
                                     >
                                         Selengkapnya
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </SwiperSlide>

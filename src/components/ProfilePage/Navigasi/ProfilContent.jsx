@@ -22,7 +22,6 @@ const ProfilContent = ({ Data }) => {
             });
         }
     }, [Data]);
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
@@ -62,7 +61,7 @@ const ProfilContent = ({ Data }) => {
     };
 
     return (
-        <div className="p-6">
+<div className="p-6">
             <div className="space-y-4">
                 <form onSubmit={handleUpdate}>
                     <div className="flex flex-row mt-2 max-mobilelg:mb-6">
