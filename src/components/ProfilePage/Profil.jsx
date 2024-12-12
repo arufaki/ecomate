@@ -32,7 +32,6 @@ const Profil = () => {
         try {
             const response = await api.get("/users/profile");
             setData(response.data.data);
-            console.log(response.data.data);
         } catch (error) {
             console.error("Error fetching profile data:", error);
         }
