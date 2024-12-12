@@ -17,7 +17,7 @@ const ProfilContent = ({ Data }) => {
             setFormData({
                 name: Data.name || "",
                 phone: Data.phone || "",
-                address: Data.address || "",
+                address: Data.address || "address",
                 gender: Data.gender === "male" ? "male" : "female",
             });
         }
