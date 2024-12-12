@@ -65,11 +65,11 @@ const ProfilContent = ({ Data }) => {
         <div className="p-6">
             <div className="space-y-4">
                 <form onSubmit={handleUpdate}>
-                    <div className="flex flex-row mt-2">
+                    <div className="flex flex-row mt-2 max-mobilelg:mb-6">
                         <label className="text-xl w-40 py-3 items-center">User Name</label>
                         <input type="text" className="max-w-[484px] py-3 px-4 block w-full border border-[#BBBBBB] rounded-lg text-xl" defaultValue={Data.username} disabled={true} />
                     </div>
-                    <div className="flex flex-row mt-2">
+                    <div className="flex flex-row mt-2 max-mobilelg:mb-6">
                         <label className="text-xl w-40 py-3 items-center">Nama</label>
                         <input
                             type="text"
@@ -80,7 +80,7 @@ const ProfilContent = ({ Data }) => {
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div className="flex flex-row mt-2">
+                    <div className="flex flex-row mt-2 max-mobilelg:mb-6">
                         <label className="text-xl w-40 py-3">Email</label>
                         <input
                             type="email"
@@ -92,7 +92,7 @@ const ProfilContent = ({ Data }) => {
                             disabled
                         />
                     </div>
-                    <div className="flex flex-row mt-2">
+                    <div className="flex flex-row mt-2 max-mobilelg:mb-6">
                         <label className="text-xl w-40 py-3">No telpon</label>
                         <input
                             type="number"
@@ -105,9 +105,9 @@ const ProfilContent = ({ Data }) => {
                         />
                     </div>
                     {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-                    <div className="flex flex-row items-center space-x-4">
+                    <div className="flex flex-row items-center space-x-4 max-mobilelg:mb-6">
                         <label className="text-xl w-40 py-3">Jenis Kelamin</label>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-3 max-mobilelg:flex-col max-mobilelg:items-start max-mobilelg:space-x-0">
                             <div className="flex">
                                 <input
                                     type="radio"
