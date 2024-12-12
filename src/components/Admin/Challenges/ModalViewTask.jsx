@@ -22,10 +22,10 @@ const ModalViewTask = ({ tasks, challenge, setTasks }) => {
                             <label htmlFor="misi-name" className="text-sm text-[#404040] font-medium">
                                 Deskripsi Misi
                             </label>
-                            <input
+                            <textarea
                                 type="text"
                                 name="description"
-                                className="py-3 px-4 block w-full text-[#1F2937] font-medium bg-white rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm"
+                                className="py-3 px-4 h-28 block w-full text-[#1F2937] font-medium bg-white rounded-lg text-sm border outline-none placeholder:text-[#6B7280] placeholder:font-semibold placeholder:text-sm"
                                 placeholder="Deskripsi Misi"
                                 value={task?.task_description || "Deskripsi tidak Tersedia"}
                                 disabled
