@@ -8,7 +8,6 @@ import { Toast } from "../../utils/function/toast";
 const ForumPost = ({forums, metaData, curPage, isLoading, user}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [dropdownIndex, setDropdownIndex] = useState(null);
-    console.log(forums)
     const toggleDropdown = (index) => {
         setDropdownIndex(dropdownIndex === index ? null : index);
     };
