@@ -37,6 +37,7 @@ const Products = () => {
         try {
             const response = await api.get(`/products?pages=${selectedPage}`);
             setProducts(response.data.data);
+            console.log(response.data.data);
             setMetadata(response.data.metadata);
         } catch (error) {
             console.log(error);
