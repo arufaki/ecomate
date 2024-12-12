@@ -40,7 +40,7 @@ const App = () => {
                 <Route path="/post-mobile" element={<PostMobile />} />
                 <Route path="/detail-produk/:id" element={<DetailProductPage />} />
                 <Route path="/detail-tantangan/:id" element={<DetailChallengePage />} />
-                <Route path="/detail-tantangan/id/day" element={<DayChallengePage />} />
+                <Route path="/detail-tantangan/:id/day" element={<DayChallengePage />} />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                 <Route path="/profile" element={<ProfilPage />} />
                 {/* Guest routes (untuk login dan register, hanya bisa diakses oleh user yang belum login) */}
