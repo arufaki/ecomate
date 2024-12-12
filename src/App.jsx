@@ -22,10 +22,11 @@ import UsersPage from "./pages/AdminPages/UsersPage";
 import Products from "./pages/AdminPages/Products";
 import ChallengePage from "./pages/AdminPages/ChallengePage";
 import DetailForumPage from "./pages/DetailForumPage";
-import ProfilPage from "./pages/ProfilPage";
+
 import AdminRoute from "./routes/AdminRoute";
 import TransactionsPage from "./pages/AdminPages/TransactionsPage";
 import ImpactsPage from "./pages/AdminPages/ImpactsPage";
+import ProfilPage from "./pages/ProfileUsers/ProfilPage";
 
 const App = () => {
     return (
