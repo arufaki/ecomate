@@ -117,7 +117,7 @@ const ProfilContent = ({ Data }) => {
                                     value="male"
                                     checked={formData.gender === "male"}
                                     onChange={handleInputChange}
-                                    className="shrink-0 mt-0.5 border-gray-200 rounded-full text-green-600 focus:ring-green-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-green-500 dark:checked:border-green-500 dark:focus:ring-offset-gray-800"
+                                    className="shrink-0 mt-0.5 radio radio-success border-gray-200 rounded-full text-green-600 focus:ring-green-500 "
 
                                 />
                                 <label htmlFor="male" className="text-md text-gray-500 ml-2 dark:text-gray-400">
@@ -132,7 +132,7 @@ const ProfilContent = ({ Data }) => {
                                     value="female"
                                     checked={formData.gender === "female"}
                                     onChange={handleInputChange}
-                                    className="shrink-0 mt-0.5 border-gray-200 rounded-full text-green-600 focus:ring-green-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-green-500 dark:checked:border-green-500 dark:focus:ring-offset-gray-800"
+                                    className="shrink-0 mt-0.5 radio radio-success border-gray-200 rounded-full text-green-600 focus:ring-green-500 "
 
                                 />
                                 <label htmlFor="female" className="text-md text-gray-500 ml-2 dark:text-gray-400">
