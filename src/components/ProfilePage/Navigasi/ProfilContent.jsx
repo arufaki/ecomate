@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from "../../../services/api";
-
-const ProfilContent = ({Data}) => {
+import { Toast } from "../../../utils/function/toast";
+const ProfilContent = ({ Data }) => {
     const [formData, setFormData] = useState({
-        name: Data.name || '',
-        email: Data.email || '',
-        phone: Data.phone || '',
-        gender: Data.gender === 'Laki-Laki' ? 'male' : 'female'
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        gender: 'male', // Default nilai
     });
-
+    useEffect(() => {
+        if (Data) {
+            setFormData({
+                name: Data.name || '',
+                email: Data.email || '',
+                phone: Data.phone || '',
+                address: Data.address || '',
+                gender: Data.gender === 'male' ? 'male' : 'female',
+            });
+        }
+    }, [Data]);
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -19,11 +30,20 @@ const ProfilContent = ({Data}) => {
 
     const handleUpdate = async (event) => {
         event.preventDefault();
+        
         try {
-            const response = await api.put(`/users`, formData);
-            console.log(response.data);
+            console.log(formData);
+            const response = await api.put(`/users/update`, formData);
+            
+            Toast.fire({
+                icon: "success",
+                title: "Sukses memperbarui data",
+            })
         } catch (error) {
-            console.error(error);
+            Toast.fire({
+                icon: "error",
+                title: "Gagal memperbarui data",
+            })
         }
     };
 

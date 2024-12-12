@@ -9,7 +9,11 @@ import Header from "../components/ListChallengePage/Header";
 import StickyCtaButton from "../components/StickyCtaButton";
 const ListChallengePage = () => {
     const [currentPage, setCurrentPage] = useState('challenge');
-
+    const [searchParams, setSearchParams] = useState(null);
+    const handleSearchSubmit = (searchData) => {
+    
+        setSearchParams(searchData);
+    };
     const handleNavigation = (page) => {
         setCurrentPage(page);
         // Tambahan logika navigasi jika diperlukan
@@ -19,11 +23,11 @@ const ListChallengePage = () => {
         <Navbar active="challenge"/>
 
         <HeroChallenge />
-        <Header onClick={handleNavigation} active={currentPage}/>
+        <Header onClick={handleNavigation} active={currentPage} onSearchSubmit={handleSearchSubmit}/>
         {currentPage === 'challenge' ?
         (   
             <div>
-                <ListChallenge/>
+                <ListChallenge searchParams={searchParams}/>
             </div>
         ):
         (
