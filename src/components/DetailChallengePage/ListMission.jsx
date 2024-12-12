@@ -3,14 +3,7 @@ import React from "react";
 import Image from "../../assets/png/bg-mission.png";
 
 const ListMission = ({data}) => {
-    const Missions = [
-        "Hari 1: Bawa Botol Minum Sendiri",
-        "Hari 2: Gunakan Tas Belanja Reusable",
-        "Hari 3: Tolak Sedotan Plastik",
-        "Hari 4: Hindari Makanan dengan Kemasan Plastik",
-        "Hari 5: Gunakan Wadah Makan Reusable",
-        
-    ]
+
     return (
         <div className="relative h-fit bg-[#37953C] mb-20 md:w-[1280px] py-10 w-[375px] items-center justify-center mx-auto rounded-[48px] overflow-hidden">
             {/* Background Image Overlay */}
@@ -35,12 +28,12 @@ const ListMission = ({data}) => {
                         {data.Tasks.map((mission, index) => (
                             <div 
                                 key={mission.ID} 
-                                className={`bg-neutral-50 md:rounded-[40px] rounded-[20px] md:w-[576px] w-[335px] md:h-[75px] h-[72px] shadow-md p-6 transform transition-all
+                                className={`bg-neutral-50 md:rounded-[40px] rounded-[20px] md:w-[576px] w-[335px] md:min-h-[100px] md:h-fit h-fit shadow-md p-6 transform transition-all
                                     ${data.Tasks.length % 2 !== 0 && index === data.Tasks.length - 1 ? '' : ''}`}
                             >
                                 <div className="flex items-center">
                                     <span className="md:text-lg text-base mx-auto text-center font-semibold text-primary">
-                                        {mission.TaskDescription}
+                                        Hari ke {index+1}: {mission.TaskDescription}
                                     </span>
                                 </div>
                             </div>

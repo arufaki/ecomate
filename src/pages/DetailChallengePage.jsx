@@ -26,7 +26,7 @@ const DetailChallengePage = () => {
     useEffect(() => {
         getChallengeById();
     }, []);
-
+    console.log(challenge)
     // Menghandle klik tombol daftar
     const handleClick = async () => {
         Swal.fire({

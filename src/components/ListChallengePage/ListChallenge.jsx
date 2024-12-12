@@ -4,7 +4,6 @@ import Pagination from "../Pagination";
 import api from "../../services/api";
 import MyChallenge from "./MyChallenge";
 const ListChallenge = ({searchParams}) => {
-  console.log(searchParams);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [challenges, setChallenges] = useState([]);
@@ -17,7 +16,7 @@ const ListChallenge = ({searchParams}) => {
       const activeResponse = await api.get(`/challenges/active?page=${currentPage}`);
       setMyChallenges(activeResponse.data.data || []);
       const queryParams = new URLSearchParams();
-            
+      
       // Tambahkan halaman
       queryParams.append('pages', currentPage);
       
@@ -34,11 +33,11 @@ const ListChallenge = ({searchParams}) => {
       // Dapatkan URL query string
       const queryString = queryParams.toString();
       const unclaimedResponse = await api.get(`/challenges/unclaimed?${queryString}`);
-      const listChallenges = unclaimedResponse.data.data;
+      const listChallenges = unclaimedResponse.data;
       // Update state untuk challenges yang belum diambil
-      setChallenges(listChallenges.challenges);
-      setTotalPages(listChallenges.totalPages);
-      setCurrentPage(listChallenges.currentPage);
+      setChallenges(listChallenges.data);
+      setTotalPages(listChallenges.metadata.Totalpage);
+      setCurrentPage(listChallenges.metadata.Page);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -67,7 +66,7 @@ const ListChallenge = ({searchParams}) => {
 
   return (
     <div>
-       
+
       <MyChallenge myChallenges={myChallenges} />
       <div className="max-w-screen-xl mx-auto px-[25px] mb-[117px]">
         <div className="py-[40px]">

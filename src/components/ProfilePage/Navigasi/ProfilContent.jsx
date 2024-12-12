@@ -20,6 +20,7 @@ const ProfilContent = ({ Data }) => {
             });
         }
     }, [Data]);
+    console.log(Data)
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -94,24 +95,24 @@ const ProfilContent = ({ Data }) => {
                 />
             </div>
             <div className="flex flex-row items-center space-x-4">
-                <label className="text-xl w-40 py-3">Jenis Kelamin</label>
+                <label className="text-xl w-32 py-3">Jenis Kelamin</label>
                 <div className="flex items-center space-x-3">
                     <div className="flex">
-                        <input
-                            type="radio"
-                            name="gender"
-                            id="male"
-                            value="male"
-                            checked={formData.gender === 'male'}
-                            onChange={handleInputChange}
-                            className="shrink-0 mt-0.5 border-gray-200 rounded-full text-green-600 focus:ring-green-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-green-500 dark:checked:border-green-500 dark:focus:ring-offset-gray-800"
-                        />
-                        <label 
-                            htmlFor="male" 
-                            className="text-md text-gray-500 ml-2 dark:text-gray-400"
-                        >
-                            Laki-laki
-                        </label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        id="male"
+                        value="male"
+                        checked={formData.gender === 'male'}
+                        onChange={handleInputChange}
+                        className="shrink-0 mt-0.5 radio radio-success"
+                    />
+                    <label 
+                        htmlFor="male" 
+                        className="text-md text-gray-500 ml-2"
+                    >
+                        Laki-laki
+                    </label>
                     </div>
                     <div className="flex">
                         <input
@@ -121,7 +122,7 @@ const ProfilContent = ({ Data }) => {
                             value="female"
                             checked={formData.gender === 'female'}
                             onChange={handleInputChange}
-                            className="shrink-0 mt-0.5 border-gray-200 rounded-full text-green-600 focus:ring-green-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-green-500 dark:checked:border-green-500 dark:focus:ring-offset-gray-800"
+                            className="shrink-0 mt-0.5 radio radio-success"
                         />
                         <label 
                             htmlFor="female" 
