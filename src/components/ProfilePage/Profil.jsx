@@ -6,7 +6,7 @@ import ProfilContent from "./Navigasi/ProfilContent";
 import AlamatContent from "./Navigasi/Address";
 import PasswordContent from "./Navigasi/Password";
 import PrivasiContent from "./Navigasi/DeleteContent";
-import { Camera } from "lucide-react";
+import { Camera, ChevronDown, ChevronRight, Link } from "lucide-react";
 import Modal from "react-modal";
 import { Toast } from "../../utils/function/toast";
 
@@ -19,6 +19,8 @@ const Profil = () => {
     const [preview, setPreview] = useState(null);
     const [activeTab, setActiveTab] = useState("Profil");
     const [avatarUpdated, setAvatarUpdated] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+
     const tabContent = {
         Profil: <ProfilContent Data={data} />,
         Alamat: <AlamatContent Data={data} />,
@@ -112,13 +114,18 @@ const Profil = () => {
         }
     }, [avatarUpdated]);
 
+    const handleDropDown = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
-        <div className="flex flex-row">
+        <div className="flex md:flex-row mobileNormal:flex-col">
             <Sidebar active="Profil" />
-            <div className="bg-primary mt-20 w-[1152px] h-[327px]">
-                <div className="flex flex-row px-10 pt-40 gap-10">
+            <div className="md:bg-primary md:mt-20 md:w-[1152px] md:h-[327px] mobileNormal:w-full mobileNormal:h-full relative">
+                <div className="md:hidden w-full h-[21rem] bg-[#2E7D32] absolute text-[#2E7D32]">hello</div>
+                <div className="flex md:flex-row mobileNormal:flex-col px-10 pt-40 gap-10">
                     {/* Profile Section */}
-                    <div className="bg-white h-fit w-[309px] rounded-xl p-12">
+                    <div className="bg-white h-fit md:w-[309px] mobileNormal:w-fit max-md:mx-auto rounded-xl p-12 max-md:z-20">
                         <div className="relative">
                             <img src={data.avatar_url ? data.avatar_url : User} alt="Profile Avatar" className="w-[210px] h-[210px] rounded-full object-cover object-top" />
                             <button onClick={openModal} className="absolute bottom-2 right-2 bg-primary text-white px-3 py-3 rounded-full text-sm hover:bg-gray-700">
@@ -154,9 +161,9 @@ const Profil = () => {
                     </div>
 
                     {/* Tab Section */}
-                    <div className="bg-white h-fit w-[624px] rounded-xl">
+                    <div className="hidden md:block bg-white h-fit md:w-[624px] rounded-xl max-mobilelg:mb-[111px]">
                         <nav>
-                            <ul className="flex flex-row gap-24 mx-8 text-lg p-4">
+                            <ul className="flex md:flex-row max-mobilelg:flex-col gap-24 mx-8 text-lg p-4">
                                 {Object.keys(tabContent).map((tab) => (
                                     <li
                                         key={tab}
@@ -169,6 +176,34 @@ const Profil = () => {
                             </ul>
                             <hr />
                         </nav>
+                        <div>{tabContent[activeTab]}</div>
+                    </div>
+
+                    <div className="md:hidden bg-white h-fit md:w-[624px] rounded-xl max-md:mb-[111px]">
+                        <div className="h-7">
+                            <div className="bg-primary flex flex-row items-center justify-between px-4 py-3 rounded-t-xl cursor-pointer" onClick={handleDropDown}>
+                                <h1 className="text-[#FAFAFA] text-base font-bold">{activeTab}</h1>
+                                <ChevronDown color="#FAFAFA" />
+                            </div>
+                            {isOpen && (
+                                <nav className="relative">
+                                    <ul className="text-center absolute left-0 right-0 shadow-lg bg-secondary backdrop-blur-sm bg-opacity-10 rounded-xl pt-4">
+                                        {Object.keys(tabContent).map((tab) => (
+                                            <li
+                                                key={tab}
+                                                className={`font-bold cursor-pointer ${activeTab === tab ? "bg-primary text-white rounded-lg py-2" : "text-gray-500 hover:text-primary py-4"}`}
+                                                onClick={() => {
+                                                    setActiveTab(tab);
+                                                    setIsOpen(false);
+                                                }}
+                                            >
+                                                {tab}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </nav>
+                            )}
+                        </div>
                         <div>{tabContent[activeTab]}</div>
                     </div>
                 </div>
