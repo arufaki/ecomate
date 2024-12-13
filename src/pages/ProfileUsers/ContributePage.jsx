@@ -9,18 +9,20 @@ import { useEffect, useState } from "react";
 
 const ContributePage = () => {
     const [user, setUser] = useState(null);
+    const [challenges, setChallenges] = useState(null);
 
-    const fetchProfile = async () => {
+    const fetchData = async (endpoint, setter) => {
         try {
-            const response = await api.get("/users/profile");
-            setUser(response.data.data);
+            const response = await api.get(endpoint);
+            setter(response.data.data);
         } catch (error) {
-            console.log(error);
+            console.error(`Error fetching ${endpoint}:`, error);
         }
     };
 
     useEffect(() => {
-        fetchProfile();
+        fetchData("/users/profile", setUser);
+        fetchData("/challenges/active", setChallenges);
     }, []);
 
     return (
@@ -31,8 +33,8 @@ const ContributePage = () => {
                     <Sidebar active="Kontribusi" />
                     <div className="md:mt-28 md:w-[1152px] md:h-[327px] mobileNormal:w-full mobileNormal:h-full relative">
                         <div className="md:hidden w-full h-[21rem] bg-[#2E7D32] absolute text-[#2E7D32] z-10">hello</div>
-                        <CardContribute data={user} />
-                        <ContributeTable />
+                        <CardContribute data={user} challenges={challenges} />
+                        <ContributeTable challenges={challenges} />
                     </div>
                 </div>
             </div>
