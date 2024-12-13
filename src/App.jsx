@@ -26,7 +26,7 @@ import AdminRoute from "./routes/AdminRoute";
 import TransactionsPage from "./pages/AdminPages/TransactionsPage";
 import ImpactsPage from "./pages/AdminPages/ImpactsPage";
 import ProfilPage from "./pages/ProfileUsers/ProfilPage";
-
+import ProfilChallengePage from "./pages/ProfileUsers/ProfilChallengePage";
 import ContributePage from "./pages/ProfileUsers/ContributePage";
 
 const App = () => {
@@ -64,6 +64,8 @@ const App = () => {
                     <Route path="/payment/:id" element={<PaymentPage />} />
                     <Route path="/profile" element={<ProfilPage />} />
                     <Route path="/profile/kontribusi" element={<ContributePage />} />
+
+                    <Route path="/profile/challenge" element={<ProfilChallengePage />} />
                 </Route>
 
                 <Route element={<AdminRoute />}>
