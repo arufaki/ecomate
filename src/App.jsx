@@ -28,6 +28,7 @@ import ImpactsPage from "./pages/AdminPages/ImpactsPage";
 import ProfilPage from "./pages/ProfileUsers/ProfilPage";
 
 import ContributePage from "./pages/ProfileUsers/ContributePage";
+import OrdersPage from "./pages/ProfileUsers/OrdersPage";
 
 const App = () => {
     return (
@@ -63,7 +64,8 @@ const App = () => {
                     <Route path="/chat" element={<Chatbot />} />
                     <Route path="/payment/:id" element={<PaymentPage />} />
                     <Route path="/profile" element={<ProfilPage />} />
-                    <Route path="/kontribusi" element={<ContributePage />} />
+                    <Route path="/profile/kontribusi" element={<ContributePage />} />
+                    <Route path="/profile/pesanan" element={<OrdersPage/>}/>
                 </Route>
 
                 <Route element={<AdminRoute />}>
