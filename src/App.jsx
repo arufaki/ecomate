@@ -63,7 +63,7 @@ const App = () => {
                     <Route path="/chat" element={<Chatbot />} />
                     <Route path="/payment/:id" element={<PaymentPage />} />
                     <Route path="/profile" element={<ProfilPage />} />
-                    <Route path="/kontribusi" element={<ContributePage />} />
+                    <Route path="/profile/kontribusi" element={<ContributePage />} />
                 </Route>
 
                 <Route element={<AdminRoute />}>
