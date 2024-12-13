@@ -28,6 +28,7 @@ import ImpactsPage from "./pages/AdminPages/ImpactsPage";
 import ProfilPage from "./pages/ProfileUsers/ProfilPage";
 import ProfilChallengePage from "./pages/ProfileUsers/ProfilChallengePage";
 import ContributePage from "./pages/ProfileUsers/ContributePage";
+import OrdersPage from "./pages/ProfileUsers/OrdersPage";
 
 const App = () => {
     return (
@@ -64,8 +65,9 @@ const App = () => {
                     <Route path="/payment/:id" element={<PaymentPage />} />
                     <Route path="/profile" element={<ProfilPage />} />
                     <Route path="/profile/kontribusi" element={<ContributePage />} />
-
                     <Route path="/profile/challenge" element={<ProfilChallengePage />} />
+                    <Route path="/profile/pesanan" element={<OrdersPage/>}/>
+
                 </Route>
 
                 <Route element={<AdminRoute />}>
