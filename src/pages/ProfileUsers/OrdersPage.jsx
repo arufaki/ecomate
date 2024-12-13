@@ -25,10 +25,6 @@ const OrdersPage = () => {
         fetchOrders();
     }, []);
 
-    const handleDropDown = () => {
-        setIsOpen(!isOpen);
-    };
-
     const statusMapping = {
         pending: "Belum Dibayar",
         cancel: "Dibatalkan",
@@ -103,54 +99,6 @@ const OrdersPage = () => {
                                     <CardOrder orders={filteredTransactions} />
                                 </div>
                             </div>
-
-                            {/* Header Bro */}
-                            {/* Tab Section */}
-                            {/* <div className="hidden md:block bg-white h-fit md:w-[624px] rounded-xl max-mobilelg:mb-[111px]">
-                                <nav>
-                                    <ul className="flex md:flex-row max-mobilelg:flex-col gap-24 mx-8 text-lg p-4">
-                                        {Object.keys(tabContent).map((tab) => (
-                                            <li
-                                                key={tab}
-                                                className={`font-bold cursor-pointer ${activeTab === tab ? "text-primary border-b-2 border-primary" : "text-gray-500 hover:text-primary"}`}
-                                                onClick={() => setActiveTab(tab)}
-                                            >
-                                                {tab}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <hr />
-                                </nav>
-                                <div>{tabContent[activeTab]}</div>
-                            </div>
-
-                            <div className="md:hidden bg-white h-fit md:w-[624px] rounded-xl max-md:mb-[111px]">
-                                <div className="h-7">
-                                    <div className="bg-primary flex flex-row items-center justify-between px-4 py-3 rounded-t-xl cursor-pointer" onClick={handleDropDown}>
-                                        <h1 className="text-[#FAFAFA] text-base font-bold">{activeTab}</h1>
-                                        <ChevronDown color="#FAFAFA" />
-                                    </div>
-                                    {isOpen && (
-                                        <nav className="relative">
-                                            <ul className="text-center absolute left-0 right-0 shadow-lg bg-secondary backdrop-blur-sm bg-opacity-10 rounded-xl pt-4">
-                                                {Object.keys(tabContent).map((tab) => (
-                                                    <li
-                                                        key={tab}
-                                                        className={`font-bold cursor-pointer ${activeTab === tab ? "bg-primary text-white rounded-lg py-2" : "text-gray-500 hover:text-primary py-4"}`}
-                                                        onClick={() => {
-                                                            setActiveTab(tab);
-                                                            setIsOpen(false);
-                                                        }}
-                                                    >
-                                                        {tab}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </nav>
-                                    )}
-                                </div>
-                                <div>{tabContent[activeTab]}</div>
-                            </div> */}
                         </div>
                     </div>
                 </div>
