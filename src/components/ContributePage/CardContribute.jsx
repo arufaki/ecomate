@@ -3,7 +3,7 @@ import cashback from "../../assets/png/cashback.png";
 import challenge from "../../assets/png/challenge.png";
 import { Mail, Phone } from "lucide-react";
 
-const CardContribute = ({ data }) => {
+const CardContribute = ({ data, challenges }) => {
     return (
         <>
             <div className="px-8 mt-10 mb-7 md:relative md:z-20">
@@ -47,7 +47,7 @@ const CardContribute = ({ data }) => {
                     <div className="bg-white z-20 relative h-fit w-fit flex flex-row mx-auto md:mx-0 my-6 rounded-xl max-md:mb-[115px]">
                         <div className="px-6 py-8">
                             <p className="text-base text-[#030712] font-semibold mb-1">Total challenge</p>
-                            <p className="text-xs text-[#09090B] font-normal max-w-[135px]">Anda telah mengikuti 0 challenge di EcoMate</p>
+                            <p className="text-xs text-[#09090B] font-normal max-w-[135px]">Anda telah mengikuti {challenges?.length} challenge di EcoMate</p>
                         </div>
                         <div className="h-full">
                             <img src={challenge} alt="banner-cashback" className="h-full object-cover object-center" />
