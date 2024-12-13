@@ -162,7 +162,7 @@ const Profil = () => {
                     {/* Tab Section */}
                     <div className="hidden md:block bg-white h-fit md:w-[624px] rounded-xl max-mobilelg:mb-[111px]">
                         <nav>
-                            <ul className="flex md:flex-row max-mobilelg:flex-col gap-24 mx-8 text-lg p-4">
+                            <ul className="flex md:flex-row max-mobilelg:flex-col justify-between mx-8 text-lg p-4">
                                 {Object.keys(tabContent).map((tab) => (
                                     <li
                                         key={tab}
