@@ -38,7 +38,9 @@ const ContributePage = () => {
                     </div>
                 </div>
             </div>
+            <div className="mt-28">
             <Footer />
+            </div>
             <StickyCtaButton />
         </div>
     );
