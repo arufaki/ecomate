@@ -15,25 +15,25 @@ const Sidebar = ({ active }) => {
         {
             id: 2,
             name: "Kontribusi",
-            link: "/kontribusi",
+            link: "/profile/kontribusi",
             icon: <Trophy />,
         },
         {
             id: 3,
             name: "Challenge",
-            link: "/profile",
+            link: "/profile/challenge",
             icon: <Award />,
         },
         {
             id: 4,
             name: "Pesanan",
-            link: "/profile",
+            link: "/profile/pesanan",
             icon: <Dock />,
         },
         {
             id: 5,
             name: "Koin Ecomate",
-            link: "/profile",
+            link: "/profile/ecocoin",
             icon: <HandCoins />,
         },
     ];
@@ -49,14 +49,12 @@ const Sidebar = ({ active }) => {
                     <div key={item.id}>
                         <Link
                             to={item.link}
-
                             className={`" py-3 w-full gap-3 mt-5 rounded-[12px]  text-start flex px-4 text-xl fontbold" ${
                                 active === item.name ? "bg-primary text-white" : "text-primary hover:bg-primary hover:text-white"
                             }`}
                         >
                             {item.icon} {item.name}
                         </Link>
-
                     </div>
                 ))}
             </div>
@@ -74,6 +72,7 @@ const Sidebar = ({ active }) => {
                                 <div key={item.id}>
                                     <Link
                                         to={item.link}
+                                        onClick={() => setIsOpen(false)}
                                         className={`" py-3 w-full gap-3 mt-5 rounded-[12px]  text-start flex px-4 text-xl fontbold" ${
                                             active === item.name ? "bg-primary text-white" : "text-primary hover:bg-primary hover:text-white"
                                         }`}
