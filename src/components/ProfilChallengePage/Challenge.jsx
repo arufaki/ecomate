@@ -1,6 +1,6 @@
 import React,{ useState } from "react";
 import {  ChevronDown, Coins  } from "lucide-react";
-import Coin from "../../assets/svg/coin.svg";
+import Coin from "../../assets/svg/Coin.svg";
 import { useNavigate } from "react-router";
 
 const Challenge = ({ challenges }) => {
@@ -13,6 +13,7 @@ const Challenge = ({ challenges }) => {
         "Done": "Done",
         
     }
+
     const handleNavigate = (challengeId) => {
         navigate(`/detail-tantangan/${challengeId}/day`);
     }
