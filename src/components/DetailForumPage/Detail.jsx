@@ -8,7 +8,7 @@ import Blank from '../../assets/webp/blank.webp';
 import { Toast } from "../../utils/function/toast";
 import { Camera } from "lucide-react";
 import { set } from "lodash";
-const Detail = () => {
+const Detail = ({forums}) => {
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
     const [author, setAuthor] = useState({});
@@ -245,7 +245,8 @@ const Detail = () => {
                 </div>
             </div>
         </div>
-            <BestTopic />
+        {forums && <BestTopic forums={forums}/>}
+            
     </div>);
 };
 
