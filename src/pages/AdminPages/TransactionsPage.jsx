@@ -228,6 +228,8 @@ const TransactionsPage = () => {
                                                                             ? "text-[#019BF4] bg-[#E6F5FE] border-2 border-[#B0E0FC]"
                                                                             : transaction.status === "expire"
                                                                             ? "text-[#F05D3D] bg-[#feefec] border-2 border-[#FACDC3]"
+                                                                            : transaction.status === "cancel"
+                                                                            ? "text-[#F05D3D] bg-[#feefec] border-2 border-[#FACDC3]"
                                                                             : "text-[#009499] bg-[#e5f4f5] border-2 border-[#B0DEDF]"
                                                                     }`}
                                                                 >

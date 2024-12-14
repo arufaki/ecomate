@@ -60,6 +60,8 @@ const DetailChallengePage = () => {
             }
         });
     };
+
+    console.log(challenge)
     
     return <div className="bg-secondary ">
         <Navbar active="challenge"/>
