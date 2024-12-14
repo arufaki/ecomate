@@ -2,7 +2,7 @@ import imageBg from "../../../assets/jpg/user.jpg";
 import { formatToIDR } from "../../../utils/function/formatToIdr";
 import { truncateText } from "../../../utils/function/truncateText";
 const ModalTransaction = ({ transaction, users }) => {
-    const user = users?.data.find((u) => u.email === transaction.email);
+    const user = users?.find((u) => u.email === transaction.email);
 
     return (
         <dialog id="my_modal_15" className="modal">
