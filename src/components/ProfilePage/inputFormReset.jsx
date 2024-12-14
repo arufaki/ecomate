@@ -2,7 +2,7 @@ import AlertIcon from "../../assets/svg/alert-circle.svg";
 import Eye from "../../assets/svg/eye.svg";
 import EyeOff from "../../assets/svg/eye-off.svg";
 
-const InputForm = ({ id, label, type, ps, error, placeholder, register, iconStart, showPassword, togglePassword, newClass, defaultValue, disabled }) => {
+const InputFormReset = ({ id, label, type, ps, error, placeholder, register, iconStart, showPassword, togglePassword, newClass, defaultValue, disabled }) => {
     const isPasswordField = id === "password-label1" || id === "password-label2";
     const finalIconEnd = error ? AlertIcon : isPasswordField && showPassword ? Eye : isPasswordField ? EyeOff : null;
     return (
@@ -35,4 +35,4 @@ const InputForm = ({ id, label, type, ps, error, placeholder, register, iconStar
     );
 };
 
-export default InputForm;
+export default InputFormReset;

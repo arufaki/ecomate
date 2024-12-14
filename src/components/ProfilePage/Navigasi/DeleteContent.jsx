@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import Modal from "react-modal";
-import InputForm from "../InputFormReset";
 const PrivasiContent = () => {
     const { clearToken } = useAuthStore();
     const navigate = useNavigate();
@@ -149,7 +148,7 @@ const PrivasiContent = () => {
             >
                 <h2 className="text-xl font-bold mb-4">Ubah Password</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <InputForm
+                    <InputFormReset
                         id="password-label1"
                         label="Password Lama"
                         type={showPasswordOld ? "text" : "password"}
@@ -165,7 +164,7 @@ const PrivasiContent = () => {
                         showPassword={showPasswordOld}
                         togglePassword={togglePasswordOld}
                     />
-                    <InputForm
+                    <InputFormReset
                         id="password-label2"
                         label="Password Baru"
                         type={showPasswordNew ? "text" : "password"}
