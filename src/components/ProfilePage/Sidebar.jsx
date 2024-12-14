@@ -30,12 +30,12 @@ const Sidebar = ({ active }) => {
             link: "/profile/pesanan",
             icon: <Dock />,
         },
-        {
-            id: 5,
-            name: "Koin Ecomate",
-            link: "/profile/ecocoin",
-            icon: <HandCoins />,
-        },
+        // {
+        //     id: 5,
+        //     name: "Koin Ecomate",
+        //     link: "/profile/ecocoin",
+        //     icon: <HandCoins />,
+        // },
     ];
 
     const handleDropDown = () => {

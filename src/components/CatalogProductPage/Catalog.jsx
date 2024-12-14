@@ -4,6 +4,8 @@ import Pagination from "../Pagination";
 import api from "../../services/api";
 import { truncateContent } from "../../hooks/useTruncates";
 import { Search } from "lucide-react";
+import { useNavigate } from "react-router";
+
 const Catalog = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [products, setProducts] = useState([]);

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import Modal from "react-modal";
+import InputFormReset from "../InputFormReset";
 const PrivasiContent = () => {
     const { clearToken } = useAuthStore();
     const navigate = useNavigate();

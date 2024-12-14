@@ -18,7 +18,9 @@ const ModalViewChallenges = ({ challenge }) => {
     };
 
     useEffect(() => {
-        fetchChallengeTask();
+        if (challenge) {
+            fetchChallengeTask();
+        }
     }, [challenge]);
 
     const handleMisi = () => {
@@ -28,6 +30,9 @@ const ModalViewChallenges = ({ challenge }) => {
 
     const handleViewMisi = () => {
         document.getElementById("my_modal_11").close();
+        // Reset tasks each time modal is opened to ensure fresh fetch
+        setTasks(null); // Clear tasks
+        fetchChallengeTask(); // Fetch tasks
         document.getElementById("my_modal_13").showModal();
     };
 
@@ -138,7 +143,7 @@ const ModalViewChallenges = ({ challenge }) => {
                         <button
                             className="btn btn-success !text-white bg-[#2E7D32] border border-[#2E7D32]"
                             onClick={handleMisi}
-                            disabled={tasks?.length >= challenge?.duration_days || challenge?.deleted_at}
+                            disabled={challenge?.deleted_at}
                         >
                             Tambah Misi
                         </button>

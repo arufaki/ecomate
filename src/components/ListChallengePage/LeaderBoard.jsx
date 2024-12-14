@@ -19,11 +19,11 @@ const LeaderBoard = ( { leaderboard } ) => {
                 <div className="relative z-10">
                 <div className="mx-auto rounded-[40px] md:w-[1184px] w-[335px] flex flex-col justify-center items-center">
                     <h1 className="md:text-5xl text-xl font-bold text-white my-10">LeaderBoard</h1>
-                    <div className="flex flex-row gap-3 md:gap-10 bg-[#1B4B1E] text-white md:w-[694px] w-[355px] p-5 rounded-[100px]">
+                    {/* <div className="flex flex-row gap-3 md:gap-10 bg-[#1B4B1E] text-white md:w-[694px] w-[355px] p-5 rounded-[100px]">
                         <a className="w-[99px] md:w-[194px] bg-secondary text-black text-center rounded-[100px] md:py-3 py-2 text-lg md:text-2xl">Hari ini </a>
                         <a className="w-[99px] md:w-[194px] text-center rounded-[100px] md:py-3 py-2 text-lg md:text-2xl">Bulan ini</a>
                         <a className="w-[99px] md:w-[194px] text-center rounded-[100px] md:py-3 py-2 text-lg md:text-2xl">Semua</a>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Leaderboard Ranking Layout */}
@@ -72,7 +72,7 @@ const LeaderBoard = ( { leaderboard } ) => {
                             <div key={index} className="flex flex-row justify-between items-center p-5 w-[323px] md:w-[1088px] h-[80px] md:h-[136px] bg-secondary rounded-[24px] my-5">
                                 <div className="flex flex-row items-center text-primary text-base md:text-3xl font-bold">
                                     <h1 className="  md:mr-20 mr-5 ">{index + 4}</h1>
-                                    <img src={leaderboard.avatar_url || User} className="md:w-[88px] md:h-[88px] w-[66px] h-[66px] object-cover object-top rounded-full mx-2 md:mx-10"/>
+                                    <img src={leaderboard?.avatar_url || User} className="md:w-[88px] md:h-[88px] w-[66px] h-[66px] object-cover object-top rounded-full mx-2 md:mx-10"/>
                                     <h2 className="w-[80px] md:w-[350px]">{leader.name} </h2>
                                     <h1 className="mx-10 md:flex hidden">{leader.totalChallenge} Challenge</h1>
                                     <p className="">{leader.exp} EXP</p>

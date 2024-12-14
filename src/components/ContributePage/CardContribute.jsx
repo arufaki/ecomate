@@ -36,7 +36,7 @@ const CardContribute = ({ data, challenges }) => {
                         <div className="px-6 py-8">
                             <p className="text-sm text-black font-normal">Total Koin</p>
                             <h1 className="text-3xl text-[#020617] font-bold py-1">{data?.coin || 0}</h1>
-                            <p className="text-xs text-black font-normal max-w-[135px]">Koin yang anda dapatkan dari challenge</p>
+                            <p className="text-xs text-black font-normal max-w-[135px]">Koin yang anda dapatkan dari challenge dan belanja.</p>
                         </div>
                         <div className="h-full">
                             <img src={cashback} alt="banner-cashback" className="h-full object-cover object-center" />
