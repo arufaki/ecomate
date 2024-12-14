@@ -47,7 +47,7 @@ const CardContribute = ({ data, challenges }) => {
                     <div className="bg-white z-20 relative h-fit w-fit flex flex-row mx-auto md:mx-0 my-6 rounded-xl max-md:mb-[115px]">
                         <div className="px-6 py-8">
                             <p className="text-base text-[#030712] font-semibold mb-1">Total challenge</p>
-                            <p className="text-xs text-[#09090B] font-normal max-w-[135px]">Anda telah mengikuti {challenges?.length} challenge di EcoMate</p>
+                            <p className="text-xs text-[#09090B] font-normal max-w-[135px]">Anda telah mengikuti {challenges?.length || 0} challenge di EcoMate</p>
                         </div>
                         <div className="h-full">
                             <img src={challenge} alt="banner-cashback" className="h-full object-cover object-center" />
