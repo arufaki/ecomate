@@ -41,15 +41,6 @@ const DetailTransaction = ({ products }) => {
                             <h1 className="text-2xl font-bold text-[#262626]">{formatToIDR(transaction?.amount)}</h1>
                         </div>
 
-                        {/* Koin Ecomate */}
-                        <div className="flex flex-row justify-between items-center border-b border-[#E5E7EB] py-4 w-full">
-                            <h2 className="font-semibold text-gray-900 text-2xl">Koin Ecomate</h2>
-                            <div className="flex flex-row gap-5">
-                                <input type="checkbox" className="toggle border-[#2e7d32] bg-white [--tglbg:#2e7d32] hover:bg-white" />
-                                <p className="text-gray-700 text-sm sm:text-base font-semibold">12.000 Koin</p>
-                            </div>
-                        </div>
-
                         <div className="flex flex-row justify-between items-center border-b border-[#E5E7EB] py-4">
                             <h2 className="font-bold text-gray-900 text-2xl">Total</h2>
                             <h2 className="font-bold text-gray-900 text-2xl">{formatToIDR(transaction?.amount)}</h2>
