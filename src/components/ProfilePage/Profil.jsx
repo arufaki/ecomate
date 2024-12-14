@@ -4,7 +4,6 @@ import User from "../../assets/webp/blank.webp";
 import api from "../../services/api";
 import ProfilContent from "./Navigasi/ProfilContent";
 import AlamatContent from "./Navigasi/Address";
-import PasswordContent from "./Navigasi/Password";
 import PrivasiContent from "./Navigasi/DeleteContent";
 import { Camera, ChevronDown, ChevronRight, Link } from "lucide-react";
 import Modal from "react-modal";
@@ -24,7 +23,6 @@ const Profil = () => {
     const tabContent = {
         Profil: <ProfilContent Data={data} />,
         Alamat: <AlamatContent Data={data} />,
-        Password: <PasswordContent />,
         Privasi: <PrivasiContent />,
     };
 
@@ -124,7 +122,7 @@ const Profil = () => {
                 <div className="md:hidden w-full h-[21rem] bg-[#2E7D32] absolute text-[#2E7D32]">hello</div>
                 <div className="flex md:flex-row mobileNormal:flex-col px-10 pt-40 gap-10">
                     {/* Profile Section */}
-                    <div className="bg-white h-fit md:w-[309px] mobileNormal:w-fit max-md:mx-auto rounded-xl p-12 max-md:z-20">
+                    <div className="bg-white h-fit md:w-[309px] mobileNormal:w-fit max-md:mx-auto rounded-xl p-12  z-0">
                         <div className="relative">
                             <img src={data.avatar_url ? data.avatar_url : User} alt="Profile Avatar" className="w-[210px] h-[210px] rounded-full object-cover object-top" />
                             <button onClick={openModal} className="absolute bottom-2 right-2 bg-primary text-white px-3 py-3 rounded-full text-sm hover:bg-gray-700">
