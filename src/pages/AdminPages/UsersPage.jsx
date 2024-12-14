@@ -85,7 +85,7 @@ const Users = () => {
     };
 
     const filteredUser = users?.filter(
-        (user) => user.name.toLowerCase().includes(searchQuery.toLowerCase()), // Mencocokkan nama kategori dengan query pencarian
+        (user) => user.email.toLowerCase().includes(searchQuery.toLowerCase()), // Mencocokkan nama kategori dengan query pencarian
     );
 
     return (
