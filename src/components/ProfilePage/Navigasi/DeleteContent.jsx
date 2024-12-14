@@ -8,6 +8,9 @@ import { useNavigate } from "react-router";
 import Modal from "react-modal";
 import InputFormReset from "../InputFormReset";
 
+=======
+import InputFormReset from "../inputFormReset";
+>>>>>>> Stashed changes
 const PrivasiContent = () => {
     const { clearToken } = useAuthStore();
     const navigate = useNavigate();
@@ -182,7 +185,7 @@ const PrivasiContent = () => {
                         showPassword={showPasswordNew}
                         togglePassword={togglePasswordNew}
                     />
-                    <label className="block text-sm font-bold mb-1">OTP</label>
+                    <label className="block text-sm font-bold mb-1">Masukkan Kode OTP yang sudah dikirimkan melalui Email</label>
                     <input
                         type="text"
                         className="text-center text-3xl font-medium focus:outline-none focus:ring-0 placeholder-gray-400 border border-gray-300 w-full mb-4 py-4 rounded-xl text-primary"
