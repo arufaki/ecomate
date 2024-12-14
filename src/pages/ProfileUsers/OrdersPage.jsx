@@ -96,7 +96,7 @@ const OrdersPage = () => {
 
                                 <div className="p-8">
                                     {/* Card */}
-                                    <CardOrder orders={filteredTransactions} />
+                                    <CardOrder orders={filteredTransactions} fetchOrders={() => fetchOrders()} />
                                 </div>
                             </div>
                         </div>

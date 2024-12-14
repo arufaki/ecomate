@@ -29,7 +29,7 @@ const usePayment = (snapToken, checkedProducts) => {
                             title: "Pembayaran Berhasil",
                         });
 
-                        navigate("/cart");
+                        navigate("/profile/pesanan");
                         window.scrollTo(0, 0);
                     } catch (error) {
                         console.log(error);

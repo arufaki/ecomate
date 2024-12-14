@@ -6,9 +6,9 @@ const useUserStore = create((set) => ({
     setUser: (userData) => set({ user: userData }),
 }));
 
-export const loadUserData = async () => {
+export const loadUserData = async (endpoint) => {
     try {
-        const userData = await userServices();
+        const userData = await userServices(endpoint);
         useUserStore.getState().setUser(userData);
     } catch (error) {
         console.error("Failed to load user data:", error);

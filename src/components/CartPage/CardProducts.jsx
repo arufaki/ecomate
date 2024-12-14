@@ -6,7 +6,7 @@ const CardProducts = ({ products, checkedProducts, quantities, handleCheckboxCha
         ?.slice()
         .reverse()
         .map((product) => (
-            <div className="my-4 bg-[#FAFAFA] mx-10 min-[768px]:mx-4 xl:mx-5 xxl:mx-0 rounded border border-[#E5E7EB] shadow-[0px_0.5px_1px_0px_rgba(0,0,0,0.05)]" key={product.id}>
+            <div className="my-4 bg-[#FAFAFA] mx-10 min-[768px]:mx-4 xl:mx-5 xxl:mx-0 rounded-xl border border-[#E5E7EB] shadow-[0px_0.5px_1px_0px_rgba(0,0,0,0.05)]" key={product.id}>
                 <div className="p-3 min-[1200px]:p-6 min-[1024px]:px-6 flex flex-row items-center justify-between min-[1024px]:justify-normal">
                     <div className="flex flex-row items-center gap-2 min-[1024px]:flex-[1_36%] min-[1200px]:flex-[1_38%]">
                         <input

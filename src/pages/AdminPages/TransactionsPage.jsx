@@ -16,6 +16,8 @@ const TransactionsPage = () => {
     const [metadata, setMetadata] = useState({});
     const [selectedPage, setSelectedPage] = useState(1);
 
+    // const [selectedTransactions, setSelectedTransactions] = useState([]);
+
     const users = useUserStore((state) => state.user);
 
     const fetchTransactions = async () => {
@@ -29,7 +31,7 @@ const TransactionsPage = () => {
     };
 
     useEffect(() => {
-        loadUserData();
+        loadUserData("/admin/users");
         fetchTransactions();
     }, []);
 
@@ -63,6 +65,42 @@ const TransactionsPage = () => {
             setSelectedPage(selectedPage + 1);
         }
     };
+
+    // const handleSelectAll = (e) => {
+    //     if (e.target.checked) {
+    //         // Centang semua
+    //         setSelectedTransactions(transactions.map((transaction) => transaction.id));
+    //     } else {
+    //         // Hapus semua
+    //         setSelectedTransactions([]);
+    //     }
+    // };
+
+    // const handleSelectTransaction = (transactionId) => {
+    //     setSelectedTransactions(
+    //         (prevSelected) =>
+    //             prevSelected.includes(transactionId)
+    //                 ? prevSelected.filter((id) => id !== transactionId) // Hapus jika sudah ada
+    //                 : [...prevSelected, transactionId], // Tambahkan jika belum ada
+    //     );
+    // };
+
+    // const handleDeleteAll = async () => {
+    //     if (selectedTransactions.length === 0) {
+    //         alert("Tidak ada transaksi yang dipilih.");
+    //         return;
+    //     }
+
+    //     try {
+    //         await Promise.all(selectedTransactions.map((id) => api.delete(`/transactions/${id}`)));
+    //         alert("Transaksi berhasil dihapus!");
+    //         setSelectedTransactions([]); // Reset state
+    //         fetchTransactions(); // Refresh data
+    //     } catch (error) {
+    //         console.error(error);
+    //         alert("Gagal menghapus transaksi.");
+    //     }
+    // };
 
     return (
         <AdminLayout active="Pesanan">

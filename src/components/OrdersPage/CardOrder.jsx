@@ -1,19 +1,58 @@
 import { CircleHelp, Truck } from "lucide-react";
 import productS from "../../assets/jpg/user.jpg";
 import { formatToIDR } from "../../utils/function/formatToIdr";
-import { p } from "motion/react-client";
+import ButtonPayment from "../PaymentPage/ButtonPayment";
+import { useEffect, useState } from "react";
+import useCart from "../../hooks/useCart";
+import api from "../../services/api";
+import { Toast } from "../../utils/function/toast";
 
-const CardOrder = ({ orders }) => {
+const CardOrder = ({ orders, fetchOrders }) => {
+    const [filteredCheckout, setFilteredCheckout] = useState([]);
+    const { products } = useCart();
+
+    useEffect(() => {
+        if (products && orders?.length > 0) {
+            const orderedProductNames = orders.flatMap((order) => order.details.map((detail) => detail.product_name));
+
+            const filteredCheckout = products.filter((product) => orderedProductNames.includes(product.product.name));
+            setFilteredCheckout(filteredCheckout);
+        }
+    }, [products, orders]);
+
+    const handleCancelOrder = async (transaction_id) => {
+        try {
+            const response = await api.put(`transactions/${transaction_id}/cancel`);
+            if (response.status === 200 || response.status === 201) {
+                Toast.fire({
+                    icon: "success",
+                    title: "Sukses cancel transaksi",
+                });
+
+                window.location.reload();
+            }
+        } catch (error) {
+            console.log(error);
+            Toast.fire({
+                icon: "error",
+                title: error,
+            });
+        }
+    };
+
     return (
         <>
             {orders && orders.length > 0 ? (
                 orders.map((transaction) => (
                     <div className="border border-[#BEBEBE] rounded-xl my-4" key={transaction.id}>
+                        {/* Status Pengiriman */}
                         <div className="py-3 px-6 flex flex-row items-center justify-end border-b gap-1 border-[#BEBEBE]">
-                            <Truck width={24} color="#2E7D32" />
-                            <p className="text-[#2E7D32] font-normal text-sm max-w">{transaction.status === "pending" ? "Bayar dulu baru ku kirim barang ni" : "Pesanan Dalam Pengiriman"}</p>
-                            <CircleHelp width={24} color="#000000" />
-                            <p className="text-[#2E7D32] font-semibold text-sm border-l border-[#959090] pl-2">Belum Dinilai</p>
+                            {transaction?.status === "settlement" && <Truck width={24} color="#2E7D32" />}
+                            <p className="text-[#2E7D32] font-normal text-sm max-w">
+                                {transaction.status === "pending" ? "Selesaikan Pembayaran Anda." : transaction.status === "cancel" ? "Pesanan Telah Dibatalkan." : "Pesanan Dalam Pengiriman"}
+                            </p>
+                            {transaction?.status === "settlement" && <CircleHelp width={24} color="#000000" />}
+                            {transaction?.status === "settlement" && <p className="text-[#2E7D32] font-semibold text-sm border-l border-[#959090] pl-2">Belum Dinilai</p>}
                         </div>
                         <div className="py-3 px-6 border-b border-[#BEBEBE]">
                             {transaction?.details.map((product, index) => (
@@ -43,10 +82,26 @@ const CardOrder = ({ orders }) => {
                                 <h2 className="font-bold text-[#2E7D32] text-xl">{formatToIDR(transaction?.total)}</h2>
                             </div>
                             <div className="flex flex-row gap-2 my-3 justify-end">
-                                <button className="btn btn-success !bg-[#2E7D32] !border-[#2E7D32] !text-white">{transaction?.status === "pending" ? "Bayar" : "Beli Lagi"}</button>
-                                <button className="btn btn-outline hover:!bg-[#2E7D32] hover:!text-white !border-[#2E7D32] !text-[#2E7D32]" disabled={transaction?.status === "pending"}>
-                                    Nilai Produk
-                                </button>
+                                {transaction?.status === "pending" && (
+                                    <>
+                                        <button className="btn btn-outline hover:!bg-[#2E7D32] hover:!text-white !border-[#2E7D32] !text-[#2E7D32]" onClick={() => handleCancelOrder(transaction?.id)}>
+                                            Batalkan Pesanan
+                                        </button>
+                                        <ButtonPayment
+                                            snapToken={transaction?.snap_token}
+                                            checkedProducts={filteredCheckout}
+                                            title="Bayar Sekarang"
+                                            className="btn btn-success !bg-[#2E7D32] !border-[#2E7D32] !text-white"
+                                        />
+                                    </>
+                                )}
+
+                                {transaction?.status === "settlement" && (
+                                    <>
+                                        <button className="btn btn-success !bg-[#2E7D32] !border-[#2E7D32] !text-white">Beli Lagi</button>
+                                        <button className="btn btn-outline hover:!bg-[#2E7D32] hover:!text-white !border-[#2E7D32] !text-[#2E7D32]">Nilai Produk</button>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
