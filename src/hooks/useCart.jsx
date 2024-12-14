@@ -3,6 +3,7 @@ import api from "../services/api";
 import { Toast } from "../utils/function/toast";
 import { useNavigate } from "react-router";
 import useCartStore from "../stores/useCartStore";
+import useUserStore, { loadUserData } from "../stores/useUserStore";
 
 const useCart = () => {
     const { products, setProducts, clearProducts } = useCartStore();
@@ -21,6 +22,11 @@ const useCart = () => {
 
     // State untuk menyimpan daftar produk yang ada di keranjang
     // const [products, setProducts] = useState([]);
+
+    // State untuk discount potongan koin bang
+    const [useCoin, setUseCoin] = useState(false);
+    const [estimatedPrice, setEstimatedPrice] = useState(totalPrice);
+    const user = useUserStore((state) => state.user);
 
     const navigate = useNavigate();
 
@@ -41,13 +47,6 @@ const useCart = () => {
             }
         };
 
-        // setProducts(initialProducts);
-        // const initialQuantities = products.reduce((acc, product) => {
-        //     acc[product.product.product_id] = product.quantity || 1;
-        //     return acc;
-        // }, {});
-
-        // setQuantities(initialQuantities);
         fetchCart();
     }, [setProducts]);
 
@@ -163,11 +162,24 @@ const useCart = () => {
         }
     };
 
+    // Logic Pototngan harga by coin
+    useEffect(() => {
+        loadUserData("/users/profile");
+        // Hitung estimasi harga setelah diskon koin
+        if (useCoin) {
+            const maxCoinDiscount = totalPrice * 0.8; // Maksimal 80% dari total harga
+            const coinDiscount = Math.min(user.coin, maxCoinDiscount); // Diskon berdasarkan koin yang dimiliki
+            setEstimatedPrice(totalPrice - coinDiscount);
+        } else {
+            setEstimatedPrice(totalPrice); // Harga normal jika toggle mati
+        }
+    }, [useCoin, totalPrice]);
+
     // Tombol ketika user klik checkout
     const handleCheckout = async () => {
         const data = {
             cart_ids: checkedProducts.map((check) => check.id),
-            using_coin: false,
+            using_coin: useCoin,
         };
 
         try {
@@ -191,6 +203,10 @@ const useCart = () => {
         handleSelectAll, // Fungsi untuk memilih semua produk
         handleDeleteProduct, // Fungsi untuk menghapus produk
         handleCheckout,
+        useCoin, // Return useCoin dan estimatedPrice dari hook
+        setUseCoin, // Fungsi untuk toggle useCoin
+        user,
+        estimatedPrice, //Estimasi Coin jika diskon atau tidak
     };
 };
 
