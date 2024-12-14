@@ -4,7 +4,7 @@ import { Search, ChevronDown } from "lucide-react";
 const Header = ({ onClick, active, onSearchSubmit }) => {
     const [search, setSearch] = useState('');
     const [difficulty, setDifficulty] = useState('');
-    const difficultys = ['Easy', 'Medium', 'Hard'];
+    const difficultys = ['Mudah', 'Menengah', 'Sulit'];
 
     const handleSubmit = () => {
         // Kirim data pencarian dan kesulitan ke komponen induk
