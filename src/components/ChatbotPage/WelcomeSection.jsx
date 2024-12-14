@@ -1,8 +1,17 @@
+import { useEffect } from "react";
+import useUserStore, { loadUserData } from "../../stores/useUserStore";
+
 const WelcomeSection = ({ handleQuestionClick }) => {
+    const user = useUserStore((state) => state.user);
+
+    useEffect(() => {
+        loadUserData("/users/profile");
+    }, []);
+
     return (
         <div className="flex flex-col items-center justify-center w-full pt-20 max-[425px]:pt-10" style={{ scrollbarWidth: "none" }}>
             <div className="text-center mb-6 px-3">
-                <h1 className="font-bold text-[30px] text-black max-[500px]:text-2xl">Halo, Resiana!</h1>
+                <h1 className="font-bold text-[30px] text-black max-[500px]:text-2xl">Halo, {user.name}!</h1>
                 <h2 className="font-bold text-[30px] text-black max-[500px]:text-2xl">Apa yang bisa saya bantu?</h2>
             </div>
             <div className="flex justify-center flex-wrap gap-4 pt-6 max-w-[720px]">
