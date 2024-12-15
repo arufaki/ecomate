@@ -8,11 +8,24 @@ import { Link } from "react-router";
 const MyChallenge = ({ myChallenges, searchParams }) => {
     
     const filterByDifficulty = myChallenges?.filter((challenge) => {
-        if (searchParams === null) {
-            return true; // Tampilkan semua tantangan
-          }
-          return challenge.difficulty.toLowerCase() === searchParams.difficultyLevel.toLowerCase();
-    })
+        // Pastikan challenge dan searchParams tidak undefined
+        if (!challenge || !searchParams) return true;
+    
+    // Kondisi untuk tingkat kesulitan
+    const matchesDifficulty = 
+        !searchParams.difficultyLevel || 
+        (challenge.difficulty && 
+        challenge.difficulty.toLowerCase() === searchParams.difficultyLevel.toLowerCase());
+    
+    // Kondisi untuk pencarian judul
+    const matchesTitle = 
+        !searchParams.searchTerm || 
+        (challenge.title && 
+        challenge.title.toLowerCase().includes(searchParams.searchTerm.toLowerCase()));
+    
+    // Kembalikan true jika keduanya cocok
+    return matchesDifficulty && matchesTitle;
+    });
 
     return (
         <div className="max-w-screen-xl mx-auto px-[25px]">
@@ -126,7 +139,7 @@ const MyChallenge = ({ myChallenges, searchParams }) => {
                 </Swiper>
                 ) : (
                     <div className="w-full h-[584px] flex justify-center items-center">
-                        <p className="text-3xl font-bold text-neutral-800">Tidak ada tantangan</p>
+                        <p className="text-3xl font-bold text-neutral-800">Tidak ada tantangan aktif</p>
                     </div>
                 )}
                 
