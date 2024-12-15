@@ -21,6 +21,7 @@ const ForumPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
   const handleOnPosted = (onPosted) => {
     setPosted(onPosted);
   }
@@ -61,21 +62,15 @@ const ForumPage = () => {
       navigate("/login");
     }
   }, [token, navigate]);
-  const handleUpdate = async (id) => {
-    try {
-      const response = await api.get(`/forums/${id}`);
-      setUpdated(response.data.data);
-      setModalOpen(true);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const handleSearchSubmit = (query) => {
+    setSearchQuery(query); // Mengupdate state dengan nilai input
+  };
   return (
     <div className="bg-secondary">
       <Navbar active="forum" />
       <div className="min-h-screen">
-        <HeroForum onPosted={handleOnPosted} edit={updated} modalOpen={modalOpen} setModalOpen={setModalOpen}/>
-        <ForumPost forums={forums} metaData={metaData} curPage={handleCurrentPage} isLoading={isLoading} user={user} onUpdate={handleUpdate}/>        
+        <HeroForum onPosted={handleOnPosted} edit={updated} modalOpen={modalOpen} setModalOpen={setModalOpen} onSearchSubmit={handleSearchSubmit}/>
+        <ForumPost forums={forums} metaData={metaData} curPage={handleCurrentPage} isLoading={isLoading} user={user} onPosted={handleOnPosted} query={searchQuery}/>        
       </div>
       <Footer />
       <StickyCtaButton />
