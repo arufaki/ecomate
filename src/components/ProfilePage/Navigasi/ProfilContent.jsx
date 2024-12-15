@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../../services/api";
 import { Toast } from "../../../utils/function/toast";
-const ProfilContent = ({ Data }) => {
+const ProfilContent = ({ Data, onSaved }) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -50,6 +50,7 @@ const ProfilContent = ({ Data }) => {
                 icon: "success",
                 title: "Sukses memperbarui data",
             });
+            onSaved(true);
         } catch (error) {
             Toast.fire({
                 icon: "error",
