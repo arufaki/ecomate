@@ -64,7 +64,9 @@ const Chatbot = () => {
                 )}
 
                 {/* Input Text */}
+                <div className="relative top-[100px]">
                 <InputPrompt onSubmit={handleSubmit(handlePrompt)} register={register} isLoading={isLoading} />
+                </div>
             </div>
         </div>
     );
