@@ -44,11 +44,25 @@ const ListChallenge = ({searchParams}) => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-  const filteredChallengesDifficulty = challenges.filter((challenge) => {
-    if (searchParams === null) {
-      return true; // Tampilkan semua tantangan
-    }
-    return challenge.Difficulty.toLowerCase() === searchParams.difficultyLevel.toLowerCase();
+  console.log(challenges)
+  const filteredChallengesDifficulty = challenges?.filter((challenge) => {
+    // Pastikan challenge dan searchParams tidak undefined
+    if (!challenge || !searchParams) return true;
+  
+    // Kondisi untuk tingkat kesulitan
+    const matchesDifficulty = 
+      !searchParams.difficultyLevel || 
+      (challenge.Difficulty && 
+       challenge.Difficulty.toLowerCase() === searchParams.difficultyLevel.toLowerCase());
+    
+    // Kondisi untuk pencarian judul
+    const matchesTitle = 
+      !searchParams.searchTerm || 
+      (challenge.Title && 
+       challenge.Title.toLowerCase().includes(searchParams.searchTerm.toLowerCase()));
+    
+    // Kembalikan true jika keduanya cocok
+    return matchesDifficulty && matchesTitle;
   });
 
   // Render loading state
@@ -70,6 +84,7 @@ const ListChallenge = ({searchParams}) => {
             Semua tantangan ({filteredChallengesDifficulty?.length})
           </p>
           <div className="grid grid-min-rows-3 grid-cols-1 sm:grid-cols-2 pt-[24px] md:gap-2">
+            {filteredChallengesDifficulty?.length === 0 && <p className="text-neutral-800 text-base font-medium font-['Nunito'] tracking-tight">Tidak ada tantangan yang sesuai dengan pencarian Anda</p>}
             {filteredChallengesDifficulty?.map((challenge) => (
               <div
                 key={challenge.ID}
