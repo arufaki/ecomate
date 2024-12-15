@@ -1,13 +1,13 @@
 import React from "react";
-import Logo from "../assets/png/Logo.png";
+import Logo from "../assets/png/Logo-eco-mate.png";
 import Whatsapp from "../assets/png/Whatsapp.png";
 import Tiktok from "../assets/png/Tiktok.png";
 import Instagram from "../assets/png/Instagram.png";
-
+import { Link } from "react-router";
 const Footer = () => {
     return (
         <div className="bg-primary text-white">
-            <div className="container mx-auto px-4 py-10 md:py-16">
+            <div className="container mx-auto px-4 py-10 md:py-16"> 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Company Logo and Contact Section */}
                     <div className="flex flex-col items-start space-y-4">
@@ -36,9 +36,9 @@ const Footer = () => {
                         <h2 className="text-2xl font-semibold">Kategori</h2>
                         <div className="space-y-2">
                             {["Baju", "Sepatu", "Sandal", "Perabotan"].map((category) => (
-                                <a key={category} href="#" className="block text-base hover:text-gray-200">
+                                <Link key={category} to="/belanja" className="block text-base hover:text-gray-200">
                                     {category}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -48,9 +48,9 @@ const Footer = () => {
                         <h2 className="text-2xl font-semibold">Tantangan</h2>
                         <div className="space-y-2">
                             {["Energy Saver", "Plastic Free", "Green Communate", "Tree Challenge"].map((challenge) => (
-                                <a key={challenge} href="#" className="block text-base hover:text-gray-200">
+                                <Link key={challenge} to="/tantangan" className="block text-base hover:text-gray-200">
                                     {challenge}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -59,11 +59,18 @@ const Footer = () => {
                     <div className="flex flex-col space-y-4">
                         <h2 className="text-2xl font-semibold">EcoMate</h2>
                         <div className="space-y-2">
-                            {["Beranda", "Tentang", "Belanja", "Tantangan"].map((link) => (
-                                <a key={link} href="#" className="block text-base hover:text-gray-200">
-                                    {link}
-                                </a>
-                            ))}
+                                <Link  to="/" className="block text-base hover:text-gray-200">
+                                    Beranda
+                                </Link>
+                                <Link  to="/#about-us" className="block text-base hover:text-gray-200">
+                                    Tentang
+                                </Link>
+                                <Link  to="/belanja" className="block text-base hover:text-gray-200">
+                                    Belanja
+                                </Link>
+                                <Link  to="/tantangan" className="block text-base hover:text-gray-200">
+                                Tantangan
+                                </Link>
                         </div>
                     </div>
                 </div>
