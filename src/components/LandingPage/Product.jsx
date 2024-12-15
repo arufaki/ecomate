@@ -61,7 +61,7 @@ const ProductCarousel = () => {
                         grabCursor={true}
                         className="pb-12 md:h-[500px] h-[350px]"
                     >
-                        {products.slice(6, 12).map((product) => (
+                        {products.slice(0, 6).map((product) => (
                             <SwiperSlide key={product.product_id} className="px-4">
                                 <Card
                                     image={product.images[0]?.image_url || "/default-product.png"}

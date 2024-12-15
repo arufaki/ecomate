@@ -12,7 +12,6 @@ const ListChallengePage = () => {
     const [searchParams, setSearchParams] = useState(null);
     const [leaderboard, setLeaderboard] = useState(null);
     const handleSearchSubmit = (searchData) => {
-    
         setSearchParams(searchData);
     };
     const handleNavigation = (page) => {
@@ -25,8 +24,7 @@ const ListChallengePage = () => {
 
     const getLeaderBoard = async () => {
         try {
-            const response = await api.get(`/leaderboard`);
-            console.log(leaderboard);
+            const response = await api.get(`/leaderboard`); 
             setLeaderboard(response.data.data);
         } catch (error) {
             console.log(error);
@@ -42,7 +40,7 @@ const ListChallengePage = () => {
         {currentPage === 'challenge' ?
         (   
             <div>
-                <ListChallenge searchParams={searchParams}/>
+                <ListChallenge searchParams={searchParams ? searchParams : null}/>
             </div>
         ):
         (

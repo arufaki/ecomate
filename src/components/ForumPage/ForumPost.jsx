@@ -101,7 +101,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user }) => {
             </div>
 
             {/* Topik Terbaik */}
-            <BestTopic />
+            <BestTopic forums={forums} />
         </div>
     );
 };

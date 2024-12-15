@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../Pagination";
 import api from "../../services/api";
@@ -19,25 +19,16 @@ const ListChallenge = ({searchParams}) => {
       
       // Tambahkan halaman
       queryParams.append('pages', currentPage);
-      
-      // Tambahkan search term jika ada
-      if (searchParams?.searchTerm) {
-          queryParams.append('title', searchParams.searchTerm);
-      }
-      
-      // Tambahkan difficulty level jika ada
-      if (searchParams?.difficultyLevel) {
-          queryParams.append('difficulty', searchParams.difficultyLevel);
-      }
 
       // Dapatkan URL query string
       const queryString = queryParams.toString();
+
       const unclaimedResponse = await api.get(`/challenges/unclaimed?${queryString}`);
       const listChallenges = unclaimedResponse.data;
       // Update state untuk challenges yang belum diambil
       setChallenges(listChallenges.data);
       setTotalPages(listChallenges.metadata.Totalpage);
-      setCurrentPage(listChallenges.metadata.Page);
+      setCurrentPage(listChallenges.metadata.Page );
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -53,7 +44,12 @@ const ListChallenge = ({searchParams}) => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
+  const filteredChallengesDifficulty = challenges.filter((challenge) => {
+    if (searchParams === null) {
+      return true; // Tampilkan semua tantangan
+    }
+    return challenge.Difficulty.toLowerCase() === searchParams.difficultyLevel.toLowerCase();
+  });
 
   // Render loading state
   if (isLoading) {
@@ -67,14 +63,14 @@ const ListChallenge = ({searchParams}) => {
   return (
     <div>
 
-      <MyChallenge myChallenges={myChallenges} />
+      <MyChallenge myChallenges={myChallenges} searchParams={searchParams} />
       <div className="max-w-screen-xl mx-auto px-[25px] mb-[117px]">
         <div className="py-[40px]">
           <p className="text-[36px] font-bold text-xl sm:text-4xl mb-[13px]">
-            Semua tantangan ({challenges?.length})
+            Semua tantangan ({filteredChallengesDifficulty?.length})
           </p>
           <div className="grid grid-min-rows-3 grid-cols-1 sm:grid-cols-2 pt-[24px] md:gap-2">
-            {challenges?.map((challenge) => (
+            {filteredChallengesDifficulty?.map((challenge) => (
               <div
                 key={challenge.ID}
                 className="flex flex-col justify-between min-h-[584px] p-4 w-full md:p-10 mr-[32px] mb-5 rounded-2xl border border-[#E5E7EB] bg-[#FAFAFA]"

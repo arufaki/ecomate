@@ -20,63 +20,24 @@ import Union from "../../assets/svg/Union.svg";
 import Leaf from "../../assets/svg/leaf.svg";
 
 const ProductDetail = () => {
-    const reviews = [
-        {
-            name: "Jamal",
-            rating: 4,
-            review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
-            date: "06 September 2024",
-        },
-        {
-            name: "Budi",
-            rating: 5,
-            review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
-            date: "06 September 2024",
-        },
-        {
-            name: "Jamal",
-            rating: 4,
-            review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
-            date: "06 September 2024",
-        },
-        {
-            name: "Budi",
-            rating: 5,
-            review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
-            date: "06 September 2024",
-        },
-        {
-            name: "Jamal",
-            rating: 4,
-            review: "Tote bag ini sangat praktis dan ramah lingkungan. Saya sangat puas dengan kualitas bahan dan desainnya. Sangat cocok untuk kebutuhan sehari-hari.",
-            date: "06 September 2024",
-        },
-        {
-            name: "Budi",
-            rating: 5,
-            review: "Kualitas barang nya bagus, harganya murah dan untuk proses pengirimannya juga sangat cepat",
-            date: "06 September 2024",
-        },
-        {
-            name: "Jamal",
-            rating: 4,
-            review: "lumayan lah bisa buat bawa barang sehari hari",
-            date: "06 September 2024",
-        },
-        {
-            name: "Budi",
-            rating: 2,
-            review: "barangnya kurang bagus",
-            date: "06 September 2024",
-        },
-    ];
     const [products, setProducts] = useState([]);
     const [impacts, setImpacts] = useState([]);
     const [image, setImage] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [amount, setAmount] = useState(1);
+    const [reviews, setReviews] = useState(null);
 
     const { id } = useParams();
+
+    const fetchReviews = async () => {
+        try {
+            const response = await api.get(`/reviews/products/${id}`);
+            setReviews(response.data.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
         try {
             setIsLoading(true);
@@ -89,7 +50,12 @@ const ProductDetail = () => {
         } catch (error) {
             console.log(error);
         }
+
+        fetchReviews();
     }, []);
+
+    console.log(reviews);
+
     const handleAddToCart = async () => {
         const data = {
             product_id: products.product_id,
@@ -228,28 +194,35 @@ const ProductDetail = () => {
                             loop={true}
                             className="pb-12 md:h-[300px] h-[350px]"
                         >
-                            {reviews.map((review, index) => (
-                                <SwiperSlide key={index} className="px-4">
-                                    <div className="flex flex-col  w-[331px] h-[225px] bg-white shadow-md rounded-lg p-4 border border-[#99F6E4]">
-                                        <div>
-                                            {/* Render stars using a loop or array creation */}
-                                            {Array.from({ length: Math.floor(review.rating) }, () => (
-                                                <span key={Math.random()} className="text-yellow-500">
-                                                    ★
-                                                </span>
-                                            ))}
-                                            {review.rating % 1 === 0.5 && (
-                                                <span key={Math.random()} className="text-yellow-500">
-                                                    ☆
-                                                </span>
-                                            )}
+                            {reviews && reviews.length > 0 ? (
+                                reviews?.map((review, index) => (
+                                    <SwiperSlide key={index} className="px-4">
+                                        <div className="flex flex-col  w-[331px] h-[225px] bg-white shadow-md rounded-lg p-4 border border-[#99F6E4]">
+                                            <div>
+                                                {/* Render stars using a loop or array creation */}
+                                                {Array.from({ length: Math.floor(review.rate) }, () => (
+                                                    <span key={Math.random()} className="text-yellow-500">
+                                                        ★
+                                                    </span>
+                                                ))}
+                                                {review.rate % 1 === 0.5 && (
+                                                    <span key={Math.random()} className="text-yellow-500">
+                                                        ☆
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <h2 className="text-lg font-bold py-2">{review.name}</h2>
+                                            <p className="text-base font-medium h-44">"{review.review}"</p>
+                                            <p className="text-sm font-semibold">{review.updated_at}</p>
                                         </div>
-                                        <h2 className="text-lg font-bold py-2">{review.name}</h2>
-                                        <p className="text-base font-medium h-44">"{review.review}"</p>
-                                        <p className="text-sm font-semibold ">{review.date}</p>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
+                                    </SwiperSlide>
+                                ))
+                            ) : (
+                                <div className="text-center">
+                                    <p>Belum ada Ulasan Produk...</p>
+                                </div>
+                            )}
+                            {}
                         </Swiper>
                     </div>
                 </div>

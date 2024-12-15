@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { truncateContent } from "../../hooks/useTruncates";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router";
-const MyChallenge = ({ myChallenges }) => {
-    console.log(myChallenges);
+const MyChallenge = ({ myChallenges, searchParams }) => {
+    
+    const filterByDifficulty = myChallenges?.filter((challenge) => {
+        if (searchParams === null) {
+            return true; // Tampilkan semua tantangan
+          }
+          return challenge.difficulty.toLowerCase() === searchParams.difficultyLevel.toLowerCase();
+    })
+
     return (
         <div className="max-w-screen-xl mx-auto px-[25px]">
             <div className="py-[40px]">
-                <p className="text-[36px] font-bold text-xl sm:text-4xl mb-[13px]">Tantangan saya ({myChallenges?.length || 0})</p>
-                {myChallenges?.length > 0 ? (
+                <p className="text-[36px] font-bold text-xl sm:text-4xl mb-[13px]">Tantangan saya ({filterByDifficulty?.length || 0})</p>
+                {filterByDifficulty?.length > 0 ? (
                     <Swiper
                     spaceBetween={32}
                     slidesPerView={1}
@@ -31,7 +39,7 @@ const MyChallenge = ({ myChallenges }) => {
                     }}
                     className="challenges-swiper"
                 >
-                    {myChallenges?.map((challenge) => (
+                    {filterByDifficulty?.map((challenge) => (
                         <SwiperSlide key={challenge.challenge_id}>
                             <div className="flex flex-col justify-between w-full min-h-[584px] p-4 md:p-6 rounded-2xl border border-[#E5E7EB] bg-[#FAFAFA]">
                                 <div>
@@ -40,8 +48,8 @@ const MyChallenge = ({ myChallenges }) => {
                                     </div>
 
                                     <div>
-                                        <h3 className="text-neutral-800 text-xl font-bold tracking-tight pt-[16px]">{challenge.title || "Tantangan Tanpa Judul"}</h3>
-                                        <p className="text-justify text-neutral-800 text-base font-normal leading-normal tracking-tight">{challenge.description || "Deskripsi belum tersedia."}</p>
+                                        <h3 className="text-neutral-800 text-xl font-bold tracking-tight pt-[16px] h-[100px]">{challenge.title || "Tantangan Tanpa Judul"}</h3>
+                                        <p className="text-justify text-neutral-800 text-base font-normal leading-normal tracking-tight">{truncateContent(challenge.description, 150) || "Deskripsi belum tersedia."}</p>
                                     </div>
                                 </div>
 
