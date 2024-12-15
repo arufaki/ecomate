@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../../services/api";
 import { Toast } from "../../../utils/function/toast";
-const AlamatContent = ({ Data }) => {
+const AlamatContent = ({ Data, onSaved }) => {
     const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -43,10 +43,11 @@ const AlamatContent = ({ Data }) => {
             } else {
                 throw error;
             }
+            onSaved(true);
         } catch (error) {
             Toast.fire({
                 icon: "error",
-                title: `Ubah Alamat Gagal!`,
+                title: `Data profil Belum di isi`,
             });
             console.error(error);
         } finally {
