@@ -258,7 +258,6 @@ const Detail = ({forums}) => {
                                                 {comment.user?.name || "Anonymous"}
                                                 {user.id === comment.user.id && (
                                                     <div>
-                                                    <button className="font-medium text-[#2E7D32] justify-end hover:underline">Edit</button>
                                                     <button onClick={() => handleDeleteComment(comment.id)} className="font-medium text-[#2E7D32] justify-end hover:underline ml-5">Delete</button>
                                                     </div>
                                                 )}
