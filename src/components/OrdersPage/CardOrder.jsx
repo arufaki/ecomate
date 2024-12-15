@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import useCart from "../../hooks/useCart";
 import api from "../../services/api";
 import { Toast } from "../../utils/function/toast";
+import ModalReviewProduct from "../ReviewProductPage/ModalReviewProduct";
 
 const CardOrder = ({ orders, fetchOrders }) => {
     const [filteredCheckout, setFilteredCheckout] = useState([]);
     const { products } = useCart();
+    const [selectedOrders, setSelectedOrders] = useState(null);
 
     useEffect(() => {
         if (products && orders?.length > 0) {
@@ -38,6 +40,11 @@ const CardOrder = ({ orders, fetchOrders }) => {
                 title: error,
             });
         }
+    };
+
+    const handleReview = (data) => {
+        setSelectedOrders(data);
+        document.getElementById("my_modal_review").showModal();
     };
 
     return (
@@ -99,7 +106,9 @@ const CardOrder = ({ orders, fetchOrders }) => {
                                 {transaction?.status === "settlement" && (
                                     <>
                                         <button className="btn btn-success !bg-[#2E7D32] !border-[#2E7D32] !text-white">Beli Lagi</button>
-                                        <button className="btn btn-outline hover:!bg-[#2E7D32] hover:!text-white !border-[#2E7D32] !text-[#2E7D32]">Nilai Produk</button>
+                                        <button className="btn btn-outline hover:!bg-[#2E7D32] hover:!text-white !border-[#2E7D32] !text-[#2E7D32]" onClick={() => handleReview(transaction?.details)}>
+                                            Nilai Produk
+                                        </button>
                                     </>
                                 )}
                             </div>
@@ -109,6 +118,7 @@ const CardOrder = ({ orders, fetchOrders }) => {
             ) : (
                 <p className="text-center">Data Pesanan Kosong...</p>
             )}
+            <ModalReviewProduct products={selectedOrders} />
         </>
     );
 };
