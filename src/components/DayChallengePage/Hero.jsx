@@ -74,7 +74,7 @@ const Hero = ({data, progress, nextChallenge}) => {
                                 data.status !== "Done"
                                     ? "bg-gray-300 cursor-not-allowed"
                                     : "bg-green-500 hover:bg-green-600"
-                            } text-white w-[436px] py-5 rounded-[16px] text-lg`}
+                            } text-white w-[250px] md:w-[436px] py-5 rounded-[16px] text-lg`}
                             disabled={data.status !== "Done"} // Tombol akan disabled jika status bukan "Done"
                             onClick={handleClaimCoin}
                         >

@@ -26,7 +26,7 @@ const ProductDetail = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [amount, setAmount] = useState(1);
     const [reviews, setReviews] = useState(null);
-
+    
     const { id } = useParams();
 
     const fetchReviews = async () => {
@@ -54,7 +54,6 @@ const ProductDetail = () => {
         fetchReviews();
     }, []);
 
-    console.log(reviews);
 
     const handleAddToCart = async () => {
         const data = {
@@ -79,7 +78,8 @@ const ProductDetail = () => {
             });
         }
     };
-
+    console.log(products)
+    const averageRating = reviews ? reviews.reduce((total, review) => total + review.rate, 0) / reviews.length : 0;
     return (
         <div>
             <div className="flex md:flex-row flex-col  mx-auto w-full justify-center items-center gap-2 text-neutral-800">
@@ -92,15 +92,15 @@ const ProductDetail = () => {
                     <div className="flex flex-row py-5 ml-8 text-primary">
                         <div className="px-6 py-2 bg-[#CCFBF1] flex rounded-lg">
                             <img src={shoppingBasket} alt="shopping-bag" className="w-4 h-4 mr-2" />
-                            <p className="md:text-sm text-xs font-bold ">Terjual 16</p>
+                            <p className="md:text-sm text-xs font-bold ">Stock {products.stock}</p>
                         </div>
                         <div className="px-6 py-2 mx-2 bg-[#CCFBF1] flex rounded-lg">
                             <img src={star} alt="shopping-bag" className="w-4 h-4 mr-2" />
-                            <p className="md:text-sm text-xs font-bold">Rating (4 Ulasan)</p>
+                            <p className="md:text-sm text-xs font-bold">Rating {averageRating.toFixed(1)} ({reviews && reviews.length || 0} Ulasan)</p>
                         </div>
                         <div className="px-6 py-2 mx-2 bg-[#CCFBF1] flex rounded-lg">
                             <img src={squares} alt="shopping-bag" className="w-4 h-4 mr-2" />
-                            <p className="md:text-sm text-xs font-bold">Tas</p>
+                            <p className="md:text-sm text-xs font-bold">{products.category_product}</p>
                         </div>
                     </div>
                     <div className="flex flex-row ml-8 mt-5">
@@ -174,6 +174,7 @@ const ProductDetail = () => {
                 <div>
                     <h1 className="text-3xl font-bold py-10">Review</h1>
                     <div className="relative  w-[375px] md:w-[1300px]  ">
+                        
                         <Swiper
                             modules={[Mousewheel, Autoplay]}
                             spaceBetween={20}
@@ -218,11 +219,11 @@ const ProductDetail = () => {
                                     </SwiperSlide>
                                 ))
                             ) : (
-                                <div className="text-center">
-                                    <p>Belum ada Ulasan Produk...</p>
-                                </div>
+                                <SwiperSlide className="text-center flex items-center justify-center">
+                                    <p className="text-lg font-semibold w-full items-center">Belum ada Ulasan Produk...</p>
+                                </SwiperSlide>
                             )}
-                            {}
+                        
                         </Swiper>
                     </div>
                 </div>

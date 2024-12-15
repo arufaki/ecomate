@@ -8,23 +8,23 @@ const Faq = () => {
     const faqs = [
         {
             question: "Apa itu Ecomate?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            answer: "Ecomate adalah platform yang membantu Anda menjalani gaya hidup berkelanjutan. Kami menyediakan produk ramah lingkungan, informasi tentang isu lingkungan, dan fitur untuk mengukur dampak aktivitas Anda terhadap bumi.",
         },
         {
             question: "Cara Membeli Produk melalui Ecomate?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            answer: "Anda dapat memilih produk ramah lingkungan di aplikasi kami, menambahkannya ke keranjang, dan melanjutkan proses pembayaran melalui metode yang kami sediakan.",
         },
         {
             question: "Apa saja fitur utama dari  Ecomate?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            answer: `Belanja Produk Ramah Lingkungan: Temukan berbagai produk yang mendukung gaya hidup berkelanjutan. Edukasi Lingkungan: Dapatkan informasi terpercaya tentang isu-isu lingkungan terkini. Pengukur Dampak: Lacak dan analisis dampak aktivitas Anda terhadap lingkungan.`,
         },
         {
-            question: "Produk apa saja yang tersedia di Ecomate?",
-            answer: "Kami menyediakan berbagai produk ramah lingkungan, mulai dari kebutuhan rumah tangga, fashion, hingga alat makan yang dapat digunakan kembali.",
+            question: "Produk apa saja yang tersedia di Ecomate?", 
+            answer: "Kami menyediakan berbagai produk ramah lingkungan, mulai dari kebutuhan rumah tangga, fashion, hingga alat makan yang dapat digunakan kembali.",        
         },
         {
             question: "Apakah Ecomate gratis digunakan?",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            answer: "Ya, Ecomate dapat diunduh dan digunakan secara gratis. Namun, pembelian produk tertentu akan memerlukan pembayaran."
         },
     ];
 

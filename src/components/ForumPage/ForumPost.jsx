@@ -8,7 +8,8 @@ import { Toast } from "../../utils/function/toast";
 import Plus from "../../assets/png/plus-icon.png";
 import Emote from "../../assets/png/emote.png";
 import Photo from "../../assets/png/photo.png";
-const ForumPost = ({ forums, metaData, curPage, isLoading, user }) => {
+const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query }) => {
+    
     const [currentPage, setCurrentPage] = useState(1);
     const [dropdownIndex, setDropdownIndex] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,6 +59,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user }) => {
                 title: "Forum berhasil diperbarui",
             });
             setIsModalOpen(false); // Tutup modal
+            onPosted(true);
             curPage(currentPage); // Refresh data di halaman saat ini
         } catch (error) {
             Toast.fire({
@@ -74,6 +76,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user }) => {
                 icon: "success",
                 title: "Forum Berhasil dihapus",
             });
+            onPosted(true);
         } catch (error) {
             Toast.fire({
                 icon: "error",
@@ -85,8 +88,15 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user }) => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
         curPage(pageNumber);
-    };
-    const forumsSorted = [...forums].sort((a, b) => new Date(b.views) - new Date(a.views));
+    };  
+    const filteredForums = forums.filter((forum) =>
+        forum.title.toLowerCase().includes(query.toLowerCase())
+      );
+    console.log(filteredForums);
+      // Urutkan forums yang difilter berdasarkan views
+      const forumsSorted = [...filteredForums].sort(
+        (a, b) => new Date(b.views) - new Date(a.views)
+      );
     return (
         <div className={`container max-w-[1280px] mx-auto p-4 flex gap-6 pt-[131px]]`}>
             <div className="flex-1 w-full sm:w-[778px] flex flex-col gap-6">
@@ -137,7 +147,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user }) => {
                                 <div className="flex justify-end mt-[48px]">
                                     <a
                                         href={`/detail-forum/${forum.id}`}
-                                        className="flex items-center w-[140px] justify-between h-[52px] py-[12] px-[12px] border border-[#a1a1aa] rounded-lg gap-2 text-sm font-medium text-neutral-800"
+                                        className="flex items-center w-[140px] justify-between h-[52px] py-[12] px-[20px] border border-[#a1a1aa] rounded-lg gap-2 text-sm font-medium text-neutral-800"
                                     >
                                         <img src={commentIcon} alt="Comment" />
                                         Komentar
@@ -155,101 +165,101 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user }) => {
             {/* Topik Terbaik */}
             <BestTopic forums={forums} />
             {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-            <div className="bg-white rounded-[16px] w-[500px] relative">
-                <button
-                    onClick={() => setIsModalOpen(false)}
-                    className="absolute top-4 right-4 w-[24px] h-[24px] p-[4px] bg-[#2E7D32] text-white rounded-full flex items-center justify-center hover:bg-[#1B4B1E]"
-                >
-                    x
-                </button>
-                <h3 className="text-lg border-b border-[#D4D4D4] pt-[28px] pb-[19px] w-full text-center font-bold mb-4">
-                    Edit Postingan
-                </h3>
-                <div className="flex items-center gap-4 mb-4 px-[22px] ">
-                                <img src={user.avatar_url} alt="User Profile" className="w-[40px] h-[40px] rounded-full" />
-                                <div className="flex flex-col">
-                                    <p className="font-semibold text-black  text-base">{user.name}</p>
-                                    <p className="text-sm text-black ">Posting ke semua orang</p>
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                <div className="bg-white rounded-[16px] w-[500px] relative">
+                    <button
+                        onClick={() => setIsModalOpen(false)}
+                        className="absolute top-4 right-4 w-[24px] h-[24px] p-[4px] bg-[#2E7D32] text-white rounded-full flex items-center justify-center hover:bg-[#1B4B1E]"
+                    >
+                        x
+                    </button>
+                    <h3 className="text-lg border-b border-[#D4D4D4] pt-[28px] pb-[19px] w-full text-center font-bold mb-4">
+                        Edit Postingan
+                    </h3>
+                    <div className="flex items-center gap-4 mb-4 px-[22px] ">
+                                    <img src={user.avatar_url} alt="User Profile" className="w-[40px] h-[40px] rounded-full" />
+                                    <div className="flex flex-col">
+                                        <p className="font-semibold text-black  text-base">{user.name}</p>
+                                        <p className="text-sm text-black ">Posting ke semua orang</p>
+                                    </div>
                                 </div>
+                    <form onSubmit={handleUpdate} className="p-4 space-y-4">
+                        <div>
+                            <label htmlFor="edit-title" className="block mb-2 text-sm font-medium text-gray-700">
+                                Judul
+                            </label>
+                            <input
+                                type="text"
+                                id="edit-title"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-primary"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="edit-description" className="block mb-2 text-sm font-medium text-gray-700">
+                                Deskripsi
+                            </label>
+                            <textarea
+                                id="edit-description"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-primary"
+                                rows="4"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                required
+                            ></textarea>
+                        </div>
+                        {imagePreview && (
+                            <div className="mb-4">
+                            <img
+                                src={imagePreview}
+                                alt="Preview"
+                                className="w-full h-[200px] object-cover max-w-sm mx-auto rounded-md"
+                            />
                             </div>
-                <form onSubmit={handleUpdate} className="p-4 space-y-4">
-                    <div>
-                        <label htmlFor="edit-title" className="block mb-2 text-sm font-medium text-gray-700">
-                            Judul
-                        </label>
-                        <input
-                            type="text"
-                            id="edit-title"
-                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-primary"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor="edit-description" className="block mb-2 text-sm font-medium text-gray-700">
-                            Deskripsi
-                        </label>
-                        <textarea
-                            id="edit-description"
-                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-primary"
-                            rows="4"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            required
-                        ></textarea>
-                    </div>
-                    {imagePreview && (
-                        <div className="mb-4">
-                        <img
-                            src={imagePreview}
-                            alt="Preview"
-                            className="w-full h-[200px] object-cover max-w-sm mx-auto rounded-md"
-                        />
+                        )}
+                        <div className="relative flex px-[14px] mb-[24px] mx-[21px] items-center gap-2">
+                            <div className="flex gap-2 h-[24px]">
+                            <label
+                                htmlFor="photo-upload"
+                                className="flex items-center w-[24px] h-[24px] justify-center cursor-pointer"
+                            >
+                                <img src={Photo} alt="photo" className="w-6 h-6" />
+                            </label>
+                            <input
+                                id="photo-upload"
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                onChange={handleImageChange}
+                            />
+                            <button className="flex items-center w-[24px] h-[24px] justify-center">
+                                <img src={Emote} alt="emote" className="w-6 h-6" />
+                            </button>
+                            <button className="flex items-center w-[24px] h-[24px] justify-center">
+                                <img src={Plus} alt="plus" className="w-6 h-6" />
+                            </button>
+                            </div>
                         </div>
-                    )}
-                    <div className="relative flex px-[14px] mb-[24px] mx-[21px] items-center gap-2">
-                        <div className="flex gap-2 h-[24px]">
-                        <label
-                            htmlFor="photo-upload"
-                            className="flex items-center w-[24px] h-[24px] justify-center cursor-pointer"
-                        >
-                            <img src={Photo} alt="photo" className="w-6 h-6" />
-                        </label>
-                        <input
-                            id="photo-upload"
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={handleImageChange}
-                        />
-                        <button className="flex items-center w-[24px] h-[24px] justify-center">
-                            <img src={Emote} alt="emote" className="w-6 h-6" />
-                        </button>
-                        <button className="flex items-center w-[24px] h-[24px] justify-center">
-                            <img src={Plus} alt="plus" className="w-6 h-6" />
-                        </button>
-                        </div>
-                    </div>
 
-                    <div className="px-4 pb-4">
-                        <button
-                            type="submit"
-                            className={`w-full px-4 py-2 text-[16px] font-bold rounded-lg transition-colors ${
-                                title && description
-                                    ? "bg-primary hover:cursor-pointer text-white"
-                                    : "bg-[#E5E7EB] hover:cursor-not-allowed"
-                            }`}
-                        >
-                            Simpan Perubahan
-                        </button>
-                    </div>
-                </form>
+                        <div className="px-4 pb-4">
+                            <button
+                                type="submit"
+                                className={`w-full px-4 py-2 text-[16px] font-bold rounded-lg transition-colors ${
+                                    title && description
+                                        ? "bg-primary hover:cursor-pointer text-white"
+                                        : "bg-[#E5E7EB] hover:cursor-not-allowed"
+                                }`}
+                            >
+                                Simpan Perubahan
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        )}
+            )}
 
         </div>
     );
