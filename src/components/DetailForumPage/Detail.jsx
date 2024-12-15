@@ -7,8 +7,9 @@ import Send from '../../assets/png/send.png';
 import Blank from '../../assets/webp/blank.webp';
 import { Toast } from "../../utils/function/toast";
 import { Camera } from "lucide-react";
-import { set } from "lodash";
+import Swal from "sweetalert2";
 const Detail = ({forums}) => {
+    
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
     const [author, setAuthor] = useState({});
@@ -20,15 +21,15 @@ const Detail = ({forums}) => {
     const [imagePreview, setImagePreview] = useState(null);
     const [onComment, setOnComment] = useState(true);
     const { id } = useParams();
-    useEffect(() => {
+        useEffect(() => {
 
-        if(onComment){
-            getPost();
-            getUsers();
-            setOnComment(false);
-        }
-        
-    }, [onComment]);
+            if(onComment){
+                getPost();
+                getUsers();
+                setOnComment(false);
+            }
+            
+        }, [onComment]);
     const getPost = async () => {
         try {
             setIsLoading(true);
@@ -50,8 +51,38 @@ const Detail = ({forums}) => {
             console.log(error);
         }
     };
+    const handleDeleteComment = (id) => {
+        Swal.fire({
+            title: "Apakah Anda yakin?",
+            text: "Komentar yang dihapus tidak dapat dikembalikan!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Ya, hapus!",
+            cancelButtonText: "Batal",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await api.delete(`/forums/message/${id}`);
+                    setComments(comments.filter((comment) => comment.id !== id));
+                    Toast.fire({
+                        icon: "success",
+                        title: "Komentar berhasil dihapus",
+                    });
+                } catch (error) {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Komentar gagal dihapus",
+                    });
+                }
+            }
+        });
+    };
+    
     const handleComment = async () => {
         // Prevent sending empty comments
+        setIsLoading(true);
         if (!comment.trim()) return;
         const formData = new FormData();
         formData.append("forum_id", post.id);
@@ -72,6 +103,7 @@ const Detail = ({forums}) => {
                 title: "Komentar Berhasil ditambahkan",
             })
             setOnComment(true);
+            setIsLoading(false);
         } catch (error) {
             Toast.fire({
                 icon: "error",
@@ -108,6 +140,7 @@ const Detail = ({forums}) => {
                         setImagePreview(URL.createObjectURL(file));
                         }
                     };
+                    console.log(comments)
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -120,7 +153,7 @@ const Detail = ({forums}) => {
                     <div className="flex flex-col sm:flex-row">
                     <p className="text-[14px] font-bold text-[#2E7D32]">
                         {author.name}
-                        <span className="text-black sm:inline hidden">,{" "} </span> 
+                        <span className="text-black sm:inline hidden">,{""} </span> 
                     </p>                  
                     <p className="text-[14px] font-medium text-[#262626]">{post.updated_at}</p>
                     </div>
@@ -196,12 +229,19 @@ const Detail = ({forums}) => {
                         {/* List Komentar */}
                         {isLoading ? (<div>Loading...</div>) : (
                             <div className="mt-4">
-                            {comments.length === 0 ? (
+                                
+                            {comments && comments.length === 0 ? (
                                 <div className="text-center text-[#8A8A8A] py-4">
                                     Belum ada komentar
                                 </div>
                             ) : (
-                                comments.slice(0, loadMore ? comments.length : 3).map((comment) => (
+                                comments.filter(
+                                    (comment) =>
+                                        comment && // Pastikan comment tidak null
+                                        comment.user && // Pastikan properti user ada
+                                        comment.user.name && // Pastikan nama user ada
+                                        comment.user.avatar_url // Pastikan avatar_url ada (opsional, jika avatar_url tidak wajib, hapus baris ini)
+                                ).slice(0, loadMore ? comments.length : 3).map((comment) => (
 
                                     <div 
                                         key={comment.id} 
@@ -210,12 +250,19 @@ const Detail = ({forums}) => {
                                         
                                         <img 
                                             className="w-[50px] h-[50px] rounded-full object-cover" 
-                                            src={comment.user.avatar_url || Blank} 
-                                            alt={`Profile ${comment.user.name}`} 
+                                            src={comment.user?.avatar_url || Blank} 
+                                            alt={`Profile ${comment.user?.name}`} 
                                         />
-                                        <div>
-                                            <div className="text-base font-bold">
-                                                {comment.user.name}
+                                        <div className="w-full">
+                                            <div className="text-base font-bold  w-full flex justify-between">
+                                                {comment.user?.name || "Anonymous"}
+                                                {user.id === comment.user.id && (
+                                                    <div>
+                                                    <button className="font-medium text-[#2E7D32] justify-end hover:underline">Edit</button>
+                                                    <button onClick={() => handleDeleteComment(comment.id)} className="font-medium text-[#2E7D32] justify-end hover:underline ml-5">Delete</button>
+                                                    </div>
+                                                )}
+                                                
                                             </div>
                                             <div className="text-sm text-[#8A8A8A]">
                                                 {comment.updated_at}
@@ -226,6 +273,7 @@ const Detail = ({forums}) => {
                                             <div className="text-sm text-[#262626] mt-3">
                                                 {comment.message}
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 ))
