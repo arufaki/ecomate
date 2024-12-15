@@ -7,15 +7,16 @@ import Photo from "../../assets/png/photo.png";
 import { ChevronRight } from "lucide-react";
 import api from "../../services/api";
 import { Toast } from "../../utils/function/toast";
-import { set } from "lodash";
-const HeroForum = ({ onPosted }) => {
+import { Search } from "lucide-react";
+const HeroForum = ({ onPosted, onSearchSubmit }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [data, setData] = useState({});
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
-    
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [inputValue, setInputValue] = useState("");
     const handleOpenDesktopModal = () => {
         setIsModalOpen(true);
     };
@@ -43,7 +44,7 @@ const HeroForum = ({ onPosted }) => {
         
         const handleSubmit = async (e) => {
             e.preventDefault();
-        
+            setIsSubmitting(true);
             const formData = new FormData();
             formData.append("title", title);
             formData.append("description", description);
@@ -61,6 +62,11 @@ const HeroForum = ({ onPosted }) => {
                     title: "Forum berhasil dibuat",
                 })
                 onPosted(true);
+                setTitle("");
+                setDescription("");
+                setSelectedFile(null);
+                setIsSubmitting(false);
+                setImagePreview(null);
                 } catch (error) {
                 Toast.fire({
                     icon: "error",
@@ -94,6 +100,10 @@ const HeroForum = ({ onPosted }) => {
                     setImagePreview(URL.createObjectURL(file));
                     }
                 };
+                const handleSubmitSearch = (event) => {
+                    event.preventDefault(); // Mencegah reload halaman
+                    onSearchSubmit(inputValue); // Mengoper nilai input ke parent
+                  };
     return (
         <div className="bg-secondary pt-[80px] sm:pt-[96px] md:pt-40 mb-0 sm:mb-[24px] ">
             <div className="relative group overflow-hidden rounded-0 sm:rounded-lg max-w-full">
@@ -127,37 +137,25 @@ const HeroForum = ({ onPosted }) => {
                 <div className="flex flex-col items-start w-full">
                     <p className="text-[#262626] text-[16px] font-bold leading-[24px] tracking-[0.08px] mb-[10px]">Cari</p>
                     <div className="flex items-center justify-between gap-2">
+                    <form onSubmit={handleSubmitSearch} className=" flex flex-row gap-3">
                         <div className="relative w-[280px] sm:w-full">
                             <div className="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
-                                <svg
-                                    className="shrink-0 size-4 text-gray-400"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={24}
-                                    height={24}
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <circle cx={11} cy={11} r={8} />
-                                    <path d="m21 21-4.3-4.3" />
-                                </svg>
+                            <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
                             </div>
                             <input
-                                className="py-3 ps-10 pe-4 block w-[280px] sm:w-[500px] md:w-[1158px] h-[52px] border border-[#E5E7EB] bg-white rounded-[8px] text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                type="text"
-                                role="combobox"
-                                aria-expanded="false"
-                                placeholder="Cari topik"
-                                defaultValue=""
+                            className="py-3 ps-10 pe-4 block w-[280px] sm:w-[500px] md:w-[1158px] h-[52px] border border-[#E5E7EB] bg-white rounded-[8px] text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                            type="text"
+                            role="combobox"
+                            aria-expanded="false"
+                            placeholder="Cari topik"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)} // Menyimpan input di state lokal
                             />
                         </div>
-
                         <button className="bg-[#2E7D32] hover:bg-[#1B4B1E] h-[52px] w-[52px] rounded-[8px] flex items-center justify-center">
-                            <img src="../src/assets/png/search.png" alt="search" className="h-[20px] w-[20px]" />
+                            <Search className="h-5 w-5 text-white" aria-hidden="true" />
                         </button>
+                        </form>
                     </div>
                 </div>
 
@@ -251,13 +249,18 @@ const HeroForum = ({ onPosted }) => {
                                 </div>
                             </div>
                             <div className="px-4 pb-4">
-                                <button
+                            <button
                                 type="submit"
-                                className={`w-full px-4 py-2   text-[16px] font-bold  rounded-lg transition-colors
-                                    ${title && description ? "bg-primary hover:cursor-pointer text-white" : "bg-[#E5E7EB] hover:cursor-not-allowed "}
-                                    `}
+                                disabled={isSubmitting} // Disable button while submitting
+                                className={`w-full px-4 py-2 text-[16px] font-bold rounded-lg transition-colors ${
+                                    isSubmitting
+                                    ? "bg-[#E5E7EB] cursor-not-allowed text-gray-500"
+                                    : title && description
+                                    ? "bg-primary hover:cursor-pointer text-white"
+                                    : "bg-[#E5E7EB] hover:cursor-not-allowed"
+                                }`}
                                 >
-                                Kirim
+                                {isSubmitting ? "Mengirim..." : "Kirim"}
                                 </button>
                             </div>
                             </form>

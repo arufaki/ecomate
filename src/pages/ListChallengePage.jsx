@@ -7,10 +7,25 @@ import api from "../services/api";
 import LeaderBoard from "../components/ListChallengePage/LeaderBoard";
 import Header from "../components/ListChallengePage/Header";
 import StickyCtaButton from "../components/StickyCtaButton";
+import { useNavigate } from "react-router";
+import { Toast } from "../utils/function/toast";
+import useAuthStore from "../stores/useAuthStore";
 const ListChallengePage = () => {
     const [currentPage, setCurrentPage] = useState('challenge');
     const [searchParams, setSearchParams] = useState(null);
     const [leaderboard, setLeaderboard] = useState(null);
+    const navigate = useNavigate();
+    const { token } = useAuthStore();
+
+    useEffect(() => {
+        if (!token) {
+            Toast.fire({
+                icon: "warning",
+                title: "Anda harus login terlebih dahulu",
+            })
+            navigate("/login");
+        }
+    }, [token, navigate]); // Tambahkan dependensi untuk memastikan `useEffect` berjalan dengan benar
     const handleSearchSubmit = (searchData) => {
         setSearchParams(searchData);
     };
