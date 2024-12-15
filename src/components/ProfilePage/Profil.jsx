@@ -19,14 +19,18 @@ const Profil = () => {
     const [activeTab, setActiveTab] = useState("Profil");
     const [avatarUpdated, setAvatarUpdated] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
+    const [isSaved, setIsSaved] = useState(false);
+
+    const handleOnSave = () => {
+        setAvatarUpdated(true);
+    }
 
     const tabContent = {
-        Profil: <ProfilContent Data={data} />,
-        Alamat: <AlamatContent Data={data} />,
+        Profil: <ProfilContent Data={data} onSaved={handleOnSave}/>,
+        Alamat: <AlamatContent Data={data} onSaved={handleOnSave}/>,
         Privasi: <PrivasiContent />,
     };
-
-    const getData = async () => {
+        const getData = async () => {
         try {
             const response = await api.get("/users/profile");
             setData(response.data.data);
