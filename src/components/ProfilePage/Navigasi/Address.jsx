@@ -46,7 +46,7 @@ const AlamatContent = ({ Data }) => {
         } catch (error) {
             Toast.fire({
                 icon: "error",
-                title: `Ubah Password Gagal!`,
+                title: `Ubah Alamat Gagal!`,
             });
             console.error(error);
         } finally {
