@@ -11,7 +11,7 @@ const Chatbot = () => {
     const { register, handleSubmit, setValue, reset } = useForm({
         defaultValues: { message: "" },
     });
-    const [prompt, setPrompt] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [idChat, setIdChat] = useState("");
     const [chat, setChat] = useState(null);
     const bottom = useRef(null);
@@ -22,8 +22,10 @@ const Chatbot = () => {
 
     const getChat = async (chatId) => {
         try {
+            
             const response = await api.get(`/chatbots/${chatId}`);
             setChat(response.data.data);
+            
         } catch (error) {
             console.log(error);
         }
@@ -31,8 +33,8 @@ const Chatbot = () => {
 
     const handlePrompt = async (data) => {
         try {
+            setIsLoading(true);
             const response = await api.post("/chatbots", { message: data.message, id: idChat });
-            console.log(response);
 
             if (!idChat) {
                 const newChatId = response.data.data.chat_id;
@@ -41,6 +43,7 @@ const Chatbot = () => {
             } else {
                 await getChat(idChat); // Fetch updated chat data for the existing ID
             }
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -61,7 +64,7 @@ const Chatbot = () => {
                 )}
 
                 {/* Input Text */}
-                <InputPrompt onSubmit={handleSubmit(handlePrompt)} register={register} />
+                <InputPrompt onSubmit={handleSubmit(handlePrompt)} register={register} isLoading={isLoading} />
             </div>
         </div>
     );

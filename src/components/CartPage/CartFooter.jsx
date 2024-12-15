@@ -8,7 +8,12 @@ const CartFooter = ({ products, totalPrice, selectAll, checkedProducts, handleSe
             <div className="flex flex-row justify-between items-center border-b border-[#E5E7EB] py-6 px-6 w-full">
                 <h2 className="font-semibold text-sm text-gray-900 sm:text-base min-[1024px]:text-[20px] min-[1200px]:text-[24px]">Koin Ecomate</h2>
                 <div className="flex flex-row gap-5 items-center">
-                    <input type="checkbox" className="toggle border-[#2e7d32] bg-white [--tglbg:#2e7d32] hover:bg-white" checked={useCoin} onChange={() => setUseCoin((prev) => !prev)} />
+                    <input
+                        type="checkbox"
+                        className={`toggle bg-white ${useCoin ? "[--tglbg:#2e7d32] border-[#2e7d32]" : "[--tglbg:#BEBEBE] border-[#BEBEBE]"} hover:bg-white`}
+                        checked={useCoin}
+                        onChange={() => setUseCoin((prev) => !prev)}
+                    />
                     <p className="text-gray-700 text-sm sm:text-base font-semibold">{formatter.format(user?.coin || 0)} Koin</p>
                 </div>
             </div>

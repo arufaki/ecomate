@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Avatar from "../../assets/svg/avatar.svg";
 import EcoAvatar from "../../assets/svg/eco-avatar.svg";
 import Checklist from "../../assets/svg/checklist.svg";
+import useUserStore, { loadUserData } from "../../stores/useUserStore";
 
 const BubbleChat = ({ chat }) => {
+    const user = useUserStore((state) => state.user);
+
+    useEffect(() => {
+        loadUserData("/users/profile");
+    }, []);
+
     return (
         <>
             {chat.map((message, index) => (
@@ -15,7 +22,7 @@ const BubbleChat = ({ chat }) => {
                         <div className="w-10 rounded-full">
                             <img
                                 alt="Avatar"
-                                src={message.role === "user" ? Avatar : EcoAvatar}
+                                src={message.role === "user" ? user.avatar_url : EcoAvatar}
                             />
                         </div>
                     </div>
@@ -28,7 +35,7 @@ const BubbleChat = ({ chat }) => {
                     >
                         {message.message}
                     </div>
-                    <div className="chat-footer pt-3 flex flex-row w-full items-center gap-1">
+                    <div className={`chat-footer pt-3 flex flex-row w-full items-start  ${message.role === "user" ? "justify-end" : "justify-start"} gap-1`}>
                         <div>
                             <img src={Checklist} alt="checklist" />
                         </div>
