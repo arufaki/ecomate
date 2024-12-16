@@ -8,7 +8,7 @@ const CardContribute = ({ data, challenges }) => {
         <>
             <div className="px-8 mt-10 mb-7 md:relative md:z-20">
                 <h1 className="font-bold text-2xl text-[#FAFAFA] md:text-black z-20 relative mb-1">Detail Kontribusi</h1>
-                <p className="text-lg font-normal text-[#FAFAFA] md:text-black z-20 relative">Lihat dan Unduh sertifikat anda disini</p>
+                <p className="text-lg font-normal text-[#FAFAFA] md:text-black z-20 relative">Lihat Kontribusi anda disini</p>
             </div>
             <div className="px-6">
                 <div className="md:flex md:flex-row md:items-center md:gap-7">
