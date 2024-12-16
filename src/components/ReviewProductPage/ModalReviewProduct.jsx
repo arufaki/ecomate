@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import productUser from "../../assets/jpg/user.jpg";
 import { truncateText } from "../../utils/function/truncateText";
 import api from "../../services/api";
+import { Toast } from "../../utils/function/toast";
 
 const ModalReviewProduct = ({ products }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [rate, setRate] = useState(0);
     const [review, setReview] = useState("");
     const [productData, setProductData] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const fetchProduct = async () => {
         try {
@@ -46,10 +48,25 @@ const ModalReviewProduct = ({ products }) => {
         };
 
         try {
+            setLoading(true);
             const response = await api.post("/reviews", payload);
-            console.log(response);
+
+            if (response.status === 200 || response.status === 201) {
+                Toast.fire({
+                    icon: "success",
+                    title: "Sukses Menilai Produk",
+                });
+            } else {
+                console.warn(response);
+            }
         } catch (error) {
             console.log(error);
+            Toast.fire({
+                icon: "error",
+                title: error,
+            });
+        } finally {
+            setLoading(false);
         }
 
         setRate(0);
@@ -94,7 +111,7 @@ const ModalReviewProduct = ({ products }) => {
                     <button className="btn btn-outline !text-[#202020] !border-[#D8D8DA] hover:!text-white hover:!bg-[#2E7D32]" onClick={() => document.getElementById("my_modal_review").close()}>
                         Nanti Saja
                     </button>
-                    <button className="btn btn-success !bg-[#2E7D32] !text-white" onClick={handleSubmit}>
+                    <button className="btn btn-success !bg-[#2E7D32] !text-white" onClick={handleSubmit} disabled={loading}>
                         {currentIndex < products?.length - 1 ? "Lanjut" : "Selesai"}
                     </button>
                 </div>
