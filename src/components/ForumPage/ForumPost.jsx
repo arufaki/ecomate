@@ -8,7 +8,7 @@ import { Toast } from "../../utils/function/toast";
 import Plus from "../../assets/png/plus-icon.png";
 import Emote from "../../assets/png/emote.png";
 import Photo from "../../assets/png/photo.png";
-const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query }) => {
+const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query, forumsSorted }) => {
     
     const [currentPage, setCurrentPage] = useState(1);
     const [dropdownIndex, setDropdownIndex] = useState(null);
@@ -18,6 +18,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query
     const [description, setDescription] = useState("");
     const [editForumId, setEditForumId] = useState(null);
     const [image, setImage] = useState(null);
+
     const toggleDropdown = (index) => {
         setDropdownIndex(dropdownIndex === index ? null : index);
     };
@@ -91,11 +92,8 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query
     const filteredForums = forums.filter((forum) =>
         forum.title.toLowerCase().includes(query.toLowerCase())
       );
-
-      // Urutkan forums yang difilter berdasarkan views
-      const forumsSorted = [...filteredForums].sort(
-        (a, b) => new Date(b.views) - new Date(a.views)
-      );
+      console.log(filteredForums);
+ 
     return (
         <div className={`container max-w-[1280px] mx-auto p-4 flex gap-6 pt-[131px]]`}>
             <div className="flex-1 w-full sm:w-[778px] flex flex-col gap-6">
@@ -105,7 +103,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query
                     </div>
                 ) : (
                     <div>
-                        {forumsSorted?.map((forum, index) => (
+                        {filteredForums?.map((forum, index) => (
                             <div key={index} className="bg-white rounded-[16px] mb-[24px] pt-[51px] pb-[49px] px-[46px]">
                                 <div className="flex items-start gap-4">
                                     <img className="w-[50px] h-[50px] rounded-full" src={forum.author.avatar_url} alt={`Profile ${forum.author.name}`} />
@@ -162,7 +160,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query
             </div>
 
             {/* Topik Terbaik */}
-            <BestTopic forums={forums} />
+            <BestTopic forums={forumsSorted} />
             {isModalOpen && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
                 <div className="bg-white rounded-[16px] w-[500px] relative">
