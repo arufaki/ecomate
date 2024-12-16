@@ -18,7 +18,6 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query
     const [description, setDescription] = useState("");
     const [editForumId, setEditForumId] = useState(null);
     const [image, setImage] = useState(null);
-
     const toggleDropdown = (index) => {
         setDropdownIndex(dropdownIndex === index ? null : index);
     };
@@ -92,7 +91,7 @@ const ForumPost = ({ forums, metaData, curPage, isLoading, user, onPosted, query
     const filteredForums = forums.filter((forum) =>
         forum.title.toLowerCase().includes(query.toLowerCase())
       );
-    console.log(filteredForums);
+
       // Urutkan forums yang difilter berdasarkan views
       const forumsSorted = [...filteredForums].sort(
         (a, b) => new Date(b.views) - new Date(a.views)
