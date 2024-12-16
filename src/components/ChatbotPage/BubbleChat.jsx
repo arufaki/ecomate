@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion"; // Import framer motion
 import Avatar from "../../assets/svg/avatar.svg";
 import EcoAvatar from "../../assets/svg/eco-avatar.svg";
 import Checklist from "../../assets/svg/checklist.svg";
@@ -11,12 +12,21 @@ const BubbleChat = ({ chat }) => {
         loadUserData("/users/profile");
     }, []);
 
+    // Variants for Framer Motion animations
+    const chatAnimation = {
+        hidden: { opacity: 0, y: 50 }, // Initial state (off-screen and transparent)
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }, // Final state
+    };
+
     return (
         <>
             {chat.map((message, index) => (
-                <div
+                <motion.div
                     key={index}
                     className={`chat ${message.role === "user" ? "chat-end" : "chat-start"} pb-8`}
+                    initial="hidden" // Initial animation state
+                    animate="visible" // Final animation state
+                    variants={chatAnimation} // Pass animation variants
                 >
                     <div className="chat-image avatar">
                         <div className="w-10 rounded-full">
@@ -35,13 +45,17 @@ const BubbleChat = ({ chat }) => {
                     >
                         {message.message}
                     </div>
-                    <div className={`chat-footer pt-3 flex flex-row w-full items-start  ${message.role === "user" ? "justify-end" : "justify-start"} gap-1`}>
+                    <div
+                        className={`chat-footer pt-3 flex flex-row w-full items-start ${
+                            message.role === "user" ? "justify-end" : "justify-start"
+                        } gap-1`}
+                    >
                         <div>
                             <img src={Checklist} alt="checklist" />
                         </div>
                         <p>Sent</p>
                     </div>
-                </div>
+                </motion.div>
             ))}
         </>
     );
