@@ -149,7 +149,7 @@ const ProductDetail = () => {
                     <h1 className="text-3xl font-bold  py-10">Dampak yang diberikan</h1>
                     <div className="md:w-[726px] h-full w-[382px] bg-white rounded-lg border border-gray-200 p-8">
                         {impacts.map((impact, index) => (
-                            <div key={index} className="flex md:flex-row flex-col bg-green-50 md:w-[662px] md:h-[105px] rounded-lg p-3 border border-[#99F6E4] mb-4 items-start">
+                            <div key={index} className={`flex md:flex-row flex-col bg-green-50 md:w-[662px] ${impacts.length === 1 ? "md:h-[225px]" : "md:h-[105px]" }  rounded-lg p-3 border border-[#99F6E4] mb-4 items-start`}>
                                 <div className="bg-[#DCFCE7] p-4 text-center rounded-xl ml-2">
                                     <img src={index === 1 && impacts.length > 1 ? Leaf : Union} alt="impact" className="w-[45px] h-[45px]" />
                                 </div>
