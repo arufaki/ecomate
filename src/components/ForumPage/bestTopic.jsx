@@ -3,13 +3,10 @@ import commentIcon from "../../assets/png/coment.png";
 import { Eye } from "lucide-react";
 import { Link } from "react-router";
 const BestTopic = ({ forums }) => {
-    const filteredMostViews = forums.sort((a, b) => b.views - a.views);
-    const filteredForums = filteredMostViews.slice(0, 3);
-    
     return (
         <div className="hidden sm:block w-full h-full sm:w-[477px] px-[38px] py-[35px] bg-white rounded-2xl p-[24px]">
         <h2 className="text-lg font-bold text-neutral-800 mb-4 border-b pb-4">Topik Terbaik Bulan Ini</h2>
-        {filteredForums.map((topic, index) => (
+        {forums.slice(0, 3).map((topic, index) => (
           <div key={index} className="mb-4 flex flex-col">
             <Link to={`/detail-forum/${topic.id}`}>
               <h3 className="text-[#0771a1] text-base font-bold">{topic.title}</h3>
